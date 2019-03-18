@@ -136,6 +136,8 @@
     <Compile Include="马华\entity\IgnitionCondition.cs" />
     <Compile Include="马华\entity\Image.cs" />
     <Compile Include="马华\entity\InterfaceInformation.cs" />
+    <Compile Include="马华\entity\常规.cs" />
+    <Compile Include="马华\entity\接口信息.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
