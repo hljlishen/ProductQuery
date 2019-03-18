@@ -131,6 +131,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="燕廷\ProductModel.cs" />
     <Compile Include="马华\entity\Conventional.cs" />
     <Compile Include="马华\entity\DelayTime.cs" />
     <Compile Include="马华\entity\IgnitionCondition.cs" />
