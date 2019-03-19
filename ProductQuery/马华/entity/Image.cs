@@ -7,8 +7,8 @@ namespace ProductQuery.entity
 {
     public class Image
     {
-        public int imgId { get; set; }
-        public int mainId { get; set; }
-        public Image 产品示意图 { get; set; }
+        private int imgId { get; set; }
+        private int mainId { get; set; }
+        private Image 产品图 { get; set; }
     }
 }
