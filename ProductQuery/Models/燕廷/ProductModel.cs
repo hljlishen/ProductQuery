@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ProductQuery.燕廷
+namespace ProductQuery.Models
 {
     public class ProductModel
     {
