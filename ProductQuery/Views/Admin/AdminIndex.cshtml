@@ -1,13 +1,37 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
 
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/templatemo-style.css" rel="stylesheet" />
+    <title>管理员主页面</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo-style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        function openFrame(url) {
+            url = url;
+            var frame = "<iframe width='100%' height='100%' onscroll='true' style='border: 0px;' src='" + url + "'></iframe>";
+            $("#main").html(frame);
+        }
+        //打开模态框函数
+        function openWin(title, url, width, height) {
+            //标题位置我们可以进行动态的传入,设置标题
+            var frame = "<iframe width='" + width + "' height='" + height + "' onscroll='true' style='border: 0px;' src='" + url + "'></iframe>";
+            $("#myModalTitle").html(title);
+            //设定主体内容
+            $("#myModalBody").html(frame);
+            $("#myModal").modal("show");
+        }
+        function closeWin() {
+            //关闭模态框
+            $("#myModal").modal("hide");
+        }
+    </script>
 </head>
 <body>
     <div class="" id="home">
@@ -26,7 +50,7 @@
                     <ul class="navbar-nav mx-auto h-100">
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="javascript:openFrame(Admin/Instrument)">
                                 <i class="fas fa-tachometer-alt"></i>
                                 仪表盘
                                 <span class="sr-only">(current)</span>
@@ -90,10 +114,5 @@
             </div>
         </nav>
     </div>
-
-    <div>
-        @RenderBody()
-    </div>
-
 </body>
 </html>
