@@ -255,6 +255,8 @@
     <Content Include="Views\Admin\AdminLongin.cshtml" />
     <Content Include="Views\Admin\AdminIndex.cshtml" />
     <Content Include="Views\Admin\Instrument.cshtml" />
+    <Content Include="Views\Admin\AdminNavigation.cshtml" />
+    <Content Include="Views\Query\QueryPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
