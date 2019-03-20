@@ -128,22 +128,30 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\燕廷\Ignition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\燕廷\ProductModel.cs" />
-    <Compile Include="马华\entity\Conventional.cs" />
-    <Compile Include="马华\entity\DelayTime.cs" />
-    <Compile Include="马华\entity\IgnitionCondition.cs" />
-    <Compile Include="马华\entity\Image.cs" />
-    <Compile Include="马华\entity\InterfaceInformation.cs" />
-    <Compile Include="马华\entity\产品示意图.cs" />
-    <Compile Include="马华\entity\发火条件.cs" />
-    <Compile Include="马华\entity\常规.cs" />
-    <Compile Include="马华\entity\延期时间.cs" />
-    <Compile Include="马华\entity\接口信息.cs" />
+    <Compile Include="燕廷\ProductModel.cs" />
+    <Compile Include="Models\马华\Conventional.cs" />
+    <Compile Include="Models\马华\DelayTime.cs" />
+    <Compile Include="Models\马华\IgnitionCondition.cs" />
+    <Compile Include="Models\马华\Image.cs" />
+    <Compile Include="Models\马华\InterfaceInformation.cs" />
+    <Compile Include="Models\马华\产品示意图.cs" />
+    <Compile Include="Models\马华\发火条件.cs" />
+    <Compile Include="Models\马华\常规.cs" />
+    <Compile Include="Models\马华\延期时间.cs" />
+    <Compile Include="Models\马华\接口信息.cs" />
+    <Compile Include="Views\Query\QueryPage.aspx.cs">
+      <DependentUpon>QueryPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Query\QueryPage.aspx.designer.cs">
+      <DependentUpon>QueryPage.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -200,6 +208,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="image\6890dce2603483196b55643d610bd9c.png" />
+    <Content Include="image\db9af6d6813de0e4ca1847e63ecddc8.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\jquery-ui-datepicker\package.json" />
