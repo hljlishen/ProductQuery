@@ -33,7 +33,7 @@ namespace ProductQuery.entity
         private string 锤重单位 { get; set; }
         private double 落高 { get; set; }
         private string 落高单位 { get; set; }
-        private int 击针刺激量 { get; set; }
+        private double 击针刺激量 { get; set; }
         private double 击针力下限 { get; set; }
         private double 击针力上限 { get; set; }
         private double 击针突出量下限 { get; set; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ProductQuery.entity
 {
@@ -18,13 +19,7 @@ namespace ProductQuery.entity
         private double 爆速下限 { get; set; }
         private string 爆速备注 { get; set; }
 
-        //添加
-        public string AddConventionalSql()
-        {
-            常规 sa = new 常规();
-            string sql = "";
-            return sql;
-        }
+        public ViewDataDictionary ViewData { get; set; }
     }
 
 }
