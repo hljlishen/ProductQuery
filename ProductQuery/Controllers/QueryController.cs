@@ -9,7 +9,7 @@ namespace ProductQuery.Controllers
     public class QueryController : Controller
     {
         // GET: Query
-        public ActionResult Index()
+        public ActionResult QueryPage()
         {
             return View("QueryPage.aspx");
         }
