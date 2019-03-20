@@ -18,7 +18,12 @@ namespace ProductQuery.Controllers
             return View();
         }
 
-        public ActionResult AdminNavigation()
+        public ActionResult AdminIndex()
+        {
+            return View();
+        }
+
+        public ActionResult Instrument()
         {
             return View();
         }
