@@ -11,7 +11,7 @@ namespace ProductQuery.Controllers
         // GET: Query
         public ActionResult QueryPage()
         {
-            return View("QueryPage.aspx");
+            return View();
         }
     }
 }

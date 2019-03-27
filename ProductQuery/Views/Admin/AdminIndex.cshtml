@@ -8,30 +8,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>管理员主页面</title>
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
-    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/css/templatemo-style.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-        function openFrame(url) {
-            url = url;
-            var frame = "<iframe width='100%' height='100%' onscroll='true' style='border: 0px;' src='" + url + "'></iframe>";
-            $("#main").html(frame);
-        }
-        //打开模态框函数
-        function openWin(title, url, width, height) {
-            //标题位置我们可以进行动态的传入,设置标题
-            var frame = "<iframe width='" + width + "' height='" + height + "' onscroll='true' style='border: 0px;' src='" + url + "'></iframe>";
-            $("#myModalTitle").html(title);
-            //设定主体内容
-            $("#myModalBody").html(frame);
-            $("#myModal").modal("show");
-        }
-        function closeWin() {
-            //关闭模态框
-            $("#myModal").modal("hide");
-        }
-    </script>
+    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="" id="home">
@@ -50,7 +28,7 @@
                     <ul class="navbar-nav mx-auto h-100">
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="javascript:openFrame(Admin/Instrument)">
+                            <a class="nav-link" href="Instrument">
                                 <i class="fas fa-tachometer-alt"></i>
                                 仪表盘
                                 <span class="sr-only">(current)</span>
@@ -58,29 +36,23 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-file-alt"></i>
+                            <a class="nav-link" href="Dictionary">
+                                <i class="fa fa-book"></i>
                                 <span>
-                                    系统字典 <i class="fas fa-angle-down"></i>
+                                    系统字典
                                 </span>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Daily Report</a>
-                                <a class="dropdown-item" href="#">Weekly Report</a>
-                                <a class="dropdown-item" href="#">Yearly Report</a>
-                            </div>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:openFrame('add_ignition.aspx')">
-                                <i class="fa fa-free-code-camp"></i>
+                            <a class="nav-link" href="IgnitionManagement">
+                                <i class="fa fa-fire"></i>
                                 点火装置管理
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="accounts.html">
+                            <a class="nav-link" href="AdminUser">
                                 <i class="far fa-user"></i>
                                 账户
                             </a>
@@ -104,7 +76,7 @@
 
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link d-block" href="login.html">
+                            <a class="nav-link d-block" href="AdminLongin">
                                 管理员, <b>登录</b>
                             </a>
                         </li>
@@ -114,5 +86,13 @@
             </div>
         </nav>
     </div>
+    @RenderBody()
+    <footer class="tm-footer row tm-mt-small">
+        <div class="col-12 font-weight-light">
+            <p class="text-center text-white mb-0 px-4 small">
+                版权 &copy; <b>2019</b> 西安红叶通讯科技有限公司
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

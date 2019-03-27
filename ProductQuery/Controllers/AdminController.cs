@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProductQuery.Models;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ProductQuery.Controllers
 {
     public class AdminController : Controller
     {
+        ProductQueryDB db = new ProductQueryDB();
+
         public ActionResult AdministratorPage()
         {
             return View();
@@ -17,6 +18,19 @@ namespace ProductQuery.Controllers
         {
             return View();
         }
+        
+        //管理员登录页面
+        [HttpPost]
+        public ActionResult AdminLongin(User user)
+        {
+            var item = db.Users.FirstOrDefault(u => u.name == user.name && u.password == user.password);
+            if (item!=null)
+            {
+                Session["User"] = item;
+                return RedirectToAction("Instrument", "Admin");
+            }
+            return View();
+        }
 
         public ActionResult AdminIndex()
         {
@@ -24,6 +38,27 @@ namespace ProductQuery.Controllers
         }
 
         public ActionResult Instrument()
+        {
+            return View();
+        }
+
+        public ActionResult IgnitionManagement()
+        {
+            return View();  
+        }
+
+        //添加点火装置页面
+        public ActionResult AddIgnition()
+        {
+            return View();
+        }
+
+        public ActionResult Dictionary()
+        {
+            return View();
+        }
+
+        public ActionResult AdminUser()
         {
             return View();
         }

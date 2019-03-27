@@ -1,21 +1,22 @@
-﻿@{
+﻿@model  ProductQuery.Models.User
+@{
     Layout = null;
 }
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>管理员登录页面</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/templatemo-style.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo-style.css" rel="stylesheet" />
 </head>
 <body id="reportsPage">
+
+    <!-- 头标签 -->
     <div class="" id="home">
         <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
@@ -25,6 +26,8 @@
             </div>
         </nav>
     </div>
+
+    <!-- 登陆文本 -->
     <div class="container tm-mt-big tm-mb-big">
         <div class="row">
             <div class="col-12 mx-auto tm-login-col">
@@ -36,16 +39,18 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <form action="index.html" method="post" class="tm-login-form">
-
+                            @using (Html.BeginForm("AdminLongin", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "tm-login-form", role = "form" }))
+                            {
                                 <div class="form-group">
                                     <label for="username">用户名</label>
-                                    <input name="username" type="text" class="form-control validate" id="username" value="" required />
+                                    @Html.TextBoxFor(m => m.name, new { @class = "form-control validate" })
+                                    @Html.ValidationMessageFor(m => m.name)
                                 </div>
 
                                 <div class="form-group mt-3">
                                     <label for="password">密码</label>
-                                    <input name="password" type="password" class="form-control validate" id="password" value="" required />
+                                    @Html.PasswordFor(m => m.password, new { @class = "form-control validate"})
+                                    @Html.ValidationMessageFor(m => m.password)
                                 </div>
 
                                 <div class="form-group mt-4">
@@ -53,20 +58,19 @@
                                         登录
                                     </button>
                                 </div>
-
-                            </form>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- 尾标签 -->
     <footer class="tm-footer row tm-mt-small">
         <div class="col-12 font-weight-light">
             <p class="text-center text-white mb-0 px-4 small">
-                Copyright &copy; <b>2018</b> All rights reserved.
-
-                Design: <a rel="nofollow noopener" href="#" class="tm-footer-link">Template Mo</a>
+                Copyright &copy; <b>2019</b> 西安红叶通讯科技有限公司
             </p>
         </div>
     </footer>
