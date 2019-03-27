@@ -147,7 +147,7 @@
     <Compile Include="Models\ProductQueryDB.cs" />
     <Compile Include="Models\点火装置实体\SpeedDetonation.cs" />
     <Compile Include="Models\点火装置实体\Ignition.cs" />
-    <Compile Include="Models\点火装置实体\User.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\马华\Conventional.cs" />
     <Compile Include="Models\马华\DelayTime.cs" />
