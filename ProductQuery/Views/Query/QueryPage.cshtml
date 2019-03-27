@@ -9,18 +9,230 @@
     <meta name="viewport" content="width=device-width ,initial-scale=1.0" />
     <title></title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/templatemo-style.css" rel="stylesheet" />
+    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function addQuery(obj) {
+            var bool = true;
+            for (bool; bool = true; bool = false) {
+                alert("11");
+                break;
+            }
+        }
+
+        function delectQuery() {
+
+        }
+
+        function select1(obj) {
+            if (obj.options[obj.selectedIndex].value == 1) {
+                document.getElementById("basicInformation").style.display = "";
+                document.getElementById("size").style.display = "none";
+                document.getElementById("IgnitionCondition").style.display = "none";
+                document.getElementById("output").style.display = "none";
+                TextNone();
+            }
+            else if (obj.options[obj.selectedIndex].value == 2) {
+                document.getElementById("size").style.display = "";
+                document.getElementById("basicInformation").style.display = "none";
+                document.getElementById("IgnitionCondition").style.display = "none";
+                document.getElementById("output").style.display = "none";
+                TextNone();
+            }
+            else if (obj.options[obj.selectedIndex].value == 3) {
+                document.getElementById("basicInformation").style.display = "none";
+                document.getElementById("size").style.display = "none";
+                document.getElementById("IgnitionCondition").style.display = "";
+                document.getElementById("output").style.display = "none";
+                TextNone();
+            }
+            else if (obj.options[obj.selectedIndex].value == 4) {
+                document.getElementById("basicInformation").style.display = "none";
+                document.getElementById("size").style.display = "none";
+                document.getElementById("IgnitionCondition").style.display = "none";
+                document.getElementById("output").style.display = "";
+                TextNone();
+            }
+            else {
+                document.getElementById("basicInformation").style.display = "none";
+                document.getElementById("size").style.display = "none";
+                document.getElementById("IgnitionCondition").style.display = "none";
+                document.getElementById("output").style.display = "none";
+                TextNone();
+            }
+        }
+
+        function select2(obj) {
+            if (obj.options[obj.selectedIndex].value == 1)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 2)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 3)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 4)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 5)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 6)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 7)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 8)
+                DateSelect();
+            else if (obj.options[obj.selectedIndex].value == 9)
+                DateSelect();
+            else if (obj.options[obj.selectedIndex].value == 10)
+                DateSelect();
+            else if (obj.options[obj.selectedIndex].value == 11)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 12)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 13)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 14)
+                StringSelect();
+            else if (obj.options[obj.selectedIndex].value == 15)
+                StringSelect();
+        }
+
+        function StringSelect() {
+            document.getElementById("text1").style.display = "";
+            document.getElementById("date1").style.display = "none";
+            document.getElementById("text2").style.display = "none";
+            document.getElementById("label1").style.display = "none";
+            document.getElementById("text3").style.display = "none";
+        }
+
+        function DateSelect() {
+            document.getElementById("text1").style.display = "none";
+            document.getElementById("date1").style.display = "";
+            document.getElementById("label2").style.display = "";
+            document.getElementById("date2").style.display = "";
+            document.getElementById("text2").style.display = "none";
+            document.getElementById("label1").style.display = "none";
+            document.getElementById("text3").style.display = "none";
+        }
+
+        function TextNone() {
+            document.getElementById("text1").style.display = "none";
+            document.getElementById("date1").style.display = "none";
+            document.getElementById("text2").style.display = "none";
+            document.getElementById("label1").style.display = "none";
+            document.getElementById("text3").style.display = "none";
+        }
+    </script>
 </head>
     <body>
-        <div class="">
+        <div>
             <nav class="navbar navbar-expand-xl">
                 <div class="container h-100">
                     <h1 class="tm-site-title mb-0">火工品查询</h1>
-                    <button type="submit" class="navbar-left"></button>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link d-block" href="../Admin/AdminLongin">
+                                <i class=""></i>
+                                管理员登陆
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
+            <div class="form-group container tm-mt-big tm-mb-big tm-bg-primary-dark tm-block tm-block-h-auto">
+                <label>输入查询条件：</label>
+                <div style="overflow-y:auto">
+                    <div style="width:100px">
+                        <input type="image" src="../image/db9af6d6813de0e4ca1847e63ecddc8.png" onclick="addQuery()" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <select class="form-control" style="height:53px; width:150px;font-size:12px" onchange="select1(this)" id="selectConditions1">
+                                <option value="0">请选择      </option>
+                                <option value="1">基本信息      </option>
+                                <option value="2">尺寸      </option>
+                                <option value="3">发火条件      </option>
+                                <option value="4">输出      </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select class="form-control" style="height:53px; width:150px ;font-size:12px ;display:none" id="basicInformation" onchange="select2(this)">
+                                <option value="0">请选择      </option>
+                                <option value="1">类别      </option>
+                                <option value="2">产品名称      </option>
+                                <option value="3">设计单位      </option>
+                                <option value="4">生产单位      </option>
+                                <option value="5">型号      </option>
+                                <option value="6">图号      </option>
+                                <option value="7">代号      </option>
+                                <option value="8">研制日期      </option>
+                                <option value="9">设计定型时间      </option>
+                                <option value="10">生产定型日期      </option>
+                                <option value="11">用途      </option>
+                                <option value="12">系统组成      </option>
+                                <option value="13">目前阶段      </option>
+                                <option value="14">桥丝数目      </option>
+                                <option value="15">贮存寿命      </option>
+                            </select>
+                            <select class="form-control" style="height:53px; width:150px ;font-size:12px ;display:none" id="size" onchange="select3(this)">
+                                <option value="0">请选择      </option>
+                                <option value="1">常规     </option>
+                                <option value="2">隔板厚度      </option>
+                                <option value="3">索      </option>
+                                <option value="4">六方对角      </option>
+                                <option value="5">接口信息      </option>
+                            </select>
+                            <select class="form-control" style="height:53px; width:150px ;font-size:12px ;display:none" id="IgnitionCondition" onchange="select4(this)">
+                                <option value="0">请选择      </option>
+                                <option value="1">直流电阻      </option>
+                                <option value="2">检测电流      </option>
+                                <option value="3">静电感度      </option>
+                                <option value="4">桥个数      </option>
+                                <option value="5">电压发火      </option>
+                                <option value="6">电流发火      </option>
+                                <option value="8">机械发火      </option>
+                                <option value="9">发火能量      </option>
+                                <option value="10">作用时间瞬发度</option>
+                                <option value="11">延期时间      </option>
+                                <option value="12">安全电流      </option>
+                                <option value="13">安全电压      </option>
+                            </select>
+                            <select class="form-control" style="height:53px; width:150px ;font-size:12px ;display:none" id="output" onchange="select5(this)">
+                                <option value="0">请选择      </option>
+                                <option value="1">燃烧压力      </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select class="form-control" style="height:53px; width:150px ;font-size:12px;display:none" id="selectConditions3" onchange="select1(this)">
+                                <option value="0">请选择      </option>
+                                <option value="1">基本信息      </option>
+                                <option value="2">尺寸      </option>
+                                <option value="3">发货条件      </option>
+                                <option value="4">输出      </option>
+                                <option value="5">时间      </option>
+                                <option value="6">上下限      </option>
+                                <option value="7">字符串      </option>
+                            </select>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" style="height:53px ;display:none" id="text1" />
+                            <input type="date" class="form-control" style="height:53px ;display:none" id="date1" />
+                            <label style="display:none" id="label2">至</label>
+                            <input type="date" class="form-control" style="height:53px ;display:none" id="date2" />
+                            <input type="text" class="form-control" style="height:53px; display:none" id="text2" />
+                            <label style="display:none" id="label1">至</label>
+                            <input type="text" class="form-control" style="height:53px; display:none" id="text3" />
+                        </div>
+                        <div class="col-md-1 text-center">
+                            <input type="image" src="../image/6890dce2603483196b55643d610bd9c.png" onclick="delectQuery()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <button type="submit" class="btn btn-primary btn-block text-uppercase">
+                    查询
+                </button>
+            </div>
         </div>
     </body>
 </html>

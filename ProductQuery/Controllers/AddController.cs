@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace ProductQuery.Controllers
 {
-    public class QueryController : Controller
+    public class AddController : Controller
     {
-        public ActionResult QueryPage()
+        // GET: Add
+        public ActionResult AddInformation()
         {
             return View();
         }
