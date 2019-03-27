@@ -131,6 +131,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
@@ -149,16 +150,6 @@
     <Compile Include="Models\点火装置实体\Ignition.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\马华\Conventional.cs" />
-    <Compile Include="Models\马华\DelayTime.cs" />
-    <Compile Include="Models\马华\IgnitionCondition.cs" />
-    <Compile Include="Models\马华\Image.cs" />
-    <Compile Include="Models\马华\InterfaceInformation.cs" />
-    <Compile Include="Models\马华\产品示意图.cs" />
-    <Compile Include="Models\马华\发火条件.cs" />
-    <Compile Include="Models\马华\常规.cs" />
-    <Compile Include="Models\马华\延期时间.cs" />
-    <Compile Include="Models\马华\接口信息.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -265,9 +256,11 @@
     <Content Include="Views\Admin\Dictionary.cshtml" />
     <Content Include="Views\Admin\AdminUser.cshtml" />
     <Content Include="Views\Admin\AddIgnition.cshtml" />
+    <Content Include="Views\Add\AddInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\马华\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
