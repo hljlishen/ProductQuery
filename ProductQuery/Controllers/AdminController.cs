@@ -23,6 +23,15 @@ namespace ProductQuery.Controllers
         [HttpPost]
         public ActionResult AdminLongin(User user)
         {
+            db.Users.ToList();
+            db.Ignition.ToList();
+            db.CableDiameter.ToList();
+            db.Conventional.ToList();
+            db.InterfaceInformation.ToList();
+            db.DelayTime.ToList();
+            db.IgnitionCondition.ToList();
+            db.Picture.ToList();
+            db.SpeedDetonation.ToList();
             var item = db.Users.FirstOrDefault(u => u.name == user.name && u.password == user.password);
             if (item!=null)
             {

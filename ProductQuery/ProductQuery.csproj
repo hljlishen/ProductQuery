@@ -45,17 +45,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -141,7 +138,7 @@
     <Compile Include="Models\点火装置实体\CableDiameter.cs" />
     <Compile Include="Models\点火装置实体\Conventional.cs" />
     <Compile Include="Models\点火装置实体\DcResistance.cs" />
-    <Compile Include="Models\点火装置实体\DelayTime1.cs" />
+    <Compile Include="Models\点火装置实体\DelayTime.cs" />
     <Compile Include="Models\点火装置实体\IgnitionCondition.cs" />
     <Compile Include="Models\点火装置实体\InterfaceInformation.cs" />
     <Compile Include="Models\点火装置实体\Picture.cs" />

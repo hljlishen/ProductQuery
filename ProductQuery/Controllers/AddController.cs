@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProductQuery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,18 @@ namespace ProductQuery.Controllers
 {
     public class AddController : Controller
     {
+        ProductQueryDB db = new ProductQueryDB();
         // GET: Add
         public ActionResult AddInformation()
         {
+            return View();
+        }
+
+        //添加点火装置
+        [HttpPost]
+        public ActionResult AdminLongin(User user)
+        {
+
             return View();
         }
     }
