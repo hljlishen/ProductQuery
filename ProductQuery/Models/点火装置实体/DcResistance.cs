@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,26 +10,29 @@ namespace ProductQuery.Models
 {
     public class DcResistance
     {
+        [ForeignKey("IgnitionID")]
+        public virtual Ignition Ignition { get; set; }
+        [Display(Name = "点火装置ID")]
+        public int IgnitionID { get; set; }
+
         [Key]
         [DisplayName("Id")]
-        private int Id { get; set; }
-        [DisplayName("mainId")]
-        private int mainId { get; set; }
+        public int Id { get; set; }
         [DisplayName("电阻桥个数")]
-        private int 电阻桥个数 { get; set; }
+        public int 电阻桥个数 { get; set; }
         [DisplayName("电阻单位")]
-        private string 电阻单位 { get; set; }
+        public string 电阻单位 { get; set; }
         [DisplayName("电阻范围值上")]
-        private double 电阻范围值上 { get; set; }
+        public double 电阻范围值上 { get; set; }
         [DisplayName("电阻范围值下")]
-        private double 电阻范围值下 { get; set; }
+        public double 电阻范围值下 { get; set; }
         [DisplayName("电阻值")]
-        private double 电阻值 { get; set; }
+        public double 电阻值 { get; set; }
         [DisplayName("电阻公差值")]
-        private double 电阻公差值 { get; set; }
+        public double 电阻公差值 { get; set; }
         [DisplayName("电阻小于值")]
-        private double 电阻小于值 { get; set; }
+        public double 电阻小于值 { get; set; }
         [DisplayName("电阻备注")]
-        private string 电阻备注 { get; set; }
+        public string 电阻备注 { get; set; }
     }
 }

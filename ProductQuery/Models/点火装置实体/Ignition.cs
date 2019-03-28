@@ -1,8 +1,8 @@
-﻿using ProductQuery.entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -10,9 +10,38 @@ namespace ProductQuery.Models
 {
     public class Ignition
     {
+        public Ignition()
+        {
+            图片 = new List<Picture>();
+            常规 = new List<Conventional>();
+            普通索直径 = new List<CableDiameter>();
+            速爆 = new List<SpeedDetonation>();
+            接口信息 = new List<InterfaceInformation>();
+            直流电阻 = new List<DcResistance>();
+            发火条件 = new List<IgnitionCondition>();
+            延期时间 = new List<DelayTime>();
+        }
+
+        [InverseProperty("Ignition")]
+        public virtual List<Picture> 图片 { get; set; }
+        [InverseProperty("Ignition")]
+        public virtual List<Conventional> 常规 { get; set; }
+        [InverseProperty("Ignition")]
+        public virtual List<CableDiameter> 普通索直径 { get; set; }
+        [InverseProperty("Ignition")]
+        public virtual List<SpeedDetonation> 速爆 { get; set; }
+        [InverseProperty("Ignition")]
+        public virtual List<InterfaceInformation> 接口信息 { get; set; }
+        [InverseProperty("Ignition")]
+        public virtual List<DcResistance> 直流电阻 { get; set; }
+        [InverseProperty("Ignition")]
+        public virtual List<IgnitionCondition> 发火条件 { get; set; }
+        [InverseProperty("Ignition")]
+        public virtual List<DelayTime> 延期时间 { get; set; }
+
         [Key]
-        [DisplayName("Id")]
-        public int Id { get; set; }
+        [DisplayName("点火装置Id")]
+        public int IgnitionId { get; set; }
         [DisplayName("类别")]
         public string 类别 { get; set; }
         [DisplayName("产品名称")]
@@ -26,8 +55,10 @@ namespace ProductQuery.Models
         [DisplayName("代号")]
         public string 代号 { get; set; }
         [DisplayName("研制日期")]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:yyyy-MM-dd}", HtmlEncode = false, NullDisplayText = "数据无效")]
         public DateTime 研制日期 { get; set; }
         [DisplayName("定型日期")]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:yyyy-MM-dd}", HtmlEncode = false, NullDisplayText = "数据无效")]
         public DateTime 定型日期 { get; set; }
         [DisplayName("用途")]
         public string 用途 { get; set; }
@@ -121,21 +152,5 @@ namespace ProductQuery.Models
         public double 燃烧压力上限 { get; set; }
         [DisplayName("燃烧压力备注")]
         public string 燃烧压力备注 { get; set; }
-
-        public List<Picture> 产品示意图 { get; set; }
-        public List<Conventional> 常规 { get; set; }
-        public List<CableDiameter> 普通索直径 { get; set; }
-        public List<SpeedDetonation> 速爆 { get; set; }
-        public List<InterfaceInformation> 接口信息 { get; set; }
-        public List<DcResistance> 直流电阻 { get; set; }
-        public List<IgnitionCondition> 发火条件 { get; set; }
-        public List<DelayTime1> 延期时间 { get; set; }
-
-
-
-
-        
-
-
     }
 }
