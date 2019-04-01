@@ -10,6 +10,7 @@ namespace ProductQuery.Controllers
     public class AddController : Controller
     {
         ProductQueryDB db = new ProductQueryDB();
+        Dictionary<string, string> myDictionary = new Dictionary<string, string>();
         // GET: Add
         public ActionResult AddInformation()
         {
@@ -18,10 +19,12 @@ namespace ProductQuery.Controllers
 
         //添加点火装置
         [HttpPost]
-        public ActionResult AdminLongin(User user)
+        public ActionResult AddInformation(Ignition ignition)
         {
+
 
             return View();
         }
+
     }
 }

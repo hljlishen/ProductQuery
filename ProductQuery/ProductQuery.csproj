@@ -130,11 +130,36 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AddController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\Filters\DateTimeInRange.cs" />
+    <Compile Include="Controllers\Filters\DoubleInRange.cs" />
+    <Compile Include="Controllers\Filters\Filter.cs" />
+    <Compile Include="Controllers\Filters\GlobalStringLike.cs" />
+    <Compile Include="Controllers\Filters\IntInRange.cs" />
+    <Compile Include="Controllers\Filters\ListPropertyDecorator.cs" />
+    <Compile Include="Controllers\Filters\RangeIntersect.cs" />
+    <Compile Include="Controllers\Filters\StringLike.cs" />
+    <Compile Include="Controllers\IMeasurementConverters\Capacitance.cs" />
+    <Compile Include="Controllers\IMeasurementConverters\Current.cs" />
+    <Compile Include="Controllers\IMeasurementConverters\Energy.cs" />
+    <Compile Include="Controllers\IMeasurementConverters\IMeasurementConverter.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
+    <Compile Include="Controllers\IMeasurementConverters\Lenght.cs" />
+    <Compile Include="Controllers\IMeasurementConverters\Resistance.cs" />
+    <Compile Include="Controllers\IMeasurementConverters\Time.cs" />
+    <Compile Include="Controllers\Querys\Query.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903271000409_InitialCreate.cs" />
+    <Compile Include="Migrations\201903271000409_InitialCreate.Designer.cs">
+      <DependentUpon>201903271000409_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903280317343_InitialCreate1.cs" />
+    <Compile Include="Migrations\201903280317343_InitialCreate1.Designer.cs">
+      <DependentUpon>201903280317343_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\点火装置实体\CableDiameter.cs" />
     <Compile Include="Models\点火装置实体\Conventional.cs" />
     <Compile Include="Models\点火装置实体\DcResistance.cs" />
@@ -274,6 +299,14 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903271000409_InitialCreate.resx">
+      <DependentUpon>201903271000409_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903280317343_InitialCreate1.resx">
+      <DependentUpon>201903280317343_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
