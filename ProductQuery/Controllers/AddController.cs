@@ -23,5 +23,10 @@ namespace ProductQuery.Controllers
 
             return View();
         }
+
+        public ActionResult InformationModule()
+        {
+            return View();
+        }
     }
 }

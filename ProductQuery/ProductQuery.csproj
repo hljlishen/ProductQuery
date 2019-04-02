@@ -190,6 +190,7 @@
     <Content Include="Content\jquery-ui-datepicker\LICENSE.txt" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\Chart.min.js" />
+    <Content Include="Content\js\jquery-1.11.2.min.js" />
     <Content Include="Content\js\jquery-3.3.1.min.js" />
     <Content Include="Content\js\moment.min.js" />
     <Content Include="Content\js\tooplate-scripts.js" />
