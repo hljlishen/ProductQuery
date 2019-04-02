@@ -15,7 +15,7 @@ namespace ProductQuery.Models
             图片 = new List<Picture>();
             常规 = new List<Conventional>();
             普通索直径 = new List<CableDiameter>();
-            速爆 = new List<SpeedDetonation>();
+            爆速 = new List<SpeedDetonation>();
             接口信息 = new List<InterfaceInformation>();
             直流电阻 = new List<DcResistance>();
             发火条件 = new List<IgnitionCondition>();
@@ -29,7 +29,7 @@ namespace ProductQuery.Models
         [InverseProperty("Ignition")]
         public virtual List<CableDiameter> 普通索直径 { get; set; }
         [InverseProperty("Ignition")]
-        public virtual List<SpeedDetonation> 速爆 { get; set; }
+        public virtual List<SpeedDetonation> 爆速 { get; set; }
         [InverseProperty("Ignition")]
         public virtual List<InterfaceInformation> 接口信息 { get; set; }
         [InverseProperty("Ignition")]
@@ -60,6 +60,9 @@ namespace ProductQuery.Models
         [DisplayName("定型日期")]
         [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:yyyy-MM-dd}", HtmlEncode = false, NullDisplayText = "数据无效")]
         public DateTime 定型日期 { get; set; }
+        [DisplayName("工艺定型")]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:yyyy-MM-dd}", HtmlEncode = false, NullDisplayText = "数据无效")]
+        public DateTime 工艺定型 { get; set; }
         [DisplayName("用途")]
         public string 用途 { get; set; }
         [DisplayName("系统组成")]
@@ -88,6 +91,7 @@ namespace ProductQuery.Models
         public string 试验环境指标范围 { get; set; }
         [DisplayName("基本性能")]
         public string 基本性能 { get; set; }
+
         [DisplayName("脚线")]
         public double 脚线 { get; set; }
         [DisplayName("总长度")]
@@ -152,5 +156,9 @@ namespace ProductQuery.Models
         public double 燃烧压力上限 { get; set; }
         [DisplayName("燃烧压力备注")]
         public string 燃烧压力备注 { get; set; }
+
+        //public string speicialPropertiesString { get; set; }
+
+        //Dictionary<string, string> speicialProperties;
     }
 }

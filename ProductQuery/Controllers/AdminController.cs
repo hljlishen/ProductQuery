@@ -38,6 +38,7 @@ namespace ProductQuery.Controllers
                 Session["User"] = item;
                 return RedirectToAction("Instrument", "Admin");
             }
+
             return View();
         }
 
