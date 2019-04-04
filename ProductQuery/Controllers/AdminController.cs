@@ -23,27 +23,18 @@ namespace ProductQuery.Controllers
         [HttpPost]
         public ActionResult AdminLongin(User user)
         {
-            db.Users.ToList();
-            db.Ignition.ToList();
-            db.CableDiameter.ToList();
-            db.Conventional.ToList();
-            db.InterfaceInformation.ToList();
-            db.DelayTime.ToList();
-            db.IgnitionCondition.ToList();
-            db.Picture.ToList();
-            db.SpeedDetonation.ToList();
             var item = db.Users.FirstOrDefault(u => u.name == user.name && u.password == user.password);
             if (item!=null)
             {
                 Session["User"] = item;
                 return RedirectToAction("Instrument", "Admin");
             }
-
             return View();
         }
 
         public ActionResult AdminIndex()
         {
+
             return View();
         }
 
@@ -63,6 +54,15 @@ namespace ProductQuery.Controllers
             return View();
         }
 
+        //删除点火装置页面
+        public ActionResult DeleteIgnition(int ignitionid)
+        {
+            var ignition = db.Ignition.FirstOrDefault(f => f.IgnitionId == ignitionid);
+            db.Ignition.Remove(ignition);
+            db.SaveChanges();
+            return View();
+        }
+
         public ActionResult Dictionary()
         {
             return View();
@@ -70,6 +70,20 @@ namespace ProductQuery.Controllers
 
         public ActionResult AdminUser()
         {
+            var users = db.Users.ToList();
+            return View(users);
+        }
+
+        //管理员登录页面
+        [HttpPost]
+        public ActionResult UpdateAdminUser(User user)
+        {
+            var item = db.Users.FirstOrDefault(u => u.name == user.name && u.password == user.password);
+            if (item != null)
+            {
+                Session["User"] = item;
+                return RedirectToAction("Instrument", "Admin");
+            }
             return View();
         }
     }

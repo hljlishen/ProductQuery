@@ -19,12 +19,12 @@ namespace ProductQuery.Models
         [DisplayName("Id")]
         public int Id { get; set; }
         [DisplayName("螺纹")]
-        public double 螺纹 { get; set; }
+        public double lw { get; set; }
         [DisplayName("螺距")]
-        public double 螺距 { get; set; }
+        public double lj { get; set; }
         [DisplayName("公差")]
-        public string 公差 { get; set; }
+        public string gc { get; set; }
         [DisplayName("长度")]
-        public double 长度 { get; set; }
+        public double cd { get; set; }
     }
 }

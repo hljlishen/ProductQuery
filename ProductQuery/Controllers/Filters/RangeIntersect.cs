@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProductQuery.Controllers.Filters
 {
-    public class RangeIntersect : Filter
+    public class RangeIntersect : _Filter
     {
         private double rangeMin;
         private double rangeMax;
@@ -20,8 +20,8 @@ namespace ProductQuery.Controllers.Filters
 
         public override bool IsPass(object obj)
         {
-            double valuemax = (double)GetPropertyValue(obj, fieldName + "上限");
-            double valuemin = (double)GetPropertyValue(obj, fieldName + "下限");
+            double valuemax = (double)GetPropertyValue(obj, fieldName + "sx");
+            double valuemin = (double)GetPropertyValue(obj, fieldName + "xx");
 
             double max = MeasurementConverter == null ? rangeMax : MeasurementConverter.ToStandardValue(rangeMax);
             double min = MeasurementConverter == null ? rangeMin : MeasurementConverter.ToStandardValue(rangeMin);

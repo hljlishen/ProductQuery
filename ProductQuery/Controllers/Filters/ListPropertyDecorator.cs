@@ -5,12 +5,12 @@ using System.Web;
 
 namespace ProductQuery.Controllers.Filters
 {
-    public class ListPropertyDecorator : Filter
+    public class ListPropertyDecorator : _Filter
     {
         string propertyName;
-        Filter filter;
+        _Filter filter;
 
-        public ListPropertyDecorator(string propertyName, Filter filter)
+        public ListPropertyDecorator(string propertyName, _Filter filter)
         {
             this.propertyName = propertyName;
             this.filter = filter;

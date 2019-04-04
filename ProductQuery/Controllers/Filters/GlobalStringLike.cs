@@ -8,7 +8,7 @@ using ProductQuery.Models;
 
 namespace ProductQuery.Controllers.Filters
 {
-    public class GlobalStringLike : Filter
+    public class GlobalStringLike : _Filter
     {
         private string likeString;
 

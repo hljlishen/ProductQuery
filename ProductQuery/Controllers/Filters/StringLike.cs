@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProductQuery.Controllers.Filters
 {
-    public class StringLike : Filter
+    public class StringLike : _Filter
     {
         private string str;
         private string fieldName;

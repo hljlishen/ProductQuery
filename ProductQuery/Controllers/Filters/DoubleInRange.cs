@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProductQuery.Controllers.Filters
 {
-    public class DoubleInRange : Filter
+    public class DoubleInRange : _Filter
     {
         private double rangeMin;
         private double rangeMax;

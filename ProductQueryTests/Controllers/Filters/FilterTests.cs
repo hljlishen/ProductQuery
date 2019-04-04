@@ -32,7 +32,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             ig.常规.Add(conventional);
 
             IMeasurementConverter measurementConverter = new Resistance("Ω");
-            Filter filter = new DoubleInRange("串联电阻" , 4 , 9);
+            _Filter filter = new DoubleInRange("串联电阻" , 4 , 9);
             filter.MeasurementConverter = measurementConverter;
             bool test= filter.IsPass(ig);
             Assert.IsTrue(test);
@@ -56,7 +56,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             Assert.IsFalse(test);
 
             measurementConverter = new Lenght("mm");
-            Filter filter1 = new DoubleInRange("直径", 1.5, 4.9);
+            _Filter filter1 = new DoubleInRange("直径", 1.5, 4.9);
             filter1.MeasurementConverter = measurementConverter;
             filter = new ListPropertyDecorator("常规", filter1);
             test = filter.IsPass(ig);
@@ -74,7 +74,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             dcResistance.电阻桥个数 = 1;
             ig.直流电阻.Add(dcResistance);
 
-            Filter filter = new IntInRange("桥丝数目", 2,3);
+            _Filter filter = new IntInRange("桥丝数目", 2,3);
             bool test = filter.IsPass(ig);
             Assert.IsTrue(test);
 
@@ -86,7 +86,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             test = filter.IsPass(ig);
             Assert.IsFalse(test);
 
-            Filter filter1 = new IntInRange("电阻桥个数", 0, 1);
+            _Filter filter1 = new IntInRange("电阻桥个数", 0, 1);
             filter = new ListPropertyDecorator("直流电阻", filter1);
             test = filter.IsPass(ig);
             Assert.IsTrue(test);
@@ -104,7 +104,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             delayTime.延期时间上限 = 800000;
             ig.延期时间.Add(delayTime);
 
-            Filter filter = new RangeIntersect("燃烧压力", 100.6, 120.88);
+            _Filter filter = new RangeIntersect("燃烧压力", 100.6, 120.88);
             bool test = filter.IsPass(ig);
             Assert.IsTrue(test);
 
@@ -125,7 +125,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             Assert.IsTrue(test);
 
             IMeasurementConverter measurementConverter = new Time("min");
-            Filter filter1 = new RangeIntersect("延期时间", 1, 3);
+            _Filter filter1 = new RangeIntersect("延期时间", 1, 3);
             filter1.MeasurementConverter = measurementConverter;
             filter = new ListPropertyDecorator("延期时间", filter1);
             test = filter.IsPass(ig);
@@ -142,7 +142,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             delayTime.延期时间备注 = "延期时间100天";
             ig.延期时间.Add(delayTime);
 
-            Filter filter = new StringLike("安全电流备注", "100mA");
+            _Filter filter = new StringLike("安全电流备注", "100mA");
             bool test = filter.IsPass(ig);
             Assert.IsTrue(test);
 
@@ -150,7 +150,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             test = filter.IsPass(ig);
             Assert.IsFalse(test);
 
-            Filter filter1 = new StringLike("延期时间备注", "延期100多天");
+            _Filter filter1 = new StringLike("延期时间备注", "延期100多天");
             filter = new ListPropertyDecorator("延期时间", filter1);
             test = filter.IsPass(ig);
             Assert.IsFalse(test);
@@ -162,7 +162,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             Ignition ig = new Ignition();
             ig.定型日期 = new DateTime(2010, 2, 12);
 
-            Filter filter = new DateTimeInRange("定型日期", new DateTime(2010, 2, 10), new DateTime(2019,4, 13));
+            _Filter filter = new DateTimeInRange("定型日期", new DateTime(2010, 2, 10), new DateTime(2019,4, 13));
             bool test = filter.IsPass(ig);
             Assert.IsTrue(test);
 
@@ -181,7 +181,7 @@ namespace ProductQuery.Controllers.Filters.Tests
             delayTime.延期时间备注 = "延期时间100天";
             ig.延期时间.Add(delayTime);
 
-            Filter filter = new GlobalStringLike("100mA");
+            _Filter filter = new GlobalStringLike("100mA");
             bool test = filter.IsPass(ig);
             Assert.IsTrue(test);
 
