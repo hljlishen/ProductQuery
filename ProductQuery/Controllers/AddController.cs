@@ -14,15 +14,8 @@ namespace ProductQuery.Controllers
         // GET: Add
         public ActionResult AddInformation()
         {
-            return View();
-        }
-
-        //添加点火装置
-        [HttpPost]
-        public ActionResult AddInformation(Ignition ignition)
-        {
-
-
+            var leibie = Request["leibie"];
+            var cpmc = Request["cpmc"];
             return View();
         }
 
