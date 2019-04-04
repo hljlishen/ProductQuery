@@ -17,6 +17,7 @@
     <script src="~/Content/jquery-ui-datepicker/jquery-ui.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+        var id = 0;
         $(function () {
             $("#expire_date").datepicker({
                 defaultDate: Date.now()
@@ -28,6 +29,86 @@
                 defaultDate: Date.now()
             });
         });
+
+        function ModuleIsNone() {
+            document.getElementById("form1").style.display = "none";
+            document.getElementById("form2").style.display = "none";
+            document.getElementById("form3").style.display = "none";
+            document.getElementById("form4").style.display = "none";
+            document.getElementById("form5").style.display = "none";
+            document.getElementById("form6").style.display = "none";
+            document.getElementById("form7").style.display = "none";
+            document.getElementById("form8").style.display = "none";
+            document.getElementById("form9").style.display = "none";
+            document.getElementById("form10").style.display = "none";
+        }
+
+        function PageInformation(obj) {
+            if (obj == "主页信息") {
+                ModuleIsNone();
+                document.getElementById("form1").style.display = "";
+            }
+            else if (obj == "添加信息模块") {
+                ModuleIsNone();
+                document.getElementById("form2").style.display = "";
+            }
+            else if (obj == "产品示意图") {
+                ModuleIsNone();
+                document.getElementById("form3").style.display = "";
+            }
+            else if (obj == "常规") {
+                ModuleIsNone();
+                document.getElementById("form4").style.display = "";
+            }
+            else if (obj == "索普通直径") {
+                ModuleIsNone();
+                document.getElementById("form5").style.display = "";
+            }
+            else if (obj == "爆速") {
+                ModuleIsNone();
+                document.getElementById("form6").style.display = "";
+            }
+            else if (obj == "接口信息") {
+                ModuleIsNone();
+                document.getElementById("form7").style.display = "";
+            }
+            else if (obj == "直流电阻") {
+                ModuleIsNone();
+                document.getElementById("form8").style.display = "";
+            }
+            else if (obj == "发火条件") {
+                ModuleIsNone();
+                document.getElementById("form10").style.display = "";
+            }
+            else if (obj == "延期时间") {
+                ModuleIsNone();
+                document.getElementById("form9").style.display = "";
+            }
+        }
+
+        function AddInformationModule(obj) {
+            var tables = $("table#test");
+            var addtr = '<tr id="'+id+'">'+
+                '<td class="tm-product-name">'+
+                    '<ul class="navbar-nav">'+
+                        '<li class="nav-item">'+
+                            '<a class="nav-link d-block" href="#" name="'+obj+'" onclick="PageInformation(this.name)">'+obj+'</a>'+
+                        '</li>'+
+                    '</ul>'+
+                '</td>'+
+                '<td class="text-center">'+
+                    '<a href="#" id="'+id+'" class="tm-product-delete-link" onclick="delAchieve(this.id)">'+
+                        '<i class="far fa-trash-alt tm-product-delete-icon"></i>'+
+                    '</a>'+
+                '</td>'+
+                '</tr>';
+            id++;
+            $(addtr).appendTo(tables);     
+        }
+
+        function delAchieve(obj) {
+            $("table#test #"+obj+"").remove();
+        }
     </script>
 </head>
 <body>
@@ -45,50 +126,34 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:400px;height:720px">
+            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:20%;height:10%">
                 <div>
                     <h2 class="tm-block-title">信息模块</h2>
                     <div class="tm-product-table-container">
-                        <table class="table tm-table-small tm-product-table">
+                        <table class="table tm-table-small tm-product-table" id = "test">
                             <tbody>
                                 <tr>
                                     <td class="tm-product-name">
                                         <ul class="navbar-nav">
                                             <li class="nav-item">
-                                                <a class="nav-link d-block" href="#">
+                                                <a class="nav-link d-block" href="#" name="主页信息" onclick="PageInformation(this.name)">
                                                     主页信息
                                                 </a>
                                             </li>
                                         </ul>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="tm-product-name">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#">
-                                                    常规
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="tm-product-delete-link">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <button class="btn btn-primary btn-block text-uppercase mb-3" >
+                    <button class="btn btn-primary btn-block text-uppercase mb-3" name="添加信息模块" onclick="PageInformation(this.name)">
                         添加信息模块
                     </button>
                 </div>
             </div>
-            <div class="col-md-5 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:350px;height:720px;overflow-y:scroll;">
-                <form action="" class="tm-signup-form row">
+            <div class="col-md-5 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:20%;overflow-y:scroll;height:640px">
+                <form action="" class="tm-signup-form row" id="form1" name="基本信息">
                     <div class="form-group col-lg-12">
                         <h1 class="tm-site-title mb-0">基本信息</h1>
                     </div>
@@ -298,6 +363,7 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <h1 class="tm-site-title mb-0">索</h1>
+                        <label for="phone">（单位：mm）</label>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">索直径上限</label>
@@ -327,6 +393,7 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <h1 class="tm-site-title mb-0">六方对角</h1>
+                        <label for="phone">（单位：mm）</label>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">对边</label>
@@ -348,11 +415,11 @@
                                   rows="1"></textarea>
                     </div>
                     <div class="form-group col-lg-12">
-                        <h1 class="tm-site-title mb-0">检查电流</h1>
-                        <label for="phone">（单位：mA）</label>
+                        <h1 class="tm-site-title mb-0">检测电流</h1>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">检测电流</label>
+                        <label for="phone">(mA)</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
@@ -368,6 +435,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">静电电容</label>
+                        <label for="phone">(pf)</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
@@ -375,6 +443,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">静电电压</label>
+                        <label for="phone">(V)</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
@@ -382,6 +451,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">串联电阻</label>
+                        <label for="phone">(Ω)</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
@@ -395,26 +465,53 @@
                     <div class="form-group col-lg-12">
                         <h1 class="tm-site-title mb-0">作用时间瞬发度</h1>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-4">
                         <label for="phone">作用时间</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
                                class="form-control validate" />
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>ns</option>
+                            <option>μs</option>
+                            <option>ms</option>
+                            <option>s</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
                         <label for="phone">作用时间上限</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
                                class="form-control validate" />
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>ns</option>
+                            <option>μs</option>
+                            <option>ms</option>
+                            <option>s</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
                         <label for="phone">作用时间下限</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
                                class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>ns</option>
+                            <option>μs</option>
+                            <option>ms</option>
+                            <option>s</option>
+                        </select>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">作用时间备注</label>
@@ -431,36 +528,65 @@
                                type="tel"
                                class="form-control validate" />
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-4">
                         <label for="phone">安全电流值</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
                                class="form-control validate" />
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>mA</option>
+                            <option>A</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
                         <label for="phone">安全电流值上限</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
                                class="form-control validate" />
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>mA</option>
+                            <option>A</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
                         <label for="phone">安全电流值下限</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
                                class="form-control validate" />
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>mA</option>
+                            <option>A</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
                         <label for="phone">时间值</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
                                class="form-control validate" />
                     </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>min</option>
+                            <option>s</option>
+                        </select>
+                    </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">功率值</label>
+                        <label for="phone">(W)</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
@@ -476,6 +602,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">安全电压电压</label>
+                        <label for="phone">(V)</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
@@ -483,6 +610,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">安全电压电容</label>
+                        <label for="phone">(pf)</label>
                         <input id="phone"
                                name="phone"
                                type="tel"
@@ -490,6 +618,7 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <h1 class="tm-site-title mb-0">燃烧压力</h1>
+                        <label for="phone">单位：(MPa)</label>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">燃烧压力上限</label>
@@ -509,6 +638,555 @@
                         <label for="phone">燃烧压力备注</label>
                         <textarea class="form-control validate tm-small"
                                   rows="1"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit"
+                                class="btn btn-primary btn-block text-uppercase">
+                            提交
+                        </button>
+                    </div>
+                </form>
+
+                <form action="" class="tm-signup-form row" style="display:none" id="form2" name="添加模块">
+                    <div class="form-group col-lg-12">
+                        <h1 class="tm-site-title mb-0">请选择添加的信息模块</h1>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input class="btn btn-primary btn-block text-uppercase" type="button" value="产品示意图" onclick="AddInformationModule(this.value)" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input class="btn btn-primary btn-block text-uppercase" type="button" value="常规" onclick="AddInformationModule(this.value)" />
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <br />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input class="btn btn-primary btn-block text-uppercase" type="button" value="索普通直径" onclick="AddInformationModule(this.value)" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input class="btn btn-primary btn-block text-uppercase" type="button" value="爆速" onclick="AddInformationModule(this.value)" />
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <br />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input class="btn btn-primary btn-block text-uppercase" type="button" value="接口信息" onclick="AddInformationModule(this.value)" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input class="btn btn-primary btn-block text-uppercase" type="button" value="直流电阻" onclick="AddInformationModule(this.value)" />
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <br />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input class="btn btn-primary btn-block text-uppercase" type="button" value="发火条件" onclick="AddInformationModule(this.value)" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input class="btn btn-primary btn-block text-uppercase" type="button" value="延期时间" onclick="AddInformationModule(this.value)" />
+                    </div>
+                </form>
+
+                <form action="" class="tm-signup-form row" style="display:none" id="form3" name="产品示意图">
+                    <div class="col-12">
+                        <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                            <div class="tm-product-img-dummy mx-auto">
+                                <i class="fas fa-cloud-upload-alt tm-upload-icon"
+                                   onclick="document.getElementById('fileInput').click();"></i>
+                            </div>
+                            <div class="custom-file mt-3 mb-3">
+                                <input id="fileInput" type="file" style="display:none;" />
+                            </div>
+                        </div>
+                        <button type="submit"
+                                class="btn btn-primary btn-block text-uppercase">
+                            提交
+                        </button>
+                    </div>
+                </form>
+
+                <form action="" class="tm-signup-form row" style="display:none" id="form4" name="常规">
+                    <div class="form-group col-lg-6">
+                        <label for="phone">尺寸名称</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">直径</label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">长度</label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">高度 </label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <button type="submit"
+                            class="btn btn-primary btn-block text-uppercase">
+                        提交
+                    </button>
+                </form>
+
+                <form action="" class="tm-signup-form row" style="display:none" id="form5" name="索普通直径">
+                    <div class="form-group col-lg-6">
+                        <label for="phone">索普通直径 </label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <button type="submit"
+                            class="btn btn-primary btn-block text-uppercase">
+                        提交
+                    </button>
+                </form>
+
+                <form action="" class="tm-signup-form row" style="display:none" id="form6" name="爆速">
+                    <div class="form-group col-lg-6">
+                        <label for="phone">爆速上限 </label>
+                        <label for="phone">(m/s)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">爆速下限 </label>
+                        <label for="phone">(m/s)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">爆速备注</label>
+                        <textarea class="form-control validate tm-small"
+                                  rows="1"></textarea>
+                    </div>
+                    <button type="submit"
+                            class="btn btn-primary btn-block text-uppercase">
+                        提交
+                    </button>
+                </form>
+
+                <form action="" class="tm-signup-form row" style="display:none" id="form7" name="接口信息">
+                    <div class="form-group col-lg-6">
+                        <label for="phone">螺纹 </label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">螺距 </label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">公差 </label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">长度 </label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">接口信息备注</label>
+                        <textarea class="form-control validate tm-small"
+                                  rows="1"></textarea>
+                    </div>
+                    <button type="submit"
+                            class="btn btn-primary btn-block text-uppercase">
+                        提交
+                    </button>
+                </form>
+
+                <form action="" class="tm-signup-form row" style="display:none" id="form8" name="直流电阻">
+                    <div class="form-group col-lg-6">
+                        <label for="phone">桥个数 </label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">电阻范围值上 </label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>mΩ</option>
+                            <option>Ω</option>
+                            <option>kΩ</option>
+                            <option>MΩ</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">电阻范围值下 </label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>mΩ</option>
+                            <option>Ω</option>
+                            <option>kΩ</option>
+                            <option>MΩ</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">电阻小于值 </label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>mΩ</option>
+                            <option>Ω</option>
+                            <option>kΩ</option>
+                            <option>MΩ</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">电阻备注</label>
+                        <textarea class="form-control validate tm-small"
+                                  rows="1"></textarea>
+                    </div>
+                    <button type="submit"
+                            class="btn btn-primary btn-block text-uppercase">
+                        提交
+                    </button>
+                </form>
+
+                <form action="" class="tm-signup-form row" style="display:none" id="form9" name="延期时间">
+                    <div class="form-group col-lg-6">
+                        <label for="phone">温度条件 </label>
+                        <label for="phone">(摄氏度) </label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">延期时间上限 </label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>ms</option>
+                            <option>s</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">延期时间下限 </label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>ms</option>
+                            <option>s</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">延期时间值 </label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>ms</option>
+                            <option>s</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">延期时间备注</label>
+                        <textarea class="form-control validate tm-small"
+                                  rows="1"></textarea>
+                    </div>
+                    <button type="submit"
+                            class="btn btn-primary btn-block text-uppercase">
+                        提交
+                    </button>
+                </form >
+
+                <form action="" class="tm-signup-form row" style="display:none" id="form10" name="发火条件">
+                    <div class="form-group col-lg-12">
+                        <h1 class="tm-site-title mb-0">桥个数</h1>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="name">桥个数</label>
+                        <input id="name"
+                               name="name"
+                               type="text"
+                               class="form-control validate" required />
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <h1 class="tm-site-title mb-0">电压发火</h1>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="email">发火电压</label>
+                        <label for="email">(V)</label>
+                        <input id="email"
+                               name="email"
+                               type="email"
+                               class="form-control validate" required />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="password">发火电压上限</label>
+                        <label for="email">(V)</label>
+                        <input id="password"
+                               name="password"
+                               type="password"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="password2">发火电压下限</label>
+                        <label for="email">(V)</label>
+                        <input id="password2"
+                               name="password2"
+                               type="password"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">发火电容</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>μf</option>
+                            <option>pf</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">电压发火备注</label>
+                        <textarea class="form-control validate tm-small"
+                                  rows="1"></textarea>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <h1 class="tm-site-title mb-0">电流发火</h1>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">发火电流</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>A</option>
+                            <option>mA</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">发火电流上限</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>A</option>
+                            <option>mA</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">发火电流下限</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>A</option>
+                            <option>mA</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">发火电流时间</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>ms</option>
+                            <option>min</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">电流发火备注</label>
+                        <textarea class="form-control validate tm-small"
+                                  rows="1"></textarea>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <h1 class="tm-site-title mb-0">机械发火</h1>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">锤重</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>kg</option>
+                            <option>g</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">落高</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>m</option>
+                            <option>cm</option>
+                            <option>mm</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">击针刺激量</label>
+                        <label for="phone">(g•cm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">击针力上限</label>
+                        <label for="phone">(N)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">击针力下限</label>
+                        <label for="phone">(N)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">击针突出量上限</label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">击针突出量下限</label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">弹簧高度</label>
+                        <label for="phone">(mm)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">抗力</label>
+                        <label for="phone">(N)</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">机械发火备注</label>
+                        <textarea class="form-control validate tm-small"
+                                  rows="1"></textarea>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <h1 class="tm-site-title mb-0">发火能量</h1>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="phone">能量</label>
+                        <input id="phone"
+                               name="phone"
+                               type="tel"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="phone">单位</label>
+                        <select class="custom-select">
+                            <option>J</option>
+                            <option>mJ</option>
+                        </select>
                     </div>
                     <div class="col-12">
                         <button type="submit"
