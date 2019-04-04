@@ -9,13 +9,17 @@ namespace ProductQuery.Controllers.Querys
 {
     public class Query
     {
-        List<Filter> filter;
+        List<_Filter> filter;
 
+        public Query(List<_Filter> filter)
+        {
+            this.filter = filter;
+        }
 
-        List<Ignition> Process(List<Ignition> ignitions)
+        public List<Ignition> Process()
         {
             List<Ignition> ret = new List<Ignition>();
-
+            List<Ignition> ignitions = GetAllIgnition();
             foreach (var p in ignitions)
             {
                 if (IsMetAllFilter(p))
@@ -31,6 +35,14 @@ namespace ProductQuery.Controllers.Querys
                 if (!f.IsPass(ignition)) return false;
             }
             return true;
+        }
+
+        private List<Ignition> GetAllIgnition()
+        {
+            ProductQueryDB db = new ProductQueryDB();
+            List<Ignition> ignitions = new List<Ignition>();
+            ignitions = db.Ignition.ToList();
+            return ignitions;
         }
     }
 }

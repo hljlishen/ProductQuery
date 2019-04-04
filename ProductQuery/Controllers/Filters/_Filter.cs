@@ -9,7 +9,7 @@ using ProductQuery.Controllers.IMeasurementConverters;
 
 namespace ProductQuery.Controllers.Filters
 {
-    public abstract class Filter
+    public abstract class _Filter
     {
         public IMeasurementConverter MeasurementConverter { get; set; } = null;
 

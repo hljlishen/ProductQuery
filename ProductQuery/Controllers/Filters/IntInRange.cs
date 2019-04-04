@@ -2,7 +2,7 @@
 
 namespace ProductQuery.Controllers.Filters
 {
-    public class IntInRange : Filter
+    public class IntInRange : _Filter
     {
         private int rangeMin;
         private int rangeMax;

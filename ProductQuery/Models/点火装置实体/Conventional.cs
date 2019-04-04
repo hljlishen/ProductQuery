@@ -19,12 +19,12 @@ namespace ProductQuery.Models
         [DisplayName("Id")]
         public int Id { get; set; }
         [DisplayName("尺寸名称")]
-        public string 尺寸名称 { get; set; }
+        public string ccmc { get; set; }
         [DisplayName("直径")]
-        public double 直径 { get; set; }
+        public double zj { get; set; }
         [DisplayName("长度")]
-        public double 长度 { get; set; }
+        public double cd { get; set; }
         [DisplayName("高度")]
-        public double 高度 { get; set; }
+        public double gd { get; set; }
     }
 }

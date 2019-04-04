@@ -19,54 +19,54 @@ namespace ProductQuery.Models
         [DisplayName("Id")]
         public int Id { get; set; }
         [DisplayName("桥个数")]
-        public int 桥个数 { get; set; }
+        public int qgs { get; set; }
         [DisplayName("发火电压")]
-        public double 发火电压 { get; set; }
+        public double fhdy { get; set; }
         [DisplayName("发火电压下限")]
-        public double 发火电压下限 { get; set; }
+        public double fhdyxx { get; set; }
         [DisplayName("发火电压上限")]
-        public double 发火电压上限 { get; set; }
+        public double fhdysx { get; set; }
         [DisplayName("发火电容")]
-        public double 发火电容 { get; set; }
+        public double fhdr { get; set; }
         [DisplayName("发火电容单位")]
-        public string 发火电容单位 { get; set; }
+        public string fhdrdw { get; set; }
         [DisplayName("发火电流")]
-        public double 发火电流 { get; set; }
+        public double fhdl { get; set; }
         [DisplayName("发火电流下限")]
-        public double 发火电流下限 { get; set; }
+        public double fhdlxx { get; set; }
         [DisplayName("发火电流上限")]
-        public double 发火电流上限 { get; set; }
+        public double fhdlsx { get; set; }
         [DisplayName("发火电流单位")]
-        public string 发火电流单位 { get; set; }
+        public string fhdldw { get; set; }
         [DisplayName("发火电流时间")]
-        public double 发火电流时间 { get; set; }
+        public double fhdlss { get; set; }
         [DisplayName("发火电流时间单位")]
-        public string 发火电流时间单位 { get; set; }
+        public string fhdlsjdw { get; set; }
         [DisplayName("锤重")]
-        public double 锤重 { get; set; }
+        public double cz { get; set; }
         [DisplayName("锤重单位")]
-        public string 锤重单位 { get; set; }
+        public string czdw { get; set; }
         [DisplayName("落高")]
-        public double 落高 { get; set; }
+        public double lg { get; set; }
         [DisplayName("落高单位")]
-        public string 落高单位 { get; set; }
+        public string lgdw { get; set; }
         [DisplayName("击针刺激量")]
-        public double 击针刺激量 { get; set; }
+        public double jzcjl { get; set; }
         [DisplayName("击针力下限")]
-        public double 击针力下限 { get; set; }
+        public double jzlxx { get; set; }
         [DisplayName("击针力上限")]
-        public double 击针力上限 { get; set; }
+        public double jzlsx { get; set; }
         [DisplayName("击针突出量下限")]
-        public double 击针突出量下限 { get; set; }
+        public double jztclxx { get; set; }
         [DisplayName("击针突出量上限")]
-        public double 击针突出量上限 { get; set; }
+        public double jztclsx { get; set; }
         [DisplayName("弹簧高度")]
-        public double 弹簧高度 { get; set; }
+        public double thgd { get; set; }
         [DisplayName("抗力")]
-        public double 抗力 { get; set; }
+        public double kl { get; set; }
         [DisplayName("能量")]
-        public double 能量 { get; set; }
+        public double nl { get; set; }
         [DisplayName("能量单位")]
-        public string 能量单位 { get; set; }
+        public string nldw { get; set; }
     }
 }

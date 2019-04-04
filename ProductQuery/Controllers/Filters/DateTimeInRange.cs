@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProductQuery.Controllers.Filters
 {
-    public class DateTimeInRange : Filter
+    public class DateTimeInRange : _Filter
     {
         private DateTime rangeMin;
         private DateTime rangeMax;

@@ -19,7 +19,7 @@ namespace ProductQuery.Models
         [Key]
         [DisplayName("Id")]
         public int Id { get; set; }
-        //[DisplayName("产品图")]
-        //public Image 产品图 { get; set; }
+        [DisplayName("产品图")]
+        public byte[] cpy { get; set; }
     }
 }

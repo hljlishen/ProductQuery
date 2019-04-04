@@ -19,20 +19,20 @@ namespace ProductQuery.Models
         [DisplayName("Id")]
         public int Id { get; set; }
         [DisplayName("电阻桥个数")]
-        public int 电阻桥个数 { get; set; }
+        public int dzqgs { get; set; }
         [DisplayName("电阻单位")]
-        public string 电阻单位 { get; set; }
-        [DisplayName("电阻范围值上")]
-        public double 电阻范围值上 { get; set; }
-        [DisplayName("电阻范围值下")]
-        public double 电阻范围值下 { get; set; }
+        public string dzdw { get; set; }
+        [DisplayName("电阻范围值上限")]
+        public double dzfwzsx { get; set; }
+        [DisplayName("电阻范围值下限")]
+        public double dzfwzxx { get; set; }
         [DisplayName("电阻值")]
-        public double 电阻值 { get; set; }
+        public double dzz { get; set; }
         [DisplayName("电阻公差值")]
-        public double 电阻公差值 { get; set; }
+        public double dzgcz { get; set; }
         [DisplayName("电阻小于值")]
-        public double 电阻小于值 { get; set; }
+        public double dzxyz { get; set; }
         [DisplayName("电阻备注")]
-        public string 电阻备注 { get; set; }
+        public string dzbz { get; set; }
     }
 }

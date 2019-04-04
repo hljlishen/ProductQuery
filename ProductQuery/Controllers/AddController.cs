@@ -21,8 +21,8 @@ namespace ProductQuery.Controllers
         [HttpPost]
         public ActionResult AddInformation(Ignition ignition)
         {
-
-
+            db.Ignition.Add(ignition);
+            db.SaveChanges();
             return View();
         }
 

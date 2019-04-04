@@ -132,7 +132,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Filters\DateTimeInRange.cs" />
     <Compile Include="Controllers\Filters\DoubleInRange.cs" />
-    <Compile Include="Controllers\Filters\Filter.cs" />
+    <Compile Include="Controllers\Filters\_Filter.cs" />
     <Compile Include="Controllers\Filters\GlobalStringLike.cs" />
     <Compile Include="Controllers\Filters\IntInRange.cs" />
     <Compile Include="Controllers\Filters\ListPropertyDecorator.cs" />
@@ -158,6 +158,10 @@
     <Compile Include="Migrations\201903280317343_InitialCreate1.cs" />
     <Compile Include="Migrations\201903280317343_InitialCreate1.Designer.cs">
       <DependentUpon>201903280317343_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904020748273_InitialCreate2.cs" />
+    <Compile Include="Migrations\201904020748273_InitialCreate2.Designer.cs">
+      <DependentUpon>201904020748273_InitialCreate2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\点火装置实体\CableDiameter.cs" />
@@ -227,6 +231,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="image\6890dce2603483196b55643d610bd9c.png" />
     <Content Include="image\db9af6d6813de0e4ca1847e63ecddc8.png" />
+    <Content Include="image\管理员.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\jquery-ui-datepicker\package.json" />
@@ -283,7 +288,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\马华\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -307,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903280317343_InitialCreate1.resx">
       <DependentUpon>201903280317343_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904020748273_InitialCreate2.resx">
+      <DependentUpon>201904020748273_InitialCreate2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

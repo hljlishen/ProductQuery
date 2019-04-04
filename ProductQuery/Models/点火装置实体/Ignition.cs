@@ -12,150 +12,157 @@ namespace ProductQuery.Models
     {
         public Ignition()
         {
-            图片 = new List<Picture>();
-            常规 = new List<Conventional>();
-            普通索直径 = new List<CableDiameter>();
-            爆速 = new List<SpeedDetonation>();
-            接口信息 = new List<InterfaceInformation>();
-            直流电阻 = new List<DcResistance>();
-            发火条件 = new List<IgnitionCondition>();
-            延期时间 = new List<DelayTime>();
+            Pictures = new List<Picture>();
+            Conventionals = new List<Conventional>();
+            CableDiameters = new List<CableDiameter>();
+            SpeedDetonations = new List<SpeedDetonation>();
+            InterfaceInformations = new List<InterfaceInformation>();
+            DcResistances = new List<DcResistance>();
+            IgnitionConditions = new List<IgnitionCondition>();
+            DelayTimes = new List<DelayTime>();
         }
 
         [InverseProperty("Ignition")]
-        public virtual List<Picture> 图片 { get; set; }
+        public virtual List<Picture> Pictures { get; set; }
         [InverseProperty("Ignition")]
-        public virtual List<Conventional> 常规 { get; set; }
+        public virtual List<Conventional> Conventionals { get; set; }
         [InverseProperty("Ignition")]
-        public virtual List<CableDiameter> 普通索直径 { get; set; }
+        public virtual List<CableDiameter> CableDiameters { get; set; }
         [InverseProperty("Ignition")]
-        public virtual List<SpeedDetonation> 爆速 { get; set; }
+        public virtual List<SpeedDetonation> SpeedDetonations { get; set; }
         [InverseProperty("Ignition")]
-        public virtual List<InterfaceInformation> 接口信息 { get; set; }
+        public virtual List<InterfaceInformation> InterfaceInformations { get; set; }
         [InverseProperty("Ignition")]
-        public virtual List<DcResistance> 直流电阻 { get; set; }
+        public virtual List<DcResistance> DcResistances { get; set; }
         [InverseProperty("Ignition")]
-        public virtual List<IgnitionCondition> 发火条件 { get; set; }
+        public virtual List<IgnitionCondition> IgnitionConditions { get; set; }
         [InverseProperty("Ignition")]
-        public virtual List<DelayTime> 延期时间 { get; set; }
+        public virtual List<DelayTime> DelayTimes { get; set; }
 
         [Key]
         [DisplayName("点火装置Id")]
         public int IgnitionId { get; set; }
         [DisplayName("类别")]
-        public string 类别 { get; set; }
+        public string lb { get; set; }
         [DisplayName("产品名称")]
-        public string 产品名称 { get; set; }
+        public string scmc { get; set; }
         [DisplayName("设计单位")]
-        public string 设计单位 { get; set; }
+        public string sjdw { get; set; }
+        [DisplayName("生产单位")]
+        public string scdw { get; set; }
         [DisplayName("型号")]
-        public string 型号 { get; set; }
+        public string xh { get; set; }
         [DisplayName("图号")]
-        public string 图号 { get; set; }
+        public string th { get; set; }
         [DisplayName("代号")]
-        public string 代号 { get; set; }
+        public string dh { get; set; }
         [DisplayName("研制日期")]
         [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:yyyy-MM-dd}", HtmlEncode = false, NullDisplayText = "数据无效")]
-        public DateTime 研制日期 { get; set; }
+        public DateTime? yzrq { get; set; }
         [DisplayName("定型日期")]
         [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:yyyy-MM-dd}", HtmlEncode = false, NullDisplayText = "数据无效")]
-        public DateTime 定型日期 { get; set; }
+        public DateTime? dxrq { get; set; }
         [DisplayName("工艺定型")]
         [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:yyyy-MM-dd}", HtmlEncode = false, NullDisplayText = "数据无效")]
-        public DateTime 工艺定型 { get; set; }
+        public DateTime? gydx { get; set; }
         [DisplayName("用途")]
-        public string 用途 { get; set; }
+        public string yt { get; set; }
         [DisplayName("系统组成")]
-        public string 系统组成 { get; set; }
+        public string xtzc { get; set; }
         [DisplayName("目前阶段")]
-        public string 目前阶段 { get; set; }
+        public string mqjd { get; set; }
         [DisplayName("机械性能")]
-        public string 机械性能 { get; set; }
+        public string jxxn { get; set; }
         [DisplayName("电性能")]
-        public string 电性能 { get; set; }
+        public string dxn { get; set; }
         [DisplayName("功能")]
-        public string 功能 { get; set; }
+        public string gn { get; set; }
         [DisplayName("环境测试")]
-        public string 环境测试 { get; set; }
+        public string hjcs { get; set; }
         [DisplayName("桥丝数目")]
-        public int 桥丝数目 { get; set; }
+        public int jssm { get; set; }
         [DisplayName("贮存寿命")]
-        public int 贮存寿命 { get; set; }
+        public int ccsm { get; set; }
         [DisplayName("贮存寿命备注")]
-        public string 贮存寿命备注 { get; set; }
+        public string ccsmbz { get; set; }
         [DisplayName("可靠度")]
-        public string 可靠度 { get; set; }
+        public string kkd { get; set; }
         [DisplayName("主要性能指标")]
-        public string 主要性能指标 { get; set; }
+        public string zyxnzb { get; set; }
         [DisplayName("试验环境指标范围")]
-        public string 试验环境指标范围 { get; set; }
+        public string syhjzsfw { get; set; }
         [DisplayName("基本性能")]
-        public string 基本性能 { get; set; }
-
+        public string jbxn { get; set; }
+        [DisplayName("宽度")]
+        public double kd { get; set; }
         [DisplayName("脚线")]
-        public double 脚线 { get; set; }
+        public double jx { get; set; }
         [DisplayName("总长度")]
-        public double 总长度 { get; set; }
+        public double zcd { get; set; }
         [DisplayName("隔板厚度")]
-        public double 隔板厚度 { get; set; }
+        public double gbhd { get; set; }
         [DisplayName("索直径上限")]
-        public double 索直径上限 { get; set; }
+        public double szjsx { get; set; }
         [DisplayName("索直径下限")]
-        public double 索直径下限 { get; set; }
+        public double szjxx { get; set; }
         [DisplayName("索MDF银质直径")]
-        public double 索MDF银质直径 { get; set; }
+        public double sMDFyzzj { get; set; }
+        [DisplayName("索备注")]
+        public string sbz { get; set; }
         [DisplayName("对边")]
-        public int 对边 { get; set; }
+        public int db { get; set; }
         [DisplayName("对角线")]
-        public double 对角线 { get; set; }
+        public double djx { get; set; }
+        [DisplayName("六方对角备注")]
+        public string lfdjbz { get; set; }
         [DisplayName("检测电流")]
-        public double 检测电流 { get; set; }
+        public double jcdl { get; set; }
         [DisplayName("静电电容")]
-        public double 静电电容 { get; set; }
+        public double jddr { get; set; }
         [DisplayName("静电电压")]
-        public double 静电电压 { get; set; }
+        public double jddy { get; set; }
         [DisplayName("串联电阻")]
-        public double 串联电阻 { get; set; }
+        public double cldz { get; set; }
         [DisplayName("静电感度备注")]
-        public string 静电感度备注 { get; set; }
+        public string jdgdbz { get; set; }
         [DisplayName("作用时间")]
-        public double 作用时间 { get; set; }
+        public double zysj { get; set; }
         [DisplayName("作用时间单位")]
-        public string 作用时间单位 { get; set; }
+        public string zysjdw { get; set; }
         [DisplayName("作用时间下限")]
-        public double 作用时间下限 { get; set; }
+        public double zysjxx { get; set; }
         [DisplayName("作用时间上限")]
-        public double 作用时间上限 { get; set; }
+        public double zysjsx { get; set; }
         [DisplayName("作用时间备注")]
-        public string 作用时间备注 { get; set; }
+        public string zysjbz { get; set; }
         [DisplayName("桥个数")]
-        public double 桥个数 { get; set; }
+        public double jgs { get; set; }
         [DisplayName("安全电流值")]
-        public double 安全电流值 { get; set; }
+        public double aydlz { get; set; }
         [DisplayName("安全电流值下限")]
-        public double 安全电流值下限 { get; set; }
+        public double aydlzxx { get; set; }
         [DisplayName("安全电流值上限")]
-        public double 安全电流值上限 { get; set; }
+        public double aydlzsx { get; set; }
         [DisplayName("安全电流值单位")]
-        public string 安全电流值单位 { get; set; }
+        public string aqdlzdw { get; set; }
         [DisplayName("时间值")]
-        public double 时间值 { get; set; }
+        public double ssj { get; set; }
         [DisplayName("时间单位")]
-        public string 时间单位 { get; set; }
+        public string shijiandanwei { get; set; }
         [DisplayName("功率值")]
-        public double 功率值 { get; set; }
+        public double glz { get; set; }
         [DisplayName("安全电流备注")]
-        public string 安全电流备注 { get; set; }
+        public string aqdlbz { get; set; }
         [DisplayName("安全电压电压")]
-        public double 安全电压电压 { get; set; }
+        public double aqdydy { get; set; }
         [DisplayName("安全电压电容")]
-        public double 安全电压电容 { get; set; }
+        public double aqdydr { get; set; }
         [DisplayName("燃烧压力下限")]
-        public double 燃烧压力下限 { get; set; }
+        public double rsylxx { get; set; }
         [DisplayName("燃烧压力上限")]
-        public double 燃烧压力上限 { get; set; }
+        public double rsylsx { get; set; }
         [DisplayName("燃烧压力备注")]
-        public string 燃烧压力备注 { get; set; }
+        public string rsylbz { get; set; }
 
         //public string speicialPropertiesString { get; set; }
 
