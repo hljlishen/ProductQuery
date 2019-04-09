@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace ProductQuery.Controllers
 {
@@ -85,6 +86,14 @@ namespace ProductQuery.Controllers
                 return RedirectToAction("Instrument", "Admin");
             }
             return View();
+        }
+
+        //打开管理员跟新页面
+        [ValidateInput(false)]
+        public ActionResult UpdateAdminUser(int userid)
+        {
+            User user = db.Users.Find(userid);
+            return View(user);
         }
     }
 }

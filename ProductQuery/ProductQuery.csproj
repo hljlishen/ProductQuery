@@ -138,6 +138,8 @@
     <Compile Include="Controllers\Filters\ListPropertyDecorator.cs" />
     <Compile Include="Controllers\Filters\RangeIntersect.cs" />
     <Compile Include="Controllers\Filters\StringLike.cs" />
+    <Compile Include="Controllers\IDbDrives\IDbDrive.cs" />
+    <Compile Include="Controllers\IDbDrives\LingImp.cs" />
     <Compile Include="Controllers\IMeasurementConverters\Capacitance.cs" />
     <Compile Include="Controllers\IMeasurementConverters\Current.cs" />
     <Compile Include="Controllers\IMeasurementConverters\Energy.cs" />
@@ -233,8 +235,6 @@
     <Content Include="image\6890dce2603483196b55643d610bd9c.png" />
     <Content Include="image\db9af6d6813de0e4ca1847e63ecddc8.png" />
     <Content Include="image\管理员.jpg" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\jquery-ui-datepicker\package.json" />
     <Content Include="Content\webfonts\fa-brands-400.eot" />
     <Content Include="Content\webfonts\fa-brands-400.ttf" />
@@ -249,17 +249,6 @@
     <Content Include="Content\webfonts\fa-solid-900.woff" />
     <Content Include="Content\webfonts\fa-solid-900.woff2" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -273,8 +262,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Popup.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Admin\AdminLongin.cshtml" />
     <Content Include="Views\Admin\AdminIndex.cshtml" />
@@ -286,6 +274,7 @@
     <Content Include="Views\Admin\AddIgnition.cshtml" />
     <Content Include="Views\Add\AddInformation.cshtml" />
     <Content Include="Views\Add\InformationModule.cshtml" />
+    <Content Include="Views\Admin\UpdateAdminUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,8 +289,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

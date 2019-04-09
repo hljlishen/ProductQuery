@@ -1,0 +1,60 @@
+﻿@model ProductQuery.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo-style.css" rel="stylesheet" />
+    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="row tm-content-row">
+        <div class="tm-block-col tm-col-account-settings">
+            <div class="tm-bg-primary-dark tm-block tm-block-settings">
+                @using (Html.BeginForm("UpdateAdminUser", "Admin", FormMethod.Post, new { @class = "tm-signup-form row", role = "form" }))
+                {
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(user => user.name)
+                        @Html.TextBoxFor(user => user.name, new {@class = "form-control validate" })
+                        @Html.ValidationMessageFor(user => user.name)
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(user => user.Phone)
+                        @Html.TextBoxFor(user => user.Phone, new {@class = "form-control validate" })
+                        @Html.ValidationMessageFor(user => user.Phone)
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(user => user.password)
+                        @Html.PasswordFor(user => user.password, new { @class = "form-control validate" })
+                        @Html.ValidationMessageFor(user => user.password)
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(user => user.ConfirmPassword)
+                        @Html.PasswordFor(user => user.ConfirmPassword, new { @class = "form-control validate" })
+                        @Html.ValidationMessageFor(user => user.ConfirmPassword)
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="tm-hide-sm">&nbsp;</label>
+                        <button type="submit"
+                                class="btn btn-primary btn-block text-uppercase">
+                            更新用户信息
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

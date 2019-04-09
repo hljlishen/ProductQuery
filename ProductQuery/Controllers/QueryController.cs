@@ -15,7 +15,7 @@ namespace ProductQuery.Controllers
             return View();
         }
 
-        //添加点火装置
+        //搜索点火装置
         [HttpPost]
         public ActionResult QueryPage(List<_Filter> filter)
         {

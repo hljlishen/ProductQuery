@@ -43,8 +43,10 @@ namespace ProductQuery.Models
         [DisplayName("点火装置Id")]
         public int IgnitionId { get; set; }
         [DisplayName("类别")]
+        [Required(ErrorMessage = "*{0}是必填项")]
         public string lb { get; set; }
         [DisplayName("产品名称")]
+        [Required(ErrorMessage = "*{0}是必填项")]
         public string scmc { get; set; }
         [DisplayName("设计单位")]
         public string sjdw { get; set; }
@@ -127,8 +129,6 @@ namespace ProductQuery.Models
         public string jdgdbz { get; set; }
         [DisplayName("作用时间")]
         public double zysj { get; set; }
-        [DisplayName("作用时间单位")]
-        public string zysjdw { get; set; }
         [DisplayName("作用时间下限")]
         public double zysjxx { get; set; }
         [DisplayName("作用时间上限")]
@@ -136,19 +136,15 @@ namespace ProductQuery.Models
         [DisplayName("作用时间备注")]
         public string zysjbz { get; set; }
         [DisplayName("桥个数")]
-        public double jgs { get; set; }
+        public int jgs { get; set; }
         [DisplayName("安全电流值")]
         public double aydlz { get; set; }
         [DisplayName("安全电流值下限")]
         public double aydlzxx { get; set; }
         [DisplayName("安全电流值上限")]
         public double aydlzsx { get; set; }
-        [DisplayName("安全电流值单位")]
-        public string aqdlzdw { get; set; }
         [DisplayName("时间值")]
         public double ssj { get; set; }
-        [DisplayName("时间单位")]
-        public string shijiandanwei { get; set; }
         [DisplayName("功率值")]
         public double glz { get; set; }
         [DisplayName("安全电流备注")]
@@ -164,8 +160,12 @@ namespace ProductQuery.Models
         [DisplayName("燃烧压力备注")]
         public string rsylbz { get; set; }
 
-        //public string speicialPropertiesString { get; set; }
-
-        //Dictionary<string, string> speicialProperties;
+        [NotMapped]
+        [DisplayName("单位")]
+        public string dw { get; set; }
+        [NotMapped]
+        public string speicialPropertiesString { get; set; }
+        [NotMapped]
+        Dictionary<string, string> speicialProperties;
     }
 }

@@ -20,8 +20,6 @@ namespace ProductQuery.Models
         public int Id { get; set; }
         [DisplayName("电阻桥个数")]
         public int dzqgs { get; set; }
-        [DisplayName("电阻单位")]
-        public string dzdw { get; set; }
         [DisplayName("电阻范围值上限")]
         public double dzfwzsx { get; set; }
         [DisplayName("电阻范围值下限")]
