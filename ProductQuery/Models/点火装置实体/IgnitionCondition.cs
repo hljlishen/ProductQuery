@@ -28,28 +28,18 @@ namespace ProductQuery.Models
         public double fhdysx { get; set; }
         [DisplayName("发火电容")]
         public double fhdr { get; set; }
-        [DisplayName("发火电容单位")]
-        public string fhdrdw { get; set; }
         [DisplayName("发火电流")]
         public double fhdl { get; set; }
         [DisplayName("发火电流下限")]
         public double fhdlxx { get; set; }
         [DisplayName("发火电流上限")]
         public double fhdlsx { get; set; }
-        [DisplayName("发火电流单位")]
-        public string fhdldw { get; set; }
         [DisplayName("发火电流时间")]
         public double fhdlss { get; set; }
-        [DisplayName("发火电流时间单位")]
-        public string fhdlsjdw { get; set; }
         [DisplayName("锤重")]
         public double cz { get; set; }
-        [DisplayName("锤重单位")]
-        public string czdw { get; set; }
         [DisplayName("落高")]
         public double lg { get; set; }
-        [DisplayName("落高单位")]
-        public string lgdw { get; set; }
         [DisplayName("击针刺激量")]
         public double jzcjl { get; set; }
         [DisplayName("击针力下限")]
@@ -66,7 +56,5 @@ namespace ProductQuery.Models
         public double kl { get; set; }
         [DisplayName("能量")]
         public double nl { get; set; }
-        [DisplayName("能量单位")]
-        public string nldw { get; set; }
     }
 }

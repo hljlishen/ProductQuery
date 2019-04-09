@@ -24,8 +24,6 @@ namespace ProductQuery.Models
         public double yqsjxx { get; set; }
         [DisplayName("延期时间上限")]
         public double yqsjsx { get; set; }
-        [DisplayName("延期时间单位")]
-        public string yqsjdw { get; set; }
         [DisplayName("延期时间值")]
         public double yqsjz { get; set; }
         [DisplayName("延期时间值误差")]
