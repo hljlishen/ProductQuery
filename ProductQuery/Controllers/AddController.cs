@@ -11,9 +11,16 @@ namespace ProductQuery.Controllers
     {
         ProductQueryDB db = new ProductQueryDB();
         Dictionary<string, string> myDictionary = new Dictionary<string, string>();
-        // GET: Add
+
         public ActionResult AddInformation()
         {
+            List<SelectListItem> listItem = new List<SelectListItem>{
+                new SelectListItem{Text="ns",Value="3"},
+                new SelectListItem{Text="μs",Value="2"},
+                new SelectListItem{Text="ms",Value="1"},
+                new SelectListItem{Text="s",Value="0"}
+            };
+            ViewBag.TimeList = new SelectList(listItem, "Value", "Text", "");
             return View();
         }
 
@@ -21,8 +28,15 @@ namespace ProductQuery.Controllers
         [HttpPost]
         public ActionResult AddInformation(Ignition ignition)
         {
-            db.Ignition.Add(ignition);
-            db.SaveChanges();
+            List<SelectListItem> TimelistItem = new List<SelectListItem>{
+                new SelectListItem{Text="ns"},
+                new SelectListItem{Text="μs"},
+                new SelectListItem{Text="ms"},
+                new SelectListItem{Text="s"}
+            };
+            ViewBag.TimeList = new SelectList(TimelistItem, "Text");
+            //db.Ignition.Add(ignition);
+            //db.SaveChanges();
             return View();
         }
 
