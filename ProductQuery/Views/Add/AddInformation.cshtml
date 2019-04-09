@@ -802,11 +802,10 @@
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
-                            @Html.DropDownList("List", ViewBag.TimeList as SelectList, new { @class = "custom-select", id= "DropDownList" })
+                            @Html.DropDownListFor(m => m.dw, ViewBag.TimeList as SelectList, new { @class = "custom-select"})
 
                             @{
-                                //string value = DropDownList.SelectValue;
-                                IMeasurementConverter measurementConverter = new Time("ddlCurrentDegree.SelectedItem.Text");
+                                IMeasurementConverter measurementConverter = new Time("");
                                 Ignition ignition = new Ignition();
                                 ignition.zysj = measurementConverter.ToStandardValue(ignition.zysj);
                             }

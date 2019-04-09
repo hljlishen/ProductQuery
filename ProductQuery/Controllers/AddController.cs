@@ -28,13 +28,6 @@ namespace ProductQuery.Controllers
         [HttpPost]
         public ActionResult AddInformation(Ignition ignition)
         {
-            List<SelectListItem> TimelistItem = new List<SelectListItem>{
-                new SelectListItem{Text="ns"},
-                new SelectListItem{Text="μs"},
-                new SelectListItem{Text="ms"},
-                new SelectListItem{Text="s"}
-            };
-            ViewBag.TimeList = new SelectList(TimelistItem, "Text");
             //db.Ignition.Add(ignition);
             //db.SaveChanges();
             return View();
