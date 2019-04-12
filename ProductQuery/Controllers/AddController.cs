@@ -11,26 +11,46 @@ namespace ProductQuery.Controllers
     {
         ProductQueryDB db = new ProductQueryDB();
         Dictionary<string, string> myDictionary = new Dictionary<string, string>();
+        private Conventional conventional;
+        List<Conventional> conventionals = new List<Conventional>();
+        string s = "";
 
         public ActionResult AddInformation()
         {
-            List<SelectListItem> listItem = new List<SelectListItem>{
-                new SelectListItem{Text="ns",Value="3"},
-                new SelectListItem{Text="μs",Value="2"},
-                new SelectListItem{Text="ms",Value="1"},
-                new SelectListItem{Text="s",Value="0"}
-            };
-            ViewBag.TimeList = new SelectList(listItem, "Value", "Text", "");
+            //List<SelectListItem> listItem = new List<SelectListItem>{
+            //    new SelectListItem{Text="ns",Value="ns"},
+            //    new SelectListItem{Text="μs",Value="μs"},
+            //    new SelectListItem{Text="ms",Value="ms"},
+            //    new SelectListItem{Text="s",Value="s"}
+            //};
+            //ViewBag.TimeList = new SelectList(listItem, "Value", "Text", "");
+            
             return View();
         }
+
+
 
         //添加点火装置
         [HttpPost]
         public ActionResult AddInformation(Ignition ignition)
         {
-            //db.Ignition.Add(ignition);
-            //db.SaveChanges();
+            Response.Write(s);
+            for (int i=0;i< conventionals.Count;i++)
+            {
+                conventional = conventionals[i];
+                Response.Write(conventional);
+                ignition.Conventionals.Add(conventional);
+            }
+            db.Ignition.Add(ignition);
+            db.SaveChanges();
             return View();
+        }
+
+        [HttpPost]
+        public void ListAdd(Conventional conventional)
+        {
+            conventionals.Add(conventional);
+            s = conventional.ccmc;
         }
 
         public ActionResult InformationModule()
