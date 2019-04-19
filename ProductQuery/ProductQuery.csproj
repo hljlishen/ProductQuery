@@ -386,9 +386,9 @@
     <Content Include="Views\AdminUser\User_list.cshtml" />
     <Content Include="Views\Admin\AddIgnition.cshtml" />
     <Content Include="Views\Add\AddInformation.cshtml" />
-    <Content Include="Views\Add\InformationModule.cshtml" />
     <Content Include="Views\AdminUser\User_update.cshtml" />
     <Content Include="Views\AdminUser\User_add.cshtml" />
+    <Content Include="Views\Add\Information.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

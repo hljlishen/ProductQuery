@@ -9,25 +9,31 @@ using System.Web.UI;
 using System.Drawing;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
+using ProductQuery.Controllers.IDbDrives;
 
 namespace ProductQuery.Controllers
 {
     public class AddController : Controller
     {
         ProductQueryDB db = new ProductQueryDB();
+        IDbDrive dbDrive = new LingImp();
         public ActionResult AddInformation()
         {
             return View();
         }
 
-
+        public ActionResult Information()
+        {
+            List<Ignition> ign = dbDrive.GetAllIgnitions();
+            return View(ign);
+        }
 
         //添加点火装置
         [HttpPost]
-        public ActionResult AddInformation(FormCollection collection,Ignition ignition,Conventional conventional, HttpPostedFileBase imgfile)
+        public ActionResult AddInformation(FormCollection collection,Ignition ignition,Conventional conventional)
         {
             ignition.lb = collection["类别"];
-            ignition.scmc = collection["产品名称"];
+            ignition.cpmc = collection["产品名称"];
             ignition.sjdw = collection["设计单位"];
             ignition.scdw = collection["生产单位"];
             ignition.xh = collection["型号"];
@@ -50,7 +56,7 @@ namespace ProductQuery.Controllers
             if(collection["桥丝数目"] != "")
                 ignition.jssm =int.Parse(collection["桥丝数目"]);
             if (collection["贮存寿命"] != "")
-                ignition.ccsm =int.Parse(collection["贮存寿命"]);
+                ignition.zcsm = int.Parse(collection["贮存寿命"]);
             ignition.ccsmbz = collection["贮存寿命备注"];
             ignition.kkd = collection["可靠度"];
             ignition.zyxnzb = collection["主要性能指标"];
@@ -265,7 +271,7 @@ namespace ProductQuery.Controllers
                     interfaceInformation.gc = collection["公差" + i];
                     if (collection["长度" + i] != "")
                         interfaceInformation.cd = double.Parse(collection["长度" + i]);
-                    //interfaceInformation.jkxxbz= collection["接口信息备注" + i];
+                    interfaceInformation.jkxxbz = collection["接口信息备注" + i];
                     ignition.InterfaceInformations.Add(interfaceInformation);
                 }
             }
@@ -337,7 +343,7 @@ namespace ProductQuery.Controllers
                         double value = double.Parse(collection["发火电容" + i]);
                         ignitionCondition.fhdr = CapacitanceUnitConversion(unit, value);
                     }
-                    //ignitionCondition.dyfhbz = collection["电压发火备注" + i];
+                    ignitionCondition.fhdybz = collection["电压发火备注" + i];
                     if (collection["发火电流单位" + i] != "请选择")
                     {
                         string unit = collection["发火电流单位" + i];
@@ -362,18 +368,18 @@ namespace ProductQuery.Controllers
                         double value = double.Parse(collection["发火电流时间" + i]);
                         ignitionCondition.fhdlss = TimeUnitConversion(unit, value);
                     }
-                    //ignitionCondition.dlfhbz = collection["电流发火备注" + i];
-                    //if (collection["锤重单位" + i] != "请选择")
-                    //{
-                    //    string unit = collection["锤重单位" + i];
-                    //    double value = double.Parse(collection["锤重" + i]);
-                    //    ignitionCondition.cz = TimeUnitConversion(unit, value);
-                    //}
+                    ignitionCondition.dlfhbz = collection["电流发火备注" + i];
+                    if (collection["锤重单位" + i] != "请选择")
+                    {
+                        string unit = collection["锤重单位" + i];
+                        double value = double.Parse(collection["锤重" + i]);
+                        ignitionCondition.cz = TimeUnitConversion(unit, value);
+                    }
                     if (collection["落高单位" + i] != "请选择")
                     {
                         string unit = collection["落高单位" + i];
                         double value = double.Parse(collection["落高" + i]);
-                        ignitionCondition.lg = LenghtUnitConversion(unit, value);
+                        ignitionCondition.lg = WeightUnitConversion(unit, value);
                     }
                     if (collection["击针刺激量" + i] != "")
                         ignitionCondition.jzcjl = double.Parse(collection["击针刺激量" + i]);
@@ -488,9 +494,21 @@ namespace ProductQuery.Controllers
             return TestValue1;
         }
 
-        public ActionResult InformationModule()
+        //重量单位转化
+        private double WeightUnitConversion(string unit, double value)
         {
-            return View();
+            IMeasurementConverter measurementConverter1 = new Weight(unit);
+            double TestValue1 = measurementConverter1.ToStandardValue(value);
+            return TestValue1;
+        }
+
+        //删除火工品
+        public ActionResult DeleteInformation(int IgnitionId)
+        {
+            Ignition ignition = new Ignition();
+            ignition.IgnitionId = IgnitionId;
+            dbDrive.Delete(ignition);
+            return RedirectToAction("Information", "Add");
         }
     }
 }

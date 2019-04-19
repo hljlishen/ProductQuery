@@ -1,0 +1,66 @@
+﻿@model List<ProductQuery.Models.Ignition>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width ,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo-style.css" rel="stylesheet" />
+    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/layui/layui.js"></script>
+    <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-xl">
+            <div class="container h-100">
+                <h1 class="tm-site-title mb-0">火工品信息</h1>
+            </div>
+        </nav>
+        <div class="container mt-5">
+            <div class="row tm-content-row">
+                <div class="col-12 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td scope="col">Id</td>
+                                    <td scope="col">类别</td>
+                                    <td scope="col">产品名称</td>
+                                    <td scope="col">操作</td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var ign in Model)
+                                {
+                                <tr>
+                                    <th>@ign.IgnitionId</th>
+                                    <th>@ign.lb</th>
+                                    <th>@ign.cpmc</th>
+                                    <th>
+                                        <a href="javascript:openUpdateWin(@ign.IgnitionId)" class="tm-product-delete-link">
+                                            <i class="far fa-eye tm-product-delete-icon"></i>
+                                        </a>
+                                        <a href="@Url.Content("~/Add/DeleteInformation?IgnitionId=" + @ign.IgnitionId)" class="tm-product-delete-link">
+                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                        </a>
+                                    </th>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
