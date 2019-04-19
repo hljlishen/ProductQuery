@@ -26,6 +26,8 @@ namespace ProductQuery.Models
         public double fhdyxx { get; set; }
         [DisplayName("发火电压上限")]
         public double fhdysx { get; set; }
+        [DisplayName("发火电压备注")]
+        public string fhdybz { get; set; }
         [DisplayName("发火电容")]
         public double fhdr { get; set; }
         [DisplayName("发火电流")]
@@ -36,6 +38,8 @@ namespace ProductQuery.Models
         public double fhdlsx { get; set; }
         [DisplayName("发火电流时间")]
         public double fhdlss { get; set; }
+        [DisplayName("电流发火备注")]
+        public string dlfhbz { get; set; }
         [DisplayName("锤重")]
         public double cz { get; set; }
         [DisplayName("落高")]
@@ -56,5 +60,8 @@ namespace ProductQuery.Models
         public double kl { get; set; }
         [DisplayName("能量")]
         public double nl { get; set; }
+        [DisplayName("机械发火备注")]
+        public double jxfhbz { get; set; }
+
     }
 }

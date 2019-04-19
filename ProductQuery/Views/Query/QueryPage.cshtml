@@ -6,236 +6,266 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width ,initial-scale=1.0" />
-    <title></title>
-    <link href="~/Content/jquery-ui-datepicker/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>火工品高级查询</title>
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/templatemo-style.css" rel="stylesheet" />
-    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
-    <script src="~/Content/jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
     <script src="~/Content/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        function addQuery(obj) {
-            var bool = true;
-            for (bool; bool = true; bool = false) {
-                alert("11");
-                break;
-            }
-        }
-
-        function delectQuery() {
-
-        }
-
-        function select1(obj) {
-            if (obj.options[obj.selectedIndex].value == 1) {
-                document.getElementById("basicInformation").style.display = "";
-                document.getElementById("size").style.display = "none";
-                document.getElementById("IgnitionCondition").style.display = "none";
-                document.getElementById("output").style.display = "none";
-                TextNone();
-            }
-            else if (obj.options[obj.selectedIndex].value == 2) {
-                document.getElementById("size").style.display = "";
-                document.getElementById("basicInformation").style.display = "none";
-                document.getElementById("IgnitionCondition").style.display = "none";
-                document.getElementById("output").style.display = "none";
-                TextNone();
-            }
-            else if (obj.options[obj.selectedIndex].value == 3) {
-                document.getElementById("basicInformation").style.display = "none";
-                document.getElementById("size").style.display = "none";
-                document.getElementById("IgnitionCondition").style.display = "";
-                document.getElementById("output").style.display = "none";
-                TextNone();
-            }
-            else if (obj.options[obj.selectedIndex].value == 4) {
-                document.getElementById("basicInformation").style.display = "none";
-                document.getElementById("size").style.display = "none";
-                document.getElementById("IgnitionCondition").style.display = "none";
-                document.getElementById("output").style.display = "";
-                TextNone();
-            }
-            else {
-                document.getElementById("basicInformation").style.display = "none";
-                document.getElementById("size").style.display = "none";
-                document.getElementById("IgnitionCondition").style.display = "none";
-                document.getElementById("output").style.display = "none";
-                TextNone();
-            }
-        }
-
-        function select2(obj) {
-            if (obj.options[obj.selectedIndex].value == 1)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 2)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 3)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 4)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 5)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 6)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 7)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 8)
-                DateSelect();
-            else if (obj.options[obj.selectedIndex].value == 9)
-                DateSelect();
-            else if (obj.options[obj.selectedIndex].value == 10)
-                DateSelect();
-            else if (obj.options[obj.selectedIndex].value == 11)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 12)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 13)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 14)
-                StringSelect();
-            else if (obj.options[obj.selectedIndex].value == 15)
-                StringSelect();
-        }
-
-        function StringSelect() {
-            document.getElementById("text1").style.display = "";
-            document.getElementById("date1").style.display = "none";
-            document.getElementById("text2").style.display = "none";
-            document.getElementById("label1").style.display = "none";
-            document.getElementById("text3").style.display = "none";
-        }
-
-        function DateSelect() {
-            document.getElementById("text1").style.display = "none";
-            document.getElementById("date1").style.display = "";
-            document.getElementById("label2").style.display = "";
-            document.getElementById("date2").style.display = "";
-            document.getElementById("text2").style.display = "none";
-            document.getElementById("label1").style.display = "none";
-            document.getElementById("text3").style.display = "none";
-        }
-
-        function TextNone() {
-            document.getElementById("text1").style.display = "none";
-            document.getElementById("date1").style.display = "none";
-            document.getElementById("text2").style.display = "none";
-            document.getElementById("label1").style.display = "none";
-            document.getElementById("text3").style.display = "none";
-        }
-    </script>
+    <script src="~/Content/layui/layui.js"></script>
+    <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
 </head>
-    <body>
-        <div>
-            <nav class="navbar navbar-expand-xl">
-                <div class="container h-100">
-                    <h1 class="tm-site-title mb-0">火工品查询</h1>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link d-block" href="../Admin/AdminLongin">
-                                <i class=""></i>
-                                管理员登陆
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="form-group container tm-mt-big tm-mb-big tm-bg-primary-dark tm-block tm-block-h-auto">
-                <label>输入查询条件：</label>
-                <div style="overflow-y:auto">
-                    <div style="width:100px">
-                        <input type="image" src="../image/db9af6d6813de0e4ca1847e63ecddc8.png" onclick="addQuery()" />&nbsp;&nbsp;&nbsp;&nbsp;
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <select class="form-control" style="height:53px; width:150px;font-size:12px" onchange="select1(this)" id="selectConditions1">
-                                <option value="0">请选择      </option>
-                                <option value="1">基本信息      </option>
-                                <option value="2">尺寸      </option>
-                                <option value="3">发火条件      </option>
-                                <option value="4">输出      </option>
-                            </select>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-xl">
+            <div class="container h-100">
+                <h1 class="tm-site-title mb-0">火工品查询</h1>
+            </div>
+        </nav>
+        
+        <div class="form-group container tm-mt-big tm-mb-big tm-bg-primary-dark tm-block tm-block-h-auto">
+
+            <div class="row tm-content-row">
+                <div class="col-12 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+
+                        <div id="complex-query" style="margin-left:50px;margin-top:20px;">
+                            <a id="complexBtn" class="layui-btn ">复杂查询</a><br />
+                            <br />
+                            <div id="msg2">查询条件：</div>
+                            <br />
+                            <div>请求参数json：</div>
+                            <div id="result2" style="word-break:break-all;height:60px;width:500px;padding-left:50px;"></div>
                         </div>
-                        <div class="col-md-2">
-                            <select class="form-control" style="height:53px; width:150px ;font-size:12px ;display:none" id="basicInformation" onchange="select2(this)">
-                                <option value="0">请选择      </option>
-                                <option value="1">类别      </option>
-                                <option value="2">产品名称      </option>
-                                <option value="3">设计单位      </option>
-                                <option value="4">生产单位      </option>
-                                <option value="5">型号      </option>
-                                <option value="6">图号      </option>
-                                <option value="7">代号      </option>
-                                <option value="8">研制日期      </option>
-                                <option value="9">设计定型时间      </option>
-                                <option value="10">生产定型日期      </option>
-                                <option value="11">用途      </option>
-                                <option value="12">系统组成      </option>
-                                <option value="13">目前阶段      </option>
-                                <option value="14">桥丝数目      </option>
-                                <option value="15">贮存寿命      </option>
+
+                        <ul id="dcDemo" style="display:none;">
+                            <li field="lb" title="类别" edit="select" templet="#select_lb"></li>
+                            <li field="sjdw" title="设计单位" edit="text"></li>
+                            <li field="scdw" title="生产单位" edit="text"></li>
+                            <li field="xh" title="型号" edit="text"></li>
+                            <li field="th" title="图号" edit="text"></li>
+                            <li field="dh" title="代号" edit="text"></li>
+                            <li field="yzrq" title="研制日期" edit="date"></li>
+                            <li field="dxrq" title="定型日期" edit="date"></li>
+                            <li field="gydx" title="工艺定型" edit="date"></li>
+                            <li field="yt" title="用途" edit="text"></li>
+                            <li field="xtzc" title="目前阶段" edit="text"></li>
+                            <li field="qssm" title="桥丝数目" edit="text" layVerify="number"></li>
+                            <li field="zcsm" title="贮存寿命" edit="text" layVerify="number"></li>
+
+                            <li field="cg-zj" title="直径" edit="text" layVerify="number"></li>
+                            <li field="cg-cd" title="长度" edit="text" layVerify="number"></li>
+                            <li field="jx" title="脚线" edit="text" layVerify="number"></li>
+                            <li field="zcd" title="总长度" edit="text" layVerify="number"></li>
+                            <li field="gbhd" title="隔板厚度" edit="text" layVerify="number"></li>
+                            <li field="szj" title="索直径" edit="text" layVerify="number"></li>
+
+                            <li field="s-sptzj" title="索普通直径" edit="text" layVerify="number"></li>
+
+                            <li field="sMDFyzzj" title="索MDF（银质）直径" edit="text" layVerify="number"></li>
+
+                            <li field="sb-sb" title="爆速上限（m/s）" edit="text" layVerify="number"></li>
+                            <li field="sb-sbbz" title="速爆备注" edit="text"></li>
+
+                            <li field="db" title="对边" edit="text" layVerify="number"></li>
+                            <li field="dj" title="对角" edit="text" layVerify="number"></li>
+
+                            <li field="jk-lw" title="螺纹" edit="text" layVerify="number"></li>
+                            <li field="jk-lj" title="螺距" edit="text" layVerify="number"></li>
+                            <li field="jk-cd" title="长度" edit="text" layVerify="number"></li>
+
+                            <li field="zl-qgs" title="直流电阻桥个数" edit="text" layVerify="number"></li>
+                            <li field="zl-dzfw" title="电阻范围" edit="text" layVerify="number"></li>
+                            <li field="zl-dzz" title="电阻值" edit="text" layVerify="number"></li>
+                            <li field="zl-dzgc" title="电阻公差" edit="text" layVerify="number"></li>
+                            <li field="zl-dzxyz" title="电阻小于值" edit="text" layVerify="number"></li>
+                            <li field="zl-dzbz" title="电阻备注" edit="text"></li>
+
+                            <li field="jcdl" title="检测电流" edit="text" layVerify="number"></li>
+                            <li field="jddr" title="静电电容" edit="text" layVerify="number"></li>
+                            <li field="jddy" title="静电电压" edit="text" layVerify="number"></li>
+                            <li field="cldz" title="串联电阻" edit="text" layVerify="number"></li>
+
+                            <li field="fa-qgs" title="桥个数" edit="text" layVerify="number"></li>
+                            <li field="fa-fhdy" title="发火电压" edit="text" layVerify="number"></li>
+                            <li field="fa-fhdr" title="发火电容" edit="text" layVerify="number"></li>
+                            <li field="fa-fhdlsj" title="发火电流" edit="text" layVerify="number"></li>
+
+                            <li field="fa-fhdlsj" title="发火电流时间" edit="text" layVerify="number"></li>
+                            <li field="fa-cz" title="锤重" edit="text" layVerify="number"></li>
+                            <li field="fa-lg" title="落高" edit="text" layVerify="number"></li>
+                            <li field="fa-jzcj" title="激针刺激（g•cm）" edit="text" layVerify="number"></li>
+                            <li field="fa-jzl" title="激针力" edit="text" layVerify="number"></li>
+                            <li field="fa-jztcl" title="激针突出量" edit="text" layVerify="number"></li>
+                            <li field="fa-thgd" title="弹簧高度" edit="text" layVerify="number"></li>
+                            <li field="fa-kl" title="抗力" edit="text" layVerify="number"></li>
+                            <li field="fa-nl" title="能量" edit="text" layVerify="number"></li>
+
+                            <li field="zysj" title="作用时间" edit="text" layVerify="number"></li>
+                            <li field="zysjbz" title="作用时间备注" edit="text"></li>
+
+                            <li field="ys-wdtj" title="温度条件（摄氏度）" edit="text" layVerify="number"></li>
+                            <li field="ys-yssj" title="延时时间" edit="text" layVerify="number"></li>
+                            <li field="ys-yssjbz" title="延时时间备注" edit="text"></li>
+
+                            <li field="qgs" title="桥个数" edit="text" layVerify="number"></li>
+                            <li field="aqdlz" title="安全电流值" edit="text" layVerify="number"></li>
+                            <li field="sjz" title="时间值" edit="text" layVerify="number"></li>
+                            <li field="glz" title="功率值" edit="text" layVerify="number"></li>
+                            <li field="aqdlbz" title="安全电流备注" edit="text"></li>
+                            <li field="aqdydy" title="安全电压电压" edit="text" layVerify="number"></li>
+                            <li field="aqdrdr" title="安全电容电容" edit="text" layVerify="number"></li>
+                            <li field="rsyl" title="燃烧压力" edit="text" layVerify="number"></li>
+                            <li field="rsylbz" title="燃烧压力备注" edit="text"></li>
+                        </ul>
+
+                        <script type="text/html" id="select_lb">
+                            <select>
+                                <option value="">-请选择-</option>
+                                <option value="点火具">点火具</option>
+                                <option value="点火管">点火管</option>
+                                <option value="传火管">传火管</option>
+                                <option value="点火器">点火器</option>
+                                <option value="火帽">火帽</option>
+                                <option value="底火">底火</option>
+                                <option value="点火头">点火头</option>
+                                <option value="点火组件">点火组件</option>
+                                <option value="抛射药盒">抛射药盒</option>
                             </select>
-                            <select class="form-control" style="height:53px; width:150px ;font-size:12px ;display:none" id="size" onchange="select3(this)">
-                                <option value="0">请选择      </option>
-                                <option value="1">常规     </option>
-                                <option value="2">隔板厚度      </option>
-                                <option value="3">索      </option>
-                                <option value="4">六方对角      </option>
-                                <option value="5">接口信息      </option>
-                            </select>
-                            <select class="form-control" style="height:53px; width:150px ;font-size:12px ;display:none" id="IgnitionCondition" onchange="select4(this)">
-                                <option value="0">请选择      </option>
-                                <option value="1">直流电阻      </option>
-                                <option value="2">检测电流      </option>
-                                <option value="3">静电感度      </option>
-                                <option value="4">桥个数      </option>
-                                <option value="5">电压发火      </option>
-                                <option value="6">电流发火      </option>
-                                <option value="8">机械发火      </option>
-                                <option value="9">发火能量      </option>
-                                <option value="10">作用时间瞬发度</option>
-                                <option value="11">延期时间      </option>
-                                <option value="12">安全电流      </option>
-                                <option value="13">安全电压      </option>
-                            </select>
-                            <select class="form-control" style="height:53px; width:150px ;font-size:12px ;display:none" id="output" onchange="select5(this)">
-                                <option value="0">请选择      </option>
-                                <option value="1">燃烧压力      </option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <select class="form-control" style="height:53px; width:150px ;font-size:12px;display:none" id="selectConditions3" onchange="select1(this)">
-                                <option value="0">请选择      </option>
-                                <option value="1">基本信息      </option>
-                                <option value="2">尺寸      </option>
-                                <option value="3">发货条件      </option>
-                                <option value="4">输出      </option>
-                                <option value="5">时间      </option>
-                                <option value="6">上下限      </option>
-                                <option value="7">字符串      </option>
-                            </select>
-                        </div>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" style="height:53px ;display:none" id="text1" />
-                            <input type="date" class="form-control" style="height:53px ;display:none" id="date1" />
-                            <label style="display:none" id="label2">至</label>
-                            <input type="date" class="form-control" style="height:53px ;display:none" id="date2" />
-                            <input type="text" class="form-control" style="height:53px; display:none" id="text2" />
-                            <label style="display:none" id="label1">至</label>
-                            <input type="text" class="form-control" style="height:53px; display:none" id="text3" />
-                        </div>
-                        <div class="col-md-1 text-center">
-                            <input type="image" src="../image/6890dce2603483196b55643d610bd9c.png" onclick="delectQuery()" />
-                        </div>
+                        </script>
+
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">
-                    查询
-                </button>
-            </div>
+            
         </div>
-    </body>
+
+        <footer class="tm-footer row tm-mt-small">
+            <div class="col-12 font-weight-light">
+                <p class="text-center text-white mb-0 px-4 small">
+                    版权 &copy; <b>2019</b> 西安红叶通讯科技有限公司
+                </p>
+            </div>
+        </footer>
+    </div>
+    
+    <script type="text/javascript">
+        layui.config({
+            base: '/Content/'//模块存放的目录
+        }).extend({
+            dynamicCondition: 'dynamicCondition'
+        }).use(['table', 'form', 'dynamicCondition'], function () {
+            var $ = layui.$, table = layui.table, form = layui.table;
+            var dynamicCondition = layui.dynamicCondition;
+
+            var dataFields = [{ field: "lb", title: "类别", edit: "select", templet: "#select_lb" }
+                , { field: "sjdw", title: "设计单位", edit: "text" }
+                , { field: "scdw", title: "生产单位", edit: "text" }
+                , { field: "xh", title: "型号", edit: "text" }
+                , { field: "th", title: "图号", edit: "text" }
+                , { field: "dh", title: "代号", edit: "text" }
+                , { field: "yzrq", title: "研制日期", edit: "date" }
+                , { field: "dxrq", title: "定型日期", edit: "date" }
+                , { field: "gydx", title: "工艺定型", edit: "date" }
+                , { field: "yt", title: "用途", edit: "date" }
+                , { field: "xtzc", title: "系统组成", edit: "text" }
+                , { field: "mqjd", title: "目前阶段", edit: "text" }
+                , { field: "qssm", title: "桥丝数目", edit: "text", layVerify: "number" }
+                , { field: "zcsm", title: "贮存寿命", edit: "text", layVerify: "number" }
+
+                //常规查询属性
+                , { field: "cg-zj", title: "直径", edit: "text", layVerify: "number" }
+                , { field: "cg-cd", title: "长度", edit: "text", layVerify: "number" }
+
+                , { field: "jx", title: "脚线", edit: "text", layVerify: "number" }
+                , { field: "zcd", title: "总长度", edit: "text", layVerify: "number" }
+                , { field: "gbhd", title: "隔板厚度", edit: "text", layVerify: "number" }
+                , { field: "szj", title: "索直径", edit: "text", layVerify: "number" }
+
+                //索普通直径
+                , { field: "s-sptzj", title: "索普通直径", edit: "text", layVerify: "number" }
+
+                , { field: "sMDFyzzj", title: "索MDF（银质）直径", edit: "text", layVerify: "number" }
+
+                //速爆
+                , { field: "sb-sb", title: "爆速上限（m/s）", edit: "text", layVerify: "number" }
+                , { field: "sb-sbbz", title: "速爆备注", edit: "text" }
+
+                , { field: "db", title: "对边", edit: "text", layVerify: "number" }
+                , { field: "dj", title: "对角", edit: "text", layVerify: "number" }
+
+                //接口信息
+                , { field: "jk-lw", title: "螺纹", edit: "text", layVerify: "number" }
+                , { field: "jk-lj", title: "螺距", edit: "text", layVerify: "number" }
+                , { field: "jk-cd", title: "长度", edit: "text", layVerify: "number" }
+
+                //直流电阻
+                , { field: "zl-qgs", title: "直流电阻桥个数", edit: "text", layVerify: "number" }
+                , { field: "zl-dzfw", title: "电阻范围", edit: "text", layVerify: "number" }
+                , { field: "zl-dzz", title: "电阻值", edit: "text", layVerify: "number" }
+                , { field: "zl-dzgc", title: "电阻公差", edit: "text", layVerify: "number" }
+                , { field: "zl-dzxyz", title: "电阻小于值", edit: "text", layVerify: "number" }
+                , { field: "zl-dzbz", title: "电阻备注", edit: "text" }
+
+                , { field: "jcdl", title: "检测电流", edit: "text", layVerify: "number" }
+                , { field: "jddr", title: "静电电容", edit: "text", layVerify: "number" }
+                , { field: "jddy", title: "静电电压", edit: "text", layVerify: "number" }
+                , { field: "cldz", title: "串联电阻", edit: "text", layVerify: "number" }
+
+                //发火条件
+                , { field: "fa-qgs", title: "桥个数", edit: "text", layVerify: "number" }
+                , { field: "fa-fhdy", title: "发火电压（V）", edit: "text", layVerify: "number" }
+                , { field: "fa-fhdr", title: "发火电容（μf）", edit: "text", layVerify: "number" }
+                , { field: "fa-fhdl", title: "发火电流", edit: "text", layVerify: "number" }
+                , { field: "fa-fhdlsj", title: "发火电流时间", edit: "text", layVerify: "number" }
+                , { field: "fa-cz", title: "锤重", edit: "text", layVerify: "number" }
+                , { field: "fa-lg", title: "落高", edit: "text", layVerify: "number" }
+                , { field: "fa-jzcj", title: "激针刺激（g•cm）", edit: "text", layVerify: "number" }
+                , { field: "fa-jzl", title: "激针力", edit: "text", layVerify: "number" }
+                , { field: "fa-jztcl", title: "激针突出量", edit: "text", layVerify: "number" }
+                , { field: "fa-thgd", title: "弹簧高度", edit: "text", layVerify: "number" }
+                , { field: "fa-kl", title: "抗力", edit: "text", layVerify: "number" }
+                , { field: "fa-nl", title: "能量", edit: "text", layVerify: "number" }
+
+                , { field: "zysj", title: "作用时间", edit: "text", layVerify: "number" }
+                , { field: "zysjbz", title: "作用时间备注", edit: "text"}
+
+                //延时时间
+                , { field: "ys-wdtj", title: "温度条件（摄氏度）", edit: "text", layVerify: "number" }
+                , { field: "ys-yssj", title: "延时时间", edit: "text", layVerify: "number" }
+                , { field: "ys-yssjbz", title: "延时时间备注", edit: "text" }
+
+                , { field: "qgs", title: "桥个数", edit: "text", layVerify: "number"}
+                , { field: "aqdlz", title: "安全电流值", edit: "text", layVerify: "number" }
+                , { field: "sjz", title: "时间值", edit: "text", layVerify: "number" }
+                , { field: "glz", title: "功率值", edit: "text", layVerify: "number" }
+                , { field: "aqdlbz", title: "安全电流备注", edit: "text" }
+                , { field: "aqdydy", title: "安全电压电压", edit: "text", layVerify: "number" }
+                , { field: "aqdrdr", title: "安全电容电容", edit: "text", layVerify: "number" }
+                , { field: "rsyl", title: "燃烧压力", edit: "text", layVerify: "number" }
+                , { field: "rsylbz", title: "燃烧压力备注", edit: "text" }
+            ];
+
+            var complexDc = dynamicCondition.create({
+                elem: "#dcDemo" //通过容器选择器传入，也可以$("#dcDemo"),或者document.getElementById("dcDemo")
+                //,tableId:"listTable" //静态页面不好演示table数据表格更新
+                , type: "complex"  //type:"simple"/"complex"
+                , conditionTextId: "#msg2"
+                //当有多个动态条件查询实例时，定义instanceName属性可以通过dynamicCondition.getInstance(instanceName)获取对应的实例
+                , instanceName: "complexInstance"
+                , queryCallBack: function (requestData) {
+                    $("#result2").html(JSON.stringify(requestData));
+                }
+            });
+
+            /**复杂查询*/
+            $("#complexBtn").on("click", function () {
+                dynamicCondition.getInstance("complexInstance").open();
+            })
+
+        });
+    </script>
+</body>
 </html>

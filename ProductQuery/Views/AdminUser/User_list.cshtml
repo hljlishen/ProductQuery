@@ -1,27 +1,27 @@
 ﻿@model List<ProductQuery.Models.User>
-
 @{
     Layout = "~/Views/Admin/AdminIndex.cshtml";
 }
 
 <script type="text/javascript">
+
     //添加
     function openAddWin() {
         //设定title内容
         var title = "<a><span class='glyphicon glyphicon-plus'></span>新增管理员</a>";
-        var url = "Admin/UpdateUser";
+        var url = "User_add";
         var width = "100%";
-        var height = "300px";
+        var height = "600px";
         //调用位于index页面的openWin()函数
         parent.openWin(title, url, width, height);
     }
 
     //修改
-    function openUpdateWin(userId) {
+    function openUpdateWin(userid) {
         var title = "<span class='glyphicon glyphicon-edit'> 修改管理员信息";
-        var url = "UpdateAdminUser?userId=" + userId;
+        var url = "User_update?userId=" + userid;
         var width = "100%";
-        var height = "600px";
+        var height = "300px";
         parent.openWin(title, url, width, height);
     }
 
@@ -33,31 +33,24 @@
         var height = "600px";
         parent.openWin(title, url, width, height);
     }
-    function ManageFlow(userid)
-    {
-        $("#modalwindow").html("<iframe width='100%' height='98%' scrolling='auto' frameborder='0' src='@Url.Action("UpdateAdminUser")?userid=" + userid + "'></iframe>");
-            $("#modalwindow").window({ title: '详细', width: 500, height: 380, iconCls: 'icon-details' }).window('open');
-    }
 </script>
 
 <div class="container mt-5">
-    <div class="row tm-content-row">
-        <div class="col-12 tm-block-col">
-            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-                <h2 class="tm-block-title">管理员权限分类</h2>
-                <select class="custom-select" id="permissions">
-                    <option value="0">一级管理员</option>
-                    <option value="1">二级管理员</option>
-                    <option value="2">三级管理员</option>
-                </select>
-            </div>
-        </div>
-    </div>
 
     <div class="row tm-content-row">
         <div class="col-12 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                <div class="form-inline">
+                    <a class="btn btn-success btn-sm" href="javascript:openAddWin();">
+                        <span class="glyphicon glyphicon-plus">添加用户</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row tm-content-row">
+        <div class="col-12 tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-                <h2 class="tm-block-title">管理员列表</h2>
                 <table class="table">
                     <thead>
                         <tr>
@@ -81,10 +74,10 @@
                                     <a href="javascript:openUpdateWin(@user.id)" class="tm-product-delete-link">
                                         <i class="far fa-eye tm-product-delete-icon"></i>
                                     </a>
-                                    <a href="javascript:openUpdateWin(@user.id)"  class="tm-product-delete-link">
+                                    <a href="javascript:openUpdateWin(@user.id)" class="tm-product-delete-link">
                                         <i class="fa fa-cogs tm-product-delete-icon"></i>
                                     </a>
-                                    <a href="javascript:openUpdateWin(@user.id)"  class="tm-product-delete-link">
+                                    <a href="@Url.Content("~/AdminUser/User_delete?userid="+@user.id)" class="tm-product-delete-link">
                                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                     </a>
                                 </td>
