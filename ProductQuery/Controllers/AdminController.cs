@@ -1,4 +1,6 @@
-﻿using ProductQuery.Models;
+﻿using ProductQuery.Controllers.IDbDrives;
+using ProductQuery.Models;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -8,26 +10,26 @@ namespace ProductQuery.Controllers
 {
     public class AdminController : Controller
     {
-        ProductQueryDB db = new ProductQueryDB();
+        IDbDrive dbDrive = new LingImp();
 
         public ActionResult AdministratorPage()
         {
             return View();
         }
 
-        public ActionResult AdminLongin()
+        public ActionResult AdminLogin()
         {
             return View();
         }
         
         //管理员登录页面
         [HttpPost]
-        public ActionResult AdminLongin(User user)
+        public ActionResult AdminLogin(User user)
         {
-            var item = db.Users.FirstOrDefault(u => u.name == user.name && u.password == user.password);
-            if (item!=null)
+            User loginuser = dbDrive.AdminLogin(user);
+            if (loginuser != null)
             {
-                Session["User"] = item;
+                Session["User"] = loginuser;
                 return RedirectToAction("Instrument", "Admin");
             }
             return View();
@@ -58,42 +60,15 @@ namespace ProductQuery.Controllers
         //删除点火装置页面
         public ActionResult DeleteIgnition(int ignitionid)
         {
-            var ignition = db.Ignition.FirstOrDefault(f => f.IgnitionId == ignitionid);
-            db.Ignition.Remove(ignition);
-            db.SaveChanges();
+            Ignition ignition = new Ignition();
+            ignition.IgnitionId = ignitionid;
+            dbDrive.Delete(ignition);
             return View();
         }
 
         public ActionResult Dictionary()
         {
             return View();
-        }
-
-        public ActionResult AdminUser()
-        {
-            var users = db.Users.ToList();
-            return View(users);
-        }
-
-        //管理员登录页面
-        [HttpPost]
-        public ActionResult UpdateAdminUser(User user)
-        {
-            var item = db.Users.FirstOrDefault(u => u.name == user.name && u.password == user.password);
-            if (item != null)
-            {
-                Session["User"] = item;
-                return RedirectToAction("Instrument", "Admin");
-            }
-            return View();
-        }
-
-        //打开管理员跟新页面
-        [ValidateInput(false)]
-        public ActionResult UpdateAdminUser(int userid)
-        {
-            User user = db.Users.Find(userid);
-            return View(user);
         }
     }
 }

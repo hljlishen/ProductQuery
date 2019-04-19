@@ -47,7 +47,7 @@ namespace ProductQuery.Models
         public string lb { get; set; }
         [DisplayName("产品名称")]
         [Required(ErrorMessage = "*{0}是必填项")]
-        public string scmc { get; set; }
+        public string cpmc { get; set; }
         [DisplayName("设计单位")]
         public string sjdw { get; set; }
         [DisplayName("生产单位")]
@@ -84,7 +84,7 @@ namespace ProductQuery.Models
         [DisplayName("桥丝数目")]
         public int jssm { get; set; }
         [DisplayName("贮存寿命")]
-        public int ccsm { get; set; }
+        public int zcsm { get; set; }
         [DisplayName("贮存寿命备注")]
         public string ccsmbz { get; set; }
         [DisplayName("可靠度")]

@@ -10,7 +10,7 @@ namespace ProductQuery.Models
     public class ProductQueryDB:DbContext
     {
         //将实体对象写在这里，就可以生成对应的数据
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<Ignition> Ignition { get; set; }
         public DbSet<Picture> Picture { get; set; }
         public DbSet<CableDiameter> CableDiameter { get; set; }
