@@ -26,9 +26,10 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		,conditionContainerId:(Math.random()+"").substr(2)//随机日期id
     		,conditionFieldWidth:_config.conditionFieldWidth || 120 //第一列默认宽度
     		,conditionOptionWidth:_config.conditionOptionWidth || 100//第二列默认宽度
-    		,conditionValueWidth:_config.conditionValueWidth || 150 //第三列默认宽度
-    		,height:380 //弹出窗口默认高度
-    		,width:610 //弹出窗口默认宽度
+            ,conditionValueWidth: _config.conditionValueWidth || 150 //第三列默认宽度
+            ,conditionUnitWidth: _config.conditionUnitWidth || 100 //第四列默认宽度
+    		,height:700 //弹出窗口默认高度
+    		,width:700 //弹出窗口默认宽度
     	};
     	if(instance.config.type != "complex"){
     		instance.width = instance.width - instance.conditionOptionWidth;
@@ -139,7 +140,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		  var conditionContainerJq = $("#"+instance.conditionContainerId);
 			  var conditionRowJq = $('<div class="conditionRow"></div>');
 			  if(instance.config.type == "complex"){
-				  var width = instance.conditionFieldWidth + instance.conditionOptionWidth + 2 * instance.conditionValueWidth + 20 + 60;
+                  var width = instance.conditionFieldWidth + instance.conditionUnitWidth +instance.conditionOptionWidth + 2 * instance.conditionValueWidth + 20 + 60;
 				  conditionRowJq.css("width", width);
 			  }else{
 				  var width = instance.conditionFieldWidth  + 2 * instance.conditionValueWidth + 20 + 60;
@@ -149,21 +150,32 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 			  var conditionField=$('<div class="layui-inline conditionField"></div>');
 			  conditionField.width(instance.conditionFieldWidth);
 			  conditionField.append($(instance.conditionFieldHtml));
-			  //操作
+
+              //操作
 			  var conditionOption=$('<div class="layui-inline conditionOption"></div>');
 			  conditionOption.width(instance.conditionOptionWidth);
-			  conditionOption.append($(instance.conditionOptionHtml));
+              conditionOption.append($(instance.conditionOptionHtml));
+
 			  //值
 			  var conditionValue=$('<div class="layui-inline conditionValue"></div>');
 			  conditionValue.width(instance.conditionValueWidth*2+20);
-			  var conditionDel=$('<div class="layui-inline conditionDel"></div>');
-//			  conditionDel.width(30);
+              var conditionDel = $('<div class="layui-inline conditionDel"></div>');
+
+              //单位
+              if (instance.config.type == "complex") {
+                  alert("进入单位添加");
+                  var conditionUnit = $('<div class="layui-inline conditionUnit"></div>');
+                  conditionUnit.width(instance.conditionUnitWidth);
+                  conditionUnit.append($(instance.conditionUnitHtml));
+              }
+
 			  //删除按钮
 			  var delJq=$('<a href="javascript:void(0);" class="delRowBtn"><i class="layui-icon layui-icon-close" style="font-size: 30px; color: red;"></i></a>');
 			  conditionDel.append(delJq);
 			  conditionRowJq.append(conditionField);
 			  conditionRowJq.append(conditionOption);
 			  conditionRowJq.append(conditionValue);
+              conditionRowJq.append(conditionUnit);
 			  conditionRowJq.append(conditionDel);
 			  conditionContainerJq.find(".conditionDiv").append(conditionRowJq);
 			  
@@ -666,7 +678,8 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 					  }
 				  }
 			}
-    		instance.conditionFieldHtml = selectConditionField.prop("outerHTML");
+            instance.conditionFieldHtml = selectConditionField.prop("outerHTML");
+
     		//操作 下拉框html
     		var selectconditionOption = $('<select name="conditionOption" lay-filter="conditionOption"></select>');
     		selectconditionOption.append("<option value='equal'>等于</option>");
@@ -676,7 +689,14 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		selectconditionOption.append("<option value='end'>结尾字符</option>");
     		selectconditionOption.append("<option value='unequal'>不等于</option>");
     		selectconditionOption.append("<option value='empty'>为空</option>");
-    		instance.conditionOptionHtml = selectconditionOption.prop("outerHTML");
+            instance.conditionOptionHtml = selectconditionOption.prop("outerHTML");
+
+            //单位 下拉框html
+            var selectconditionUnit = $('<select name="conditionUnit" lay-filter="conditionUnit"></select>');
+            selectconditionUnit.append("<option value='g'>g</option>");
+            selectconditionUnit.append("<option value='kg'>kg</option>");
+            instance.conditionUnitHtml = selectconditionUnit.prop("outerHTML");
+
     		//缓存实例
     		this.cacheInstance[config.instanceName] = instance;
     		instance.setCondition([]);

@@ -15,7 +15,7 @@ namespace ProductQuery.Controllers
             return View();
         }
 
-        public ActionResult Query2()
+        public ActionResult Query()
         {
             return View();
         }
