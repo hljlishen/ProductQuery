@@ -15,6 +15,11 @@ namespace ProductQuery.Controllers
             return View();
         }
 
+        public ActionResult Query2()
+        {
+            return View();
+        }
+
         //搜索点火装置
         [HttpPost]
         public ActionResult QueryPage(List<_Filter> filter)

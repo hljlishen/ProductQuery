@@ -61,7 +61,7 @@ namespace ProductQuery.Models
         [DisplayName("能量")]
         public double nl { get; set; }
         [DisplayName("机械发火备注")]
-        public double jxfhbz { get; set; }
+        public string jxfhbz { get; set; }
 
     }
 }

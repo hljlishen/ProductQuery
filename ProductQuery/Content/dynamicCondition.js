@@ -24,10 +24,10 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		,requestData:{}
     		,cacheCondition:[] //缓存查询条件
     		,conditionContainerId:(Math.random()+"").substr(2)//随机日期id
-    		,conditionFieldWidth:_config.conditionFieldWidth || 150 //第一列默认宽度
+    		,conditionFieldWidth:_config.conditionFieldWidth || 120 //第一列默认宽度
     		,conditionOptionWidth:_config.conditionOptionWidth || 100//第二列默认宽度
     		,conditionValueWidth:_config.conditionValueWidth || 150 //第三列默认宽度
-    		,height:800 //弹出窗口默认高度
+    		,height:380 //弹出窗口默认高度
     		,width:610 //弹出窗口默认宽度
     	};
     	if(instance.config.type != "complex"){
@@ -257,8 +257,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 				  form.render(null, 'conditionDiv'+instance.conditionContainerId);
 				  return ;
 			  }
-        }
-
+		  }
     	/**校验表单*/
     	instance.verifyForm = function(){
 			var verifySuccess = true;
@@ -320,8 +319,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 		    	}
 		    }
 		    return verifySuccess;
-        }
-
+		  }
     	/**根据动态查询条件构造缓存对应的请求条件*/
     	instance.buildCacheCondition = function(){
     		var conditionContainerJq = $("#" + instance.conditionContainerId);
@@ -729,7 +727,6 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     	$.extend( dynamicCondition.editor[editorName] , editor);
     	return dynamicCondition.editor[editorName];
     }
-
     //定义文本编辑器
     var editorText = dynamicCondition.createEditor("text");
     $.extend( editorText ,{
@@ -758,7 +755,6 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 				return  ele.find("option:selected").text();
 			}
     });
-
     //定义日期编辑器
     var editorDate = dynamicCondition.createEditor("date");
     $.extend( editorDate ,{
