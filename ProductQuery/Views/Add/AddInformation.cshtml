@@ -1,10 +1,4 @@
 ﻿
-@using ProductQuery.Controllers.IMeasurementConverters;
-
-@using ProductQuery.Models;
-
-@using ProductQuery.Controllers;
-
 @{
     Layout = null;
 }
@@ -23,10 +17,8 @@
     <script src="~/Content/js/jquery-3.3.1.min.js"></script>
     <script src="~/Content/jquery-ui-datepicker/jquery-ui.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
+    <script></script>
     <script type="text/javascript">
-        @{ Ignition ignition = new Ignition();
-            AddController addController = new AddController();
-            }
         var id = 0;
         var image = 1;
         var changgui = 1;
@@ -139,58 +131,48 @@
         function 产品示意图(obj) {
             var tables = $("form#form");
             var addtr =
+                '<a class="form-group col-lg-12" id="' + id + '">' +
                 '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
                 '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
                 '</div>' +
-                '<div class="col-12">'+
-                    '<div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">'+
-                        '<div class="tm-product-img-dummy mx-auto">'+
-                            '<i class="fas fa-cloud-upload-alt tm-upload-icon"></i>'+
-                        '</div>'+
-                        '<div class="custom-file mt-3 mb-3">'+
-                            '<input id="fileInput" type="file" style="display:none;" />'+
-                        '</div>'+
-                    '</div>'+
-                '</div>';
+                '<div class="custom-file mt-3 mb-3">' +
+                '<input name="img" id="img" type="file"/>' +
+                '</div>' +
+                '<input name="产品示意图" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
+                '</a>';
             $(addtr).appendTo(tables);
         }
 
         function 常规(obj) {
             var tables = $("form#form");
-            @{Conventional conventional = new Conventional(); }
             var addtr =
-                    '<a class="row" id="' + id + '">' +
-                    '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
-                    '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
-                    '</div>' +
-                    '<div class="form-group col-lg-6">' +
-                    '<label for="尺寸名称">尺寸名称</label>' +
-                    '@Html.TextBoxFor(m => conventional.ccmc, new { @class = "form-control validate", type = "tle" })' +
-                    '</div>' +
-                    '<div class="form-group col-lg-6">' +
-                    '<label for="直径">直径</label>' +
-                    '<label for="danwei">(mm)</label>' +
-                    '@Html.TextBoxFor(m => conventional.zj, new { @class = "form-control validate", type = "tle", value = " " })' +
-                    '</div>' +
-                    '<div class="form-group col-lg-6">' +
-                    '<label for="长度">长度</label>' +
-                    '<label for="danwei">(mm)</label>' +
-                    '@Html.TextBoxFor(m => conventional.cd, new { @class = "form-control validate", type = "tle" })' +
-                    '</div>' +
-                    '<div class="form-group col-lg-6">' +
-                    '<label for="高度">高度 </label>' +
-                    '<label for="danwei">(mm)</label>' +
-                    '@Html.TextBoxFor(m => conventional.gd, new { @class = "form-control validate", type = "tle" })' +
-                    '</div>' +
-                    '</a>';
-                
-            @{ 
-                addController.ListAdd(conventional);
-            }
+                '<a class="row" id="' + id + '">' +
+                '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
+                '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
+                '</div>' +
+                '<div class="form-group col-lg-6">' +
+                '<label for="尺寸名称">尺寸名称</label>' +
+                '<input name="尺寸名称' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
+                '</div>' +
+                '<div class="form-group col-lg-6">' +
+                '<label for="直径">直径</label>' +
+                '<label for="danwei">(mm)</label>' +
+                '<input name="直径' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
+                '</div>' +
+                '<div class="form-group col-lg-6">' +
+                '<label for="长度">长度</label>' +
+                '<label for="danwei">(mm)</label>' +
+                '<input name="长度' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
+                '</div>' +
+                '<div class="form-group col-lg-6">' +
+                '<label for="高度">高度 </label>' +
+                '<label for="danwei">(mm)</label>' +
+                '<input name="高度' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
+                '</div>' +
+                '<input name="常规" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
+                '</a>';
             $(addtr).appendTo(tables);
         }
-
-        
 
         function 索普通直径(obj) {
             var tables = $("form#form");
@@ -202,8 +184,9 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="索普通直径">索普通直径 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '@Html.TextBoxFor(m => ignition.CableDiameters, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="索普通直径' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
+                '<input name="索普通直径" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</a>';
             $(addtr).appendTo(tables);
         }
@@ -218,17 +201,18 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="爆速上限">爆速上限 </label>' +
                 '<label for="danwei">(m/s)</label>' +
-                '@Html.TextBoxFor(m => ignition.SpeedDetonations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="爆速上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="爆速下限">爆速下限 </label>' +
                 '<label for="danwei">(m/s)</label>' +
-                '@Html.TextBoxFor(m => ignition.SpeedDetonations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="爆速下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="爆速备注">爆速备注</label>' +
-                '@Html.TextBoxFor(m => ignition.SpeedDetonations, new { @class = "form-control validate", type = "tle" })' +
+                '<textarea class = "form-control validate tm-small" rows = "1" name="爆速备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
+                '<input name="爆速" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</a>';
             $(addtr).appendTo(tables);
         }
@@ -243,26 +227,27 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="螺纹">螺纹 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="螺纹' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="螺距">螺距 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="螺距' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="公差">公差 </label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="公差' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="长度">长度 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="长度' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="接口信息备注">接口信息备注</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<textarea class = "form-control validate tm-small" rows = "1" name="接口信息备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
+                '<input name="接口信息" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</a>';
             $(addtr).appendTo(tables);
         }
@@ -276,46 +261,55 @@
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="桥个数">桥个数 </label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="直流电阻桥个数' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻范围值上">电阻范围值上 </label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="电阻范围值上' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-
+                '<select class="custom-select" name="电阻范围值上单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="mΩ">mΩ</option>' +
+                '<option value="Ω">Ω</option>' +
+                '<option value="kΩ">kΩ</option>' +
+                '<option value="MΩ">MΩ</option>' +
+                '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻范围值下">电阻范围值下 </label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>mΩ</option>' +
-                '<option>Ω</option>' +
-                '<option>kΩ</option>' +
-                '<option>MΩ</option>' +
+                '<select class="custom-select" name="电阻范围值下单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="mΩ">mΩ</option>' +
+                '<option value="Ω">Ω</option>' +
+                '<option value="kΩ">kΩ</option>' +
+                '<option value="MΩ">MΩ</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻小于值">电阻小于值 </label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="电阻小于值' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>mΩ</option>' +
-                '<option>Ω</option>' +
-                '<option>kΩ</option>' +
-                '<option>MΩ</option>' +
+                '<select class="custom-select" name="电阻小于值单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="mΩ">mΩ</option>' +
+                '<option value="Ω">Ω</option>' +
+                '<option value="kΩ">kΩ</option>' +
+                '<option value="MΩ">MΩ</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="电阻备注">电阻备注</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<textarea class = "form-control validate tm-small" rows = "1" name="电阻备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
+                '<input name="直流电阻" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</a>';
             $(addtr).appendTo(tables);
         }
@@ -332,7 +326,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="桥个数">桥个数</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="桥个数' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-12">' +
                 '<h2 class="tm-site-title mb-0">电压发火</h2>' +
@@ -340,163 +334,172 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="发火电压">发火电压</label>' +
                 '<label for="danwei">(V)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="发火电压' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="发火电压上限">发火电压上限</label>' +
                 '<label for="danwei">(V)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="发火电压上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="发火电压下限">发火电压下限</label>' +
                 '<label for="danwei">(V)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="发火电压下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电容">发火电容</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="发火电容' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>μf</option>' +
-                '<option>pf</option>' +
+                '<select class="custom-select" name="发火电容单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="μf">μf</option>' +
+                '<option value="pf">pf</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="电压发火备注">电压发火备注</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<textarea class = "form-control validate tm-small" rows = "1" name="电压发火备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
                 '<div class="form-group col-lg-12">' +
                 '<h2 class="tm-site-title mb-0">电流发火</h2>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流">发火电流</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="发火电流' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>A</option>' +
-                '<option>mA</option>' +
+                '<select class="custom-select" name="发火电流单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="A">A</option>' +
+                '<option value="mA">mA</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流上限">发火电流上限</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="发火电流上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>A</option>' +
-                '<option>mA</option>' +
+                '<select class="custom-select" name="发火电流上限单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="A">A</option>' +
+                '<option value="mA">mA</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流下限">发火电流下限</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="发火电流下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>A</option>' +
-                '<option>mA</option>' +
+                '<select class="custom-select" name="发火电流下限单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="A">A</option>' +
+                '<option value="mA">mA</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流时间">发火电流时间</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="发火电流时间' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>ms</option>' +
-                '<option>min</option>' +
+                '<select class="custom-select" name="发火电流时间单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="ms">ms</option>' +
+                '<option value="min">min</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="电流发火备注">电流发火备注</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<textarea class = "form-control validate tm-small" rows = "1" name="电流发火备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
                 '<div class="form-group col-lg-12">' +
                 '<h2 class="tm-site-title mb-0">机械发火</h2>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="锤重">锤重</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="锤重' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>kg</option>' +
-                '<option>g</option>' +
+                '<select class="custom-select" name="锤重单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="kg">kg</option>' +
+                '<option value="g">g</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="落高">落高</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="落高' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>m</option>' +
-                '<option>cm</option>' +
-                '<option>mm</option>' +
+                '<select class="custom-select" name="落高单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="m">m</option>' +
+                '<option value="cm">cm</option>' +
+                '<option value="mm">mm</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针刺激量">击针刺激量</label>' +
                 '<label for="danwei">(g•cm)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="击针刺激量' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针力上限">击针力上限</label>' +
                 '<label for="danwei">(N)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="击针力上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针力下限">击针力下限</label>' +
                 '<label for="danwei">(N)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="击针力下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针突出量上限">击针突出量上限</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="击针突出量上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针突出量下限">击针突出量下限</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="击针突出量下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="弹簧高度">弹簧高度</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="弹簧高度' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="抗力">抗力</label>' +
                 '<label for="danwei">(N)</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="抗力' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="机械发火备注">机械发火备注</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<textarea class = "form-control validate tm-small" rows = "1" name="机械发火备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
                 '<div class="form-group col-lg-12">' +
                 '<h2 class="tm-site-title mb-0">发火能量</h2>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="能量">能量</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="能量' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>J</option>' +
-                '<option>mJ</option>' +
+                '<select class="custom-select" name="能量单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="J">J</option>' +
+                '<option value="mJ">mJ</option>' +
                 '</select>' +
                 '</div>' +
+                '<input name="发火条件" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</a>';
             $(addtr).appendTo(tables);
         }
@@ -511,45 +514,49 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="phone">温度条件 </label>' +
                 '<label for="phone">(摄氏度) </label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="温度条件' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="phone">延期时间上限 </label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="延期时间上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="phone">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>ms</option>' +
-                '<option>s</option>' +
+                '<select class="custom-select" name="延期时间上限单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="ms">ms</option>' +
+                '<option value="s">s</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="phone">延期时间下限 </label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="延期时间下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="phone">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>ms</option>' +
-                '<option>s</option>' +
+                '<select class="custom-select" name="延期时间下限单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="ms">ms</option>' +
+                '<option value="s">s</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="phone">延期时间值 </label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<input name="延期时间值' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="phone">单位</label>' +
-                '<select class="custom-select">' +
-                '<option>ms</option>' +
-                '<option>s</option>' +
+                '<select class="custom-select" name="延期时间值单位' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="ms">ms</option>' +
+                '<option value="s">s</option>' +
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="phone">延期时间备注</label>' +
-                '@Html.TextBoxFor(m => ignition.InterfaceInformations, new { @class = "form-control validate", type = "tle" })' +
+                '<textarea class = "form-control validate tm-small" rows = "1" name="延期时间备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
+                '<input name="延期时间" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</a>';
             $(addtr).appendTo(tables);
         }
@@ -563,10 +570,12 @@
             document.getElementById("form").submit();
         }
 
-        function DanWeiZhuanHuan(obj) {
-            if (obj != "") {
+        function Img(obj) {
+            document.getElementById("fileInput" + obj + "").click();
+        }
 
-            }
+        function setCustomValidity(obj) {
+
         }
     </script>
 </head>
@@ -612,108 +621,107 @@
                 </div>
             </div>
             <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:20%;overflow-y:scroll;overflow-x:hidden;height:640px;width:42%">
-                @using (Html.BeginForm("AddInformation", "Add", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "tm-signup-form row", id = "form", name = "基本信息", role = "form" }))
-                {
+                <form action="/Add/AddInformation" method="post" class="tm-signup-form row" id="form" name="基本信息">
                     <a class="row ">
                         <div class="form-group col-lg-12" id="主页信息">
                             <h1 class="tm-site-title mb-0">基本信息</h1>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="类别">类别</label>
-                            @Html.TextBoxFor(m => ignition.lb, new { @class = "form-control validate", type = "tle" })
+                            <input name="类别" class="form-control validate" type="text" required />
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="产品名称">产品名称</label>
-                            @Html.TextBoxFor(m => ignition.scmc, new { @class = "form-control validate", type = "tle" })
+                            <input name="产品名称" class="form-control validate" type="text" required>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="设计单位">设计单位</label>
-                            @Html.TextBoxFor(m => ignition.sjdw, new { @class = "form-control validate", type = "tle" })
+                            <input name="设计单位" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="生产单位">生产单位</label>
-                            @Html.TextBoxFor(m => ignition.scdw, new { @class = "form-control validate", type = "tle" })
+                            <input name="生产单位" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="型号">型号</label>
-                            @Html.TextBoxFor(m => ignition.xh, new { @class = "form-control validate", type = "tle" })
+                            <input name="型号" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="图号">图号</label>
-                            @Html.TextBoxFor(m => ignition.th, new { @class = "form-control validate", type = "tle" })
+                            <input name="图号" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="代号">代号</label>
-                            @Html.TextBoxFor(m => ignition.dh, new { @class = "form-control validate", type = "tle" })
+                            <input name="代号" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="研制日期">研制日期</label>
-                            @Html.TextBoxFor(m => ignition.yzrq, new { @class = "form-control validate", type = "text", id = "expire_date" })
+                            <input name="研制日期" class="form-control validate" type="text" id="expire_date">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="设计定型日期">设计定型日期</label>
-                            @Html.TextBoxFor(m => ignition.dxrq, new { @class = "form-control validate", type = "text", id = "expire_date2" })
+                            <input name="设计定型日期" class="form-control validate" type="text" id="expire_date2">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="生产定型日期">生产定型日期</label>
-                            @Html.TextBoxFor(m => ignition.gydx, new { @class = "form-control validate", type = "text", id = "expire_date3" })
+                            <input name="生产定型日期" class="form-control validate" type="text" id="expire_date3">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="用途">用途</label>
-                            @Html.TextBoxFor(m => ignition.yt, new { @class = "form-control validate", type = "tle" })
+                            <input name="用途" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="系统组成">系统组成</label>
-                            @Html.TextBoxFor(m => ignition.xtzc, new { @class = "form-control validate", type = "tle" })
+                            <input name="系统组成" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="目前阶段">目前阶段</label>
-                            @Html.TextBoxFor(m => ignition.mqjd, new { @class = "form-control validate", type = "tle" })
+                            <input name="目前阶段" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="机械性能">机械性能</label>
-                            @Html.TextBoxFor(m => ignition.jxxn, new { @class = "form-control validate", type = "tle" })
+                            <input name="机械性能" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="电性能">电性能</label>
-                            @Html.TextBoxFor(m => ignition.dxn, new { @class = "form-control validate", type = "tle" })
+                            <input name="电性能" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="功能">功能</label>
-                            @Html.TextBoxFor(m => ignition.gn, new { @class = "form-control validate", type = "tle" })
+                            <input name="功能" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="环境试验">环境试验</label>
-                            @Html.TextBoxFor(m => ignition.hjcs, new { @class = "form-control validate", type = "tle" })
+                            <input name="环境试验" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="桥丝数目">桥丝数目</label>
-                            @Html.TextBoxFor(m => ignition.jssm, new { @class = "form-control validate", type = "tle" })
+                            <input name="桥丝数目" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d]/g,'')">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="贮存寿命">贮存寿命</label>
                             <label for="单位">(年)</label>
-                            @Html.TextBoxFor(m => ignition.ccsm, new { @class = "form-control validate", type = "tle" })
+                            <input name="贮存寿命" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d]/g,'')">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="贮存寿命备注">贮存寿命备注</label>
-                            @Html.TextAreaFor(m => ignition.ccsmbz, new { @class = "form-control validate tm-small", rows = "1" })
+                            <textarea class="form-control validate tm-small" rows="1" name="贮存寿命备注"></textarea>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="可靠度">可靠度</label>
-                            @Html.TextBoxFor(m => ignition.kkd, new { @class = "form-control validate", type = "tle" })
+                            <input name="可靠度" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="主要性能指标">主要性能指标</label>
-                            @Html.TextBoxFor(m => ignition.zyxnzb, new { @class = "form-control validate", type = "tle" })
+                            <input name="主要性能指标" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="试验环境指标范围">试验环境指标范围</label>
-                            @Html.TextBoxFor(m => ignition.syhjzsfw, new { @class = "form-control validate", type = "tle" })
+                            <input name="试验环境指标范围" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="基本性能">基本性能</label>
-                            @Html.TextBoxFor(m => ignition.jbxn, new { @class = "form-control validate", type = "tle" })
+                            <input name="基本性能" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">常规</h2>
@@ -721,22 +729,22 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="宽度">宽度</label>
-                            @Html.TextBoxFor(m => ignition.kd, new { @class = "form-control validate", type = "tle" })
+                            <input name="宽度" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="脚线">脚线</label>
-                            @Html.TextBoxFor(m => ignition.jx, new { @class = "form-control validate", type = "tle" })
+                            <input name="脚线" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="总长度">总长度</label>
-                            @Html.TextBoxFor(m => ignition.zcd, new { @class = "form-control validate", type = "tle" })
+                            <input name="总长度" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">隔板厚度</h2>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="隔板厚度">隔板厚度</label>
-                            @Html.TextBoxFor(m => ignition.gbhd, new { @class = "form-control validate", type = "tle" })
+                            <input name="隔板厚度" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">索</h2>
@@ -744,35 +752,35 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索直径上限">索直径上限</label>
-                            @Html.TextBoxFor(m => ignition.szjsx, new { @class = "form-control validate", type = "tle" })
+                            <input name="索直径上限" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索直径下限">索直径下限</label>
-                            @Html.TextBoxFor(m => ignition.szjxx, new { @class = "form-control validate", type = "tle" })
+                            <input name="索直径下限" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索MDF（银质）直径">索MDF（银质）直径</label>
-                            @Html.TextBoxFor(m => ignition.sMDFyzzj, new { @class = "form-control validate", type = "tle" })
+                            <input name="索MDF（银质）直径" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索备注">索备注</label>
-                            @Html.TextAreaFor(m => ignition.sbz, new { @class = "form-control validate tm-small", rows = "1" })
+                            <textarea class="form-control validate tm-small" rows="1" name="sbz"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">六方对角</h2>
-                            <label for="danwei">（单位：mm）</label>
+                            <label for="六方对角">（单位：mm）</label>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="对边">对边</label>
-                            @Html.TextBoxFor(m => ignition.db, new { @class = "form-control validate", type = "tle" })
+                            <input name="对边" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="对角线">对角线</label>
-                            @Html.TextBoxFor(m => ignition.djx, new { @class = "form-control validate", type = "tle" })
+                            <input name="对角线" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="六方对角备注">六方对角备注</label>
-                            @Html.TextAreaFor(m => ignition.lfdjbz, new { @class = "form-control validate tm-small", rows = "1" })
+                            <textarea class="form-control validate tm-small" rows="1" name="六方对角备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">检测电流</h2>
@@ -780,7 +788,7 @@
                         <div class="form-group col-lg-6">
                             <label for="检测电流">检测电流</label>
                             <label for="danwei">(mA)</label>
-                            @Html.TextBoxFor(m => ignition.jcdl, new { @class = "form-control validate", type = "tle" })
+                            <input name="检测电流" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">静电感度</h2>
@@ -788,70 +796,61 @@
                         <div class="form-group col-lg-6">
                             <label for="静电电容">静电电容</label>
                             <label for="danwei">(pf)</label>
-                            @Html.TextBoxFor(m => ignition.jddr, new { @class = "form-control validate", type = "tle" })
+                            <input name="静电电容" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="静电电压">静电电压</label>
                             <label for="danwei">(V)</label>
-                            @Html.TextBoxFor(m => ignition.jddy, new { @class = "form-control validate", type = "tle" })
+                            <input name="静电电压" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="串联电阻">串联电阻</label>
                             <label for="danwei">(Ω)</label>
-                            @Html.TextBoxFor(m => ignition.cldz, new { @class = "form-control validate", type = "tle" })
+                            <input name="串联电阻" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="静电感度备注">静电感度备注</label>
-                            @Html.TextAreaFor(m => ignition.jdgdbz, new { @class = "form-control validate tm-small", rows = "1" })
+                            <textarea class="form-control validate tm-small" rows="1" name="静电感度备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">作用时间瞬发度</h2>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="作用时间">作用时间</label>
-                            @Html.TextBoxFor(m => ignition.zysj, new { @class = "form-control validate", type = "tle" })
+                            <input name="作用时间" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
-                            @*@Html.DropDownList("TimeList", ViewBag.TimeList as SelectList,new { @class = "custom-select" })*@
-                            <select class="custom-select" onchange="DanWeiZhuanHuan(this.value)">
-                                <option value="">请选择</option>
+                            <select class="custom-select" name="作用时间单位">
+                                <option value="请选择">请选择</option>
                                 <option value="ns">ns</option>
                                 <option value="μs">μs</option>
                                 <option value="ms">ms</option>
                                 <option value="s">s</option>
                             </select>
-                            @{
-                                if (ignition.zysj.ToString() != "")
-                                {
-                                    IMeasurementConverter measurementConverter = new Time(ignition.dw);
-                                    ignition.zysj = measurementConverter.ToStandardValue(ignition.zysj);
-                                }
-
-                            }
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="作用时间上限">作用时间上限</label>
-                            @Html.TextBoxFor(m => ignition.zysjsx, new { @class = "form-control validate", type = "tle" })
+                            <input name="作用时间上限" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
-                            <select class="custom-select" id="select3">
-                                <option>ns</option>
-                                <option>μs</option>
-                                <option>ms</option>
-                                <option>s</option>
+                            <select class="custom-select" name="作用时间上限单位">
+                                <option value="请选择">请选择</option>
+                                <option value="ns">ns</option>
+                                <option value="μs">μs</option>
+                                <option value="ms">ms</option>
+                                <option value="s">s</option>
                             </select>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="作用时间下限">作用时间下限</label>
-
-                            @Html.TextBoxFor(m => ignition.zysjxx, new { @class = "form-control validate", type = "tle" })
+                            <input name="作用时间下限" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
-                            <select class="custom-select">
-                                <option value="">请选择</option>
+                            <select class="custom-select" name="作用时间下限单位">
+                                <option value="请选择">请选择</option>
                                 <option value="ns">ns</option>
                                 <option value="μs">μs</option>
                                 <option value="ms">ms</option>
@@ -860,67 +859,71 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="作用时间备注">作用时间备注</label>
-                            @Html.TextAreaFor(m => ignition.zysjbz, new { @class = "form-control validate tm-small", rows = "1" })
+                            <textarea class="form-control validate tm-small" rows="1" name="作用时间备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">安全电流</h2>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="桥个数">桥个数</label>
-                            @Html.TextBoxFor(m => ignition.jgs, new { @class = "form-control validate", type = "tle" })
+                            <input name="安全电流桥个数" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d]/g,'')">
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="安全电流值">安全电流值</label>
-                            @Html.TextBoxFor(m => ignition.aydlz, new { @class = "form-control validate", type = "tle" })
+                            <input name="安全电流值" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
-                            <select class="custom-select" id="select4">
+                            <select class="custom-select" name="安全电流值单位">
+                                <option value="请选择">请选择</option>
                                 <option>mA</option>
                                 <option>A</option>
                             </select>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="安全电流值上限">安全电流值上限</label>
-                            @Html.TextBoxFor(m => ignition.aydlzsx, new { @class = "form-control validate", type = "tle" })
+                            <input name="安全电流值上限" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
-                            <select class="custom-select" id="select5">
-                                <option>mA</option>
-                                <option>A</option>
+                            <select class="custom-select" name="安全电流值上限单位">
+                                <option value="请选择">请选择</option>
+                                <option value="mA">mA</option>
+                                <option value="A">A</option>
                             </select>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="安全电流值下限">安全电流值下限</label>
-                            @Html.TextBoxFor(m => ignition.aydlzxx, new { @class = "form-control validate", type = "tle" })
+                            <input name="安全电流值下限" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
-                            <select class="custom-select">
-                                <option>mA</option>
-                                <option>A</option>
+                            <select class="custom-select" name="安全电流值下限单位">
+                                <option value="请选择">请选择</option>
+                                <option value="mA">mA</option>
+                                <option value="A">A</option>
                             </select>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="时间值">时间值</label>
-                            @Html.TextBoxFor(m => ignition.ssj, new { @class = "form-control validate", type = "tle" })
+                            <input name="时间值" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
-                            <select class="custom-select" id="select6">
-                                <option>min</option>
-                                <option>s</option>
+                            <select class="custom-select" name="时间值单位">
+                                <option value="请选择">请选择</option>
+                                <option value="min">min</option>
+                                <option value="s">s</option>
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="功率值">功率值</label>
                             <label for="danwei">(W)</label>
-                            @Html.TextBoxFor(m => ignition.glz, new { @class = "form-control validate", type = "tle" })
+                            <input name="功率值" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="安全电流备注">安全电流备注</label>
-                            @Html.TextAreaFor(m => ignition.aqdlbz, new { @class = "form-control validate tm-small", rows = "1" })
+                            <textarea class="form-control validate tm-small" rows="1" name="安全电流备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">安全电压</h2>
@@ -928,12 +931,12 @@
                         <div class="form-group col-lg-6">
                             <label for="安全电压电压">安全电压电压</label>
                             <label for="danwei">(V)</label>
-                            @Html.TextBoxFor(m => ignition.aqdydy, new { @class = "form-control validate", type = "tle" })
+                            <input name="安全电压电压" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="安全电压电容">安全电压电容</label>
                             <label for="danwei">(pf)</label>
-                            @Html.TextBoxFor(m => ignition.aqdydr, new { @class = "form-control validate", type = "tle" })
+                            <input name="安全电压电容" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">燃烧压力</h2>
@@ -941,18 +944,18 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力上限">燃烧压力上限</label>
-                            @Html.TextBoxFor(m => ignition.rsylsx, new { @class = "form-control validate", type = "tle" })
+                            <input name="燃烧压力上限" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力下限">燃烧压力下限</label>
-                            @Html.TextBoxFor(m => ignition.rsylxx, new { @class = "form-control validate", type = "tle" })
+                            <input name="燃烧压力下限" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力备注">燃烧压力备注</label>
-                            @Html.TextAreaFor(m => ignition.rsylbz, new { @class = "form-control validate tm-small", rows = "1" })
+                            <textarea class="form-control validate tm-small" rows="1" name="燃烧压力备注"></textarea>
                         </div>
                     </a>
-                }
+                </form>
 
                 <form class="tm-signup-form row" style="display:none" id="form2" name="添加模块">
                     <div class="form-group col-lg-12">
