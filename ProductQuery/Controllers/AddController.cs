@@ -28,6 +28,15 @@ namespace ProductQuery.Controllers
             return View(ign);
         }
 
+        //打开查看页面
+        [ValidateInput(false)]
+        public ActionResult Ignition_select(int ignitionid)
+        {
+            Ignition ignition = dbDrive.FindIgnition(ignitionid);
+            ViewData["ig"] = ignition;
+            return View(ViewData["ig"]);
+        }
+
         //添加点火装置
         [HttpPost]
         public ActionResult AddInformation(FormCollection collection,Ignition ignition,Conventional conventional)
@@ -82,11 +91,15 @@ namespace ProductQuery.Controllers
             if (collection["对角线"] != "")
                 ignition.djx = double.Parse(collection["对角线"]);
             ignition.lfdjbz = collection["六方对角备注"];
-            ignition.lfdjbz = collection["检测电流"];
-            ignition.lfdjbz = collection["静电电容"];
-            ignition.lfdjbz = collection["静电电压"];
-            ignition.lfdjbz = collection["串联电阻"];
-            ignition.lfdjbz = collection["静电感度备注"];
+            if (collection["检测电流"] != "")
+                ignition.jcdl = double.Parse(collection["检测电流"]);
+            if (collection["静电电容"] != "")
+                ignition.jddr = double.Parse(collection["静电电容"]);
+            if (collection["静电电压"] != "")
+                ignition.jddy = double.Parse(collection["静电电压"]);
+            if (collection["串联电阻"] != "")
+                ignition.cldz = double.Parse(collection["串联电阻"]);
+            ignition.jdgdbz = collection["静电感度备注"];
             if (collection["作用时间单位"] != "请选择")
             {
                 string unit = collection["作用时间单位"];

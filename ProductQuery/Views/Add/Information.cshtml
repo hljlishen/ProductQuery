@@ -1,6 +1,6 @@
 ﻿@model List<ProductQuery.Models.Ignition>
 @{
-    Layout = null;
+    Layout = "~/Views/Add/AddIndex.cshtml";
 }
 
 <!DOCTYPE html>
@@ -16,37 +16,41 @@
     <script src="~/Content/layui/layui.js"></script>
     <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
     <title></title>
+    <script type="text/javascript">
+        //查看
+        function openSelectWin(ignitionid) {
+            var title = "<span class='glyphicon glyphicon-edit'> 信息查看";
+            var url = "Ignition_select?ignitionid=" + ignitionid;
+            var width = "100%";
+            var height = "800px";
+            parent.openWin(title, url, width, height);
+        }
+    </script>
 </head>
 <body>
-    <div>
-        <nav class="navbar navbar-expand-xl">
-            <div class="container h-100">
-                <h1 class="tm-site-title mb-0">火工品信息</h1>
-            </div>
-        </nav>
-        <div class="container mt-5">
-            <div class="row tm-content-row">
-                <div class="col-12 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <td scope="col">Id</td>
-                                    <td scope="col">类别</td>
-                                    <td scope="col">产品名称</td>
-                                    <td scope="col">操作</td>
-                                </tr>
-                            </thead>
+    <div class="container mt-5">
+        <div class="row tm-content-row">
+            <div class="col-12 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td scope="col">Id</td>
+                                <td scope="col">类别</td>
+                                <td scope="col">产品名称</td>
+                                <td scope="col">操作</td>
+                            </tr>
+                        </thead>
 
-                            <tbody>
-                                @foreach (var ign in Model)
-                                {
+                        <tbody>
+                            @foreach (var ign in Model)
+                            {
                                 <tr>
                                     <th>@ign.IgnitionId</th>
                                     <th>@ign.lb</th>
                                     <th>@ign.cpmc</th>
                                     <th>
-                                        <a href="javascript:openUpdateWin(@ign.IgnitionId)" class="tm-product-delete-link">
+                                        <a href="javascript:openSelectWin(@ign.IgnitionId)" class="tm-product-delete-link">
                                             <i class="far fa-eye tm-product-delete-icon"></i>
                                         </a>
                                         <a href="@Url.Content("~/Add/DeleteInformation?IgnitionId=" + @ign.IgnitionId)" class="tm-product-delete-link">
@@ -54,10 +58,9 @@
                                         </a>
                                     </th>
                                 </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
