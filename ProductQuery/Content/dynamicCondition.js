@@ -26,8 +26,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		,conditionContainerId:(Math.random()+"").substr(2)//随机日期id
     		,conditionFieldWidth:_config.conditionFieldWidth || 120 //第一列默认宽度
     		,conditionOptionWidth:_config.conditionOptionWidth || 100//第二列默认宽度
-            ,conditionValueWidth: _config.conditionValueWidth || 150 //第三列默认宽度
-            ,conditionUnitWidth: _config.conditionUnitWidth || 100 //第四列默认宽度
+            ,conditionValueWidth: _config.conditionValueWidth || 200 //第三列默认宽度
     		,height:700 //弹出窗口默认高度
     		,width:700 //弹出窗口默认宽度
     	};
@@ -46,7 +45,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     				layer.close(instance.openPageIndex); 
     			}
     		}else{
-    			instance.conditionValueWidth = 150;
+    			instance.conditionValueWidth = 200;
     			instance.buildConditionHtml();
     		}
     	}
@@ -161,21 +160,13 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 			  conditionValue.width(instance.conditionValueWidth*2+20);
               var conditionDel = $('<div class="layui-inline conditionDel"></div>');
 
-              //单位
-              if (instance.config.type == "complex") {
-                  alert("进入单位添加");
-                  var conditionUnit = $('<div class="layui-inline conditionUnit"></div>');
-                  conditionUnit.width(instance.conditionUnitWidth);
-                  conditionUnit.append($(instance.conditionUnitHtml));
-              }
-
 			  //删除按钮
 			  var delJq=$('<a href="javascript:void(0);" class="delRowBtn"><i class="layui-icon layui-icon-close" style="font-size: 30px; color: red;"></i></a>');
-			  conditionDel.append(delJq);
+
+              conditionDel.append(delJq);
 			  conditionRowJq.append(conditionField);
 			  conditionRowJq.append(conditionOption);
 			  conditionRowJq.append(conditionValue);
-              conditionRowJq.append(conditionUnit);
 			  conditionRowJq.append(conditionDel);
 			  conditionContainerJq.find(".conditionDiv").append(conditionRowJq);
 			  
@@ -224,33 +215,97 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 				  return ;
 			  }
 			  if(curEditor){
-				  if(conditionOptionVal == "between"){
+                  if (conditionOptionVal == "between") {
+                      //获取field字符最后一个“-”以后的字段
+                      var laststr = conditionFieldVal.lastIndexOf("-");
+                      var str = conditionFieldVal.substring(laststr+1, conditionFieldVal.length); 
+                      //alert(conditionFieldVal+"截取后："+str);
+                      //下拉框html
+                      var selectconditionUnit = $('<select lay-filter="conditionUnit"></select>');
+                      if (str == "cd") {
+                          selectconditionUnit.append("<option value='mm'>mm</option>");
+                          selectconditionUnit.append("<option value='cm'>cm</option>");
+                          selectconditionUnit.append("<option value='m'>m</option>");
+                      }
+                      else if (str == "zl") {
+                          selectconditionUnit.append("<option value='g'>g</option>");
+                          selectconditionUnit.append("<option value='kg'>kg</option>");
+                      }
+                      else if (str == "sj") {
+                          selectconditionUnit.append("<option value='ns'>ns</option>");
+                          selectconditionUnit.append("<option value='μs'>μs</option>");
+                          selectconditionUnit.append("<option value='ms'>ms</option>");
+                          selectconditionUnit.append("<option value='s'>s</option>");
+                          selectconditionUnit.append("<option value='min'>min</option>");
+                      }
+                      else if (str == "dz") {
+                          selectconditionUnit.append("<option value='mΩ'>mΩ</option>");
+                          selectconditionUnit.append("<option value='Ω'>Ω</option>");
+                          selectconditionUnit.append("<option value='kΩ'>kΩ</option>");
+                          selectconditionUnit.append("<option value='MΩ'>MΩ</option>");
+                      }
+                      else if (str == "nl") {
+                          selectconditionUnit.append("<option value='J'>J</option>");
+                          selectconditionUnit.append("<option value='mJ'>mJ</option>");
+                      }
+                      else if (str == "dl") {
+                          selectconditionUnit.append("<option value='mA'>mA</option>");
+                          selectconditionUnit.append("<option value='A'>A</option>");
+                      }
+                      else if (str == "dr") {
+                          selectconditionUnit.append("<option value='pf'>pf</option>");
+                          selectconditionUnit.append("<option value='μf'>μf</option>");
+                      }
+                      else if (str == "dy") {
+                          selectconditionUnit.append("<option value='V'>V</option>");
+                      }
+                      else {
+                          selectconditionUnit.append("<option value=''>无单位</option>");
+                      }
+                     
+
+                      instance.conditionUnitHtml = selectconditionUnit.prop("outerHTML");
+
 					  var eleLeftJq = $(curEditor.createElement(obj));
-					  var eleRightJq = $(curEditor.createElement(obj));
+                      var eleRightJq = $(curEditor.createElement(obj));
+                      var eleUnitJq = $(instance.conditionUnitHtml);
+
 					  var divLeft = $("<div style='display:inline-block'></div>");
-					  var divRight = $("<div style='display:inline-block'></div>");
-					  
+                      var divRight = $("<div style='display:inline-block'></div>");
+                      var divUnit = $('<div class="layui-inline conditionOption"></div>');
+
 					  divLeft.append(eleLeftJq);
 					  divLeft.attr("name","conditionValueLeft");
-					  divLeft.width(instance.conditionValueWidth);
+					  divLeft.width(instance.conditionValueWidth / 2 + 30);
 					  
 					  divRight.append(eleRightJq);
 					  divRight.attr("name","conditionValueRight");
-					  divRight.width(instance.conditionValueWidth);
+                      divRight.width(instance.conditionValueWidth / 2 + 30);
+
+                      divUnit.append(eleUnitJq);
+                      divUnit.attr("name", "conditionValueUnit");
+                      divUnit.width(instance.conditionValueWidth / 2 + 30);
 					  
 					  //更新conditionValueJq
 					  conditionValueJq.html("");
 					  conditionValueJq.append(divLeft);
 					  conditionValueJq.append("<span style='margin:auto 3px;'>至</span>");
-					  conditionValueJq.append(divRight);
+                      conditionValueJq.append(divRight);
+                      conditionValueJq.append(divUnit);
+
 					  //必须将jq对象转换为dom对象才能绑定对象属性。
 					  conditionRowJq[0].eleJq = null;
 					  conditionRowJq[0].eleLeftJq = eleLeftJq;
-					  conditionRowJq[0].eleRightJq = eleRightJq;
+                      conditionRowJq[0].eleRightJq = eleRightJq;
+                      conditionRowJq[0].eleUnitJq = eleUnitJq;
+
 					  curEditor.fillElement(eleLeftJq,conditionObj.conditionValueLeftVal);
-					  curEditor.fillElement(eleRightJq,conditionObj.conditionValueRightVal);
+                      curEditor.fillElement(eleRightJq, conditionObj.conditionValueRightVal);
+                      //curEditor.fillElement(eleUnitJq, conditionObj.conditionValueUnitVal);
+
 					  curEditor.render(eleLeftJq);
-					  curEditor.render(eleRightJq);
+                      curEditor.render(eleRightJq);
+                      curEditor.render(eleUnitJq);
 				  }else{
 					  var eleJq = $(curEditor.createElement(obj));
 					  var divJq = $("<div></div>");
@@ -331,7 +386,8 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 		    	}
 		    }
 		    return verifySuccess;
-		  }
+        }
+
     	/**根据动态查询条件构造缓存对应的请求条件*/
     	instance.buildCacheCondition = function(){
     		var conditionContainerJq = $("#" + instance.conditionContainerId);
@@ -339,11 +395,12 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		var rowLength = conditionRowJqs.size();
     		//缓存查询条件
     		var cacheCondition = [];
-    		for(var i=0;i<rowLength;i++){
+            for (var i = 0; i < rowLength; i++){
     			var conditionRowJq = conditionRowJqs.eq(i);
     			var valJq = conditionRowJq.find("[name='conditionValue']");
     			var valLeftJq = conditionRowJq.find("[name='conditionValueLeft']");
-    			var valRightJq = conditionRowJq.find("[name='conditionValueRight']");
+                var valRightJq = conditionRowJq.find("[name='conditionValueRight']");
+                var valUnitJq = conditionRowJq.find("select[name='conditionValueUnit']");
     			
     			var conditionObj = {};
     			conditionObj.conditionFieldVal = conditionRowJq.find("select[name='conditionField']").val();
@@ -357,13 +414,16 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 	  				tempjq = conditionRowDOM.eleLeftJq;
 	    			conditionObj.conditionValueLeftVal = tempjq ? {value:curEditor.getRequestValue(tempjq),text:curEditor.getRequestText(tempjq)} : tempVal;
 	    			tempjq = conditionRowDOM.eleRightJq;
-	    			conditionObj.conditionValueRightVal = tempjq ? {value:curEditor.getRequestValue(tempjq),text:curEditor.getRequestText(tempjq)} : tempVal;
+                    conditionObj.conditionValueRightVal = tempjq ? { value: curEditor.getRequestValue(tempjq), text: curEditor.getRequestText(tempjq) } : tempVal;
+                    tempjq = conditionRowDOM.eleUnitJq;
+                    conditionObj.conditionValueUnitVal = tempjq ? { value: curEditor.getRequestValue(tempjq), text: curEditor.getRequestText(tempjq) } : tempVal;
 	  			}
     			cacheCondition.push(conditionObj);
     		}
     		instance.cacheCondition = cacheCondition;
     		return cacheCondition;
-    	}
+        }
+
     	/**根据动态查询条件构造对应的请求参数.*/
     	instance.buildRequestData = function(cacheCondition){
     		var cacheCondition = cacheCondition || instance.cacheCondition;
@@ -380,7 +440,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		}
     		//复杂模式
     		if(instance.config.requestDataType == "json"){//结果为json字符串模式
-    			instance.requestData = {jsonStr: JSON.stringify(cacheCondition)};
+                instance.requestData = { jsonStr: JSON.stringify(cacheCondition) };
     			return instance.requestData;
     		}
     		requestData.rowLength = rowLength;
@@ -390,12 +450,14 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     			requestData["QueryCondition["+i+"].conditionOption"] = conditionObj.conditionOptionVal;
     			requestData["QueryCondition["+i+"].conditionValue"] = conditionObj.conditionValueVal.value;
     			requestData["QueryCondition["+i+"].conditionValueLeft"] = conditionObj.conditionValueLeftVal.value;
-    			requestData["QueryCondition["+i+"].conditionValueRight"] = conditionObj.conditionValueRightVal.value;
+                requestData["QueryCondition["+i+"].conditionValueRight"] = conditionObj.conditionValueRightVal.value;
+                requestData["QueryCondition["+i+"].conditionValueUnit"] = conditionObj.conditionValueUnitVal.value;
     		}
     		//设置请求参数
-    		instance.requestData = requestData;
+            instance.requestData = requestData;
     		return requestData;
-    	}
+        }
+
     	/**根据动态查询条件构造对应的显示文本*/
     	instance.buildConditionHtml = function(){
     		
@@ -411,7 +473,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     			var ValueText = conditionObj.conditionValueVal.text;
     			var ValueLeftText = conditionObj.conditionValueLeftVal.text;
     			var ValueRightText = conditionObj.conditionValueRightVal.text;
-    			
+
     			var rsValueText="";
     			if(conditionObj.conditionOptionVal == "between"){
     				rsValueText = ValueLeftText + blankStr+"至"+ blankStr + ValueRightText;
@@ -449,35 +511,37 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 				  })
 				  $(".layui-xpl-dc-delete[allowDel='false']").hide();
 			  }
-    	}
-    	/**针对无弹窗的显示模式根据动态查询条件构造对应的显示界面*/
-    	instance.buildConditionHtmlForUnpopup = function(){
-    		if(instance.config.conditionTextId){
-    			var msgJq = $(instance.config.conditionTextId);
-    			msgJq.html("");
-    			instance.render(msgJq);
-    			var styleHtml = "<style type='text/css'>";
-        		styleHtml += "\n.layui-xpl-dc-msg {min-height:38px;}";
-        		styleHtml += "\n.clear {clear:both;}";
-        		styleHtml += "\n</style>";
-        		msgJq.append($(styleHtml));
-        		$(".conditionRow").css("float", "left");
-        		msgJq.addClass("layui-xpl-dc-msg");
-        		msgJq.find(".layui-xpl-dc-top-btns").hide();
-        		msgJq.find(".conditionDel").hide();
-        		msgJq.append($("<div style='float:left;'><a class='layui-btn xpl-unpopup-query'))>查询</a></div>"));
-        		msgJq.append($("<div class='clear'></div>"));
-        		$(".xpl-unpopup-query").on("click",function(){
-    			  if(instance.verifyForm()){
-//    				  layer.msg('校验通过');
-    				  instance.buildCacheCondition();
-    				  instance.query();
-    			  }else{
-//    				  layer.msg('校验失败');
-    			  }
-    		  });
-    		}
-    	}
+        }
+
+//    	/**针对无弹窗的显示模式根据动态查询条件构造对应的显示界面*/
+//    	instance.buildConditionHtmlForUnpopup = function(){
+//    		if(instance.config.conditionTextId){
+//    			var msgJq = $(instance.config.conditionTextId);
+//    			msgJq.html("");
+//    			instance.render(msgJq);
+//    			var styleHtml = "<style type='text/css'>";
+//        		styleHtml += "\n.layui-xpl-dc-msg {min-height:38px;}";
+//        		styleHtml += "\n.clear {clear:both;}";
+//        		styleHtml += "\n</style>";
+//        		msgJq.append($(styleHtml));
+//        		$(".conditionRow").css("float", "left");
+//        		msgJq.addClass("layui-xpl-dc-msg");
+//        		msgJq.find(".layui-xpl-dc-top-btns").hide();
+//        		msgJq.find(".conditionDel").hide();
+//        		msgJq.append($("<div style='float:left;'><a class='layui-btn xpl-unpopup-query'))>查询</a></div>"));
+//        		msgJq.append($("<div class='clear'></div>"));
+//        		$(".xpl-unpopup-query").on("click",function(){
+//    			  if(instance.verifyForm()){
+////    				  layer.msg('校验通过');
+//    				  instance.buildCacheCondition();
+//    				  instance.query();
+//    			  }else{
+////    				  layer.msg('校验失败');
+//    			  }
+//    		  });
+//    		}
+//    	}
+
     	/**删除条件*/
     	instance.delete = function(ele){
     		var index = $(ele).parent().attr("index");
@@ -659,7 +723,8 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 						};
 					instance.data.push(item);
 				})
-    		}
+            }
+            
     		//设定默认值
     		for(var i = 0;i<instance.data.length;i++){
     			var item = instance.data[i];
@@ -683,19 +748,13 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		//操作 下拉框html
     		var selectconditionOption = $('<select name="conditionOption" lay-filter="conditionOption"></select>');
     		selectconditionOption.append("<option value='equal'>等于</option>");
-    		selectconditionOption.append("<option value='like'>包含</option>");
+    		//selectconditionOption.append("<option value='like'>包含</option>");
     		selectconditionOption.append("<option value='between'>范围</option>");
-    		selectconditionOption.append("<option value='start'>开头字符</option>");
-    		selectconditionOption.append("<option value='end'>结尾字符</option>");
-    		selectconditionOption.append("<option value='unequal'>不等于</option>");
-    		selectconditionOption.append("<option value='empty'>为空</option>");
+    		//selectconditionOption.append("<option value='start'>开头字符</option>");
+    		//selectconditionOption.append("<option value='end'>结尾字符</option>");
+    		//selectconditionOption.append("<option value='unequal'>不等于</option>");
+    		//selectconditionOption.append("<option value='empty'>为空</option>");
             instance.conditionOptionHtml = selectconditionOption.prop("outerHTML");
-
-            //单位 下拉框html
-            var selectconditionUnit = $('<select name="conditionUnit" lay-filter="conditionUnit"></select>');
-            selectconditionUnit.append("<option value='g'>g</option>");
-            selectconditionUnit.append("<option value='kg'>kg</option>");
-            instance.conditionUnitHtml = selectconditionUnit.prop("outerHTML");
 
     		//缓存实例
     		this.cacheInstance[config.instanceName] = instance;

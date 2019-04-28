@@ -32,12 +32,10 @@
                                     <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
 
                                         <div id="complex-query" style="margin-left:50px;margin-top:20px;">
-                                            <a id="complexBtn" class="layui-btn ">复杂查询</a><br />
+                                            <a id="complexBtn-json" class="layui-btn ">复杂查询</a><br />
                                             <br />
-                                            <div id="msg">查询条件：</div>
+                                            <div id="msg-json">查询条件：</div>
                                             <br />
-                                            <div>请求参数json：</div>
-                                            <div id="result" style="word-break:break-all;height:60px;width:500px;padding-left:50px;"></div>
                                         </div>
 
                                         <ul id="dcDemo" style="display:none;">
@@ -55,68 +53,68 @@
                                             <li field="qssm" title="桥丝数目" edit="text" layVerify="number"></li>
                                             <li field="zcsm" title="贮存寿命" edit="text" layVerify="number"></li>
 
-                                            <li field="cg-zj" title="直径" edit="text" layVerify="number"></li>
-                                            <li field="cg-cd" title="长度" edit="text" layVerify="number"></li>
-                                            <li field="jx" title="脚线" edit="text" layVerify="number"></li>
-                                            <li field="zcd" title="总长度" edit="text" layVerify="number"></li>
-                                            <li field="gbhd" title="隔板厚度" edit="text" layVerify="number"></li>
-                                            <li field="szj" title="索直径" edit="text" layVerify="number"></li>
+                                            <li field="cg-zj-cd" title="直径" edit="text" layVerify="number"></li>
+                                            <li field="cg-cd-cd" title="长度" edit="text" layVerify="number"></li>
+                                            <li field="jx-cd" title="脚线" edit="text" layVerify="number"></li>
+                                            <li field="zcd-cd" title="总长度" edit="text" layVerify="number"></li>
+                                            <li field="gbhd-cd" title="隔板厚度" edit="text" layVerify="number"></li>
+                                            <li field="szj-cd" title="索直径" edit="text" layVerify="number"></li>
 
-                                            <li field="s-sptzj" title="索普通直径" edit="text" layVerify="number"></li>
+                                            <li field="s-sptzj-cd" title="索普通直径" edit="text" layVerify="number"></li>
 
-                                            <li field="sMDFyzzj" title="索MDF（银质）直径" edit="text" layVerify="number"></li>
+                                            <li field="sMDFyzzj-cd" title="索MDF（银质）直径" edit="text" layVerify="number"></li>
 
                                             <li field="sb-sb" title="爆速上限（m/s）" edit="text" layVerify="number"></li>
                                             <li field="sb-sbbz" title="速爆备注" edit="text"></li>
 
-                                            <li field="db" title="对边" edit="text" layVerify="number"></li>
-                                            <li field="dj" title="对角" edit="text" layVerify="number"></li>
+                                            <li field="db-cd" title="对边" edit="text" layVerify="number"></li>
+                                            <li field="dj-cd" title="对角" edit="text" layVerify="number"></li>
 
-                                            <li field="jk-lw" title="螺纹" edit="text" layVerify="number"></li>
-                                            <li field="jk-lj" title="螺距" edit="text" layVerify="number"></li>
-                                            <li field="jk-cd" title="长度" edit="text" layVerify="number"></li>
+                                            <li field="jk-lw-cd" title="螺纹" edit="text" layVerify="number"></li>
+                                            <li field="jk-lj-cd" title="螺距" edit="text" layVerify="number"></li>
+                                            <li field="jk-cd-cd" title="长度" edit="text" layVerify="number"></li>
 
                                             <li field="zl-qgs" title="直流电阻桥个数" edit="text" layVerify="number"></li>
-                                            <li field="zl-dzfw" title="电阻范围" edit="text" layVerify="number"></li>
-                                            <li field="zl-dzz" title="电阻值" edit="text" layVerify="number"></li>
-                                            <li field="zl-dzgc" title="电阻公差" edit="text" layVerify="number"></li>
-                                            <li field="zl-dzxyz" title="电阻小于值" edit="text" layVerify="number"></li>
+                                            <li field="zl-dzfw-dz" title="电阻范围" edit="text" layVerify="number"></li>
+                                            <li field="zl-dzz-dz" title="电阻值" edit="text" layVerify="number"></li>
+                                            <li field="zl-dzgc-dz" title="电阻公差" edit="text" layVerify="number"></li>
+                                            <li field="zl-dzxyz-dz" title="电阻小于值" edit="text" layVerify="number"></li>
                                             <li field="zl-dzbz" title="电阻备注" edit="text"></li>
 
-                                            <li field="jcdl" title="检测电流" edit="text" layVerify="number"></li>
-                                            <li field="jddr" title="静电电容" edit="text" layVerify="number"></li>
-                                            <li field="jddy" title="静电电压" edit="text" layVerify="number"></li>
-                                            <li field="cldz" title="串联电阻" edit="text" layVerify="number"></li>
+                                            <li field="jcdl-dl" title="检测电流" edit="text" layVerify="number"></li>
+                                            <li field="jddr-dr" title="静电电容" edit="text" layVerify="number"></li>
+                                            <li field="jddy-dy" title="静电电压" edit="text" layVerify="number"></li>
+                                            <li field="cldz-dz" title="串联电阻" edit="text" layVerify="number"></li>
 
                                             <li field="fa-qgs" title="桥个数" edit="text" layVerify="number"></li>
-                                            <li field="fa-fhdy" title="发火电压" edit="text" layVerify="number"></li>
-                                            <li field="fa-fhdr" title="发火电容" edit="text" layVerify="number"></li>
-                                            <li field="fa-fhdlsj" title="发火电流" edit="text" layVerify="number"></li>
+                                            <li field="fa-fhdy-dy" title="发火电压" edit="text" layVerify="number"></li>
+                                            <li field="fa-fhdr-dr" title="发火电容" edit="text" layVerify="number"></li>
+                                            <li field="fa-fhdlsj-dl" title="发火电流" edit="text" layVerify="number"></li>
 
                                             <li field="fa-fhdlsj" title="发火电流时间" edit="text" layVerify="number"></li>
-                                            <li field="fa-cz" title="锤重" edit="text" layVerify="number"></li>
-                                            <li field="fa-lg" title="落高" edit="text" layVerify="number"></li>
+                                            <li field="fa-cz-zl" title="锤重" edit="text" layVerify="number"></li>
+                                            <li field="fa-lg-cd" title="落高" edit="text" layVerify="number"></li>
                                             <li field="fa-jzcj" title="激针刺激（g•cm）" edit="text" layVerify="number"></li>
                                             <li field="fa-jzl" title="激针力" edit="text" layVerify="number"></li>
-                                            <li field="fa-jztcl" title="激针突出量" edit="text" layVerify="number"></li>
-                                            <li field="fa-thgd" title="弹簧高度" edit="text" layVerify="number"></li>
+                                            <li field="fa-jztcl-cd" title="激针突出量" edit="text" layVerify="number"></li>
+                                            <li field="fa-thgd-cd" title="弹簧高度" edit="text" layVerify="number"></li>
                                             <li field="fa-kl" title="抗力" edit="text" layVerify="number"></li>
-                                            <li field="fa-nl" title="能量" edit="text" layVerify="number"></li>
+                                            <li field="fa-nl-nl" title="能量" edit="text" layVerify="number"></li>
 
-                                            <li field="zysj" title="作用时间" edit="text" layVerify="number"></li>
+                                            <li field="zysj-sj" title="作用时间" edit="text" layVerify="number"></li>
                                             <li field="zysjbz" title="作用时间备注" edit="text"></li>
 
                                             <li field="ys-wdtj" title="温度条件（摄氏度）" edit="text" layVerify="number"></li>
-                                            <li field="ys-yssj" title="延时时间" edit="text" layVerify="number"></li>
+                                            <li field="ys-yssj-sj" title="延时时间" edit="text" layVerify="number"></li>
                                             <li field="ys-yssjbz" title="延时时间备注" edit="text"></li>
 
                                             <li field="qgs" title="桥个数" edit="text" layVerify="number"></li>
-                                            <li field="aqdlz" title="安全电流值" edit="text" layVerify="number"></li>
-                                            <li field="sjz" title="时间值" edit="text" layVerify="number"></li>
+                                            <li field="aqdlz-dl" title="安全电流值" edit="text" layVerify="number"></li>
+                                            <li field="sjz-sj" title="时间值" edit="text" layVerify="number"></li>
                                             <li field="glz" title="功率值" edit="text" layVerify="number"></li>
                                             <li field="aqdlbz" title="安全电流备注" edit="text"></li>
-                                            <li field="aqdydy" title="安全电压电压" edit="text" layVerify="number"></li>
-                                            <li field="aqdrdr" title="安全电容电容" edit="text" layVerify="number"></li>
+                                            <li field="aqdydy-dy" title="安全电压电压" edit="text" layVerify="number"></li>
+                                            <li field="aqdrdr-dr" title="安全电容电容" edit="text" layVerify="number"></li>
                                             <li field="rsyl" title="燃烧压力" edit="text" layVerify="number"></li>
                                             <li field="rsylbz" title="燃烧压力备注" edit="text"></li>
                                         </ul>
@@ -176,74 +174,74 @@
                 , { field: "zcsm", title: "贮存寿命", edit: "text", layVerify: "number" }
 
                 //常规查询属性
-                , { field: "cg-zj", title: "直径", edit: "text", layVerify: "number" }
-                , { field: "cg-cd", title: "长度", edit: "text", layVerify: "number" }
+                , { field: "cg-zj-cd", title: "直径", edit: "text", layVerify: "number" }
+                , { field: "cg-cd-cd", title: "长度", edit: "text", layVerify: "number" }
 
-                , { field: "jx", title: "脚线", edit: "text", layVerify: "number" }
-                , { field: "zcd", title: "总长度", edit: "text", layVerify: "number" }
-                , { field: "gbhd", title: "隔板厚度", edit: "text", layVerify: "number" }
-                , { field: "szj", title: "索直径", edit: "text", layVerify: "number" }
+                , { field: "jx-cd-cd", title: "脚线", edit: "text", layVerify: "number" }
+                , { field: "zcd-cd", title: "总长度", edit: "text", layVerify: "number" }
+                , { field: "gbhd-cd", title: "隔板厚度", edit: "text", layVerify: "number" }
+                , { field: "szj-cd", title: "索直径", edit: "text", layVerify: "number" }
 
                 //索普通直径
-                , { field: "s-sptzj", title: "索普通直径", edit: "text", layVerify: "number" }
+                , { field: "s-sptzj-cd", title: "索普通直径", edit: "text", layVerify: "number" }
 
-                , { field: "sMDFyzzj", title: "索MDF（银质）直径", edit: "text", layVerify: "number" }
+                , { field: "sMDFyzzj-cd", title: "索MDF（银质）直径", edit: "text", layVerify: "number" }
 
                 //速爆
                 , { field: "sb-sb", title: "爆速上限（m/s）", edit: "text", layVerify: "number" }
                 , { field: "sb-sbbz", title: "速爆备注", edit: "text" }
 
-                , { field: "db", title: "对边", edit: "text", layVerify: "number" }
-                , { field: "dj", title: "对角", edit: "text", layVerify: "number" }
+                , { field: "db-cd", title: "对边", edit: "text", layVerify: "number" }
+                , { field: "dj-cd", title: "对角", edit: "text", layVerify: "number" }
 
                 //接口信息
-                , { field: "jk-lw", title: "螺纹", edit: "text", layVerify: "number" }
-                , { field: "jk-lj", title: "螺距", edit: "text", layVerify: "number" }
-                , { field: "jk-cd", title: "长度", edit: "text", layVerify: "number" }
+                , { field: "jk-lw-cd", title: "螺纹", edit: "text", layVerify: "number" }
+                , { field: "jk-lj-cd", title: "螺距", edit: "text", layVerify: "number" }
+                , { field: "jk-cd-cd", title: "长度", edit: "text", layVerify: "number" }
 
                 //直流电阻
                 , { field: "zl-qgs", title: "直流电阻桥个数", edit: "text", layVerify: "number" }
-                , { field: "zl-dzfw", title: "电阻范围", edit: "text", layVerify: "number" }
-                , { field: "zl-dzz", title: "电阻值", edit: "text", layVerify: "number" }
-                , { field: "zl-dzgc", title: "电阻公差", edit: "text", layVerify: "number" }
-                , { field: "zl-dzxyz", title: "电阻小于值", edit: "text", layVerify: "number" }
+                , { field: "zl-dzfw-dz", title: "电阻范围", edit: "text", layVerify: "number" }
+                , { field: "zl-dzz-dz", title: "电阻值", edit: "text", layVerify: "number" }
+                , { field: "zl-dzgc-dz", title: "电阻公差", edit: "text", layVerify: "number" }
+                , { field: "zl-dzxyz-dz", title: "电阻小于值", edit: "text", layVerify: "number" }
                 , { field: "zl-dzbz", title: "电阻备注", edit: "text" }
 
-                , { field: "jcdl", title: "检测电流", edit: "text", layVerify: "number" }
-                , { field: "jddr", title: "静电电容", edit: "text", layVerify: "number" }
-                , { field: "jddy", title: "静电电压", edit: "text", layVerify: "number" }
-                , { field: "cldz", title: "串联电阻", edit: "text", layVerify: "number" }
+                , { field: "jcdl-dl", title: "检测电流", edit: "text", layVerify: "number" }
+                , { field: "jddr-dr", title: "静电电容", edit: "text", layVerify: "number" }
+                , { field: "jddy-dy", title: "静电电压", edit: "text", layVerify: "number" }
+                , { field: "cldz-dz", title: "串联电阻", edit: "text", layVerify: "number" }
 
                 //发火条件
                 , { field: "fa-qgs", title: "桥个数", edit: "text", layVerify: "number" }
-                , { field: "fa-fhdy", title: "发火电压（V）", edit: "text", layVerify: "number" }
-                , { field: "fa-fhdr", title: "发火电容（μf）", edit: "text", layVerify: "number" }
-                , { field: "fa-fhdl", title: "发火电流", edit: "text", layVerify: "number" }
-                , { field: "fa-fhdlsj", title: "发火电流时间", edit: "text", layVerify: "number" }
-                , { field: "fa-cz", title: "锤重", edit: "text", layVerify: "number" }
-                , { field: "fa-lg", title: "落高", edit: "text", layVerify: "number" }
+                , { field: "fa-fhdy", title: "发火电压", edit: "text", layVerify: "number" }
+                , { field: "fa-fhdr-dr", title: "发火电容", edit: "text", layVerify: "number" }
+                , { field: "fa-fhdl-dl", title: "发火电流", edit: "text", layVerify: "number" }
+                , { field: "fa-fhdlsj-sj", title: "发火电流时间", edit: "text", layVerify: "number" }
+                , { field: "fa-cz-zl", title: "锤重", edit: "text", layVerify: "number" }
+                , { field: "fa-lg-cd", title: "落高", edit: "text", layVerify: "number" }
                 , { field: "fa-jzcj", title: "激针刺激（g•cm）", edit: "text", layVerify: "number" }
                 , { field: "fa-jzl", title: "激针力", edit: "text", layVerify: "number" }
-                , { field: "fa-jztcl", title: "激针突出量", edit: "text", layVerify: "number" }
-                , { field: "fa-thgd", title: "弹簧高度", edit: "text", layVerify: "number" }
+                , { field: "fa-jztcl-cd", title: "激针突出量", edit: "text", layVerify: "number" }
+                , { field: "fa-thgd-cd", title: "弹簧高度", edit: "text", layVerify: "number" }
                 , { field: "fa-kl", title: "抗力", edit: "text", layVerify: "number" }
-                , { field: "fa-nl", title: "能量", edit: "text", layVerify: "number" }
+                , { field: "fa-nl-nl", title: "能量", edit: "text", layVerify: "number" }
 
-                , { field: "zysj", title: "作用时间", edit: "text", layVerify: "number" }
+                , { field: "zysj-sj", title: "作用时间", edit: "text", layVerify: "number" }
                 , { field: "zysjbz", title: "作用时间备注", edit: "text"}
 
                 //延时时间
                 , { field: "ys-wdtj", title: "温度条件（摄氏度）", edit: "text", layVerify: "number" }
-                , { field: "ys-yssj", title: "延时时间", edit: "text", layVerify: "number" }
+                , { field: "ys-yssj-sj", title: "延时时间", edit: "text", layVerify: "number" }
                 , { field: "ys-yssjbz", title: "延时时间备注", edit: "text" }
 
                 , { field: "qgs", title: "桥个数", edit: "text", layVerify: "number"}
-                , { field: "aqdlz", title: "安全电流值", edit: "text", layVerify: "number" }
-                , { field: "sjz", title: "时间值", edit: "text", layVerify: "number" }
+                , { field: "aqdlz-dl", title: "安全电流值", edit: "text", layVerify: "number" }
+                , { field: "sjz-sj", title: "时间值", edit: "text", layVerify: "number" }
                 , { field: "glz", title: "功率值", edit: "text", layVerify: "number" }
                 , { field: "aqdlbz", title: "安全电流备注", edit: "text" }
-                , { field: "aqdydy", title: "安全电压电压", edit: "text", layVerify: "number" }
-                , { field: "aqdrdr", title: "安全电容电容", edit: "text", layVerify: "number" }
+                , { field: "aqdydy-dy", title: "安全电压电压", edit: "text", layVerify: "number" }
+                , { field: "aqdrdr-dr", title: "安全电容电容", edit: "text", layVerify: "number" }
                 , { field: "rsyl", title: "燃烧压力", edit: "text", layVerify: "number" }
                 , { field: "rsylbz", title: "燃烧压力备注", edit: "text" }
             ];
@@ -254,15 +252,27 @@
                 //,tableId:"listTable" //静态页面不好演示table数据表格更新
                 , type: "complex"  //type:"simple"/"complex"
                 , requestDataType: "json"  //"array"/"json" 默认array
-                , conditionTextId: "#msg"
+                , conditionTextId: "#msg-json"
                 //当有多个动态条件查询实例时，定义instanceName属性可以通过dynamicCondition.getInstance(instanceName)获取对应的实例
                 , instanceName: "complexInstance-json"
                 , queryCallBack: function (requestData) {
-                    $("#result").html(JSON.stringify(requestData));
+                    $.ajax({
+                        url: "@Url.Action("Query")",
+                        type: "post",
+                        dataType: "json",
+                        data: JSON.stringify(requestData),
+                        success: function () {
+
+                        },
+                        error: function () {
+
+                        }
+                    })
                 }
             });
+
             /**复杂查询*/
-            $("#complexBtn").on("click", function () {
+            $("#complexBtn-json").on("click", function () {
                 dynamicCondition.getInstance("complexInstance-json").open();
             })
 

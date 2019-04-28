@@ -391,7 +391,6 @@
     <Content Include="Views\Add\Information.cshtml" />
     <Content Include="Views\Add\Ignition_select.cshtml" />
     <Content Include="Views\Add\AddIndex.cshtml" />
-    <Content Include="Views\Query\Query.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -112,7 +112,7 @@ namespace ProductQuery.Models
         [DisplayName("索备注")]
         public string sbz { get; set; }
         [DisplayName("对边")]
-        public int db { get; set; }
+        public double db { get; set; }
         [DisplayName("对角线")]
         public double djx { get; set; }
         [DisplayName("六方对角备注")]
