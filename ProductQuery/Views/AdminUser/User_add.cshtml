@@ -16,6 +16,71 @@
     <script src="~/Content/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+        function myfun() {
+            alert("权限验证");
+        }
+        /*用window.onload调用myfun()*/
+
+        // 不要括号
+        window.onload = myfun;
+
+        function validate() {
+            var validate = true;
+
+            var name = $("#name").val();
+            var phone = $("#phone").val();
+            var password = $("#password").val();
+            var confirmpassword = $("#confirmpassword").val();
+
+            if (name == "") {
+                $("#errorname").css("color", "red");
+                $("#errorname").attr("class", "glyphicon glyphicon-remove");
+                $("#errorname").html("*用户名不能为空");
+                validate = false;
+            } else {
+                $("#errorname").css("color", "green");
+                $("#errorname").attr("class", "glyphicon glyphicon-ok");
+                $("#errorname").html("");
+            }
+
+            if (!(/^1[34578]\d{9}$/.test(phone))) {
+                $("#errorphone").css("color", "red");
+                $("#errorphone").attr("class", "glyphicon glyphicon-remove");
+                $("#errorphone").html("*输入的手机格式错误");
+                validate = false;
+            } else {
+                $("#errorphone").css("color", "green");
+                $("#errorphone").attr("class", "glyphicon glyphicon-ok");
+                $("#errorphone").html("");
+            }
+
+            if (password == "") {
+                $("#errorpassword").css("color", "red");
+                $("#errorpassword").attr("class", "glyphicon glyphicon-remove");
+                $("#errorpassword").html("*密码不能为空");
+                validate = false;
+            } else {
+                $("#errorpassword").css("color", "green");
+                $("#errorpassword").attr("class", "glyphicon glyphicon-ok");
+                $("#errorpassword").html("");
+            }
+
+            if (confirmpassword != password) {
+                $("#errorconfirmpassword").css("color", "red");
+                $("#errorconfirmpassword").attr("class", "glyphicon glyphicon-remove");
+                $("#errorconfirmpassword").html("*两次输入密码不一致");
+                validate = false;
+            } else {
+                $("#errorconfirmpassword").css("color", "green");
+                $("#errorconfirmpassword").attr("class", "glyphicon glyphicon-ok");
+                $("#errorconfirmpassword").html("");
+            }
+
+            if (validate) {
+                add();
+            }
+        }
+
         function add() {
             $.ajax({
                 url: "@Url.Action("User_add")",
@@ -40,35 +105,35 @@
     <div class="row tm-content-row">
         <div class="tm-block-col tm-col-account-settings">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
-                @using (Html.BeginForm("User_add", "AdminUser", new { @class = "tm-signup-form row", role = "form" }))
+                @using (Html.BeginForm("User_add", "AdminUser", new { @class = "tm-signup-form row", role = "form"}))
                 {
-                    <div class="form-group col-lg-6">
-                        @Html.LabelFor(user => user.name)
-                        @Html.TextBoxFor(user => user.name, new { @class = "form-control validate" })
-                        @Html.ValidationMessageFor(user => user.name)
-                    </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(user => user.name)
+                    @Html.TextBoxFor(user => user.name, new { @class = "form-control validate" ,id = "name"})
+                    <span style="color: red;" id="errorname"></span>
+                </div>
 
-                    <div class="form-group col-lg-6">
-                        @Html.LabelFor(user => user.Phone)
-                        @Html.TextBoxFor(user => user.Phone, new { @class = "form-control validate" })
-                        @Html.ValidationMessageFor(user => user.Phone)
-                    </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(user => user.Phone)
+                    @Html.TextBoxFor(user => user.Phone, new { @class = "form-control validate", id = "phone" })
+                    <span style="color: red;" id="errorphone"></span>
+                </div>
 
-                    <div class="form-group col-lg-6">
-                        @Html.LabelFor(user => user.password)
-                        @Html.PasswordFor(user => user.password, new { @class = "form-control validate" })
-                        @Html.ValidationMessageFor(user => user.password)
-                    </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(user => user.password)
+                    @Html.PasswordFor(user => user.password, new { @class = "form-control validate",id = "password" })
+                    <span style="color: red;" id="errorpassword"></span>
+                </div>
 
-                    <div class="form-group col-lg-6">
-                        @Html.LabelFor(user => user.ConfirmPassword)
-                        @Html.PasswordFor(user => user.ConfirmPassword, new { @class = "form-control validate" })
-                        @Html.ValidationMessageFor(user => user.ConfirmPassword)
-                    </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(user => user.ConfirmPassword)
+                    @Html.PasswordFor(user => user.ConfirmPassword, new { @class = "form-control validate",id= "confirmpassword" })
+                    <span style="color: red;" id="errorconfirmpassword"></span>
+                </div>
 
                     <div class="form-group col-lg-6">
                         <label class="tm-hide-sm">&nbsp;</label>
-                        <button type="button" class="btn btn-primary btn-block text-uppercase" onclick="add();">
+                        <button type="button" id="saveBtn" class="btn btn-primary btn-block text-uppercase" onclick="validate();">
                                 添加用户信息
                             </button>
                     </div>
