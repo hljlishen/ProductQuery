@@ -19,567 +19,19 @@
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script></script>
     <script type="text/javascript">
-        var id = 0;
-        var image = 1;
-        var changgui = 1;
-        var suo = 1;
-        var baosu = 1;
-        var jiekoxinxi = 1;
-        var zhiliudianzu = 1;
-        var fahuotiaojian = 1;
-        var yanqishijian = 1;
-        $(function () {
-            $("#expire_date").datepicker({
-                defaultDate: Date.now()
-            });
-            $("#expire_date2").datepicker({
-                defaultDate: Date.now()
-            });
-            $("#expire_date3").datepicker({
-                defaultDate: Date.now()
-            });
-        });
-
-        function PageInformation(obj) {
-            if (obj == "添加信息模块") {
-                document.getElementById("form").style.display = "none";
-                document.getElementById("form2").style.display = "";
-            }
-            else {
-                document.getElementById("form").style.display = "";
-                document.getElementById("form2").style.display = "none";
-            }
-        }
-
-        function ModuleNumber(obj) {
-            if (obj == "产品示意图")
-                return image;
-            if (obj == "常规")
-                return changgui;
-            if (obj == "索普通直径")
-                return suo;
-            if (obj == "爆速")
-                return baosu;
-            if (obj == "接口信息")
-                return jiekoxinxi;
-            if (obj == "直流电阻")
-                return zhiliudianzu;
-            if (obj == "发火条件")
-                return fahuotiaojian;
-            if (obj == "延期时间")
-                return yanqishijian;
-        }
-
-        function AddInformationModule(obj) {
-            var tables = $("table#test");
-            var addtr = '<tr id="' + id + '">' +
-                '<td class="tm-product-name">' +
-                '<ul class="navbar-nav">' +
-                '<li class="nav-item">' +
-                '<a class="nav-link d-block" href="#' + obj + ModuleNumber(obj) + '" onclick="PageInformation(this.name)">' + obj + ModuleNumber(obj) + '</a>' +
-                '</li>' +
-                '</ul>' +
-                '</td>' +
-                '<td class="text-center">' +
-                '<a href="#" id="' + id + '" class="tm-product-delete-link" onclick="delAchieve(this.id)">' +
-                '<i class="far fa-trash-alt tm-product-delete-icon"></i>' +
-                '</a>' +
-                '</td>' +
-                '</tr>';
-
-            $(addtr).appendTo(tables);
-
-            GenerateTemplate(obj);
-            id++;
-        }
-
-        function GenerateTemplate(obj) {
-            if (obj == "常规") {
-                常规(obj);
-                changgui++;
-            }
-            if (obj == "产品示意图") {
-                产品示意图(obj);
-                image++;
-            }
-            if (obj == "索普通直径") {
-                索普通直径(obj);
-                suo++;
-            }
-            if (obj == "爆速") {
-                爆速(obj);
-                baosu++;
-            }
-            if (obj == "接口信息") {
-                接口信息(obj);
-                jiekoxinxi++;
-            }
-            if (obj == "直流电阻") {
-                直流电阻(obj);
-                zhiliudianzu++;
-            }
-            if (obj == "发火条件") {
-                发火条件(obj);
-                fahuotiaojian++;
-            }
-            if (obj == "延期时间") {
-                延期时间(obj);
-                yanqishijian++;
-            }
-        }
-
-        function 产品示意图(obj) {
-            var tables = $("form#form");
-            var addtr =
-                '<a class="form-group col-lg-12" id="' + id + '">' +
-                '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
-                '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
-                '</div>' +
-                '<div class="custom-file mt-3 mb-3">' +
-                '<input name="img" id="img" type="file"/>' +
-                '</div>' +
-                '<input name="产品示意图" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
-            $(addtr).appendTo(tables);
-        }
-
-        function 常规(obj) {
-            var tables = $("form#form");
-            var addtr =
-                '<a class="row" id="' + id + '">' +
-                '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
-                '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="尺寸名称">尺寸名称</label>' +
-                '<input name="尺寸名称' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="直径">直径</label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="直径' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="长度">长度</label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="长度' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="高度">高度 </label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="高度' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<input name="常规" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
-            $(addtr).appendTo(tables);
-        }
-
-        function 索普通直径(obj) {
-            var tables = $("form#form");
-            var addtr =
-                '<a class="row" id="' + id + '">' +
-                '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
-                '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="索普通直径">索普通直径 </label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="索普通直径' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<input name="索普通直径" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
-            $(addtr).appendTo(tables);
-        }
-
-        function 爆速(obj) {
-            var tables = $("form#form");
-            var addtr =
-                '<a class="row" id="' + id + '">' +
-                '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
-                '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="爆速上限">爆速上限 </label>' +
-                '<label for="danwei">(m/s)</label>' +
-                '<input name="爆速上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="爆速下限">爆速下限 </label>' +
-                '<label for="danwei">(m/s)</label>' +
-                '<input name="爆速下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="爆速备注">爆速备注</label>' +
-                '<textarea class = "form-control validate tm-small" rows = "1" name="爆速备注' + ModuleNumber(obj) + '"></textarea>' +
-                '</div>' +
-                '<input name="爆速" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
-            $(addtr).appendTo(tables);
-        }
-
-        function 接口信息(obj) {
-            var tables = $("form#form");
-            var addtr =
-                '<a class="row" id="' + id + '">' +
-                '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
-                '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="螺纹">螺纹 </label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="螺纹' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="螺距">螺距 </label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="螺距' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="公差">公差 </label>' +
-                '<input name="公差' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="长度">长度 </label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="长度' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="接口信息备注">接口信息备注</label>' +
-                '<textarea class = "form-control validate tm-small" rows = "1" name="接口信息备注' + ModuleNumber(obj) + '"></textarea>' +
-                '</div>' +
-                '<input name="接口信息" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
-            $(addtr).appendTo(tables);
-        }
-
-        function 直流电阻(obj) {
-            var tables = $("form#form");
-            var addtr =
-                '<a class="row" id="' + id + '">' +
-                '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
-                '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="桥个数">桥个数 </label>' +
-                '<input name="直流电阻桥个数' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="电阻范围值上">电阻范围值上 </label>' +
-                '<input name="电阻范围值上' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="电阻范围值上单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="mΩ">mΩ</option>' +
-                '<option value="Ω">Ω</option>' +
-                '<option value="kΩ">kΩ</option>' +
-                '<option value="MΩ">MΩ</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="电阻范围值下">电阻范围值下 </label>' +
-                '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="电阻范围值下单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="mΩ">mΩ</option>' +
-                '<option value="Ω">Ω</option>' +
-                '<option value="kΩ">kΩ</option>' +
-                '<option value="MΩ">MΩ</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="电阻小于值">电阻小于值 </label>' +
-                '<input name="电阻小于值' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="电阻小于值单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="mΩ">mΩ</option>' +
-                '<option value="Ω">Ω</option>' +
-                '<option value="kΩ">kΩ</option>' +
-                '<option value="MΩ">MΩ</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="电阻备注">电阻备注</label>' +
-                '<textarea class = "form-control validate tm-small" rows = "1" name="电阻备注' + ModuleNumber(obj) + '"></textarea>' +
-                '</div>' +
-                '<input name="直流电阻" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
-            $(addtr).appendTo(tables);
-        }
-
-        function 发火条件(obj) {
-            var tables = $("form#form");
-            var addtr =
-                '<a class="row" id="' + id + '">' +
-                '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
-                '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
-                '</div>' +
-                '<div class="form-group col-lg-12">' +
-                '<h2 class="tm-site-title mb-0">桥个数</h2>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="桥个数">桥个数</label>' +
-                '<input name="桥个数' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-12">' +
-                '<h2 class="tm-site-title mb-0">电压发火</h2>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="发火电压">发火电压</label>' +
-                '<label for="danwei">(V)</label>' +
-                '<input name="发火电压' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="发火电压上限">发火电压上限</label>' +
-                '<label for="danwei">(V)</label>' +
-                '<input name="发火电压上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="发火电压下限">发火电压下限</label>' +
-                '<label for="danwei">(V)</label>' +
-                '<input name="发火电压下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="发火电容">发火电容</label>' +
-                '<input name="发火电容' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="发火电容单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="μf">μf</option>' +
-                '<option value="pf">pf</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="电压发火备注">电压发火备注</label>' +
-                '<textarea class = "form-control validate tm-small" rows = "1" name="电压发火备注' + ModuleNumber(obj) + '"></textarea>' +
-                '</div>' +
-                '<div class="form-group col-lg-12">' +
-                '<h2 class="tm-site-title mb-0">电流发火</h2>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="发火电流">发火电流</label>' +
-                '<input name="发火电流' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="发火电流单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="A">A</option>' +
-                '<option value="mA">mA</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="发火电流上限">发火电流上限</label>' +
-                '<input name="发火电流上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="发火电流上限单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="A">A</option>' +
-                '<option value="mA">mA</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="发火电流下限">发火电流下限</label>' +
-                '<input name="发火电流下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="发火电流下限单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="A">A</option>' +
-                '<option value="mA">mA</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="发火电流时间">发火电流时间</label>' +
-                '<input name="发火电流时间' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="发火电流时间单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="ms">ms</option>' +
-                '<option value="min">min</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="电流发火备注">电流发火备注</label>' +
-                '<textarea class = "form-control validate tm-small" rows = "1" name="电流发火备注' + ModuleNumber(obj) + '"></textarea>' +
-                '</div>' +
-                '<div class="form-group col-lg-12">' +
-                '<h2 class="tm-site-title mb-0">机械发火</h2>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="锤重">锤重</label>' +
-                '<input name="锤重' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="锤重单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="kg">kg</option>' +
-                '<option value="g">g</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="落高">落高</label>' +
-                '<input name="落高' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="落高单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="m">m</option>' +
-                '<option value="cm">cm</option>' +
-                '<option value="mm">mm</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="击针刺激量">击针刺激量</label>' +
-                '<label for="danwei">(g•cm)</label>' +
-                '<input name="击针刺激量' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="击针力上限">击针力上限</label>' +
-                '<label for="danwei">(N)</label>' +
-                '<input name="击针力上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="击针力下限">击针力下限</label>' +
-                '<label for="danwei">(N)</label>' +
-                '<input name="击针力下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="击针突出量上限">击针突出量上限</label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="击针突出量上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="击针突出量下限">击针突出量下限</label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="击针突出量下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="弹簧高度">弹簧高度</label>' +
-                '<label for="danwei">(mm)</label>' +
-                '<input name="弹簧高度' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="抗力">抗力</label>' +
-                '<label for="danwei">(N)</label>' +
-                '<input name="抗力' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="机械发火备注">机械发火备注</label>' +
-                '<textarea class = "form-control validate tm-small" rows = "1" name="机械发火备注' + ModuleNumber(obj) + '"></textarea>' +
-                '</div>' +
-                '<div class="form-group col-lg-12">' +
-                '<h2 class="tm-site-title mb-0">发火能量</h2>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="能量">能量</label>' +
-                '<input name="能量' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="能量单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="J">J</option>' +
-                '<option value="mJ">mJ</option>' +
-                '</select>' +
-                '</div>' +
-                '<input name="发火条件" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
-            $(addtr).appendTo(tables);
-        }
-
-        function 延期时间(obj) {
-            var tables = $("form#form");
-            var addtr =
-                '<a class="row " id="' + id + '">' +
-                '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
-                '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="phone">温度条件 </label>' +
-                '<label for="phone">(摄氏度) </label>' +
-                '<input name="温度条件' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="phone">延期时间上限 </label>' +
-                '<input name="延期时间上限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="phone">单位</label>' +
-                '<select class="custom-select" name="延期时间上限单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="ms">ms</option>' +
-                '<option value="s">s</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="phone">延期时间下限 </label>' +
-                '<input name="延期时间下限' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="phone">单位</label>' +
-                '<select class="custom-select" name="延期时间下限单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="ms">ms</option>' +
-                '<option value="s">s</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-4">' +
-                '<label for="phone">延期时间值 </label>' +
-                '<input name="延期时间值' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
-                '</div>' +
-                '<div class="form-group col-lg-2">' +
-                '<label for="phone">单位</label>' +
-                '<select class="custom-select" name="延期时间值单位' + ModuleNumber(obj) + '">' +
-                '<option value="请选择">请选择</option>' +
-                '<option value="ms">ms</option>' +
-                '<option value="s">s</option>' +
-                '</select>' +
-                '</div>' +
-                '<div class="form-group col-lg-6">' +
-                '<label for="phone">延期时间备注</label>' +
-                '<textarea class = "form-control validate tm-small" rows = "1" name="延期时间备注' + ModuleNumber(obj) + '"></textarea>' +
-                '</div>' +
-                '<input name="延期时间" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
-            $(addtr).appendTo(tables);
-        }
-
-        function delAchieve(obj) {
-            $("table#test #" + obj + "").remove();
-            $("form#form #" + obj + "").remove();
-        }
-
-        function FormSubmission() {
-            document.getElementById("form").submit();
-        }
-
-        function Img(obj) {
-            document.getElementById("fileInput" + obj + "").click();
-        }
-
-        function setCustomValidity(obj) {
-
-        }
     </script>
 </head>
 <body>
+    @{
+        List< ProductQuery.Models.Picture> img = (List<ProductQuery.Models.Picture>)ViewData["img"];
+        List<ProductQuery.Models.Conventional> conv = (List<ProductQuery.Models.Conventional>)ViewData["conv"];
+        List<ProductQuery.Models.CableDiameter> cable = (List<ProductQuery.Models.CableDiameter>)ViewData["cab"];
+        List<ProductQuery.Models.SpeedDetonation> speed = (List<ProductQuery.Models.SpeedDetonation>)ViewData["speed"];
+        List<ProductQuery.Models.InterfaceInformation> inter = (List<ProductQuery.Models.InterfaceInformation>)ViewData["interface"];
+        List<ProductQuery.Models.DcResistance> dc = (List<ProductQuery.Models.DcResistance>)ViewData["dc"];
+        List<ProductQuery.Models.IgnitionCondition> ignc = (List<ProductQuery.Models.IgnitionCondition>)ViewData["ignc"];
+        List<ProductQuery.Models.DelayTime> delay = (List<ProductQuery.Models.DelayTime>)ViewData["delay"];
+    }
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:10%;height:10%">
@@ -592,267 +44,843 @@
                                     <td class="tm-product-name">
                                         <ul class="navbar-nav">
                                             <li class="nav-item">
-                                                <a class="nav-link d-block" href="#主页信息" name="主页信息" onclick="PageInformation(this.id)">
+                                                <a class="nav-link d-block" href="#主页信息" name="主页信息">
                                                     主页信息
                                                 </a>
                                             </li>
                                         </ul>
                                     </td>
                                 </tr>
+                                @for (int i = 1; i <= img.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#产品示意图 @i" name="产品示意图">
+                                                        产品示意图 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                                @for (int i = 1; i <= conv.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#常规 @i" name="常规">
+                                                        常规 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                                @for (int i = 1; i <= cable.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#索普通直径 @i" name="索普通直径">
+                                                        索普通直径 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                                @for (int i = 1; i <= speed.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#爆速 @i" name="爆速">
+                                                        爆速 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                                @for (int i = 1; i <= inter.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#接口信息 @i" name="接口信息">
+                                                        接口信息 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                                @for (int i = 1; i <= dc.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#直流电阻 @i" name="直流电阻">
+                                                        直流电阻 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                                @for (int i = 1; i <= ignc.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#发火条件 @i" name="发火条件">
+                                                        发火条件 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                                @for (int i = 1; i <= delay.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#延期时间 @i" name="延期时间">
+                                                        延期时间 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:10%;overflow-y:scroll;overflow-x:hidden;height:640px;width:50%">
-                <form action="/Add/AddInformation" method="post" class="tm-signup-form row" id="form" name="基本信息">
-                    <a class="row ">
-                        <div class="form-group col-lg-12" id="主页信息">
-                            <h1 class="tm-site-title mb-0">基本信息</h1>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="类别">类别</label>
-                            @{ 
-                                ProductQuery.Models.Ignition ig = (ProductQuery.Models.Ignition)ViewData["ig"];
+            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:10%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
+                <form action="/Add/AddInformation" method="get" class="tm-signup-form row" id="form" name="基本信息">
+                    <div class="form-group col-lg-12" id="主页信息">
+                        <h1 class="tm-site-title mb-0">基本信息</h1>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="类别">类别</label>
+                        @{
+                            ProductQuery.Models.Ignition ig = (ProductQuery.Models.Ignition)ViewData["ig"];
+                        }
+                        @Html.TextBox("类别", ig.lb.ToString(), new { @class = "form-control validate" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="产品名称">产品名称</label>
+                        @Html.TextBox("产品名称", ig.cpmc.ToString(), new { @class = "form-control validate" })
+                    </div>
+                    @{ if (ig.sjdw.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="设计单位">设计单位</label>
+                                @Html.TextBox("设计单位", ig.sjdw.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.scdw.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="生产单位">生产单位</label>
+                                @Html.TextBox("生产单位", ig.scdw.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.xh.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="型号">型号</label>
+                                @Html.TextBox("型号", ig.xh.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.th.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="图号">图号</label>
+                                @Html.TextBox("图号", ig.th.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.dh.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="代号">代号</label>
+                                @Html.TextBox("代号", ig.dh.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.yzrq.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="研制日期">研制日期</label>
+                                @Html.TextBox("研制日期", ig.yzrq.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.dxrq.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="设计定型日期">设计定型日期</label>
+                                @Html.TextBox("设计定型日期", ig.dxrq.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.gydx.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="生产定型日期">生产定型日期</label>
+                                @Html.TextBox("生产定型日期", ig.gydx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.yt.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="用途">用途</label>
+                                @Html.TextBox("用途", ig.yt.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.xtzc.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="系统组成">系统组成</label>
+                                @Html.TextBox("系统组成", ig.xtzc.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.mqjd.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="目前阶段">目前阶段</label>
+                                @Html.TextBox("目前阶段", ig.mqjd.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.jxxn.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="机械性能">机械性能</label>
+                                @Html.TextBox("机械性能", ig.jxxn.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.dxn.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="电性能">电性能</label>
+                                @Html.TextBox("电性能", ig.dxn.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.gn.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="功能">功能</label>
+                                @Html.TextBox("功能", ig.gn.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.hjcs.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="环境试验">环境试验</label>
+                                @Html.TextBox("环境试验", ig.hjcs.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.jssm.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="桥丝数目">桥丝数目</label>
+                                @Html.TextBox("桥丝数目", ig.jssm.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.zcsm.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="贮存寿命">贮存寿命</label>
+                                <label for="单位">(年)</label>
+                                @Html.TextBox("贮存寿命", ig.zcsm.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.ccsmbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="贮存寿命备注">贮存寿命备注</label>
+                                @Html.TextArea("贮存寿命备注", ig.ccsmbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        } }
+                    @{ if (ig.kkd.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="可靠度">可靠度</label>
+                                @Html.TextBox("可靠度", ig.kkd.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.zyxnzb.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="主要性能指标">主要性能指标</label>
+                                @Html.TextBox("主要性能指标", ig.zyxnzb.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.syhjzsfw.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="试验环境指标范围">试验环境指标范围</label>
+                                @Html.TextBox("试验环境指标范围", ig.syhjzsfw.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.jbxn.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="基本性能">基本性能</label>
+                                @Html.TextBox("基本性能", ig.jbxn.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.kd.ToString() != "0" || ig.jx.ToString() != "0" || ig.zcd.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">常规</h2>
+                                <label for="danwei">（单位：mm）</label>
+                            </div>
+                        } }
+                    @{ if (ig.kd.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="宽度">宽度</label>
+                                @Html.TextBox("宽度", ig.kd.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.jx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="脚线">脚线</label>
+                                @Html.TextBox("脚线", ig.jx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.zcd.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="总长度">总长度</label>
+                                @Html.TextBox("总长度", ig.zcd.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.gbhd.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">隔板厚度</h2>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="隔板厚度">隔板厚度</label>
+                                @Html.TextBox("隔板厚度", ig.gbhd.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.szjsx.ToString() != "0" || ig.szjxx.ToString() != "0" || ig.sMDFyzzj.ToString() != "0" || ig.sbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">索</h2>
+                                <label for="danwei">（单位：mm）</label>
+                            </div>
+                        } }
+                    @{ if (ig.szjsx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="索直径上限">索直径上限</label>
+                                @Html.TextBox("索直径上限", ig.szjsx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.szjxx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="索直径下限">索直径下限</label>
+                                @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.sMDFyzzj.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="索MDF（银质）直径">索MDF（银质）直径</label>
+                                @Html.TextBox("索MDF（银质）直径", ig.sMDFyzzj.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.sbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="索备注">索备注</label>
+                                @Html.TextArea("索备注", ig.sbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        } }
+                    @{ if (ig.db.ToString() != "0" || ig.djx.ToString() != "0" || ig.lfdjbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">六方对角</h2>
+                                <label for="六方对角">（单位：mm）</label>
+                            </div>
+                        } }
+                    @{ if (ig.db.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="对边">对边</label>
+                                @Html.TextBox("对边", ig.db.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.djx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="对角线">对角线</label>
+                                @Html.TextBox("对角线", ig.djx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.lfdjbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="六方对角备注">六方对角备注</label>
+                                @Html.TextArea("六方对角备注", ig.lfdjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        } }
+                    @{ if (ig.jcdl.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">检测电流</h2>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="检测电流">检测电流</label>
+                                <label for="danwei">(mA)</label>
+                                @Html.TextBox("检测电流", ig.jcdl.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
 
-                            }
-                            @Html.TextBox("类别", ig.lb.ToString(),new { @class= "form-control validate"})
+                    @{ if (ig.jddr.ToString() != "0" || ig.jddy.ToString() != "0" || ig.cldz.ToString() != "0" || ig.jdgdbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">静电感度</h2>
+                            </div>
+                        } }
+                    @{ if (ig.jddr.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="静电电容">静电电容</label>
+                                <label for="danwei">(pf)</label>
+                                @Html.TextBox("静电电容", ig.jddr.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.jddy.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="静电电压">静电电压</label>
+                                <label for="danwei">(V)</label>
+                                @Html.TextBox("静电电压", ig.jddy.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.cldz.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="串联电阻">串联电阻</label>
+                                <label for="danwei">(Ω)</label>
+                                @Html.TextBox("串联电阻", ig.cldz.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.jdgdbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="静电感度备注">静电感度备注</label>
+                                @Html.TextArea("静电感度备注", ig.jdgdbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        } }
+                    @{ if (ig.zysjbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">作用时间瞬发度</h2>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="作用时间备注">作用时间备注</label>
+                                @Html.TextArea("作用时间备注", ig.zysjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        } }
+                    @{ if (ig.jgs.ToString() != "0" || ig.glz.ToString() != "0" || ig.aqdlbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">安全电流</h2>
+                            </div>
+                        } }
+                    @{ if (ig.jgs.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="桥个数">桥个数</label>
+                                @Html.TextBox("桥个数", ig.jgs.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.glz.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="功率值">功率值</label>
+                                <label for="danwei">(W)</label>
+                                @Html.TextBox("功率值", ig.glz.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.aqdlbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="安全电流备注">安全电流备注</label>
+                                @Html.TextArea("安全电流备注", ig.aqdlbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        } }
+                    @{ if (ig.aqdydy.ToString() != "0" || ig.aqdydr.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">安全电压</h2>
+                            </div>
+                        } }
+                    @{ if (ig.aqdydy.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="安全电压电压">安全电压电压</label>
+                                <label for="danwei">(V)</label>
+                                @Html.TextBox("安全电压电压", ig.aqdydy.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.aqdydr.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="安全电压电容">安全电压电容</label>
+                                <label for="danwei">(pf)</label>
+                                @Html.TextBox("安全电压电容", ig.aqdydr.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.rsylsx.ToString() != "0" || ig.rsylxx.ToString() != "0" || ig.rsylbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-12">
+                                <h2 class="tm-site-title mb-0">燃烧压力</h2>
+                                <label for="danwei">单位：(MPa)</label>
+                            </div>
+                        } }
+                    @{ if (ig.rsylsx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="燃烧压力上限">燃烧压力上限</label>
+                                @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.rsylxx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="燃烧压力下限">燃烧压力下限</label>
+                                @Html.TextBox("燃烧压力下限", ig.rsylxx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+                    @{ if (ig.rsylbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="燃烧压力备注">燃烧压力备注</label>
+                                @Html.TextArea("燃烧压力备注", ig.rsylbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        } }
+                    @{int imgs = 1; }
+                    @foreach (var im in img)
+                    {
+                        <div class="form-group col-lg-12" id="产品示意图 @imgs">
+                            <h1 class="tm-site-title mb-0">产品示意图 @imgs</h1>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="产品名称">产品名称</label>
-                            @Html.TextBox("产品名称", ig.cpmc.ToString(), new { @class = "form-control validate" })
+                        imgs++;
+                        <div class="tm-avatar-container">
+                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(im.cpy)" alt="" class="tm-avatar img-fluid mb-4">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="设计单位">设计单位</label>
-                            @Html.TextBox("设计单位", ig.sjdw.ToString(), new { @class = "form-control validate" })
+                    }
+                    @{int cons = 1; }
+                    @foreach (var con in conv)
+                    {
+                        <div class="form-group col-lg-12" id="常规 @cons">
+                            <h1 class="tm-site-title mb-0">常规 @cons</h1>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="生产单位">生产单位</label>
-                            @Html.TextBox("生产单位", ig.scdw.ToString(), new { @class = "form-control validate" })
+                        cons++;
+                        if (con.ccmc.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="尺寸名称">尺寸名称</label>
+                                @Html.TextBox("尺寸名称", con.ccmc.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (con.zj.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="直径">直径</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("直径", con.zj.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (con.cd.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="长度">长度</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("长度", con.cd.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (con.gd.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="高度">高度</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("高度", con.gd.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                    }
+                    @{int cabs = 1; }
+                    @foreach (var cab in cable)
+                    {
+                        <div class="form-group col-lg-12" id="索普通直径 @cabs">
+                            <h1 class="tm-site-title mb-0">索普通直径 @cabs</h1>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="型号">型号</label>
-                            @Html.TextBox("型号", ig.xh.ToString(), new { @class = "form-control validate" })
+                        cabs++;
+                        if (cab.ptszj.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="索普通直径">索普通直径</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("索普通直径", cab.ptszj.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                    }
+                    @{int speeds = 1; }
+                    @foreach (var s in speed)
+                    {
+                        <div class="form-group col-lg-12" id="爆速 @speeds">
+                            <h1 class="tm-site-title mb-0">爆速 @speeds</h1>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="图号">图号</label>
-                            @Html.TextBox("图号", ig.th.ToString(), new { @class = "form-control validate" })
+                        speeds++;
+                        if (s.bssx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="爆速上限">爆速上限</label>
+                                <label for="danwei">(m/s)</label>
+                                @Html.TextBox("爆速上限", s.bssx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (s.bsxx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="爆速下限">爆速下限</label>
+                                <label for="danwei">(m/s)</label>
+                                @Html.TextBox("爆速下限", s.bsxx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (s.bsbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="爆速备注">爆速备注</label>
+                                @Html.TextArea("爆速备注", s.bsbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        }
+                    }
+                    @{int inters = 1; }
+                    @foreach (var inte in inter)
+                    {
+                        <div class="form-group col-lg-12" id="接口信息 @inters">
+                            <h1 class="tm-site-title mb-0">接口信息 @inters</h1>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="代号">代号</label>
-                            @Html.TextBox("代号", ig.dh.ToString(), new { @class = "form-control validate" })
+                        inters++;
+                        if (inte.lw.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="螺纹">螺纹</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("螺纹", inte.lw.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (inte.lj.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="螺距">螺距</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("螺距", inte.lj.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (inte.gc.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="公差">公差</label>
+                                @Html.TextBox("公差", inte.gc.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (inte.cd.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="长度">长度</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("长度", inte.cd.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (inte.jkxxbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="接口信息备注">接口信息备注</label>
+                                @Html.TextArea("接口信息备注", inte.jkxxbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        }
+                    }
+                    @{int ds = 1; }
+                    @foreach (var d in dc)
+                    {
+                        <div class="form-group col-lg-12" id="直流电阻 @ds">
+                            <h1 class="tm-site-title mb-0">直流电阻 @ds</h1>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="研制日期">研制日期</label>
-                            @Html.TextBox("研制日期", ig.yzrq.ToString(), new { @class = "form-control validate" })
+                        ds++;
+                        if (d.dzqgs.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="桥个数">桥个数</label>
+                                @Html.TextBox("桥个数", d.dzqgs.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (d.dzbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="电阻备注">电阻备注</label>
+                                @Html.TextArea("电阻备注", d.dzbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        }
+                    }
+                    @{int igncs = 1; }
+                    @foreach (var ign in ignc)
+                    {
+                        <div class="form-group col-lg-12" id="发火条件 @igncs">
+                            <h1 class="tm-site-title mb-0">发火条件 @igncs</h1>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="设计定型日期">设计定型日期</label>
-                            @Html.TextBox("设计定型日期", ig.dxrq.ToString(), new { @class = "form-control validate" })
+                        igncs++;
+                        if (ign.qgs.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="桥个数">桥个数</label>
+                                @Html.TextBox("桥个数", ign.qgs.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.fhdy.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="发火电压">发火电压</label>
+                                <label for="danwei">(V)</label>
+                                @Html.TextBox("发火电压", ign.fhdy.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.fhdysx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="发火电压上限">发火电压上限</label>
+                                <label for="danwei">(V)</label>
+                                @Html.TextBox("发火电压上限", ign.fhdysx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.fhdyxx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="发火电压下限">发火电压下限</label>
+                                <label for="danwei">(V)</label>
+                                @Html.TextBox("发火电压下限", ign.fhdyxx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.fhdybz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="电压发火备注">电压发火备注</label>
+                                @Html.TextArea("电压发火备注", ign.fhdybz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        }
+                        if (ign.dlfhbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="电流发火备注">电流发火备注</label>
+                                @Html.TextArea("电流发火备注", ign.dlfhbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        }
+                        if (ign.jzcjl.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="击针刺激量">击针刺激量</label>
+                                <label for="danwei">(g•cm)</label>
+                                @Html.TextBox("击针刺激量", ign.jzcjl.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.jzlsx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="击针力上限">击针力上限</label>
+                                <label for="danwei">(N)</label>
+                                @Html.TextBox("击针力上限", ign.jzlsx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.jzlxx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="击针力下限">击针力下限</label>
+                                <label for="danwei">(N)</label>
+                                @Html.TextBox("击针力下限", ign.jzlxx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.jztclsx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="击针突出量上限">击针突出量上限</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("击针突出量上限", ign.jztclsx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.jztclxx.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="击针突出量下限">击针突出量下限</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("击针突出量下限", ign.jztclxx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.thgd.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="弹簧高度">弹簧高度</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("弹簧高度", ign.thgd.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.kl.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="抗力">抗力</label>
+                                <label for="danwei">(N)</label>
+                                @Html.TextBox("抗力", ign.kl.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (ign.jxfhbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="机械发火备注">机械发火备注</label>
+                                @Html.TextArea("机械发火备注", ign.jxfhbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        }
+                    }
+                    @{int des = 1; }
+                    @foreach (var de in delay)
+                    {
+                        <div class="form-group col-lg-12" id="延期时间 @des">
+                            <h1 class="tm-site-title mb-0">延期时间 @des</h1>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="生产定型日期">生产定型日期</label>
-                            @Html.TextBox("生产定型日期", ig.gydx.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="用途">用途</label>
-                            @Html.TextBox("用途", ig.yt.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="系统组成">系统组成</label>
-                            @Html.TextBox("系统组成", ig.xtzc.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="目前阶段">目前阶段</label>
-                            @Html.TextBox("目前阶段", ig.mqjd.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="机械性能">机械性能</label>
-                            @Html.TextBox("机械性能", ig.jxxn.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="电性能">电性能</label>
-                            @Html.TextBox("电性能", ig.dxn.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="功能">功能</label>
-                            @Html.TextBox("功能", ig.gn.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="环境试验">环境试验</label>
-                            @Html.TextBox("环境试验", ig.hjcs.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="桥丝数目">桥丝数目</label>
-                            @Html.TextBox("桥丝数目", ig.jssm.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="贮存寿命">贮存寿命</label>
-                            <label for="单位">(年)</label>
-                            @Html.TextBox("贮存寿命", ig.zcsm.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="贮存寿命备注">贮存寿命备注</label>
-                            @Html.TextArea("贮存寿命备注",ig.ccsmbz.ToString(),new { @class = "form-control validate tm-small", rows = "1" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="可靠度">可靠度</label>
-                            @Html.TextBox("可靠度", ig.kkd.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="主要性能指标">主要性能指标</label>
-                            @Html.TextBox("主要性能指标", ig.zyxnzb.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="试验环境指标范围">试验环境指标范围</label>
-                            @Html.TextBox("试验环境指标范围", ig.syhjzsfw.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="基本性能">基本性能</label>
-                            @Html.TextBox("基本性能", ig.jbxn.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">常规</h2>
-                            <label for="danwei">（单位：mm）</label>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="宽度">宽度</label>
-                            @Html.TextBox("宽度", ig.kd.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="脚线">脚线</label>
-                            @Html.TextBox("脚线", ig.jx.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="总长度">总长度</label>
-                            @Html.TextBox("总长度", ig.zcd.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">隔板厚度</h2>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="隔板厚度">隔板厚度</label>
-                            @Html.TextBox("隔板厚度", ig.gbhd.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">索</h2>
-                            <label for="danwei">（单位：mm）</label>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="索直径上限">索直径上限</label>
-                            @Html.TextBox("索直径上限", ig.szjsx.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="索直径下限">索直径下限</label>
-                            @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="索MDF（银质）直径">索MDF（银质）直径</label>
-                            @Html.TextBox("索MDF（银质）直径", ig.sMDFyzzj.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="索备注">索备注</label>
-                            @*@Html.TextArea("索备注", ig.sbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })*@
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">六方对角</h2>
-                            <label for="六方对角">（单位：mm）</label>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="对边">对边</label>
-                            @Html.TextBox("对边", ig.db.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="对角线">对角线</label>
-                            @Html.TextBox("对角线", ig.djx.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="六方对角备注">六方对角备注</label>
-                            @Html.TextArea("六方对角备注", ig.lfdjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">检测电流</h2>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="检测电流">检测电流</label>
-                            <label for="danwei">(mA)</label>
-                            @Html.TextBox("检测电流", ig.jcdl.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">静电感度</h2>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="静电电容">静电电容</label>
-                            <label for="danwei">(pf)</label>
-                            @Html.TextBox("静电电容", ig.jddr.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="静电电压">静电电压</label>
-                            <label for="danwei">(V)</label>
-                            @Html.TextBox("静电电压", ig.jddy.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="串联电阻">串联电阻</label>
-                            <label for="danwei">(Ω)</label>
-                            @Html.TextBox("串联电阻", ig.cldz.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="静电感度备注">静电感度备注</label>
-                            @*@Html.TextArea("静电感度备注", ig.jdgdbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })*@
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">作用时间瞬发度</h2>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="作用时间备注">作用时间备注</label>
-                            @Html.TextArea("作用时间备注", ig.zysjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">安全电流</h2>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="桥个数">桥个数</label>
-                            @Html.TextBox("桥个数", ig.jgs.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="功率值">功率值</label>
-                            <label for="danwei">(W)</label>
-                            @Html.TextBox("功率值", ig.glz.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="安全电流备注">安全电流备注</label>
-                            @Html.TextArea("安全电流备注", ig.aqdlbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">安全电压</h2>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="安全电压电压">安全电压电压</label>
-                            <label for="danwei">(V)</label>
-                            @Html.TextBox("安全电压电压", ig.aqdydy.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="安全电压电容">安全电压电容</label>
-                            <label for="danwei">(pf)</label>
-                            @Html.TextBox("安全电压电容", ig.aqdydr.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <h2 class="tm-site-title mb-0">燃烧压力</h2>
-                            <label for="danwei">单位：(MPa)</label>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="燃烧压力上限">燃烧压力上限</label>
-                            @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="燃烧压力下限">燃烧压力下限</label>
-                            @Html.TextBox("燃烧压力下限", ig.rsylxx.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="燃烧压力备注">燃烧压力备注</label>
-                            @Html.TextArea("燃烧压力备注", ig.rsylbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
-                        </div>
-                    </a>
+                        des++;
+                        if (de.wdtj.ToString() != "0")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="温度条件">温度条件</label>
+                                <label for="danwei">(摄氏度) </label>
+                                @Html.TextBox("温度条件", de.wdtj.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+                        if (de.yqsjbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="延期时间备注">延期时间备注</label>
+                                @Html.TextArea("延期时间备注", de.yqsjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            </div>
+                        }
+                    }
                 </form>
             </div>
         </div>

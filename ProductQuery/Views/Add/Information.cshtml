@@ -17,9 +17,19 @@
     <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
     <title></title>
     <script type="text/javascript">
+        //添加
+        function openAddWin() {
+            //设定title内容
+            var title = "<a><span class='glyphicon glyphicon-plus'></span>新增点火装置</a>";
+            var url = "AddInformation";
+            var width = "100%";
+            var height = "800px";
+            //调用位于index页面的openWin()函数
+            parent.openWin(title, url, width, height);
+        }
         //查看
         function openSelectWin(ignitionid) {
-            var title = "<span class='glyphicon glyphicon-edit'> 信息查看";
+            var title = "<span class='glyphicon glyphicon-edit'> 点火装置信息查看";
             var url = "Ignition_select?ignitionid=" + ignitionid;
             var width = "100%";
             var height = "800px";
@@ -29,6 +39,17 @@
 </head>
 <body>
     <div class="container mt-5">
+        <div class="row tm-content-row">
+            <div class="col-12 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                    <div class="form-inline">
+                        <a class="btn btn-success btn-sm" href="javascript:openAddWin();">
+                            <span class="glyphicon glyphicon-plus">添加点火装置</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row tm-content-row">
             <div class="col-12 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">

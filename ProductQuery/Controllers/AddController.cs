@@ -2,20 +2,16 @@
 using System;
 using System.Collections.Generic;
 using ProductQuery.Controllers.IMeasurementConverters;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
+using ProductQuery.Controllers.IDbDrives;
 using System.Drawing;
 using System.IO;
-using static System.Net.Mime.MediaTypeNames;
-using ProductQuery.Controllers.IDbDrives;
 
 namespace ProductQuery.Controllers
 {
     public class AddController : Controller
     {
-        ProductQueryDB db = new ProductQueryDB();
         IDbDrive dbDrive = new LingImp();
         public ActionResult AddInformation()
         {
@@ -33,15 +29,32 @@ namespace ProductQuery.Controllers
         public ActionResult Ignition_select(int ignitionid)
         {
             Ignition ignition = dbDrive.FindIgnition(ignitionid);
+            List<Picture> pictures = ignition.Pictures;
+            List<Conventional> conventionals= ignition.Conventionals;
+            List<CableDiameter> cableDiameters = ignition.CableDiameters;
+            List<SpeedDetonation> speedDetonations = ignition.SpeedDetonations;
+            List<InterfaceInformation> interfaceInformation = ignition.InterfaceInformations;
+            List<DcResistance> dcResistances = ignition.DcResistances;
+            List<IgnitionCondition> ignitionConditions = ignition.IgnitionConditions;
+            List<DelayTime> delayTimes = ignition.DelayTimes;
+            ViewData["conv"] = conventionals;
+            ViewData["img"] = pictures;
             ViewData["ig"] = ignition;
-            return View(ViewData["ig"]);
+            ViewData["cab"] = cableDiameters;
+            ViewData["speed"] = speedDetonations;
+            ViewData["interface"] = interfaceInformation;
+            ViewData["dc"] = dcResistances;
+            ViewData["ignc"] = ignitionConditions;
+            ViewData["delay"] = delayTimes;
+            return View();
         }
 
         //添加点火装置
         [HttpPost]
         public ActionResult AddInformation(FormCollection collection,Ignition ignition,Conventional conventional)
         {
-            ignition.lb = collection["类别"];
+            if (collection["类别"] != "请选择")
+                ignition.lb = collection["类别"];
             ignition.cpmc = collection["产品名称"];
             ignition.sjdw = collection["设计单位"];
             ignition.scdw = collection["生产单位"];
@@ -87,7 +100,7 @@ namespace ProductQuery.Controllers
                 ignition.sMDFyzzj = double.Parse(collection["索MDF（银质）直径"]);
             ignition.sbz = collection["索备注"];
             if (collection["对边"] != "")
-                ignition.db = int.Parse(collection["对边"]);
+                ignition.db = double.Parse(collection["对边"]);
             if (collection["对角线"] != "")
                 ignition.djx = double.Parse(collection["对角线"]);
             ignition.lfdjbz = collection["六方对角备注"];
@@ -164,14 +177,13 @@ namespace ProductQuery.Controllers
             AddDcResistance(collection, ignition);
             AddIgnitionCondition(collection, ignition);
             AddDelayTime(collection, ignition);
-            //AddImage(collection, ignition, imgfile);
-            db.Ignition.Add(ignition);
-            db.SaveChanges();
+            AddImage(collection, ignition);
+            dbDrive.Insert(ignition);
             return View();
         }
 
         //添加图片
-        private void AddImage(FormCollection collection, Ignition ignition, HttpPostedFileBase imgfile)
+        private void AddImage(FormCollection collection, Ignition ignition)
         {
             int s = 0;
             if (collection["产品示意图"] != null)
@@ -182,16 +194,14 @@ namespace ProductQuery.Controllers
                     s = ((collection["产品示意图"].Length - 1) / 2) + 1;
                 for (int i = 1; i <= s; i++)
                 {
-                    //Picture picture = new Picture();
-                    //string path = Application.StartupPath;
-                    //string fullPath = path;
-                    //Bitmap bmp = new Bitmap(Image.FromFile(fullPath));
-                    //MemoryStream ms = new MemoryStream();
-                    //bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                    //ms.Flush();
-                    //byte[] bmpBytes = ms.ToArray();
-                    //picture.cpy = bmpBytes;
-                    //ignition.Pictures.Add(picture);
+                    Picture picture = new Picture();
+                    Image image = Image.FromFile(collection["产品示意图" + i]);
+                    MemoryStream ms = new MemoryStream();
+                    image.Save(ms, image.RawFormat);
+                    byte[] byteArray = ms.ToArray();
+                    ms.Close();
+                    picture.cpy = byteArray;
+                    ignition.Pictures.Add(picture);
                 }
             }
         }
@@ -212,8 +222,8 @@ namespace ProductQuery.Controllers
                     conventional.ccmc = collection["尺寸名称" + i];
                     if (collection["直径" + i] != "")
                         conventional.zj = double.Parse(collection["直径" + i]);
-                    if (collection["长度" + i] != "")
-                        conventional.cd = double.Parse(collection["长度" + i]);
+                    if (collection["常规长度" + i] != "")
+                        conventional.cd = double.Parse(collection["常规长度" + i]);
                     if (collection["高度" + i] != "")
                         conventional.gd = double.Parse(collection["高度" + i]);
                     ignition.Conventionals.Add(conventional);
@@ -282,8 +292,8 @@ namespace ProductQuery.Controllers
                     if (collection["螺距" + i] != "")
                         interfaceInformation.lj = double.Parse(collection["螺距" + i]);
                     interfaceInformation.gc = collection["公差" + i];
-                    if (collection["长度" + i] != "")
-                        interfaceInformation.cd = double.Parse(collection["长度" + i]);
+                    if (collection["接口信息长度" + i] != "")
+                        interfaceInformation.cd = double.Parse(collection["接口信息长度" + i]);
                     interfaceInformation.jkxxbz = collection["接口信息备注" + i];
                     ignition.InterfaceInformations.Add(interfaceInformation);
                 }
@@ -408,7 +418,7 @@ namespace ProductQuery.Controllers
                         ignitionCondition.thgd = double.Parse(collection["弹簧高度" + i]);
                     if (collection["抗力" + i] != "")
                         ignitionCondition.kl = double.Parse(collection["抗力" + i]);
-                    //ignitionCondition.jxfhbz = collection["机械发火备注" + i];
+                    ignitionCondition.jxfhbz = collection["机械发火备注" + i];
                     if (collection["能量单位" + i] != "请选择")
                     {
                         string unit = collection["能量单位" + i];
@@ -523,5 +533,7 @@ namespace ProductQuery.Controllers
             dbDrive.Delete(ignition);
             return RedirectToAction("Information", "Add");
         }
+
+        //必填的验证
     }
 }
