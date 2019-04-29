@@ -137,7 +137,6 @@
                 '</div>' +
                 '<label>选择图片</label>' +
                 '<label for="验证" style="color:orangered;display:none" id="cpsyt">*请选择图片</label>' +
-                '<label for="验证" style="color:orangered;display:none" id="cpsytgs">*图片格式错误</label>' +
                 '<input name="产品示意图' + ModuleNumber(obj) + '" type="file" id="file' + ModuleNumber(obj) +'" accept="image/jpeg,image/jpg,image/png,image/gif"/>' +
                 '<div class="tm-avatar-container">'+
                 '<img id="imgshow" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4"/>' +
@@ -576,6 +575,8 @@
         }
 
         function FormSubmission() {
+            
+            alert(document.getElementsByName("产品示意图").values);
             if (document.getElementById("类别").value == "请选择" || document.getElementById("产品名称").value == ""){
                 if (document.getElementById("类别").value == "请选择") 
                     document.getElementById("lb").style.display = "";

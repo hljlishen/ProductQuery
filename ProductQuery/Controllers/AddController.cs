@@ -18,14 +18,13 @@ namespace ProductQuery.Controllers
             return View();
         }
 
-        public ActionResult Information()
-        {
-            List<Ignition> ign = dbDrive.GetAllIgnitions();
-            return View(ign);
-        }
-
         public ActionResult Information(List<Ignition> ignitions)
         {
+            if (ignitions == null)
+            {
+                List<Ignition> ign = dbDrive.GetAllIgnitions();
+                return View(ign);
+            }
             return View(ignitions);
         }
 
