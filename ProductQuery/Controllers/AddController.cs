@@ -24,6 +24,11 @@ namespace ProductQuery.Controllers
             return View(ign);
         }
 
+        public ActionResult Information(List<Ignition> ignitions)
+        {
+            return View(ignitions);
+        }
+
         //打开查看页面
         [ValidateInput(false)]
         public ActionResult Ignition_select(int ignitionid)
