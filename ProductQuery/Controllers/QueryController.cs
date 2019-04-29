@@ -46,10 +46,9 @@ namespace ProductQuery.Controllers
                 selectList.conditionValueUnitVal = (string)token[i]["conditionValueUnitVal"]["value"];
                 selectLists.Add(selectList);
             }
-
             Query query = new Query(selectLists);
             List<Ignition> ignitions = query.Process();
-            return View(ignitions);
+            return RedirectToAction("User_list", "AdminUser");
         }
     }
 }
