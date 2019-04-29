@@ -18,10 +18,14 @@ namespace ProductQuery.Controllers
             return View();
         }
 
-        public ActionResult Information()
+        public ActionResult Information(List<Ignition> ignitions)
         {
-            List<Ignition> ign = dbDrive.GetAllIgnitions();
-            return View(ign);
+            if (ignitions == null)
+            {
+                List<Ignition> ign = dbDrive.GetAllIgnitions();
+                return View(ign);
+            }
+            return View(ignitions);
         }
 
         //打开查看页面
