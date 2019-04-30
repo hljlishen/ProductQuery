@@ -1,0 +1,62 @@
+﻿@model ProductQuery.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo-style.css" rel="stylesheet" />
+    <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+       
+    </script>
+
+</head>
+<body>
+    <div class="row tm-content-row">
+        <div class="tm-block-col tm-col-account-settings">
+            <div class="tm-bg-primary-dark tm-block tm-block-settings">
+
+                <table class="table" style="border:1px;">
+
+                    <tr>
+                        <td align="right" valign="middle">
+                            @Html.LabelFor(user => user.name)
+                        </td>
+                        <td>
+                            @Model.name
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="right" valign="middle">
+                            @Html.LabelFor(user => user.Phone)
+                        </td>
+                        <td>
+                            @Model.Phone
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="right" valign="middle">
+                            @Html.LabelFor(user => user.permissions)
+                        </td>
+                        <td>
+                            @Model.permissions
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

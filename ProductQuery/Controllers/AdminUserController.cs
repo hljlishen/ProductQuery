@@ -33,6 +33,20 @@ namespace ProductQuery.Controllers
             return Json(dbDrive.Insert(user));
         }
 
+        //查询用户
+        public ActionResult User_query(string username)
+        {
+            return View("User_list", dbDrive.QueryUsers(username));
+        }
+
+        //打开用户详情页面
+        [ValidateInput(false)]
+        public ActionResult User_details(int userid)
+        {
+            User user = dbDrive.FindUser(userid);
+            return View(user);
+        }
+
         //打开用户更新页面
         [ValidateInput(false)]
         public ActionResult User_update(int userid)
@@ -49,12 +63,21 @@ namespace ProductQuery.Controllers
         }
 
         //删除用户
-        public ActionResult User_delete(int userid)
+        [HttpPost]
+        public JsonResult User_delete(int userid)
         {
             User user = new User();
             user.id = userid;
-            dbDrive.Delete(user);
-            return RedirectToAction("User_list", "AdminUser");
+            return Json(dbDrive.Delete(user));
+        }
+
+        //重置用户密码
+        [HttpPost]
+        public JsonResult User_resetPassword(int userid)
+        {
+            User user = dbDrive.FindUser(userid);
+            user.password = "admin";
+            return Json(dbDrive.Udpdate(user));
         }
     }
 }

@@ -4,14 +4,14 @@
 }
 
 <script type="text/javascript">
-    //权限判断
-    function myfun() {
-        $("#look").hide();
-    }
-    /*用window.onload调用myfun()*/
+    ////权限判断
+    //function myfun() {
+    //    $("#look").hide();
+    //}
+    ///*用window.onload调用myfun()*/
 
-    // 不要括号
-    window.onload = myfun;
+    //// 不要括号
+    //window.onload = myfun;
 
     //添加
     function openAddWin() {
@@ -19,18 +19,80 @@
         var title = "<a><span class='glyphicon glyphicon-plus'></span>新增管理员</a>";
         var url = "User_add";
         var width = "100%";
-        var height = "600px";
+        var height = "500px";
         //调用位于index页面的openWin()函数
+        parent.openWin(title, url, width, height);
+    }
+
+    //详情
+    function openDetailsWin(userid) {
+        var title = "<span class='glyphicon glyphicon-edit'> </span>查看管理员信息";
+        var url = "User_details?userId=" + userid;
+        var width = "100%";
+        var height = "500px";
         parent.openWin(title, url, width, height);
     }
 
     //修改
     function openUpdateWin(userid) {
-        var title = "<span class='glyphicon glyphicon-edit'> 修改管理员信息";
+        var title = "<span class='glyphicon glyphicon-edit'> </span>修改管理员信息";
         var url = "User_update?userId=" + userid;
         var width = "100%";
-        var height = "300px";
+        var height = "500px";
         parent.openWin(title, url, width, height);
+    }
+
+    //删除
+    function deleteUser(userId) {
+        var flag = confirm("是否要删除信息？");
+        if (flag) {
+            $.ajax({
+                url: "@Url.Action("User_delete")",
+                type: "post",
+                data: {
+                    "userId": userId
+                },
+                dataType: "json",
+                success: function (data) {
+                    data = eval("(" + data + ")");
+                    if (data) {
+                        alert("删除成功！");
+                        parent.openFrame("User_list");
+                    } else {
+                        alert("删除失败！");
+                    }
+                }
+            });
+        }
+    }
+
+    //重置密码
+    function resetPassword(userId,name) {
+        var flag = confirm("是否要重置用户:" + name + "的密码？");
+        if (flag) {
+            $.ajax({
+                url: "@Url.Action("User_resetPassword")",
+                type: "post",
+                data: {
+                    "userId": userId
+                },
+                dataType: "json",
+                success: function (data) {
+                    data = eval("(" + data + ")");
+                    if (data) {
+                        alert(name+"的密码修改为：admin！");
+                    } else {
+                        alert("修改失败！");
+                    }
+                }
+            });
+        }
+    }
+
+    //角色查询
+    function queryByName(){
+        var username = $("#username").val();
+        location.href = "User_query?username=" + username;
     }
 
     //授权
@@ -51,6 +113,13 @@
                 <div class="form-inline">
                     <a class="btn btn-success btn-sm" href="javascript:openAddWin();">
                         <span class="glyphicon glyphicon-plus">添加用户</span>
+                    </a>
+                    <input type="text" class="form-control validate" id="username" name="username" placeholder="输入用户名" />
+                    @*<a class="btn btn-primary btn-sm" href="../AdminUser/User_query?username = " $("#username").val();"">
+                        <span class="glyphicon glyphicon-plus">查询</span>
+                    </a>*@
+                    <a class="btn btn-primary btn-sm" href="javascript:queryByName();">
+                        <span class="glyphicon glyphicon-plus">查询</span>
                     </a>
                 </div>
             </div>
@@ -79,14 +148,17 @@
                                 <td><b>@user.Phone</b></td>
                                 <td><b>@user.permissions</b></td>
                                 <td>
-                                    <a href="javascript:openUpdateWin(@user.id)" class="tm-product-delete-link" id="look">
+                                    <a href="javascript:openDetailsWin(@user.id)" class="tm-product-delete-link" id="look">
                                         <i class="far fa-eye tm-product-delete-icon"></i>
                                     </a>
                                     <a href="javascript:openUpdateWin(@user.id)" class="tm-product-delete-link">
                                         <i class="fa fa-cogs tm-product-delete-icon"></i>
                                     </a>
-                                    <a href="@Url.Content("~/AdminUser/User_delete?userid="+@user.id)" class="tm-product-delete-link">
+                                    <a href="javascript:deleteUser(@user.id)" class="tm-product-delete-link">
                                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                    </a>
+                                    <a href="javascript:resetPassword('@user.id' ,'@user.name')" class="tm-product-delete-link">
+                                        <i class="fa fa-recycle tm-product-delete-icon"></i>
                                     </a>
                                 </td>
                             </tr>
