@@ -15,7 +15,7 @@
 
     <script type="text/javascript">
         function openFrame(url) {
-            location.href = url; 
+            location.href = url;
         }
 
         //打开模态框函数
@@ -52,14 +52,14 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="../Admin/Instrument">
-                            <i class="fas fa-tachometer-alt"></i>
-                            仪表盘
-                            <span class="sr-only">(current)</span>
+                                <i class="fas fa-tachometer-alt"></i>
+                                仪表盘
+                                <span class="sr-only">(current)</span>
                             </a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="Dictionary">
+                            <a class="nav-link" href="../Admin/Dictionary">
                                 <i class="fa fa-book"></i>
                                 <span>
                                     系统字典
@@ -84,9 +84,24 @@
 
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link d-block" href="AdminLongin">
-                                管理员, <b>登录</b>
+                            @{
+                                var username = Session["User"] == null ? string.Empty : ((ProductQuery.Models.User)Session["User"]).name;
+                            }
+                            <a class="nav-link d-block" href="../Admin/AdminLogin">
+                                @username
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            @if (Session["User"] == null)
+                            {
+                                <meta http-equiv="refresh" content="0.0;url=../Admin/AdminLogin" />
+                            }
+                            else
+                            {
+                                <a class="nav-link d-block" href="../Admin/AdminLoginoff">
+                                    注销
+                                </a>
+                            }
                         </li>
                     </ul>
 

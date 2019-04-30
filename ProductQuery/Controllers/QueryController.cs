@@ -48,7 +48,7 @@ namespace ProductQuery.Controllers
             }
             Query query = new Query(selectLists);
             List<Ignition> ignitions = query.Process();
-            return RedirectToAction("User_list", "AdminUser");
+            return RedirectToAction("Information", "Add", ignitions);
         }
     }
 }

@@ -21,7 +21,14 @@ namespace ProductQuery.Controllers
         {
             return View();
         }
-        
+
+        //注销
+        public ActionResult AdminLoginoff()
+        {
+            Session.Clear();
+            return RedirectToAction("Instrument", "Admin");
+        }
+
         //管理员登录页面
         [HttpPost]
         public ActionResult AdminLogin(User user)
@@ -32,6 +39,7 @@ namespace ProductQuery.Controllers
                 Session["User"] = loginuser;
                 return RedirectToAction("Instrument", "Admin");
             }
+            ModelState.AddModelError("","登陆信息错误，请重新输入！");
             return View();
         }
 

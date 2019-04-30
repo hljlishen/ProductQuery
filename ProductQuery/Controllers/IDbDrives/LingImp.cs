@@ -130,5 +130,12 @@ namespace ProductQuery.Controllers.IDbDrives
             User loginuser = db.User.FirstOrDefault(u => u.name == user.name && u.password == user.password);
             return loginuser;
         }
+
+        public override List<User> QueryUsers(string username)
+        {
+            List<User> users = new List<User>();
+            users = db.User.Where(m => m.name.Contains(username)).ToList();
+            return users;
+        }
     }
 }

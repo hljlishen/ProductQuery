@@ -399,6 +399,7 @@
     <Content Include="Views\Add\Ignition_select.cshtml" />
     <Content Include="Views\Add\AddIndex.cshtml" />
     <Content Include="Views\Add\Time.cshtml" />
+    <Content Include="Views\AdminUser\User_details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

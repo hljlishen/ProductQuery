@@ -23,6 +23,8 @@ namespace ProductQuery.Controllers.IDbDrives
         public abstract Ignition FindIgnition(int ignitionid);
         public abstract User FindUser(int userid);
 
+        public abstract List<User> QueryUsers(string username);
+
         public abstract User AdminLogin(User user);
 
     }
