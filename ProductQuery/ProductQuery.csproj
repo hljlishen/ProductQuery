@@ -187,8 +187,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\animate.min.css" />
+    <Content Include="Content\css\base.css" />
+    <Content Include="Content\css\bootstrap-datetimepicker.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\default.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\fontawesome.min.css" />
+    <Content Include="Content\css\prettify-1.0.css" />
     <Content Include="Content\css\templatemo-style.css" />
     <Content Include="Content\dynamicCondition.js" />
     <Content Include="Content\img\arrow-down.png" />
@@ -223,10 +229,13 @@
     <Content Include="Content\jquery-ui-datepicker\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui-datepicker\jquery-ui.theme.min.css" />
     <Content Include="Content\jquery-ui-datepicker\LICENSE.txt" />
+    <Content Include="Content\js\base.js" />
+    <Content Include="Content\js\bootstrap-datetimepicker.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\Chart.min.js" />
     <Content Include="Content\js\jquery-1.11.2.min.js" />
     <Content Include="Content\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\js\moment-with-locales.js" />
     <Content Include="Content\js\moment.min.js" />
     <Content Include="Content\js\tooplate-scripts.js" />
     <Content Include="Content\layui\css\layui.css" />
@@ -339,6 +348,8 @@
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\et-line.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -361,6 +372,14 @@
     <Content Include="Content\layui\font\iconfont.eot" />
     <Content Include="Content\layui\font\iconfont.ttf" />
     <Content Include="Content\layui\font\iconfont.woff" />
+    <Content Include="fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="fonts\et-line.eot" />
+    <Content Include="fonts\et-line.ttf" />
+    <Content Include="fonts\et-line.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -391,6 +410,7 @@
     <Content Include="Views\Add\Information.cshtml" />
     <Content Include="Views\Add\Ignition_select.cshtml" />
     <Content Include="Views\Add\AddIndex.cshtml" />
+    <Content Include="Views\Add\Time.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

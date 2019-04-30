@@ -221,23 +221,26 @@
                         } }
                     @{ if (ig.yzrq.ToString() != "")
                         {
+                            DateTime now = DateTime.Parse(ig.yzrq.ToString());
                             <div class="form-group col-lg-6">
                                 <label for="研制日期">研制日期</label>
-                                @Html.TextBox("研制日期", ig.yzrq.ToString(), new { @class = "form-control validate" })
+                                @Html.TextBox("研制日期", now.ToShortDateString(), new { @class = "form-control validate" })
                             </div>
                         } }
                     @{ if (ig.dxrq.ToString() != "")
                         {
+                            DateTime now = DateTime.Parse(ig.dxrq.ToString());
                             <div class="form-group col-lg-6">
                                 <label for="设计定型日期">设计定型日期</label>
-                                @Html.TextBox("设计定型日期", ig.dxrq.ToString(), new { @class = "form-control validate" })
+                                @Html.TextBox("设计定型日期",now.ToShortDateString(), new { @class = "form-control validate" })
                             </div>
                         } }
                     @{ if (ig.gydx.ToString() != "")
                         {
+                            DateTime now = DateTime.Parse(ig.gydx.ToString());
                             <div class="form-group col-lg-6">
                                 <label for="生产定型日期">生产定型日期</label>
-                                @Html.TextBox("生产定型日期", ig.gydx.ToString(), new { @class = "form-control validate" })
+                                @Html.TextBox("生产定型日期", now.ToShortDateString(), new { @class = "form-control validate" })
                             </div>
                         } }
                     @{ if (ig.yt.ToString() != "")

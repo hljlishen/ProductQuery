@@ -28,6 +28,11 @@ namespace ProductQuery.Controllers
             return View(ignitions);
         }
 
+        public ActionResult Time()
+        {
+            return View();
+        }
+
         //打开查看页面
         [ValidateInput(false)]
         public ActionResult Ignition_select(int ignitionid)
@@ -199,13 +204,16 @@ namespace ProductQuery.Controllers
                 for (int i = 1; i <= s; i++)
                 {
                     Picture picture = new Picture();
-                    Image image = Image.FromFile(collection["产品示意图" + i]);
-                    MemoryStream ms = new MemoryStream();
-                    image.Save(ms, image.RawFormat);
-                    byte[] byteArray = ms.ToArray();
-                    ms.Close();
-                    picture.cpy = byteArray;
-                    ignition.Pictures.Add(picture);
+                    if (collection["产品示意图" + i] != "")
+                    {
+                        Image image = Image.FromFile(collection["产品示意图" + i]);
+                        MemoryStream ms = new MemoryStream();
+                        image.Save(ms, image.RawFormat);
+                        byte[] byteArray = ms.ToArray();
+                        ms.Close();
+                        picture.cpy = byteArray;
+                        ignition.Pictures.Add(picture);
+                    }
                 }
             }
         }
