@@ -18,7 +18,6 @@ namespace ProductQuery.Models
         public string name { get; set; }
 
         [Display(Name = "电话")]
-        [Required(ErrorMessage = "*{0}是必填项")]
         public string Phone { get; set; }
 
         [DisplayName("密码")]

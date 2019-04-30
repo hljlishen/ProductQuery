@@ -25,7 +25,7 @@ namespace ProductQuery.Controllers.Querys
 
     public class Query
     {
-        List<_Filter> filters;
+        List<_Filter> filters = new List<_Filter>();
 
         public Query(List<SelectList> selectLists)
         {
@@ -33,9 +33,7 @@ namespace ProductQuery.Controllers.Querys
             {
                 foreach (var item in selectLists)
                 {
-                    IMeasurementConverter measurementConverter = GetMeasurementConverter(item.conditionFieldVal,item.conditionValueUnitVal);
-                    _Filter filter = Get_Filters(item.conditionFieldVal,item.conditionValueVal,item.conditionValueLeftVal,item.conditionValueRightVal);
-                    filter.MeasurementConverter = measurementConverter;
+                    _Filter filter = Get_Filters(item.conditionFieldVal,item.conditionValueVal,item.conditionValueLeftVal,item.conditionValueRightVal, item.conditionValueUnitVal);
                     filters.Add(filter);
                 }
             }
@@ -75,29 +73,31 @@ namespace ProductQuery.Controllers.Querys
             return null;
         }
 
-        private _Filter Get_Filters(string FieldVal,string val ,string min, string max)
+
+        private _Filter Get_Filters(string FieldVal,string val ,string min, string max,string unit)
         {
             _Filter filter = null;
             int friststr = FieldVal.IndexOf("-");
             int lasttstr = FieldVal.LastIndexOf("-");
-            string strzibiao = FieldVal.Substring(0, friststr - 1);
-            string strzhubiao = FieldVal.Substring(friststr + 1, lasttstr-1);
-
-            if (strzhubiao == "yzrq" || strzhubiao == "dxrq" || strzhubiao == "gydx")
+            string shuxing = FieldVal.Substring(friststr + 1, lasttstr- friststr-1);
+            string strzibiao = FieldVal.Substring(0, friststr);
+            if (shuxing == "yzrq" || shuxing == "dxrq" || shuxing == "gydx")
             {
                 DateTime dt1 = Convert.ToDateTime(min);
                 DateTime dt2 = Convert.ToDateTime(max);
-                filter = new DateTimeInRange(strzhubiao, dt1, dt2);
+                filter = new DateTimeInRange(shuxing, dt1, dt2);
                 return filter;
             }
 
-            if (strzibiao.Equals("0"))
+            if (strzibiao.Equals("o"))
             {
-                filter = GetFilter(strzhubiao, val, min, max);
+                filter = GetFilter(shuxing, val, min, max);
+                filter.MeasurementConverter = GetMeasurementConverter(FieldVal, unit);
             }
-            else if (!strzibiao.Equals("0"))
+            else if (!strzibiao.Equals("o"))
             {
-                _Filter filter1 = GetFilter(strzhubiao, val, min, max);
+                _Filter filter1 = GetFilter(shuxing, val, min, max);
+                filter1.MeasurementConverter = GetMeasurementConverter(FieldVal, unit);
                 filter = new ListPropertyDecorator(strzibiao, filter1);
             }
             return filter;
@@ -110,7 +110,7 @@ namespace ProductQuery.Controllers.Querys
             {
                 double _min = double.Parse(min);
                 double _max = double.Parse(max);
-                filter = new DoubleInRange(FieldVal, _min, _max);
+                filter = new RangeIntersect(FieldVal, _min, _max);
                 return filter;
             }
             else if (!val.Equals(""))
