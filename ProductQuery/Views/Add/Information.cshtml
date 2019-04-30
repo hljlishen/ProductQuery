@@ -27,6 +27,10 @@
             //调用位于index页面的openWin()函数
             parent.openWin(title, url, width, height);
         }
+        //查询
+        function openSelectWin() {
+
+        }
         //查看
         function openSelectWin(ignitionid) {
             var title = "<span class='glyphicon glyphicon-edit'> 点火装置信息查看";
@@ -45,6 +49,10 @@
                     <div class="form-inline">
                         <a class="btn btn-success btn-sm" href="javascript:openAddWin();">
                             <span class="glyphicon glyphicon-plus">添加点火装置</span>
+                        </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-success btn-sm" href="javascript:openSelectWin();">
+                            <span class="glyphicon glyphicon-plus">查询</span>
                         </a>
                     </div>
                 </div>

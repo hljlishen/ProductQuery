@@ -14,10 +14,10 @@
     <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/templatemo-style.css" rel="stylesheet" />
+
     <script src="~/Content/js/jquery-3.3.1.min.js"></script>
-    <script src="~/Content/jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <script src="~/Content/jquery-ui-datepicker/jquery-ui.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
-    <script></script>
     <script type="text/javascript">
         var id = 0;
         var image = 1;
@@ -28,6 +28,7 @@
         var zhiliudianzu = 1;
         var fahuotiaojian = 1;
         var yanqishijian = 1;
+
         $(function () {
             $("#expire_date").datepicker({
                 defaultDate: Date.now()
@@ -81,7 +82,7 @@
                 '</ul>' +
                 '</td>' +
                 '<td class="text-center">' +
-                '<a href="#" id="' + id +'" class="tm-product-delete-link" onclick="delAchieve(this.id)">' +
+                '<a href="#" id="' + id + '" class="tm-product-delete-link" onclick="delAchieve(this.id)">' +
                 '<i class="far fa-trash-alt tm-product-delete-icon"></i>' +
                 '</a>' +
                 '</td>' +
@@ -131,19 +132,18 @@
         function 产品示意图(obj) {
             var tables = $("form#form");
             var addtr =
-                '<a class="row" id="' + id + '">' +
+                '<div class="row" id="' + id + '">' +
                 '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
                 '<h1 class="tm-site-title mb-0" >' + obj + ModuleNumber(obj) + '</h1>' +
                 '</div>' +
                 '<label>选择图片</label>' +
-                '<label for="验证" style="color:orangered;display:none" id="cpsyt">*请选择图片</label>' +
-                '<input name="产品示意图' + ModuleNumber(obj) + '" type="file" id="file' + ModuleNumber(obj) +'" accept="image/jpeg,image/jpg,image/png,image/gif"/>' +
-                '<div class="tm-avatar-container">'+
+                '<input name="产品示意图' + ModuleNumber(obj) + '" type="file" id="file' + ModuleNumber(obj) + '" accept="image/jpeg,image/jpg,image/png,image/gif" style="display:none"/>' +
+                '<div class="tm-avatar-container">' +
                 '<img id="imgshow" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4"/>' +
                 '<a href="#" class="tm-avatar-delete-link" onclick="OpenFile(' + ModuleNumber(obj) + ')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>' +
-                '</div>'+
-                '<input name="产品示意图" style="display:none" value="' + ModuleNumber(obj) + '" type="text">'
-                '</a>';
+                '</div>' +
+                '<input name="产品示意图" style="display:none" value="' + ModuleNumber(obj) + '" type="text" id="image">'+
+                '</div>';
             $(addtr).appendTo(tables);
         }
 
@@ -154,7 +154,7 @@
         function 常规(obj) {
             var tables = $("form#form");
             var addtr =
-                '<a class="row" id="'+id+'">'+
+                '<div class="row" id="' + id + '">' +
                 '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
                 '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
                 '</div>' +
@@ -177,15 +177,15 @@
                 '<label for="danwei">(mm)</label>' +
                 '<input name="高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
                 '</div>' +
-                '<input name="常规" style="display:none" value="' + ModuleNumber(obj) + '" type="text">'+
-                '</a>';
+                '<input name="常规" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
+                '</div>';
             $(addtr).appendTo(tables);
         }
 
         function 索普通直径(obj) {
             var tables = $("form#form");
             var addtr =
-                '<a class="row" id="' + id + '">' +
+                '<div class="row" id="' + id + '">' +
                 '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
                 '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
                 '</div>' +
@@ -195,14 +195,14 @@
                 '<input name="索普通直径' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<input name="索普通直径" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
+                '</div>';
             $(addtr).appendTo(tables);
         }
 
         function 爆速(obj) {
             var tables = $("form#form");
             var addtr =
-                '<a class="row" id="' + id + '">' +
+                '<div class="row" id="' + id + '">' +
                 '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
                 '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
                 '</div>' +
@@ -221,14 +221,14 @@
                 '<textarea class = "form-control validate tm-small" rows = "1" name="爆速备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
                 '<input name="爆速" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
+                '</div>';
             $(addtr).appendTo(tables);
         }
 
         function 接口信息(obj) {
             var tables = $("form#form");
             var addtr =
-                '<a class="row" id="' + id + '">' +
+                '<div class="row" id="' + id + '">' +
                 '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
                 '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
                 '</div>' +
@@ -256,14 +256,14 @@
                 '<textarea class = "form-control validate tm-small" rows = "1" name="接口信息备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
                 '<input name="接口信息" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
+                '</div>';
             $(addtr).appendTo(tables);
         }
 
         function 直流电阻(obj) {
             var tables = $("form#form");
             var addtr =
-                '<a class="row" id="' + id + '">' +
+                '<div class="row" id="' + id + '">' +
                 '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
                 '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
                 '</div>' +
@@ -318,14 +318,14 @@
                 '<textarea class = "form-control validate tm-small" rows = "1" name="电阻备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
                 '<input name="直流电阻" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
+                '</div>';
             $(addtr).appendTo(tables);
         }
 
         function 发火条件(obj) {
             var tables = $("form#form");
             var addtr =
-                '<a class="row" id="' + id + '">' +
+                '<div class="row" id="' + id + '">' +
                 '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
                 '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
                 '</div>' +
@@ -508,14 +508,14 @@
                 '</select>' +
                 '</div>' +
                 '<input name="发火条件" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
+                '</div>';
             $(addtr).appendTo(tables);
         }
 
         function 延期时间(obj) {
             var tables = $("form#form");
             var addtr =
-                '<a class="row" id="' + id + '">' +
+                '<div class="row" id="' + id + '">' +
                 '<div class="form-group col-lg-12" id="' + obj + ModuleNumber(obj) + '">' +
                 '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
                 '</div>' +
@@ -565,7 +565,7 @@
                 '<textarea class = "form-control validate tm-small" rows = "1" name="延期时间备注' + ModuleNumber(obj) + '"></textarea>' +
                 '</div>' +
                 '<input name="延期时间" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
-                '</a>';
+                '</div>';
             $(addtr).appendTo(tables);
         }
 
@@ -575,22 +575,87 @@
         }
 
         function FormSubmission() {
-            
-            alert(document.getElementsByName("产品示意图").values);
-            if (document.getElementById("类别").value == "请选择" || document.getElementById("产品名称").value == ""){
-                if (document.getElementById("类别").value == "请选择") 
+            alert(document.getElementById("double").value);
+            var yzrq = true;
+            var sjdxrq = true;
+            var scdxrq = true;
+            if (document.getElementById("expire_date").value != "") {
+                var str = document.getElementById("expire_date").value.trim();
+                if (str.length != 0) {
+                    var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/;
+                    yzrq = str.match(reg);
+                    if (yzrq == null)
+                        yzrq = false;
+                }
+            }
+            if (document.getElementById("expire_date2").value != "") {
+                var str = document.getElementById("expire_date2").value.trim();
+                if (str.length != 0) {
+                    var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/;
+                    sjdxrq = str.match(reg);
+                    if (sjdxrq == null)
+                        sjdxrq = false;
+                }
+            }
+            if (document.getElementById("expire_date3").value != "") {
+                var str = document.getElementById("expire_date3").value.trim();
+                if (str.length != 0) {
+                    var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/;
+                    scdxrq = str.match(reg);
+                    if (scdxrq == null)
+                        scdxrq = false;
+                }
+            }
+            if (document.getElementById("类别").value == "请选择" || document.getElementById("产品名称").value == "" || yzrq == false || sjdxrq == false || scdxrq == false) {
+                if (document.getElementById("类别").value == "请选择")
                     document.getElementById("lb").style.display = "";
                 else
                     document.getElementById("lb").style.display = "none";
-                if (document.getElementById("产品名称").value == "") 
+                if (document.getElementById("产品名称").value == "")
                     document.getElementById("cpmc").style.display = "";
                 else
                     document.getElementById("cpmc").style.display = "none";
+                if (yzrq == false)
+                    document.getElementById("yzrq").style.display = "";
+                else
+                    document.getElementById("yzrq").style.display = "none";
+                if (sjdxrq == false)
+                    document.getElementById("sjdxrq").style.display = "";
+                else
+                    document.getElementById("sjdxrq").style.display = "none";
+                if (scdxrq == false)
+                    document.getElementById("scdxrq").style.display = "";
+                else
+                    document.getElementById("scdxrq").style.display = "none";
+                alert("信息输入有误！");
                 return;
-            } 
+            }
             document.getElementById("form").submit();
             alert("添加成功");
         }
+
+        $(document).ready(function () {
+            //敲击按键时触发
+            $("#double").bind("keypress", function (event) {
+                var event = event || window.event;
+                var getValue = $(this).val();
+                //控制第一个不能输入小数点"."
+                if (getValue.length == 0 && event.which == 46) {
+                    event.preventDefault();
+                    return;
+                }
+                //控制只能输入一个小数点"."
+                if (getValue.indexOf('.') != -1 && event.which == 46) {
+                    event.preventDefault();
+                    return;
+                }
+                //控制只能输入的值
+                if ((event.which < 48 || event.which > 57) && event.which != 8 && event.which != 46) {
+                    event.preventDefault();
+                    return;
+                }
+            })
+        });
     </script>
 </head>
 <body>
@@ -624,9 +689,9 @@
             </div>
             <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:10%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
                 <form action="/Add/AddInformation" method="post" class="tm-signup-form" id="form" name="基本信息">
-                    <a class="row">
-                        <div class="form-group col-lg-12" id="主页信息">
-                            <h1 class="tm-site-title mb-0">基本信息</h1>
+                    <div class="row">
+                        <div class="form-group col-lg-12" >
+                            <h1 class="tm-site-title mb-0" id="主页信息">基本信息</h1>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="类别">类别</label>
@@ -672,15 +737,18 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="研制日期">研制日期</label>
-                            <input name="研制日期" class="form-control validate" type="text" id="expire_date" style="ime-mode: disabled">
+                            <label for="验证" style="color:orangered;display:none" id="yzrq">*日期格式有误</label>
+                            <input name="研制日期" class="form-control validate" type="text" id="expire_date">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="设计定型日期">设计定型日期</label>
-                            <input name="设计定型日期" class="form-control validate" type="text" id="expire_date2" style="ime-mode: disabled">
+                            <label for="验证" style="color:orangered;display:none" id="sjdxrq">*日期格式有误</label>
+                            <input name="设计定型日期" class="form-control validate" type="text" id="expire_date2">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="生产定型日期">生产定型日期</label>
-                            <input name="生产定型日期" class="form-control validate" type="text" id="expire_date3" style="ime-mode: disabled">
+                            <label for="验证" style="color:orangered;display:none" id="scdxrq">*日期格式有误</label>
+                            <input name="生产定型日期" class="form-control validate" type="text" id="expire_date3">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="用途">用途</label>
@@ -970,7 +1038,7 @@
                             <label for="燃烧压力备注">燃烧压力备注</label>
                             <textarea class="form-control validate tm-small" rows="1" name="燃烧压力备注"></textarea>
                         </div>
-                    </a>
+                    </div>
                 </form>
 
                 <form class="tm-signup-form row" style="display:none" id="form2" name="添加模块">
