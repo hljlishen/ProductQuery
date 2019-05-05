@@ -1,0 +1,44 @@
+﻿@model List<ProductQuery.Models.Ignition>
+@{
+    Layout = "~/Views/Query/Query_index.cshtml";
+}
+<script type="text/javascript">
+        //查看
+    function openSelectWin(ignitionid) {
+        var title = "<span class='glyphicon glyphicon-edit'> 点火装置信息查看";
+        var url = "Query_details?ignitionid=" + ignitionid;
+        var width = "100%";
+        var height = "800px";
+        openWin(title, url, width, height);
+    }
+</script>
+<div class="col-12 tm-block-col">
+    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td scope="col">Id</td>
+                    <td scope="col">类别</td>
+                    <td scope="col">产品名称</td>
+                    <td scope="col">操作</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var ign in Model)
+                {
+                    <tr>
+                        <th>@ign.IgnitionId</th>
+                        <th>@ign.lb</th>
+                        <th>@ign.cpmc</th>
+                        <th>
+                            <a href="javascript:openSelectWin(@ign.IgnitionId)" class="tm-product-delete-link">
+                                <i class="far fa-eye tm-product-delete-icon"></i>
+                            </a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
