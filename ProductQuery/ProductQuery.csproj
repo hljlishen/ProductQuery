@@ -399,6 +399,9 @@
     <Content Include="Views\Add\Ignition_select.cshtml" />
     <Content Include="Views\Add\AddIndex.cshtml" />
     <Content Include="Views\AdminUser\User_details.cshtml" />
+    <Content Include="Views\Query\Query_list.cshtml" />
+    <Content Include="Views\Query\Query_index.cshtml" />
+    <Content Include="Views\Query\Query_details.cshtml" />
     <Content Include="Views\Add\Ignition_delect.cshtml" />
   </ItemGroup>
   <ItemGroup>
