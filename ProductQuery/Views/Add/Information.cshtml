@@ -20,20 +20,24 @@
         //添加
         function openAddWin() {
             //设定title内容
-            var title = "<a><span class='glyphicon glyphicon-plus'></span>新增点火装置</a>";
+            var title = "<span class='glyphicon glyphicon-edit'>新增点火装置";
             var url = "AddInformation";
             var width = "100%";
             var height = "800px";
             //调用位于index页面的openWin()函数
             parent.openWin(title, url, width, height);
         }
-        //查询
-        function openSelectWin() {
-
+        //修改
+        function openDelectWin(ignitionid) {
+            var title = "<span class='glyphicon glyphicon-edit'>修改点火装置信息";
+            var url = "Ignition_delect?ignitionid=" + ignitionid;
+            var width = "100%";
+            var height = "800px";
+            parent.openWin(title, url, width, height);
         }
         //查看
         function openSelectWin(ignitionid) {
-            var title = "<span class='glyphicon glyphicon-edit'> 点火装置信息查看";
+            var title = "<span class='glyphicon glyphicon-edit'>点火装置信息查看";
             var url = "Ignition_select?ignitionid=" + ignitionid;
             var width = "100%";
             var height = "800px";
@@ -51,7 +55,7 @@
                             <span class="glyphicon glyphicon-plus">添加点火装置</span>
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a class="btn btn-success btn-sm" href="javascript:openSelectWin();">
+                        <a class="btn btn-success btn-sm" href="javascript:openQueryWin();">
                             <span class="glyphicon glyphicon-plus">查询</span>
                         </a>
                     </div>
@@ -64,17 +68,19 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <td scope="col">编号</td>
                                 <td scope="col">Id</td>
                                 <td scope="col">类别</td>
                                 <td scope="col">产品名称</td>
                                 <td scope="col">操作</td>
                             </tr>
                         </thead>
-
                         <tbody>
+                            @{int count = 1; }
                             @foreach (var ign in Model)
                             {
                                 <tr>
+                                    <th>@count</th>
                                     <th>@ign.IgnitionId</th>
                                     <th>@ign.lb</th>
                                     <th>@ign.cpmc</th>
@@ -82,11 +88,15 @@
                                         <a href="javascript:openSelectWin(@ign.IgnitionId)" class="tm-product-delete-link">
                                             <i class="far fa-eye tm-product-delete-icon"></i>
                                         </a>
+                                        <a href="javascript:openDelectWin(@ign.IgnitionId)" class="tm-product-delete-link">
+                                            <i class="fa fa-cogs tm-product-delete-icon"></i>
+                                        </a>
                                         <a href="@Url.Content("~/Add/DeleteInformation?IgnitionId=" + @ign.IgnitionId)" class="tm-product-delete-link">
                                             <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                         </a>
                                     </th>
                                 </tr>
+                                count++;
                             }
                         </tbody>
                     </table>

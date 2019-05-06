@@ -28,11 +28,6 @@ namespace ProductQuery.Controllers
             return View(ignitions);
         }
 
-        public ActionResult Time()
-        {
-            return View();
-        }
-
         //打开查看页面
         [ValidateInput(false)]
         public ActionResult Ignition_select(int ignitionid)
@@ -40,6 +35,30 @@ namespace ProductQuery.Controllers
             Ignition ignition = dbDrive.FindIgnition(ignitionid);
             List<Picture> pictures = ignition.Pictures;
             List<Conventional> conventionals= ignition.Conventionals;
+            List<CableDiameter> cableDiameters = ignition.CableDiameters;
+            List<SpeedDetonation> speedDetonations = ignition.SpeedDetonations;
+            List<InterfaceInformation> interfaceInformation = ignition.InterfaceInformations;
+            List<DcResistance> dcResistances = ignition.DcResistances;
+            List<IgnitionCondition> ignitionConditions = ignition.IgnitionConditions;
+            List<DelayTime> delayTimes = ignition.DelayTimes;
+            ViewData["conv"] = conventionals;
+            ViewData["img"] = pictures;
+            ViewData["ig"] = ignition;
+            ViewData["cab"] = cableDiameters;
+            ViewData["speed"] = speedDetonations;
+            ViewData["interface"] = interfaceInformation;
+            ViewData["dc"] = dcResistances;
+            ViewData["ignc"] = ignitionConditions;
+            ViewData["delay"] = delayTimes;
+            return View();
+        }
+
+        [ValidateInput(false)]
+        public ActionResult Ignition_delect(int ignitionid)
+        {
+            Ignition ignition = dbDrive.FindIgnition(ignitionid);
+            List<Picture> pictures = ignition.Pictures;
+            List<Conventional> conventionals = ignition.Conventionals;
             List<CableDiameter> cableDiameters = ignition.CableDiameters;
             List<SpeedDetonation> speedDetonations = ignition.SpeedDetonations;
             List<InterfaceInformation> interfaceInformation = ignition.InterfaceInformations;
@@ -546,6 +565,5 @@ namespace ProductQuery.Controllers
             return RedirectToAction("Information", "Add");
         }
 
-        //必填的验证
     }
 }
