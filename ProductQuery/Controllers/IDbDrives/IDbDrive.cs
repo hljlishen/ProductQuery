@@ -27,5 +27,10 @@ namespace ProductQuery.Controllers.IDbDrives
 
         public abstract User AdminLogin(User user);
 
+        public abstract bool Insert(WebsiteStatistical websiteStatistical);
+        public abstract bool UdpdateQueryNumber();
+        public abstract bool UdpdateAccessNumber();
+        public abstract bool FindWebsiteStatistical();
+        public abstract List<WebsiteStatistical> GetAllWebsiteStatistical();
     }
 }

@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using ProductQuery.Controllers.Filters;
 using ProductQuery.Controllers.IDbDrives;
 using ProductQuery.Controllers.Querys;
+using ProductQuery.Controllers.SiteStatistical;
 using ProductQuery.Models;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace ProductQuery.Controllers
 
         public ActionResult Query_list()
         {
+            WebClickNumber webClickNumber = new WebClickNumber();
+            webClickNumber.SaveQueryNumber();
             List<Ignition> ignitions = dbDrive.GetAllIgnitions();
             return View(ignitions);
         }
@@ -55,37 +58,15 @@ namespace ProductQuery.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Query_list(string jsonstr)
-        //{
-        //    var sr = new StreamReader(Request.InputStream);
-        //    var stream = sr.ReadToEnd();
-        //    string jsonText = stream;
-        //    jsonText = jsonText.Replace("\"[","[");
-        //    jsonText = jsonText.Replace("]\"", "]");
-        //    jsonText = jsonText.Replace("\\\"", "\"");
-        //    List<Querys.SelectList> selectLists = new List<Querys.SelectList>();
-        //    JObject json = (JObject)JsonConvert.DeserializeObject(jsonText);
-        //    JToken token = json["jsonStr"];
-        //    for (int i = 0; i < token.Count(); i++)
-        //    {
-        //        Querys.SelectList selectList = new Querys.SelectList();
-        //        selectList.conditionFieldVal = (string)token[i]["conditionFieldVal"];
-        //        selectList.conditionValueVal = (string)token[i]["conditionValueVal"]["value"];
-        //        selectList.conditionOptionVal = (string)token[i]["conditionOptionVal"];
-        //        selectList.conditionValueLeftVal = (string)token[i]["conditionValueLeftVal"]["value"];
-        //        selectList.conditionValueRightVal = (string)token[i]["conditionValueRightVal"]["value"];
-        //        selectList.conditionValueUnitVal = (string)token[i]["conditionValueUnitVal"]["value"];
-        //        selectLists.Add(selectList);
-        //    }
-        //    Query query = new Query(selectLists);
-        //    List<Ignition> ignitions = query.Process();
-        //    return View(ignitions);
-        //}
-
-        public ActionResult Query(string jsonstr)
+        [HttpPost]
+        public ActionResult Query()
         {
-            string jsonText = jsonstr;
+            WebClickNumber webClickNumber = new WebClickNumber();
+            webClickNumber.SaveQueryNumber();
+
+            var sr = new StreamReader(Request.InputStream);
+            var stream = sr.ReadToEnd();
+            string jsonText = stream;
             jsonText = jsonText.Replace("\"[", "[");
             jsonText = jsonText.Replace("]\"", "]");
             jsonText = jsonText.Replace("\\\"", "\"");
@@ -105,7 +86,32 @@ namespace ProductQuery.Controllers
             }
             Query query = new Query(selectLists);
             List<Ignition> ignitions = query.Process();
-            return View("Query_list", ignitions);
+            return View(ignitions);
         }
+
+        //public ActionResult Query(string jsonstr)
+        //{
+        //    string jsonText = jsonstr;
+        //    jsonText = jsonText.Replace("\"[", "[");
+        //    jsonText = jsonText.Replace("]\"", "]");
+        //    jsonText = jsonText.Replace("\\\"", "\"");
+        //    List<Querys.SelectList> selectLists = new List<Querys.SelectList>();
+        //    JObject json = (JObject)JsonConvert.DeserializeObject(jsonText);
+        //    JToken token = json["jsonStr"];
+        //    for (int i = 0; i < token.Count(); i++)
+        //    {
+        //        Querys.SelectList selectList = new Querys.SelectList();
+        //        selectList.conditionFieldVal = (string)token[i]["conditionFieldVal"];
+        //        selectList.conditionValueVal = (string)token[i]["conditionValueVal"]["value"];
+        //        selectList.conditionOptionVal = (string)token[i]["conditionOptionVal"];
+        //        selectList.conditionValueLeftVal = (string)token[i]["conditionValueLeftVal"]["value"];
+        //        selectList.conditionValueRightVal = (string)token[i]["conditionValueRightVal"]["value"];
+        //        selectList.conditionValueUnitVal = (string)token[i]["conditionValueUnitVal"]["value"];
+        //        selectLists.Add(selectList);
+        //    }
+        //    Query query = new Query(selectLists);
+        //    List<Ignition> ignitions = query.Process();
+        //    return View("Query_list", ignitions);
+        //}
     }
 }
