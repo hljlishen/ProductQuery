@@ -154,12 +154,16 @@
                                     <a href="javascript:openUpdateWin(@user.id)" class="tm-product-delete-link">
                                         <i class="fa fa-cogs tm-product-delete-icon"></i>
                                     </a>
-                                    <a href="javascript:deleteUser(@user.id)" class="tm-product-delete-link">
-                                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                    </a>
                                     <a href="javascript:resetPassword('@user.id' ,'@user.name')" class="tm-product-delete-link">
                                         <i class="fa fa-recycle tm-product-delete-icon"></i>
                                     </a>
+                                    @if (user.id != 1)
+                                    {
+                                        <a href="javascript:deleteUser(@user.id)" class="tm-product-delete-link">
+                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                        </a>
+                                    }
+
                                 </td>
                             </tr>
                          }

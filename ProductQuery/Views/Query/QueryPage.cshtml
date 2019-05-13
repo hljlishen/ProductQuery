@@ -50,7 +50,7 @@
                         </div>
 
                         <ul id="dcDemo" style="display:none;">
-                            <li field="o-lb-o" title="类别" edit="select" templet="#select_lb"></li>
+                            <li field="o-lb-o-StringLike" title="类别" edit="select" templet="#select_lb"></li>
                             <li field="o-sjdw-o" title="设计单位" edit="text"></li>
                             <li field="o-scdw-o" title="生产单位" edit="text"></li>
                             <li field="o-xh-o" title="型号" edit="text"></li>
@@ -200,7 +200,7 @@
             var $ = layui.$, table = layui.table, form = layui.table;
             var dynamicCondition = layui.dynamicCondition;
 
-            var dataFields = [{ field: "o-lb-o", title: "类别", edit: "select", templet: "#select_lb" }
+            var dataFields = [{ field: "o-lb-o-StringLike", title: "类别", edit: "select", templet: "#select_lb" }
                 , { field: "o-sjdw-o", title: "设计单位", edit: "text", layVerify: "text"}
                 , { field: "o-scdw-o", title: "生产单位", edit: "text" }
                 , { field: "o-xh-o", title: "型号", edit: "text" }

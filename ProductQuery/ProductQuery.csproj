@@ -131,7 +131,6 @@
     <Compile Include="Controllers\AddController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
-    <Compile Include="Controllers\Errors\ValidationError.cs" />
     <Compile Include="Controllers\Filters\DateTimeInRange.cs" />
     <Compile Include="Controllers\Filters\DoubleInRange.cs" />
     <Compile Include="Controllers\Filters\_Filter.cs" />
@@ -153,6 +152,7 @@
     <Compile Include="Controllers\IMeasurementConverters\Resistance.cs" />
     <Compile Include="Controllers\IMeasurementConverters\Time.cs" />
     <Compile Include="Controllers\Querys\Query.cs" />
+    <Compile Include="Controllers\SiteStatistical\WebClickNumber.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,6 +169,7 @@
       <DependentUpon>201904020748273_InitialCreate2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\WebsiteStatistical.cs" />
     <Compile Include="Models\点火装置实体\CableDiameter.cs" />
     <Compile Include="Models\点火装置实体\Conventional.cs" />
     <Compile Include="Models\点火装置实体\DcResistance.cs" />
@@ -191,6 +192,15 @@
     <Content Include="Content\css\fontawesome.min.css" />
     <Content Include="Content\css\templatemo-style.css" />
     <Content Include="Content\dynamicCondition.js" />
+    <Content Include="Content\E-Charts3\bmap.min.js" />
+    <Content Include="Content\E-Charts3\china.js" />
+    <Content Include="Content\E-Charts3\dataTool.js" />
+    <Content Include="Content\E-Charts3\echarts-gl.min.js" />
+    <Content Include="Content\E-Charts3\echarts.js" />
+    <Content Include="Content\E-Charts3\echarts.min.js" />
+    <Content Include="Content\E-Charts3\ecStat.js" />
+    <Content Include="Content\E-Charts3\simplex.js" />
+    <Content Include="Content\E-Charts3\world.js" />
     <Content Include="Content\img\arrow-down.png" />
     <Content Include="Content\img\avatar.png" />
     <Content Include="Content\img\check-mark.png" />
@@ -403,6 +413,7 @@
     <Content Include="Views\Query\Query_index.cshtml" />
     <Content Include="Views\Query\Query_details.cshtml" />
     <Content Include="Views\Add\Ignition_update.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

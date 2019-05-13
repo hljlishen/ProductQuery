@@ -137,5 +137,81 @@ namespace ProductQuery.Controllers.IDbDrives
             users = db.User.Where(m => m.name.Contains(username)).ToList();
             return users;
         }
+
+        public override bool Insert(WebsiteStatistical websiteStatistical)
+        {
+            try
+            {
+                db.WebsiteStatistical.Add(websiteStatistical);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool UdpdateQueryNumber()
+        {
+            WebsiteStatistical websiteStatistical = TodayWeb();
+            websiteStatistical.QueryNumber++;
+            try
+            {
+                db.WebsiteStatistical.Attach(websiteStatistical);
+                db.Entry(websiteStatistical).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool UdpdateAccessNumber()
+        {
+            WebsiteStatistical websiteStatistical = TodayWeb();
+            websiteStatistical.AccessNumber++;
+            try
+            {
+                db.WebsiteStatistical.Attach(websiteStatistical);
+                db.Entry(websiteStatistical).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private WebsiteStatistical TodayWeb()
+        {
+            DateTime dateTime = DateTime.Now.Date;
+            List<WebsiteStatistical> websiteStatisticals = new List<WebsiteStatistical>();
+            websiteStatisticals = db.WebsiteStatistical.Where(m => DbFunctions.DiffDays(m.Data, dateTime) == 0).ToList();
+            WebsiteStatistical websiteStatistical = new WebsiteStatistical();
+            websiteStatistical = websiteStatisticals[0];
+            return websiteStatistical;
+        }
+
+        public override bool FindWebsiteStatistical()
+        {
+            if(GetAllWebsiteStatistical().Count == 0) return false;
+            WebsiteStatistical website = GetAllWebsiteStatistical()[GetAllWebsiteStatistical().Count-1];
+            if (website.Data.Date == DateTime.Now.Date)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public override List<WebsiteStatistical> GetAllWebsiteStatistical()
+        {
+            List<WebsiteStatistical> websiteStatisticals = new List<WebsiteStatistical>();
+            websiteStatisticals = db.WebsiteStatistical.ToList();
+            return websiteStatisticals;
+        }
     }
 }

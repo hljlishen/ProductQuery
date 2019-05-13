@@ -40,13 +40,11 @@ namespace ProductQuery.Controllers.Querys
         }
 
 
-        private IMeasurementConverter GetMeasurementConverter(string FieldVal,string unit)
+        private IMeasurementConverter GetMeasurementConverter(string UnitType, string unit)
         {
             if(unit.Equals("")) return null;
             IMeasurementConverter measurementConverter = null;
-            int laststr = FieldVal.LastIndexOf("-");
-            string str = FieldVal.Substring(laststr + 1, FieldVal.Length);
-            switch (str)
+            switch (UnitType)
             {
                 case "cd":
                     measurementConverter = new Lenght(unit);
@@ -77,45 +75,68 @@ namespace ProductQuery.Controllers.Querys
         private _Filter Get_Filters(string FieldVal,string val ,string min, string max,string unit)
         {
             _Filter filter = null;
-            int friststr = FieldVal.IndexOf("-");
-            int lasttstr = FieldVal.LastIndexOf("-");
-            string shuxing = FieldVal.Substring(friststr + 1, lasttstr- friststr-1);
-            string strzibiao = FieldVal.Substring(0, friststr);
-            if (shuxing == "yzrq" || shuxing == "dxrq" || shuxing == "gydx")
-            {
-                DateTime dt1 = Convert.ToDateTime(min);
-                DateTime dt2 = Convert.ToDateTime(max);
-                filter = new DateTimeInRange(shuxing, dt1, dt2);
-                return filter;
-            }
+            String[] StrArray = StringParsing(FieldVal);
+            string ChildTableName = StrArray[0];
+            string FieldName = StrArray[1];
+            string UnitType = StrArray[2];
+            string QueryType = StrArray[3];
 
-            if (strzibiao.Equals("o"))
+            if (ChildTableName.Equals("o"))
             {
-                filter = GetFilter(shuxing, val, min, max);
-                filter.MeasurementConverter = GetMeasurementConverter(FieldVal, unit);
+                filter = GetFilter(FieldName, val, min, max, QueryType);
+                filter.MeasurementConverter = GetMeasurementConverter(UnitType, unit);
             }
-            else if (!strzibiao.Equals("o"))
+            else if (!ChildTableName.Equals("o"))
             {
-                _Filter filter1 = GetFilter(shuxing, val, min, max);
-                filter1.MeasurementConverter = GetMeasurementConverter(FieldVal, unit);
-                filter = new ListPropertyDecorator(strzibiao, filter1);
+                _Filter filter1 = GetFilter(FieldName, val, min, max, QueryType);
+                filter1.MeasurementConverter = GetMeasurementConverter(UnitType, unit);
+                filter = new ListPropertyDecorator(ChildTableName, filter1);
             }
             return filter;
         }
 
-        private _Filter GetFilter(string FieldVal, string val, string min, string max)
+        //解析文件名
+        private String[] StringParsing(string FieldVal)
+        {
+            String[] StrArray = FieldVal.Split('-');
+            return StrArray;
+        }
+        
+        //获取查询类型
+        private _Filter GetFilter(string FieldName, string val, string min, string max, string QueryType)
         {
             _Filter filter = null;
-            if (val.Equals(""))
+            if (QueryType.Equals("DateTimeInRange"))
+            {
+                DateTime dtmin = Convert.ToDateTime(min);
+                DateTime dtmax = Convert.ToDateTime(max);
+                filter = new DateTimeInRange(FieldName, dtmin, dtmax);
+                return filter;
+            }
+            if (QueryType.Equals("DoubleInRange"))
             {
                 double _min = double.Parse(min);
                 double _max = double.Parse(max);
-                filter = new RangeIntersect(FieldVal, _min, _max);
+                filter = new DoubleInRange(FieldName, _min, _max);
                 return filter;
             }
-            else if (!val.Equals(""))
+            if (QueryType.Equals("IntInRange"))
             {
-                filter = new StringLike(FieldVal, val);
+                int _min = int.Parse(min);
+                int _max = int.Parse(max);
+                filter = new IntInRange(FieldName, _min, _max);
+                return filter;
+            }
+            if (QueryType.Equals("RangeIntersect"))
+            {
+                double _min = double.Parse(min);
+                double _max = double.Parse(max);
+                filter = new RangeIntersect(FieldName, _min, _max);
+                return filter;
+            }
+            if (QueryType.Equals("StringLike"))
+            {
+                filter = new StringLike(FieldName, val);
                 return filter;
             }
             return filter;

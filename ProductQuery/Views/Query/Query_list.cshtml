@@ -6,7 +6,7 @@
         //查看
     function openSelectWin(ignitionid) {
         var title = "<span class='glyphicon glyphicon-edit'> 点火装置信息查看";
-        var url = "Query_details?ignitionid=" + ignitionid;
+        var url = "@Url.Action("Query_details")"+"?ignitionid=" + ignitionid;
         var width = "100%";
         var height = "800px";
         openWin(title, url, width, height);
@@ -20,6 +20,10 @@
                     <td scope="col">Id</td>
                     <td scope="col">类别</td>
                     <td scope="col">产品名称</td>
+                    <td scope="col">设计单位</td>
+                    <td scope="col">生产单位</td>
+                    <td scope="col">用途</td>
+                    <td scope="col">目前阶段</td>
                     <td scope="col">操作</td>
                 </tr>
             </thead>
@@ -27,10 +31,15 @@
             <tbody>
                 @foreach (var ign in Model)
                 {
+
                     <tr>
                         <th>@ign.IgnitionId</th>
                         <th>@ign.lb</th>
                         <th>@ign.cpmc</th>
+                        <th>@ign.sjdw</th>
+                        <th>@ign.scdw</th>
+                        <th>@ign.yt</th>
+                        <th>@ign.mqjd</th>
                         <th>
                             <a href="javascript:openSelectWin(@ign.IgnitionId)" class="tm-product-delete-link">
                                 <i class="far fa-eye tm-product-delete-icon"></i>

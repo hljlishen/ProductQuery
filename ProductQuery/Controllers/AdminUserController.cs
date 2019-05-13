@@ -1,5 +1,4 @@
-﻿using ProductQuery.Controllers.Errors;
-using ProductQuery.Controllers.IDbDrives;
+﻿using ProductQuery.Controllers.IDbDrives;
 using ProductQuery.Models;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +10,6 @@ namespace ProductQuery.Controllers
     public class AdminUserController : Controller
     {
         IDbDrive dbDrive = new LingImp();
-        ValidationErrors errors = new ValidationErrors();
 
         public ActionResult User_list()
         {

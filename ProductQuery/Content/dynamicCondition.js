@@ -216,10 +216,9 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 			  }
 			  if(curEditor){
                   if (conditionOptionVal == "between") {
-                      //获取field字符最后一个“-”以后的字段
-                      var laststr = conditionFieldVal.lastIndexOf("-");
-                      var str = conditionFieldVal.substring(laststr+1, conditionFieldVal.length); 
-                      //alert(conditionFieldVal+"截取后："+str);
+                      //获取单位的字段
+                      var StrArray = conditionFieldVal.split('-');
+                      var str = StrArray[2];
                       //下拉框html
                       var selectconditionUnit = $('<select lay-filter="conditionUnit"></select>');
                       if (str == "cd") {
