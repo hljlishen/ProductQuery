@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using ProductQuery.Controllers.IDbDrives;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 
 namespace ProductQuery.Controllers
 {
@@ -54,7 +55,7 @@ namespace ProductQuery.Controllers
         }
 
         [ValidateInput(false)]
-        public ActionResult Ignition_delect(int ignitionid)
+        public ActionResult Ignition_update(int ignitionid)
         {
             Ignition ignition = dbDrive.FindIgnition(ignitionid);
             List<Picture> pictures = ignition.Pictures;
@@ -79,7 +80,7 @@ namespace ProductQuery.Controllers
 
         //添加点火装置
         [HttpPost]
-        public ActionResult AddInformation(FormCollection collection,Ignition ignition,Conventional conventional)
+        public ActionResult AddInformation(FormCollection collection,Ignition ignition)
         {
             if (collection["类别"] != "请选择")
                 ignition.lb = collection["类别"];
@@ -211,26 +212,17 @@ namespace ProductQuery.Controllers
         }
 
         //添加图片
-        private void AddImage(FormCollection collection, Ignition ignition)
-        {
-            int s = 0;
-            if (collection["产品示意图"] != null)
+        private void AddImage(FormCollection collection, Ignition ignition) {
+            for (int i = 1; i <= 5; i++)
             {
-                if (collection["产品示意图"].Length == 1)
-                    s = collection["产品示意图"].Length;
-                else
-                    s = ((collection["产品示意图"].Length - 1) / 2) + 1;
-                for (int i = 1; i <= s; i++)
+                if (collection["file"+i] != null)
                 {
-                    Picture picture = new Picture();
-                    if (collection["产品示意图" + i] != "")
-                    {
-                        Image image = Image.FromFile(collection["产品示意图" + i]);
-                        MemoryStream ms = new MemoryStream();
-                        image.Save(ms, image.RawFormat);
-                        byte[] byteArray = ms.ToArray();
-                        ms.Close();
-                        picture.cpy = byteArray;
+                    if (collection["file" + i] != "") {
+                        Picture picture = new Picture();
+                        string cpy = collection["cp" + i];
+                        string[] array = cpy.Split(',');
+                        byte[] imageBytes = Convert.FromBase64String(array[1]);
+                        picture.cpy = imageBytes;
                         ignition.Pictures.Add(picture);
                     }
                 }
@@ -427,13 +419,13 @@ namespace ProductQuery.Controllers
                     {
                         string unit = collection["锤重单位" + i];
                         double value = double.Parse(collection["锤重" + i]);
-                        ignitionCondition.cz = TimeUnitConversion(unit, value);
+                        ignitionCondition.cz = WeightUnitConversion(unit, value);
                     }
                     if (collection["落高单位" + i] != "请选择")
                     {
                         string unit = collection["落高单位" + i];
                         double value = double.Parse(collection["落高" + i]);
-                        ignitionCondition.lg = WeightUnitConversion(unit, value);
+                        ignitionCondition.lg = LenghtUnitConversion(unit, value);
                     }
                     if (collection["击针刺激量" + i] != "")
                         ignitionCondition.jzcjl = double.Parse(collection["击针刺激量" + i]);

@@ -28,9 +28,9 @@
             parent.openWin(title, url, width, height);
         }
         //修改
-        function openDelectWin(ignitionid) {
+        function openUpdateWin(ignitionid) {
             var title = "<span class='glyphicon glyphicon-edit'>修改点火装置信息";
-            var url = "Ignition_delect?ignitionid=" + ignitionid;
+            var url = "Ignition_update?ignitionid=" + ignitionid;
             var width = "100%";
             var height = "800px";
             parent.openWin(title, url, width, height);
@@ -88,7 +88,7 @@
                                         <a href="javascript:openSelectWin(@ign.IgnitionId)" class="tm-product-delete-link">
                                             <i class="far fa-eye tm-product-delete-icon"></i>
                                         </a>
-                                        <a href="javascript:openDelectWin(@ign.IgnitionId)" class="tm-product-delete-link">
+                                        <a href="javascript:openUpdateWin(@ign.IgnitionId)" class="tm-product-delete-link">
                                             <i class="fa fa-cogs tm-product-delete-icon"></i>
                                         </a>
                                         <a href="@Url.Content("~/Add/DeleteInformation?IgnitionId=" + @ign.IgnitionId)" class="tm-product-delete-link">

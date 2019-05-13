@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout =null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -82,7 +82,7 @@
                 '</ul>' +
                 '</td>' +
                 '<td class="text-center">' +
-                '<a href="#" id="' + id + '" class="tm-product-delete-link" onclick="delAchieve(this.id)">' +
+                '<a href="#" id="' + id + '" name="' + obj + '" class="tm-product-delete-link" onclick="delAchieve(this.id,this.name,' + ModuleNumber(obj)+')">' +
                 '<i class="far fa-trash-alt tm-product-delete-icon"></i>' +
                 '</a>' +
                 '</td>' +
@@ -129,18 +129,218 @@
             }
         }
 
-        function OpenFile() {
-            document.getElementById("file").click();
+        function 产品示意图(obj) {
+            document.getElementById(obj + ModuleNumber(obj)).style.display = "";
+        }
+
+        function OpenFile(obj) {
+            document.getElementById(obj).click();
         }
 
         $(function () {
-            $("#file").on("change", function () {
+            $("#file1").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
-                        $('#img').attr('src', e.target.result);
-                        $('#fn').text(file.name);
+                        $('#img1').attr('src', e.target.result);
+                        $('#cp1').attr('value', e.target.result);
+                        $('#fn1').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file2").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img2').attr('src', e.target.result);
+                        $('#cp2').attr('value', e.target.result);
+                        $('#fn2').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file3").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img3').attr('src', e.target.result);
+                        $('#cp3').attr('value', e.target.result);
+                        $('#fn3').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file4").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img4').attr('src', e.target.result);
+                        $('#cp4').attr('value', e.target.result);
+                        $('#fn4').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file5").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img5').attr('src', e.target.result);
+                        $('#cp5').attr('value', e.target.result);
+                        $('#fn5').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file6").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img6').attr('src', e.target.result);
+                        $('#cp6').attr('value', e.target.result);
+                        $('#fn6').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file7").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img7').attr('src', e.target.result);
+                        $('#cp7').attr('value', e.target.result);
+                        $('#fn7').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file8").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img8').attr('src', e.target.result);
+                        $('#cp8').attr('value', e.target.result);
+                        $('#fn8').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file9").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img9').attr('src', e.target.result);
+                        $('#cp9').attr('value', e.target.result);
+                        $('#fn9').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file10").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img10').attr('src', e.target.result);
+                        $('#cp10').attr('value', e.target.result);
+                        $('#fn10').text(file.name);
                     }
                     reader.readAsDataURL(file);
                 }
@@ -565,9 +765,16 @@
             $(addtr).appendTo(tables);
         }
 
-        function delAchieve(obj) {
-            $("table#test #" + obj + "").remove();
-            $("form#form #" + obj + "").remove();
+        function delAchieve(id, obj, number) {
+            if (obj != "产品示意图") {
+                $("table#test #" + id + "").remove();
+                $("form#form #" + id + "").remove();
+            }
+            else {
+                $("table#test #" + id + "").remove();
+                document.getElementById(obj + number).style.display = "none"
+                document.getElementById("file" + number).value = "";
+            }
         }
 
         function FormSubmission() {
@@ -674,17 +881,6 @@
                                         </ul>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="tm-product-name">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#产品示意图" name="产品示意图" onclick="PageInformation(this.id)">
-                                                    产品示意图
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -698,7 +894,7 @@
                 <form action="/Add/AddInformation" method="post" class="tm-signup-form" id="form" name="基本信息">
                     <div class="row" id="主页信息">
                         <div class="form-group col-lg-12">
-                            <h1 class="tm-site-title mb-0" >基本信息</h1>
+                            <h1 class="tm-site-title mb-0">基本信息</h1>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="类别">类别</label>
@@ -1046,16 +1242,145 @@
                             <textarea class="form-control validate tm-small" rows="1" name="燃烧压力备注"></textarea>
                         </div>
                     </div>
-                    <div class="form-group col-lg-12" id="产品示意图">
-                        <h1 class="tm-site-title mb-0">产品示意图</h1>
+                    <div id="产品示意图1" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图1</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img1" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file1')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn1"></span>
+                        </div>
                     </div>
-                    <input id="file" name="产品示意图" type="file" accept="image/jpeg,image/jpg,image/png,image/gif" style="display:none" />
-                    <label>选择图片</label>
-                    <div class="tm-avatar-container" >
-                        <img id="img" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
-                        <a href="#" class="tm-avatar-delete-link" onclick="OpenFile()"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
-                        <span id="fn"></span>
+                    <input id="file1" name="file1" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp1" id="cp1" type="text" style="display:none" value="">
+
+                    <div id="产品示意图2" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图2</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img2" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file2')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn2"></span>
+                        </div>
                     </div>
+                    <input id="file2" name="file2" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp2" id="cp2" type="text" style="display:none" value="">
+
+                    <div id="产品示意图3" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图3</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img3" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file3')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn3"></span>
+                        </div>
+                    </div>
+                    <input id="file3" name="file3" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp3" id="cp3" type="text" style="display:none" value="">
+
+                    <div id="产品示意图4" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图4</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img4" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file4')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn4"></span>
+                        </div>
+                    </div>
+                    <input id="file4" name="file4" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp4" id="cp4" type="text" style="display:none" value="">
+
+                    <div id="产品示意图5" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图5</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img5" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file5')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn5"></span>
+                        </div>
+                    </div>
+                    <input id="file5" name="file5" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp5" id="cp5" type="text" style="display:none" value="">
+
+                    <div id="产品示意图6" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图6</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img6" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file6')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn6"></span>
+                        </div>
+                    </div>
+                    <input id="file6" name="file6" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp6" id="cp6" type="text" style="display:none" value="">
+
+                    <div id="产品示意图7" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图7</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img7" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file7')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn7"></span>
+                        </div>
+                    </div>
+                    <input id="file7" name="file7" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp7" id="cp7" type="text" style="display:none" value="">
+
+                    <div id="产品示意图8" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图8</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img8" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file8')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn8"></span>
+                        </div>
+                    </div>
+                    <input id="file8" name="file8" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp8" id="cp8" type="text" style="display:none" value="">
+
+                    <div id="产品示意图9" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图9</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img9" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file9')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn9"></span>
+                        </div>
+                    </div>
+                    <input id="file9" name="file9" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp9" id="cp9" type="text" style="display:none" value="">
+
+                    <div id="产品示意图10" style="display:none">
+                        <div class="form-group col-lg-12">
+                            <h1 class="tm-site-title mb-0">产品示意图10</h1>
+                        </div>
+                        <label style="display:none">选择图片</label>
+                        <div class="tm-avatar-container">
+                            <img id="img10" src="../image/管理员.jpg" alt="" class="tm-avatar img-fluid mb-4" />
+                            <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file10')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                            <span id="fn10"></span>
+                        </div>
+                    </div>
+                    <input id="file10" name="file10" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                    <input name="cp10" id="cp10" type="text" style="display:none" value="">
                 </form>
 
                 <form class="tm-signup-form row" style="display:none" id="form2" name="添加模块">
@@ -1091,6 +1416,9 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <input class="btn btn-primary btn-block text-uppercase" type="button" value="延期时间" onclick="AddInformationModule(this.value)" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input class="btn btn-primary btn-block text-uppercase" type="button" value="产品示意图" onclick="AddInformationModule(this.value)" />
                     </div>
                 </form>
             </div>

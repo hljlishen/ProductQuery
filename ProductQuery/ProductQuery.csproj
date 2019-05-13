@@ -402,7 +402,7 @@
     <Content Include="Views\Query\Query_list.cshtml" />
     <Content Include="Views\Query\Query_index.cshtml" />
     <Content Include="Views\Query\Query_details.cshtml" />
-    <Content Include="Views\Add\Ignition_delect.cshtml" />
+    <Content Include="Views\Add\Ignition_update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
