@@ -8,6 +8,9 @@ using ProductQuery.Controllers.IDbDrives;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using ProductQuery.Controllers.Querys;
 
 namespace ProductQuery.Controllers
 {
@@ -555,6 +558,31 @@ namespace ProductQuery.Controllers
             ignition.IgnitionId = IgnitionId;
             dbDrive.Delete(ignition);
             return RedirectToAction("Information", "Add");
+        }
+
+        public ActionResult QueryInformation(string jsonstr)
+        {
+            string jsonText = jsonstr;
+            jsonText = jsonText.Replace("\"[", "[");
+            jsonText = jsonText.Replace("]\"", "]");
+            jsonText = jsonText.Replace("\\\"", "\"");
+            List<Querys.SelectList> selectLists = new List<Querys.SelectList>();
+            JObject json = (JObject)JsonConvert.DeserializeObject(jsonText);
+            JToken token = json["jsonStr"];
+            for (int i = 0; i < token.Count(); i++)
+            {
+                Querys.SelectList selectList = new Querys.SelectList();
+                selectList.conditionFieldVal = (string)token[i]["conditionFieldVal"];
+                selectList.conditionValueVal = (string)token[i]["conditionValueVal"]["value"];
+                selectList.conditionOptionVal = (string)token[i]["conditionOptionVal"];
+                selectList.conditionValueLeftVal = (string)token[i]["conditionValueLeftVal"]["value"];
+                selectList.conditionValueRightVal = (string)token[i]["conditionValueRightVal"]["value"];
+                selectList.conditionValueUnitVal = (string)token[i]["conditionValueUnitVal"]["value"];
+                selectLists.Add(selectList);
+            }
+            Query query = new Query(selectLists);
+            List<Ignition> ignitions = query.Process();
+            return View("Information", ignitions);
         }
 
     }

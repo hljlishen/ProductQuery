@@ -156,18 +156,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903271000409_InitialCreate.cs" />
-    <Compile Include="Migrations\201903271000409_InitialCreate.Designer.cs">
-      <DependentUpon>201903271000409_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903280317343_InitialCreate1.cs" />
-    <Compile Include="Migrations\201903280317343_InitialCreate1.Designer.cs">
-      <DependentUpon>201903280317343_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904020748273_InitialCreate2.cs" />
-    <Compile Include="Migrations\201904020748273_InitialCreate2.Designer.cs">
-      <DependentUpon>201904020748273_InitialCreate2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\WebsiteStatistical.cs" />
     <Compile Include="Models\点火装置实体\CableDiameter.cs" />
@@ -381,7 +369,6 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -397,7 +384,6 @@
     <Content Include="Views\Admin\AdminLogin.cshtml" />
     <Content Include="Views\Admin\AdminIndex.cshtml" />
     <Content Include="Views\Admin\Instrument.cshtml" />
-    <Content Include="Views\Query\QueryPage.cshtml" />
     <Content Include="Views\Admin\IgnitionManagement.cshtml" />
     <Content Include="Views\Admin\Dictionary.cshtml" />
     <Content Include="Views\AdminUser\User_list.cshtml" />
@@ -413,7 +399,6 @@
     <Content Include="Views\Query\Query_index.cshtml" />
     <Content Include="Views\Query\Query_details.cshtml" />
     <Content Include="Views\Add\Ignition_update.cshtml" />
-    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -429,20 +414,10 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903271000409_InitialCreate.resx">
-      <DependentUpon>201903271000409_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903280317343_InitialCreate1.resx">
-      <DependentUpon>201903280317343_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904020748273_InitialCreate2.resx">
-      <DependentUpon>201904020748273_InitialCreate2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,6 +1,7 @@
 ﻿using ProductQuery.Controllers.IDbDrives;
 using ProductQuery.Controllers.SiteStatistical;
 using ProductQuery.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -43,6 +44,8 @@ namespace ProductQuery.Controllers
                 return RedirectToAction("Instrument", "Admin");
             }
             ModelState.AddModelError("","登陆信息错误，请重新输入！");
+            WebClickNumber webClickNumber = new WebClickNumber();
+            webClickNumber.SaveAccessNumber();
             return View();
         }
 
@@ -57,13 +60,20 @@ namespace ProductQuery.Controllers
             return View();
         }
 
+        //获取图标数据
+        [HttpPost]
+        public JsonResult GetWebClickData()
+        {
+            WebClickNumber webClickNumber = new WebClickNumber();
+            return Json(webClickNumber.GetWebClickNumber(DateTime.Now));
+        }
+
         //获取点击数据
         [HttpPost]
-        public JsonResult GetWebClickData(int userid)
+        public JsonResult GetNowWebClickData()
         {
-            User user = dbDrive.FindUser(userid);
-            user.password = "admin";
-            return Json(dbDrive.Udpdate(user));
+            WebClickNumber webClickNumber = new WebClickNumber();
+            return Json(webClickNumber.GetNowWebClickNumber());
         }
 
         public ActionResult IgnitionManagement()

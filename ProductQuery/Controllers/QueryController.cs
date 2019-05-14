@@ -19,12 +19,6 @@ namespace ProductQuery.Controllers
     public class QueryController : Controller
     {
         IDbDrive dbDrive = new LingImp();
-        public ActionResult QueryPage()
-        {
-            List<Ignition> ignitions = new List<Ignition>();
-            return View(ignitions);
-        }
-
         public ActionResult Query_list()
         {
             WebClickNumber webClickNumber = new WebClickNumber();
