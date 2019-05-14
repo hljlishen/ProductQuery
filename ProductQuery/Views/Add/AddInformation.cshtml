@@ -72,6 +72,10 @@
         }
 
         function AddInformationModule(obj) {
+            if (obj == "产品示意图" && ModuleNumber(obj) > 10) {
+                alert("无法添加图片");
+                return;
+            }
             var tables = $("table#test");
             var addtr = '<tr id="' + id + '">' +
                 '<td class="tm-product-name">' +
@@ -89,7 +93,6 @@
                 '</tr>';
 
             $(addtr).appendTo(tables);
-
             GenerateTemplate(obj);
             id++;
         }
