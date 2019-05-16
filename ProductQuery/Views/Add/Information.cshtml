@@ -1,6 +1,6 @@
 ﻿@model List<ProductQuery.Models.Ignition>
 @{
-    Layout = "~/Views/Add/AddIndex.cshtml";
+    Layout = "~/Views/Admin/AdminIndex.cshtml";
 }
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
             var width = "100%";
             var height = "800px";
             //调用位于index页面的openWin()函数
-            parent.openWin(title, url, width, height);
+            parent.AddopenWin(title, url, width, height);
         }
         //修改
         function openUpdateWin(ignitionid) {
@@ -34,7 +34,7 @@
             var url = "Ignition_update?ignitionid=" + ignitionid;
             var width = "100%";
             var height = "800px";
-            parent.openWin(title, url, width, height);
+            parent.AddopenWin(title, url, width, height);
         }
         //查看
         function openSelectWin(ignitionid) {
@@ -42,7 +42,7 @@
             var url = "Ignition_select?ignitionid=" + ignitionid;
             var width = "100%";
             var height = "800px";
-            parent.openWin(title, url, width, height);
+            parent.AddopenWin(title, url, width, height);
         }
     </script>
 </head>

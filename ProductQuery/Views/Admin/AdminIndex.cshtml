@@ -31,10 +31,30 @@
             //关闭模态框
             $("#myModal").modal("hide");
         }
+
+        //打开模态框函数
+        function AddopenWin(title, url, width, height) {
+            //标题位置我们可以进行动态的传入,设置标题
+            var frame = "<iframe width='" + width + "' height='" + height + "' onscroll='true' style='border: 0px;' src='" + url + "'></iframe>";
+            $("#myModalTitle2").html(title);
+            //设定主体内容
+            $("#myModalBody2").html(frame);
+            $("#myModal2").modal("show");
+        }
+        function AddcloseWin() {
+            //关闭模态框
+            $("#myModal2").modal("hide");
+        }
     </script>
 
 </head>
 <body>
+    @{
+        var username = Session["User"] == null ? string.Empty : ((ProductQuery.Models.User)Session["User"]).name;
+        var userpermissions = Session["User"] == null ? string.Empty : ((ProductQuery.Models.User)Session["User"]).permissions;
+        var userid = Session["User"] == null ? 0 : ((ProductQuery.Models.User)Session["User"]).id;
+
+    }
     <div class="" id="home">
         <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
@@ -50,43 +70,53 @@
 
                     <ul class="navbar-nav mx-auto h-100">
 
-                        <li class="nav-item">
+                        <li class="nav-item" id="Instrument">
                             <a class="nav-link" href="../Admin/Instrument">
                                 <i class="fas fa-tachometer-alt"></i>
                                 仪表盘
-                                <span class="sr-only">(current)</span>
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="../Admin/Dictionary">
-                                <i class="fa fa-book"></i>
-                                <span>
-                                    系统字典
-                                </span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="IgnitionManagement">
+                        <li class="nav-item" id="Information">
+                            <a class="nav-link" href="../Add/Information">
                                 <i class="fa fa-fire"></i>
                                 点火装置管理
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item" id="Users">
                             <a class="nav-link" href="../AdminUser/User_list">
+                                <i class="fa fa-users"></i>
+                                账户管理
+                            </a>
+                        </li>
+
+                        <li class="nav-item" id="My">
+                            <a class="nav-link" href="../MyselfInformation/User_myself?userid=@userid">
                                 <i class="far fa-user"></i>
-                                账户
+                                查看我的信息
                             </a>
                         </li>
                     </ul>
+                    <h6 id="userpermissions" style="display:none">@userpermissions</h6>
+                    <script type="text/javascript">
+                        PermissionsValidation();
+                        function PermissionsValidation() {
+                            var Permissions = document.getElementById('userpermissions').innerText;
+                            if (Permissions == "一级管理员") {
+                            }
+                            if (Permissions == "二级管理员") {
+                                document.getElementById("Users").style.display = "none";
+                            }
+                            if (Permissions == "三级管理员") {
+                                document.getElementById("Information").style.display = "none";
+                                document.getElementById("Users").style.display = "none";
+                            }
+                        }
+                    </script>
 
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            @{
-                                var username = Session["User"] == null ? string.Empty : ((ProductQuery.Models.User)Session["User"]).name;
-                            }
                             <a class="nav-link d-block" href="../Admin/AdminLogin">
                                 @username
                             </a>
@@ -132,5 +162,18 @@
         </div>
     </div>
 
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background:#4E657A; color:#FFF; width:300%; height:100%; right:100%">
+                <div class="modal-header" style="padding: 10px;">
+                    <h5 class="modal-title" id="myModalTitle2"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body" id="myModalBody2"></div>
+            </div>
+        </div>
+    </div>
 </body>
-</html>
+</html >

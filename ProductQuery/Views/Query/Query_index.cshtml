@@ -160,10 +160,11 @@
                     </div>
                 </div>
 
-                @RenderBody()
+                <div class="col-12 tm-block-col" id='content'>
+
+                </div>
 
             </div>
-        </div>
 
         <footer class="tm-footer row tm-mt-small">
             <div class="col-12 font-weight-light">
@@ -295,18 +296,17 @@
                 //当有多个动态条件查询实例时，定义instanceName属性可以通过dynamicCondition.getInstance(instanceName)获取对应的实例
                 , instanceName: "complexInstance-json"
                 , queryCallBack: function (requestData) {
-                    //var jsonstr = JSON.stringify(requestData);
-                    //location.href = "Query?jsonstr=" + jsonstr;
                     $.ajax({
                         url: "@Url.Action("Query")",
                         type: "post",
-                        dataType: "json",
+                        dataType: "html",
                         data: JSON.stringify(requestData),
                         success: function (data) {
-
-                        },
-                        error: function () {
-
+                            if (data) {
+                                $('#content').html(data);
+                            } else {
+                                alert("数据获取失败！");
+                            }
                         }
                     })
                 }

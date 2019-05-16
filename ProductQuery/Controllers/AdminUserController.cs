@@ -21,9 +21,34 @@ namespace ProductQuery.Controllers
         [ValidateInput(false)]
         public ActionResult User_add()
         {
+            SelectList select = new SelectList(GetPermissionsList(), "Value", "Text");
+            ViewBag.select = select;
             return View();
         }
 
+        private List<SelectListItem> GetPermissionsList()
+        {
+            List<SelectListItem> itemList = new List<SelectListItem>();
+            SelectListItem item0 = new SelectListItem()
+            {
+                Value = "一级管理员",
+                Text = "一级管理员"
+            };
+            SelectListItem item1 = new SelectListItem()
+            {
+                Value = "二级管理员",
+                Text = "二级管理员"
+            };
+            SelectListItem item2 = new SelectListItem()
+            {
+                Value = "三级管理员",
+                Text = "三级管理员"
+            };
+            itemList.Add(item0);
+            itemList.Add(item1);
+            itemList.Add(item2);
+            return itemList;
+        }
         //添加用户
         [HttpPost]
         public JsonResult User_add(User user)
@@ -49,6 +74,8 @@ namespace ProductQuery.Controllers
         [ValidateInput(false)]
         public ActionResult User_update(int userid)
         {
+            SelectList select = new SelectList(GetPermissionsList(), "Value", "Text");
+            ViewBag.select = select;
             User user = dbDrive.FindUser(userid);
             return View(user);
         }
