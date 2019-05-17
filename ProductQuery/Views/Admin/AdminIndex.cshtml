@@ -31,6 +31,20 @@
             //关闭模态框
             $("#myModal").modal("hide");
         }
+
+        //打开模态框函数
+        function AddopenWin(title, url, width, height) {
+            //标题位置我们可以进行动态的传入,设置标题
+            var frame = "<iframe width='" + width + "' height='" + height + "' onscroll='true' style='border: 0px;' src='" + url + "'></iframe>";
+            $("#myModalTitle2").html(title);
+            //设定主体内容
+            $("#myModalBody2").html(frame);
+            $("#myModal2").modal("show");
+        }
+        function AddcloseWin() {
+            //关闭模态框
+            $("#myModal2").modal("hide");
+        }
     </script>
 
 </head>
@@ -64,7 +78,7 @@
                         </li>
 
                         <li class="nav-item" id="Information">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../Add/Information">
                                 <i class="fa fa-fire"></i>
                                 点火装置管理
                             </a>
@@ -147,5 +161,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html >

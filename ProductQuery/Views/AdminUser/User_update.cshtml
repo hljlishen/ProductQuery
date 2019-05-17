@@ -21,11 +21,50 @@
             var name = $("#name").val();
             var phone = $("#phone").val();
 
+            $.ajax({
+                    url: "@Url.Action("User_hasusername","AdminUser")",  
+                    type: "post",
+                    data: {
+                        "oldusername": "@Model.name",
+                        "newusername": name
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        data = eval("(" + data + ")");
+                        if (data) {
+                            $("#errorname").css("color", "green");
+                            $("#errorname").attr("class", "glyphicon glyphicon-ok");
+                            $("#errorname").html("");
+                        } else {
+                            $("#errorname").css("color", "red");
+                            $("#errorname").attr("class", "glyphicon glyphicon-remove");
+                            $("#errorname").html("*该用户名已存在");
+                            validate = false;
+                        }
+                    }
+            });
+
             if (name == "") {
                 $("#errorname").css("color", "red");
                 $("#errorname").attr("class", "glyphicon glyphicon-remove");
                 $("#errorname").html("*用户名不能为空");
                 validate = false;
+            } else {
+                $("#errorname").css("color", "green");
+                $("#errorname").attr("class", "glyphicon glyphicon-ok");
+                $("#errorname").html("");
+            }
+
+            if (name != null) {
+                var pattern = new RegExp("[`~ !#$^&*()=|{}':;',\\[\\].<>/?~！￥\\\\……&*（）——|{}【】‘；：”“'。，、？]")
+                for (var i = 0; i < name.length; i++) {
+                    if (pattern.test(name.substr(i, 1))) {
+                        $("#errorname").css("color", "red");
+                        $("#errorname").attr("class", "glyphicon glyphicon-remove");
+                        $("#errorname").html("*用户名存在特殊字符");
+                        validate = false;
+                    }
+                }
             } else {
                 $("#errorname").css("color", "green");
                 $("#errorname").attr("class", "glyphicon glyphicon-ok");

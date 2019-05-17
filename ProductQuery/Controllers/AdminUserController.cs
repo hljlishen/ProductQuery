@@ -56,6 +56,16 @@ namespace ProductQuery.Controllers
             return Json(dbDrive.Insert(user));
         }
 
+        //用户名查重
+        [HttpPost]
+        public JsonResult User_hasusername(string oldusername, string newusername)
+        {
+            if(oldusername.Equals(newusername)) return Json(true);
+            List<User> userList = dbDrive.QueryUsers(newusername);
+            if (userList != null && userList.Count > 0) return Json(false);
+            return Json(true);
+        }
+
         //查询用户
         public ActionResult User_query(string username)
         {

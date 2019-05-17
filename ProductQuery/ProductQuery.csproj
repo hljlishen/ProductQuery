@@ -394,7 +394,6 @@
     <Content Include="Views\AdminUser\User_add.cshtml" />
     <Content Include="Views\Add\Information.cshtml" />
     <Content Include="Views\Add\Ignition_select.cshtml" />
-    <Content Include="Views\Add\AddIndex.cshtml" />
     <Content Include="Views\AdminUser\User_details.cshtml" />
     <Content Include="Views\Query\Query_list.cshtml" />
     <Content Include="Views\Query\Query_index.cshtml" />
@@ -417,6 +416,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\MyselfInformation\User_myself.cshtml" />
+    <Content Include="Views\MyselfInformation\User_UpdatePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

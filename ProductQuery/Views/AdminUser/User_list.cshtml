@@ -4,15 +4,6 @@
 }
 
 <script type="text/javascript">
-    ////权限判断
-    //function myfun() {
-    //    $("#look").hide();
-    //}
-    ///*用window.onload调用myfun()*/
-
-    //// 不要括号
-    //window.onload = myfun;
-
     //添加
     function openAddWin() {
         //设定title内容
@@ -93,15 +84,6 @@
     function queryByName(){
         var username = $("#username").val();
         location.href = "User_query?username=" + username;
-    }
-
-    //授权
-    function openAuthorWin(roleId) {
-        var title = "<a><span class='glyphicon glyphicon-wrench'></span>角色授权</a>";
-        var url = "<%=request.getContextPath()%>/role/roleAuthor?roleId=" + roleId;
-        var width = "100%";
-        var height = "600px";
-        parent.openWin(title, url, width, height);
     }
 </script>
 

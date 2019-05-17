@@ -3,62 +3,171 @@
     Layout = "~/Views/Admin/AdminIndex.cshtml";
 }
 
+<script type="text/javascript">
+
+    //授权
+    function openUpdatePasswordWin(userid) {
+        var title = "<a><span class='glyphicon glyphicon-wrench'></span>修改密码</a>";
+        var url = "User_updatepassword?userId=" + userid;
+        var width = "100%";
+        var height = "500px";
+        parent.openWin(title, url, width, height);
+    }
+
+    function validate() {
+        var validate = true;
+        var name = $("#myname").val();
+        var phone = $("#myphone").val();
+
+        $.ajax({
+                url: "@Url.Action("User_hasusername","AdminUser")",  
+                type: "post",
+                data: {
+                    "oldusername": "@Model.name",
+                    "newusername": name
+                },
+                dataType: "json",
+                success: function (data) {
+                    data = eval("(" + data + ")");
+                    if (data) {
+                        $("#errormyname").css("color", "green");
+                        $("#errormyname").attr("class", "glyphicon glyphicon-ok");
+                        $("#errormyname").html("");
+                    } else {
+                        $("#errormyname").css("color", "red");
+                        $("#errormyname").attr("class", "glyphicon glyphicon-remove");
+                        $("#errormyname").html("*该用户名已存在");
+                        validate = false;
+                    }
+                }
+        });
+
+        if (name == "") {
+            $("#errormyname").css("color", "red");
+            $("#errormyname").attr("class", "glyphicon glyphicon-remove");
+            $("#errormyname").html("*用户名不能为空");
+            validate = false;
+        } else {
+            $("#errormyname").css("color", "green");
+            $("#errormyname").attr("class", "glyphicon glyphicon-ok");
+            $("#errormyname").html("");
+        }
+
+        if (name!=null){
+		    var pattern = new RegExp("[`~ !#$^&*()=|{}':;',\\[\\].<>/?~！￥\\\\……&*（）——|{}【】‘；：”“'。，、？]")
+            for (var i = 0; i < name.length; i++) {
+                if (pattern.test(name.substr(i, 1))){
+                    $("#errormyname").css("color", "red");
+                    $("#errormyname").attr("class", "glyphicon glyphicon-remove");
+                    $("#errormyname").html("*用户名存在特殊字符");
+                    validate = false;
+			    }
+		    }
+        } else {
+            $("#errormyname").css("color", "green");
+            $("#errormyname").attr("class", "glyphicon glyphicon-ok");
+            $("#errormyname").html("");
+        }
+
+        if (!(/^1[34578]\d{9}$/.test(phone))) {
+            $("#errormyphone").css("color", "red");
+            $("#errormyphone").attr("class", "glyphicon glyphicon-remove");
+            $("#errormyphone").html("*输入的手机格式错误");
+            validate = false;
+        } else {
+            $("#errormyphone").css("color", "green");
+            $("#errormyphone").attr("class", "glyphicon glyphicon-ok");
+            $("#errormyphone").html("");
+        }
+
+        if (validate) {
+            update();
+        }
+    }
+
+     function update() {
+            $.ajax({
+                url: "@Url.Action("User_update")",
+                type: "post",
+                data: $("form").serialize(),
+                dataType: "json",
+                success: function (data) {
+                    data = eval("(" + data + ")");
+                    if (data) {
+                        alert("修改成功");
+                    } else {
+                        alert("修改失败");
+                    }
+                }
+            });
+     }
+</script>
+
 <div class="container mt-5">
     <!-- row -->
     <div class="row tm-content-row">
         <div class="tm-block-col tm-col-avatar">
             <div class="tm-bg-primary-dark tm-block tm-block-avatar">
-                <h2 class="tm-block-title">Change Avatar</h2>
+                <h2 class="tm-block-title">权限介绍</h2>
                 <div class="tm-avatar-container">
-                    <img src="img/avatar.png"
-                         alt="Avatar"
-                         class="tm-avatar img-fluid mb-4" />
-                    <a href="#" class="tm-avatar-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
+                    @if (Model.permissions.Equals("一级管理员"))
+                    {
+                        <h6 class="tm-block-title">您是一级管理员</h6>
+                        <h6 class="tm-block-title">*拥有系统的全部权限</h6>
+                        <h6 class="tm-block-title">1.访问仪表页面</h6>
+                        <h6 class="tm-block-title">2.管理点火装置</h6>
+                        <h6 class="tm-block-title">3.管理其他管理员</h6>
+                        <h6 class="tm-block-title">4.修改个人的信息</h6>
+                    }
+                    @if (Model.permissions.Equals("二级管理员"))
+                    {
+                        <h6 class="tm-block-title">您是二级管理员</h6>
+                        <h6 class="tm-block-title">1.访问仪表页面</h6>
+                        <h6 class="tm-block-title">2.管理点火装置</h6>
+                        <h6 class="tm-block-title">3.修改个人的信息</h6>
+                    }
+                    @if (Model.permissions.Equals("三级管理员"))
+                    {
+                        <h6 class="tm-block-title">您是三级管理员</h6>
+                        <h6 class="tm-block-title">1.访问仪表页面</h6>
+                        <h6 class="tm-block-title">2.修改个人的信息</h6>
+                    }
                 </div>
-                <button class="btn btn-primary btn-block text-uppercase">
-                    Upload New Photo
-                </button>
             </div>
         </div>
         <div class="tm-block-col tm-col-account-settings">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
                 <h2 class="tm-block-title">设置我的个人信息</h2>
-                <form action="" class="tm-signup-form row">
-                    <div class="form-group col-lg-6">
-                        <label for="name">用户名</label>
-                        <input id="name"
-                               name="name"
-                               type="text"
-                               class="form-control validate" />
-                        @Html.TextBoxFor(user => user.Phone, new { @class = "form-control validate", id = "phone" })
+                @using (Html.BeginForm(new { @class = "tm-signup-form row", role = "form" }))
+                {
+                    @Html.HiddenFor(user => user.id)
+                    @Html.HiddenFor(user => user.password)
+                    <div class="form-group col-lg-12">
+                        <label>用户名</label>
+                        @Html.TextBoxFor(user => user.name, new { @class = "form-control validate", id = "myname" })
+                        <span style="color: red;" id="errormyname"></span>
                     </div>
-                    <div class="form-group col-lg-6">
-                        <label for="email">联系电话</label>
-                        @Html.TextBoxFor(user => user.Phone, new { @class = "form-control validate", id = "phone" })
+                    <div class="form-group col-lg-12">
+                        <label>联系电话</label>
+                        @Html.TextBoxFor(user => user.Phone, new { @class = "form-control validate", id = "myphone" })
+                        <span style="color: red;" id="errormyphone"></span>
                     </div>
-                    <div class="form-group col-lg-6">
-                        <label for="password">我的权限</label>
-                        <input id="password"
-                               name="password"
-                               type="password"
-                               class="form-control validate" />
+                    <div class="form-group col-lg-12">
+                        <label>我的权限</label>
+                        @Html.TextBoxFor(user => user.permissions, new { @class = "form-control validate", @readOnly = "true", @style = "background-color: #54657D" })
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-12">
                         <label class="tm-hide-sm">&nbsp;</label>
-                        <button type="submit"
-                                class="btn btn-primary btn-block text-uppercase">
+                        <button type="button" class="btn btn-primary btn-block text-uppercase" onclick="openUpdatePasswordWin(@Model.id);">
                             更新密码
                         </button>
                     </div>
                     <div class="col-12">
-                        <button type="submit"
-                                class="btn btn-primary btn-block text-uppercase">
+                        <button type="button" class="btn btn-primary btn-block text-uppercase" onclick="validate();">
                             更新我的个人信息
                         </button>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>
