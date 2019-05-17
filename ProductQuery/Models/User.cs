@@ -30,7 +30,7 @@ namespace ProductQuery.Models
         public string ConfirmPassword { get; set; }
 
         [DisplayName("权限")]
-        public int permissions { get; set; }
+        public string permissions { get; set; }
 
     }
 }

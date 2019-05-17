@@ -147,6 +147,7 @@
     <Compile Include="Controllers\IMeasurementConverters\IMeasurementConverter.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IMeasurementConverters\Weight.cs" />
+    <Compile Include="Controllers\MyselfInformationController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Controllers\IMeasurementConverters\Lenght.cs" />
     <Compile Include="Controllers\IMeasurementConverters\Resistance.cs" />
@@ -415,6 +416,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\MyselfInformation\User_myself.cshtml" />
+    <Content Include="Views\MyselfInformation\User_UpdatePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

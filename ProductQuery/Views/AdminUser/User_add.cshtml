@@ -24,11 +24,50 @@
             var password = $("#password").val();
             var confirmpassword = $("#confirmpassword").val();
 
+            $.ajax({
+                    url: "@Url.Action("User_hasusername","AdminUser")",  
+                    type: "post",
+                    data: {
+                        "oldusername": "",
+                        "newusername": name
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        data = eval("(" + data + ")");
+                        if (data) {
+                            $("#errorname").css("color", "green");
+                            $("#errorname").attr("class", "glyphicon glyphicon-ok");
+                            $("#errorname").html("");
+                        } else {
+                            $("#errorname").css("color", "red");
+                            $("#errorname").attr("class", "glyphicon glyphicon-remove");
+                            $("#errorname").html("*该用户名已存在");
+                            validate = false;
+                        }
+                    }
+            });
+
             if (name == "") {
                 $("#errorname").css("color", "red");
                 $("#errorname").attr("class", "glyphicon glyphicon-remove");
                 $("#errorname").html("*用户名不能为空");
                 validate = false;
+            } else {
+                $("#errorname").css("color", "green");
+                $("#errorname").attr("class", "glyphicon glyphicon-ok");
+                $("#errorname").html("");
+            }
+
+            if (name != null) {
+                var pattern = new RegExp("[`~ !#$^&*()=|{}':;',\\[\\].<>/?~！￥\\\\……&*（）——|{}【】‘；：”“'。，、？]")
+                for (var i = 0; i < name.length; i++) {
+                    if (pattern.test(name.substr(i, 1))) {
+                        $("#errorname").css("color", "red");
+                        $("#errorname").attr("class", "glyphicon glyphicon-remove");
+                        $("#errorname").html("*用户名存在特殊字符");
+                        validate = false;
+                    }
+                }
             } else {
                 $("#errorname").css("color", "green");
                 $("#errorname").attr("class", "glyphicon glyphicon-ok");
@@ -50,6 +89,17 @@
                 $("#errorpassword").css("color", "red");
                 $("#errorpassword").attr("class", "glyphicon glyphicon-remove");
                 $("#errorpassword").html("*密码不能为空");
+                validate = false;
+            } else {
+                $("#errorpassword").css("color", "green");
+                $("#errorpassword").attr("class", "glyphicon glyphicon-ok");
+                $("#errorpassword").html("");
+            }
+
+            if (password.length<6) {
+                $("#errorpassword").css("color", "red");
+                $("#errorpassword").attr("class", "glyphicon glyphicon-remove");
+                $("#errorpassword").html("*密码长度不能小于6位");
                 validate = false;
             } else {
                 $("#errorpassword").css("color", "green");
@@ -97,37 +147,42 @@
     <div class="row tm-content-row">
         <div class="tm-block-col tm-col-account-settings">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
-                @using (Html.BeginForm("User_add", "AdminUser", new { @class = "tm-signup-form row", role = "form"}))
+                @using (Html.BeginForm("User_add", "AdminUser", new { @class = "tm-signup-form row", role = "form" }))
                 {
-                <div class="form-group col-lg-6">
-                    @Html.LabelFor(user => user.name)
-                    @Html.TextBoxFor(user => user.name, new { @class = "form-control validate" ,id = "name"})
-                    <span style="color: red;" id="errorname"></span>
-                </div>
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(user => user.name)
+                        @Html.TextBoxFor(user => user.name, new { @class = "form-control validate", id = "name" })
+                        <span style="color: red;" id="errorname"></span>
+                    </div>
 
-                <div class="form-group col-lg-6">
-                    @Html.LabelFor(user => user.Phone)
-                    @Html.TextBoxFor(user => user.Phone, new { @class = "form-control validate", id = "phone" })
-                    <span style="color: red;" id="errorphone"></span>
-                </div>
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(user => user.Phone)
+                        @Html.TextBoxFor(user => user.Phone, new { @class = "form-control validate", id = "phone" })
+                        <span style="color: red;" id="errorphone"></span>
+                    </div>
 
-                <div class="form-group col-lg-6">
-                    @Html.LabelFor(user => user.password)
-                    @Html.PasswordFor(user => user.password, new { @class = "form-control validate",id = "password" })
-                    <span style="color: red;" id="errorpassword"></span>
-                </div>
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(user => user.permissions)
+                        @Html.DropDownListFor(model => model.permissions, ViewBag.select as SelectList,new { @class = "custom-select"})
+                    </div>
 
-                <div class="form-group col-lg-6">
-                    @Html.LabelFor(user => user.ConfirmPassword)
-                    @Html.PasswordFor(user => user.ConfirmPassword, new { @class = "form-control validate",id= "confirmpassword" })
-                    <span style="color: red;" id="errorconfirmpassword"></span>
-                </div>
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(user => user.password)
+                        @Html.PasswordFor(user => user.password, new { @class = "form-control validate", id = "password" })
+                        <span style="color: red;" id="errorpassword"></span>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(user => user.ConfirmPassword)
+                        @Html.PasswordFor(user => user.ConfirmPassword, new { @class = "form-control validate", id = "confirmpassword" })
+                        <span style="color: red;" id="errorconfirmpassword"></span>
+                    </div>
 
                     <div class="form-group col-lg-6">
                         <label class="tm-hide-sm">&nbsp;</label>
                         <button type="button" id="saveBtn" class="btn btn-primary btn-block text-uppercase" onclick="validate();">
-                                添加用户信息
-                            </button>
+                            添加用户信息
+                        </button>
                     </div>
                 }
             </div>
