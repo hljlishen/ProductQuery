@@ -50,6 +50,12 @@
         $(function () {
             $("#file_1").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -63,6 +69,12 @@
         $(function () {
             $("#file_2").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -76,6 +88,12 @@
         $(function () {
             $("#file_3").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -89,6 +107,12 @@
         $(function () {
             $("#file_4").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -102,6 +126,12 @@
         $(function () {
             $("#file_5").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -115,6 +145,12 @@
         $(function () {
             $("#file_6").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -128,6 +164,12 @@
         $(function () {
             $("#file_7").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -141,6 +183,12 @@
         $(function () {
             $("#file_8").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -154,6 +202,12 @@
         $(function () {
             $("#file_9").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -167,6 +221,12 @@
         $(function () {
             $("#file_10").on("change", function () {
                 var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -184,87 +244,101 @@
         }
 
         function FormSubmission() {
-            var yzrq = true;
-            var sjdxrq = true;
-            var scdxrq = true;
-            if (document.getElementById("expire_date").value != "") {
-                var str = document.getElementById("expire_date").value.trim();
-                if (str.length != 0) {
-                    var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/;
-                    yzrq = str.match(reg);
-                    if (yzrq == null)
-                        yzrq = false;
+            var validate = true;
+
+            var cpmc = $("#产品名称").val();
+            var yzrq = $("#expire_date").val();
+            var sjdxrq = $("#expire_date2").val();
+            var scdxrq = $("#expire_date3").val();
+
+            if (cpmc == "") {
+                $("#errorcpmc").css("color", "red");
+                $("#errorcpmc").attr("class", "glyphicon glyphicon-remove");
+                $("#errorcpmc").html("*产品名称不能为空");
+                validate = false;
+            } else {
+                $("#errorcpmc").css("color", "green");
+                $("#errorcpmc").attr("class", "glyphicon glyphicon-ok");
+                $("#errorcpmc").html("");
+            }
+
+
+            if (yzrq != "") {
+                if (!yzrq.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/)) {
+                    $("#erroryzrq").css("color", "red");
+                    $("#erroryzrq").attr("class", "glyphicon glyphicon-remove");
+                    $("#erroryzrq").html("*日期格式有误");
+                    validate = false;
+                } else {
+                    $("#erroryzrq").css("color", "green");
+                    $("#erroryzrq").attr("class", "glyphicon glyphicon-ok");
+                    $("#erroryzrq").html("");
                 }
             }
-            if (document.getElementById("expire_date2").value != "") {
-                var str = document.getElementById("expire_date2").value.trim();
-                if (str.length != 0) {
-                    var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/;
-                    sjdxrq = str.match(reg);
-                    if (sjdxrq == null)
-                        sjdxrq = false;
+            else {
+                $("#erroryzrq").css("color", "green");
+                $("#erroryzrq").attr("class", "glyphicon glyphicon-ok");
+                $("#erroryzrq").html("");
+            }
+           
+            if (sjdxrq != "") {
+                if (!sjdxrq.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/)) {
+                    $("#errorsjdxrq").css("color", "red");
+                    $("#errorsjdxrq").attr("class", "glyphicon glyphicon-remove");
+                    $("#errorsjdxrq").html("*日期格式有误");
+                    validate = false;
+                } else {
+                    $("#errorsjdxrq").css("color", "green");
+                    $("#errorsjdxrq").attr("class", "glyphicon glyphicon-ok");
+                    $("#errorsjdxrq").html("");
                 }
             }
-            if (document.getElementById("expire_date3").value != "") {
-                var str = document.getElementById("expire_date3").value.trim();
-                if (str.length != 0) {
-                    var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/;
-                    scdxrq = str.match(reg);
-                    if (scdxrq == null)
-                        scdxrq = false;
+            else {
+                $("#errorsjdxrq").css("color", "green");
+                $("#errorsjdxrq").attr("class", "glyphicon glyphicon-ok");
+                $("#errorsjdxrq").html("");
+            }
+
+            if (scdxrq != "") {
+                if (!scdxrq.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})/)) {
+                    $("#errorsscdxrq").css("color", "red");
+                    $("#errorsscdxrq").attr("class", "glyphicon glyphicon-remove");
+                    $("#errorsscdxrq").html("*日期格式有误");
+                    validate = false;
+                } else {
+                    $("#errorsscdxrq").css("color", "green");
+                    $("#errorsscdxrq").attr("class", "glyphicon glyphicon-ok");
+                    $("#errorsscdxrq").html("");
                 }
             }
-            if (document.getElementById("类别").value == "请选择" || document.getElementById("产品名称").value == "" || yzrq == false || sjdxrq == false || scdxrq == false) {
-                if (document.getElementById("类别").value == "请选择")
-                    document.getElementById("lb").style.display = "";
-                else
-                    document.getElementById("lb").style.display = "none";
-                if (document.getElementById("产品名称").value == "")
-                    document.getElementById("cpmc").style.display = "";
-                else
-                    document.getElementById("cpmc").style.display = "none";
-                if (yzrq == false)
-                    document.getElementById("yzrq").style.display = "";
-                else
-                    document.getElementById("yzrq").style.display = "none";
-                if (sjdxrq == false)
-                    document.getElementById("sjdxrq").style.display = "";
-                else
-                    document.getElementById("sjdxrq").style.display = "none";
-                if (scdxrq == false)
-                    document.getElementById("scdxrq").style.display = "";
-                else
-                    document.getElementById("scdxrq").style.display = "none";
-                alert("信息输入有误！");
-                return;
+            else {
+                $("#errorsscdxrq").css("color", "green");
+                $("#errorsscdxrq").attr("class", "glyphicon glyphicon-ok");
+                $("#errorsscdxrq").html("");
             }
-            document.getElementById("form").submit();
-            alert("添加成功");
-            parent.openFrame("Information");
+            
+            if (validate) {
+                update();
+            }
         }
 
-        $(document).ready(function () {
-            //敲击按键时触发
-            $("#double").bind("keypress", function (event) {
-                var event = event || window.event;
-                var getValue = $(this).val();
-                //控制第一个不能输入小数点"."
-                if (getValue.length == 0 && event.which == 46) {
-                    event.preventDefault();
-                    return;
+        function update() {
+            $.ajax({
+                url: "@Url.Action("Ignition_update")",
+                type: "post",
+                data: $("form").serialize(),
+                dataType: "json",
+                success: function (data) {
+                    data = eval("(" + data + ")");
+                    if (data) {
+                        alert("修改成功");
+                    } else {
+                        alert("修改失败");
+                    }
+                    parent.openFrame("Information");
                 }
-                //控制只能输入一个小数点"."
-                if (getValue.indexOf('.') != -1 && event.which == 46) {
-                    event.preventDefault();
-                    return;
-                }
-                //控制只能输入的值
-                if ((event.which < 48 || event.which > 57) && event.which != 8 && event.which != 46) {
-                    event.preventDefault();
-                    return;
-                }
-            })
-        });
+            });
+        }
     </script>
 </head>
 <body>
@@ -495,7 +569,8 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="产品名称">产品名称</label>
-                            @Html.TextBox("产品名称", ig.cpmc.ToString(), new { @class = "form-control validate" })
+                            <span style="color: red;" id="errorcpmc"></span>
+                            @Html.TextBox("产品名称", ig.cpmc.ToString(), new { @class = "form-control validate", id = "产品名称" })
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="设计单位">设计单位</label>
@@ -519,6 +594,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="研制日期">研制日期</label>
+                            <span style="color: red;" id="erroryzrq"></span>
                             @{ if (ig.yzrq.ToString() != "")
                                 {
                                     DateTime now = DateTime.Parse(ig.yzrq.ToString());
@@ -526,11 +602,12 @@
                                 }
                                 else
                                 {
-                                    @Html.TextBox("研制日期", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("研制日期", "", new { @class = "form-control validate", id = "expire_date" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="设计定型日期">设计定型日期</label>
+                            <span style="color: red;" id="errorsjdxrq"></span>
                             @{ if (ig.dxrq.ToString() != "")
                                 {
                                     DateTime now = DateTime.Parse(ig.dxrq.ToString());
@@ -538,11 +615,12 @@
                                 }
                                 else
                                 {
-                                    @Html.TextBox("设计定型日期", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("设计定型日期", "", new { @class = "form-control validate", id = "expire_date2" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="生产定型日期">生产定型日期</label>
+                            <span style="color: red;" id="errorsscdxrq"></span>
                             @{ if (ig.gydx.ToString() != "")
                                 {
                                     DateTime now = DateTime.Parse(ig.gydx.ToString());
@@ -550,7 +628,7 @@
                                 }
                                 else
                                 {
-                                    @Html.TextBox("生产定型日期", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("生产定型日期", "", new { @class = "form-control validate", id = "expire_date3" })
                                 }}
                         </div>
 
@@ -586,11 +664,11 @@
                             <label for="桥丝数目">桥丝数目</label>
                             @{ if (ig.jssm.ToString() != "0")
                                 {
-                                    @Html.TextBox("桥丝数目", ig.jssm.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("桥丝数目", ig.jssm.ToString(), new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("桥丝数目", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("桥丝数目", "", new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 } }
                         </div>
                         <div class="form-group col-lg-6">
@@ -598,11 +676,11 @@
                             <label for="单位">(年)</label>
                             @{ if (ig.zcsm.ToString() != "0")
                                 {
-                                    @Html.TextBox("贮存寿命", ig.zcsm.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("贮存寿命", ig.zcsm.ToString(), new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("贮存寿命", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("贮存寿命", "", new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 } }
                         </div>
 
@@ -634,33 +712,33 @@
                             <label for="宽度">宽度</label>
                             @{ if (ig.kd.ToString() != "0")
                                 {
-                                    @Html.TextBox("宽度", ig.kd.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("宽度", ig.kd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("宽度", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("宽度", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="脚线">脚线</label>
                             @{ if (ig.jx.ToString() != "0")
                                 {
-                                    @Html.TextBox("脚线", ig.jx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("脚线", ig.jx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("脚线", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("脚线", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="总长度">总长度</label>
                             @{ if (ig.zcd.ToString() != "0")
                                 {
-                                    @Html.TextBox("总长度", ig.zcd.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("总长度", ig.zcd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("总长度", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("总长度", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-12">
@@ -670,11 +748,11 @@
                             <label for="隔板厚度">隔板厚度</label>
                             @{ if (ig.gbhd.ToString() != "0")
                                 {
-                                    @Html.TextBox("隔板厚度", ig.gbhd.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("隔板厚度", ig.gbhd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("隔板厚度", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("隔板厚度", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-12">
@@ -685,33 +763,33 @@
                             <label for="索直径上限">索直径上限</label>
                             @{ if (ig.szjsx.ToString() != "0")
                                 {
-                                    @Html.TextBox("索直径上限", ig.szjsx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("索直径上限", ig.szjsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("索直径上限", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("索直径上限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索直径下限">索直径下限</label>
                             @{ if (ig.szjxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("索直径下限", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("索直径下限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索MDF（银质）直径">索MDF（银质）直径</label>
                             @{ if (ig.sMDFyzzj.ToString() != "0")
                                 {
-                                    @Html.TextBox("索MDF（银质）直径", ig.sMDFyzzj.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("索MDF（银质）直径", ig.sMDFyzzj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("索MDF（银质）直径", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("索MDF（银质）直径", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 } }
                         </div>
                         <div class="form-group col-lg-6">
@@ -726,22 +804,22 @@
                             <label for="对边">对边</label>
                             @{ if (ig.db.ToString() != "0")
                                 {
-                                    @Html.TextBox("对边", ig.db.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("对边", ig.db.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("对边", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("对边", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 } }
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="对角线">对角线</label>
                             @{ if (ig.djx.ToString() != "0")
                                 {
-                                    @Html.TextBox("对角线", ig.djx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("对角线", ig.djx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("对角线", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("对角线", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
 
@@ -757,11 +835,11 @@
                             <label for="danwei">(mA)</label>
                             @{ if (ig.jcdl.ToString() != "0")
                                 {
-                                    @Html.TextBox("检测电流", ig.jcdl.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("检测电流", ig.jcdl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("检测电流", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("检测电流", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-12">
@@ -772,11 +850,11 @@
                             <label for="danwei">(pf)</label>
                             @{ if (ig.jddr.ToString() != "0")
                                 {
-                                    @Html.TextBox("静电电容", ig.jddr.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("静电电容", ig.jddr.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("静电电容", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("静电电容", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
@@ -784,11 +862,11 @@
                             <label for="danwei">(V)</label>
                             @{ if (ig.jddy.ToString() != "0")
                                 {
-                                    @Html.TextBox("静电电压", ig.jddy.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("静电电压", ig.jddy.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("静电电压", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("静电电压", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
@@ -796,11 +874,11 @@
                             <label for="danwei">(Ω)</label>
                             @{ if (ig.cldz.ToString() != "0")
                                 {
-                                    @Html.TextBox("串联电阻", ig.cldz.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("串联电阻", ig.cldz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("串联电阻", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("串联电阻", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
@@ -815,7 +893,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间">作用时间</label>
-                                    @Html.TextBox("作用时间", ig.zysj.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("作用时间", ig.zysj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -832,7 +910,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间">作用时间</label>
-                                    @Html.TextBox("作用时间", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("作用时间", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -851,7 +929,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间上限">作用时间上限</label>
-                                    @Html.TextBox("作用时间上限", ig.zysjsx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("作用时间上限", ig.zysjsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -868,7 +946,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间上限">作用时间上限</label>
-                                    @Html.TextBox("作用时间上限", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("作用时间上限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -886,7 +964,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间下限">作用时间下限</label>
-                                    @Html.TextBox("作用时间下限", ig.zysjxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("作用时间下限", ig.zysjxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -903,7 +981,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间下限">作用时间下限</label>
-                                    @Html.TextBox("作用时间下限", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("作用时间下限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -928,11 +1006,11 @@
                             <label for="桥个数">桥个数</label>
                             @{ if (ig.jgs.ToString() != "0")
                                 {
-                                    @Html.TextBox("安全电流桥个数", ig.jgs.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电流桥个数", ig.jgs.ToString(), new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("安全电流桥个数", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电流桥个数", "", new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 }}
                         </div>
 
@@ -940,7 +1018,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值">安全电流值</label>
-                                    @Html.TextBox("安全电流值", ig.aydlz.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电流值", ig.aydlz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
 
                                 <div class="form-group col-lg-2">
@@ -956,7 +1034,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值">安全电流值</label>
-                                    @Html.TextBox("安全电流值", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电流值", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -974,7 +1052,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值上限">安全电流值上限</label>
-                                    @Html.TextBox("安全电流值上限", ig.aydlzsx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电流值上限", ig.aydlzsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -989,7 +1067,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值上限">安全电流值上限</label>
-                                    @Html.TextBox("安全电流值上限", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电流值上限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1006,7 +1084,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值下限">安全电流值下限</label>
-                                    @Html.TextBox("安全电流值下限", ig.aydlzxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电流值下限", ig.aydlzxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1021,7 +1099,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值下限">安全电流值下限</label>
-                                    @Html.TextBox("安全电流值下限", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电流值下限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1039,7 +1117,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="时间值">时间值</label>
-                                    @Html.TextBox("时间值", ig.ssj.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("时间值", ig.ssj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1055,7 +1133,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="时间值">时间值</label>
-                                    @Html.TextBox("时间值", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("时间值", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1072,11 +1150,11 @@
                             <label for="danwei">(W)</label>
                             @{ if (ig.glz.ToString() != "0")
                                 {
-                                    @Html.TextBox("功率值", ig.glz.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("功率值", ig.glz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("功率值", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("功率值", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
 
@@ -1092,11 +1170,11 @@
                             <label for="danwei">(V)</label>
                             @{ if (ig.aqdydy.ToString() != "0")
                                 {
-                                    @Html.TextBox("安全电压电压", ig.aqdydy.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电压电压", ig.aqdydy.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("安全电压电压", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电压电压", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 } }
                         </div>
                         <div class="form-group col-lg-6">
@@ -1104,11 +1182,11 @@
                             <label for="danwei">(pf)</label>
                             @{ if (ig.aqdydr.ToString() != "0")
                                 {
-                                    @Html.TextBox("安全电压电容", ig.aqdydr.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电压电容", ig.aqdydr.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("安全电压电容", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("安全电压电容", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
 
@@ -1120,22 +1198,22 @@
                             <label for="燃烧压力上限">燃烧压力上限</label>
                             @{ if (ig.rsylsx.ToString() != "0")
                                 {
-                                    @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("燃烧压力上限", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("燃烧压力上限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力下限">燃烧压力下限</label>
                             @{ if (ig.rsylxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("燃烧压力下限", ig.rsylxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("燃烧压力下限", ig.rsylxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("燃烧压力下限", "", new { @class = "form-control validate" })
+                                    @Html.TextBox("燃烧压力下限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
@@ -1183,11 +1261,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (con.zj.ToString() != "0")
                                 {
-                                    @Html.TextBox("直径" + cons, con.zj.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("直径" + cons, con.zj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("直径" + cons, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("直径" + cons, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1195,11 +1273,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (con.cd.ToString() != "0")
                                 {
-                                    @Html.TextBox("常规长度" + cons, con.cd.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("常规长度" + cons, con.cd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("常规长度" + cons, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("常规长度" + cons, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1207,11 +1285,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (con.gd.ToString() != "0")
                                 {
-                                    @Html.TextBox("高度" + cons, con.gd.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("高度" + cons, con.gd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("高度" + cons, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("高度" + cons, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             @Html.TextBox("常规id" + cons, con.Id.ToString(), new { @class = "form-control validate", style = "display:none" })
@@ -1236,11 +1314,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (cab.ptszj.ToString() != "0")
                                 {
-                                    @Html.TextBox("索普通直径" + cabs, cab.ptszj.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("索普通直径" + cabs, cab.ptszj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("索普通直径" + cabs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("索普通直径" + cabs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
 
                             </div>
@@ -1264,11 +1342,11 @@
                                 <label for="danwei">(m/s)</label>
                                 @if (s.bssx.ToString() != "0")
                                 {
-                                    @Html.TextBox("爆速上限" + speeds, s.bssx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("爆速上限" + speeds, s.bssx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("爆速上限" + speeds, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("爆速上限" + speeds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1276,11 +1354,11 @@
                                 <label for="danwei">(m/s)</label>
                                 @if (s.bsxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("爆速下限" + speeds, s.bsxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("爆速下限" + speeds, s.bsxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("爆速下限" + speeds, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("爆速下限" + speeds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1307,11 +1385,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (inte.lw.ToString() != "0")
                                 {
-                                    @Html.TextBox("螺纹" + inters, inte.lw.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("螺纹" + inters, inte.lw.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("螺纹" + inters, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("螺纹" + inters, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1319,27 +1397,27 @@
                                 <label for="danwei">(mm)</label>
                                 @if (inte.lj.ToString() != "0")
                                 {
-                                    @Html.TextBox("螺距" + inters, inte.lj.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("螺距" + inters, inte.lj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("螺距" + inters, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("螺距" + inters, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="公差">公差</label>
-                                @Html.TextBox("公差" + inters, inte.gc.ToString(), new { @class = "form-control validate" })
+                                @Html.TextBox("公差" + inters, inte.gc.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="长度">长度</label>
                                 <label for="danwei">(mm)</label>
                                 @if (inte.cd.ToString() != "0")
                                 {
-                                    @Html.TextBox("接口信息长度" + inters, inte.cd.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("接口信息长度" + inters, inte.cd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("接口信息长度" + inters, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("接口信息长度" + inters, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1366,18 +1444,18 @@
                                 <label for="桥个数">桥个数</label>
                                 @if (d.dzqgs.ToString() != "0")
                                 {
-                                    @Html.TextBox("直流电阻桥个数" + ds, d.dzqgs.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("直流电阻桥个数" + ds, d.dzqgs.ToString(), new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("直流电阻桥个数" + ds, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("直流电阻桥个数" + ds, "", new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 }
                             </div>
                             @if (d.dzfwzsx.ToString() != "0")
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="电阻范围值上">电阻范围值上</label>
-                                    @Html.TextBox("电阻范围值上" + ds, d.dzfwzsx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("电阻范围值上" + ds, d.dzfwzsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1394,7 +1472,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="电阻范围值上">电阻范围值上</label>
-                                    @Html.TextBox("电阻范围值上" + ds, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("电阻范围值上" + ds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1411,7 +1489,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="电阻范围值下">电阻范围值下</label>
-                                    @Html.TextBox("电阻范围值下" + ds, d.dzfwzxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("电阻范围值下" + ds, d.dzfwzxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1428,7 +1506,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="电阻范围值下">电阻范围值下</label>
-                                    @Html.TextBox("电阻范围值下" + ds, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("电阻范围值下" + ds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1445,7 +1523,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="电阻小于值">电阻小于值</label>
-                                    @Html.TextBox("电阻小于值" + ds, d.dzxyz.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("电阻小于值" + ds, d.dzxyz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1462,7 +1540,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="电阻小于值">电阻小于值</label>
-                                    @Html.TextBox("电阻小于值" + ds, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("电阻小于值" + ds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1500,11 +1578,11 @@
                                 <label for="桥个数">桥个数</label>
                                 @if (ign.qgs.ToString() != "0")
                                 {
-                                    @Html.TextBox("桥个数" + igncs, ign.qgs.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("桥个数" + igncs, ign.qgs.ToString(), new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("桥个数" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("桥个数" + igncs, "", new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1512,11 +1590,11 @@
                                 <label for="danwei">(V)</label>
                                 @if (ign.fhdy.ToString() != "0")
                                 {
-                                    @Html.TextBox("发火电压" + igncs, ign.fhdy.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电压" + igncs, ign.fhdy.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("发火电压" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电压" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1524,11 +1602,11 @@
                                 <label for="danwei">(V)</label>
                                 @if (ign.fhdysx.ToString() != "0")
                                 {
-                                    @Html.TextBox("发火电压上限" + igncs, ign.fhdysx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电压上限" + igncs, ign.fhdysx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("发火电压上限" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电压上限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1536,11 +1614,11 @@
                                 <label for="danwei">(V)</label>
                                 @if (ign.fhdyxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("发火电压下限" + igncs, ign.fhdyxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电压下限" + igncs, ign.fhdyxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("发火电压下限" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电压下限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
 
@@ -1548,7 +1626,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电容">发火电容</label>
-                                    @Html.TextBox("发火电容" + igncs, ign.fhdr.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电容" + igncs, ign.fhdr.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1563,7 +1641,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电容">发火电容</label>
-                                    @Html.TextBox("发火电容" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电容" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1583,7 +1661,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流">发火电流</label>
-                                    @Html.TextBox("发火电流" + igncs, ign.fhdl.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电流" + igncs, ign.fhdl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1598,7 +1676,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流">发火电流</label>
-                                    @Html.TextBox("发火电流" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电流" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1615,7 +1693,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流上限">发火电流上限</label>
-                                    @Html.TextBox("发火电流上限" + igncs, ign.fhdlsx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电流上限" + igncs, ign.fhdlsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1630,7 +1708,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流上限">发火电流上限</label>
-                                    @Html.TextBox("发火电流上限" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电流上限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1648,7 +1726,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流下限">发火电流下限</label>
-                                    @Html.TextBox("发火电流下限" + igncs, ign.fhdlxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电流下限" + igncs, ign.fhdlxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1663,7 +1741,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流下限">发火电流下限</label>
-                                    @Html.TextBox("发火电流下限" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电流下限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1681,7 +1759,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流时间">发火电流时间</label>
-                                    @Html.TextBox("发火电流时间" + igncs, ign.fhdlss.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电流时间" + igncs, ign.fhdlss.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1696,13 +1774,13 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流时间">发火电流时间</label>
-                                    @Html.TextBox("发火电流时间" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("发火电流时间" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
                                     <select class="custom-select" name="发火电流时间单位 @igncs">
-                                        <option value="ms">ms</option>
                                         <option value="请选择">请选择</option>
+                                        <option value="ms">ms</option>
                                         <option value="min">min</option>
                                     </select>
                                 </div>
@@ -1718,7 +1796,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="锤重">锤重</label>
-                                    @Html.TextBox("锤重" + igncs, ign.cz.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("锤重" + igncs, ign.cz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1733,7 +1811,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="锤重">锤重</label>
-                                    @Html.TextBox("锤重" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("锤重" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1751,7 +1829,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="落高">落高</label>
-                                    @Html.TextBox("落高" + igncs, ign.lg.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("落高" + igncs, ign.lg.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1767,7 +1845,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="落高">落高</label>
-                                    @Html.TextBox("落高" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("落高" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1786,11 +1864,11 @@
                                 <label for="danwei">(g•cm)</label>
                                 @if (ign.jzcjl.ToString() != "0")
                                 {
-                                    @Html.TextBox("击针刺激量" + igncs, ign.jzcjl.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("击针刺激量" + igncs, ign.jzcjl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针刺激量" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("击针刺激量" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1798,12 +1876,12 @@
                                 <label for="danwei">(N)</label>
                                 @if (ign.jzlsx.ToString() != "0")
                                 {
-                                    @Html.TextBox("击针力上限" + igncs, ign.jzlsx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("击针力上限" + igncs, ign.jzlsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
 
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针力上限" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("击针力上限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
 
@@ -1812,11 +1890,11 @@
                                 <label for="danwei">(N)</label>
                                 @if (ign.jzlxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("击针力下限" + igncs, ign.jzlxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("击针力下限" + igncs, ign.jzlxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针力下限" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("击针力下限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1824,11 +1902,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (ign.jztclsx.ToString() != "0")
                                 {
-                                    @Html.TextBox("击针突出量上限" + igncs, ign.jztclsx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("击针突出量上限" + igncs, ign.jztclsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针突出量上限" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("击针突出量上限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1836,11 +1914,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (ign.jztclxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("击针突出量下限" + igncs, ign.jztclxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("击针突出量下限" + igncs, ign.jztclxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针突出量下限" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("击针突出量下限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1848,11 +1926,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (ign.thgd.ToString() != "0")
                                 {
-                                    @Html.TextBox("弹簧高度" + igncs, ign.thgd.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("弹簧高度" + igncs, ign.thgd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("弹簧高度" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("弹簧高度" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1860,11 +1938,11 @@
                                 <label for="danwei">(N)</label>
                                 @if (ign.kl.ToString() != "0")
                                 {
-                                    @Html.TextBox("抗力" + igncs, ign.kl.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("抗力" + igncs, ign.kl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("抗力" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("抗力" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1876,7 +1954,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="能量">能量</label>
-                                    @Html.TextBox("能量" + igncs, ign.nl.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("能量" + igncs, ign.nl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1891,7 +1969,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="能量">能量</label>
-                                    @Html.TextBox("能量" + igncs, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("能量" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1923,12 +2001,12 @@
                                 <label for="danwei">(摄氏度) </label>
                                 @if (de.wdtj.ToString() != "0")
                                 {
-                                    @Html.TextBox("温度条件" + des, de.wdtj.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("温度条件" + des, de.wdtj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
 
                                 }
                                 else
                                 {
-                                    @Html.TextBox("温度条件" + des, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("温度条件" + des, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 }
                             </div>
 
@@ -1936,7 +2014,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间上限">延期时间上限</label>
-                                    @Html.TextBox("延期时间上限" + des, de.yqsjsx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("延期时间上限" + des, de.yqsjsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1951,7 +2029,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间上限">延期时间上限</label>
-                                    @Html.TextBox("延期时间上限" + des, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("延期时间上限" + des, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1966,7 +2044,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间下限">延期时间下限</label>
-                                    @Html.TextBox("延期时间下限" + des, de.yqsjxx.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("延期时间下限" + des, de.yqsjxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1981,7 +2059,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间下限">延期时间下限</label>
-                                    @Html.TextBox("延期时间下限" + des, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("延期时间下限" + des, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1996,7 +2074,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间值">延期时间值</label>
-                                    @Html.TextBox("延期时间值" + des, de.yqsjz.ToString(), new { @class = "form-control validate" })
+                                    @Html.TextBox("延期时间值" + des, de.yqsjz.ToString(), new { @class = "form-control validate",onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2011,7 +2089,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间值">延期时间值</label>
-                                    @Html.TextBox("延期时间值" + des, "", new { @class = "form-control validate" })
+                                    @Html.TextBox("延期时间值" + des, "", new { @class = "form-control validate" ,onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>

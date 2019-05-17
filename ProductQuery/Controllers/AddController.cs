@@ -115,6 +115,13 @@ namespace ProductQuery.Controllers
         public JsonResult Ignition_update(FormCollection collection, Ignition ignition)
         {
             ignition.IgnitionId = int.Parse(collection["ingid"]);
+            Information(collection, ignition, ignition.IgnitionId);
+            AddImage(collection, ignition, ignition.IgnitionId);
+            return Json(dbDrive.Udpdate(ignition));
+        }
+
+        private void Information(FormCollection collection, Ignition ignition,int id)
+        {
             if (collection["类别"] != "请选择")
                 ignition.lb = collection["类别"];
             ignition.cpmc = collection["产品名称"];
@@ -232,15 +239,13 @@ namespace ProductQuery.Controllers
             if (collection["燃烧压力下限"] != "")
                 ignition.rsylsx = double.Parse(collection["燃烧压力下限"]);
             ignition.rsylbz = collection["燃烧压力备注"];
-            AddConventionals(collection, ignition, ignition.IgnitionId);
-            AddCableDiameter(collection, ignition, ignition.IgnitionId);
-            AddSpeedDetonation(collection, ignition, ignition.IgnitionId);
-            AddInterfaceInformation(collection, ignition, ignition.IgnitionId);
-            AddDcResistance(collection, ignition, ignition.IgnitionId);
-            AddIgnitionCondition(collection, ignition, ignition.IgnitionId);
-            AddDelayTime(collection, ignition, ignition.IgnitionId);
-            AddImage(collection, ignition, ignition.IgnitionId);
-            return Json(dbDrive.Udpdate(ignition));
+            AddConventionals(collection, ignition, id);
+            AddCableDiameter(collection, ignition, id);
+            AddSpeedDetonation(collection, ignition, id);
+            AddInterfaceInformation(collection, ignition, id);
+            AddDcResistance(collection, ignition, id);
+            AddIgnitionCondition(collection, ignition, id);
+            AddDelayTime(collection, ignition, id);
         }
 
         //添加点火装置
@@ -248,130 +253,7 @@ namespace ProductQuery.Controllers
         public ActionResult AddInformation(FormCollection collection,Ignition ignition)
         {
             int id = -1;
-            if (collection["类别"] != "请选择")
-                ignition.lb = collection["类别"];
-            ignition.cpmc = collection["产品名称"];
-            ignition.sjdw = collection["设计单位"];
-            ignition.scdw = collection["生产单位"];
-            ignition.xh = collection["型号"];
-            ignition.th = collection["图号"];
-            ignition.dh = collection["代号"];
-            //日期转化
-            if (collection["研制日期"] != "")
-                ignition.yzrq =DateTime.Parse(DateTime.Parse(collection["研制日期"]).ToString("yyyy-MM-dd"));
-            if (collection["设计定型日期"] != "")
-                ignition.dxrq = DateTime.Parse(DateTime.Parse(collection["设计定型日期"]).ToString("yyyy-MM-dd"));
-            if (collection["生产定型日期"] != "")
-                ignition.gydx = DateTime.Parse(DateTime.Parse(collection["生产定型日期"]).ToString("yyyy-MM-dd"));
-            ignition.yt = collection["用途"];
-            ignition.xtzc = collection["系统组成"];
-            ignition.mqjd = collection["目前阶段"];
-            ignition.jxxn = collection["机械性能"];
-            ignition.dxn = collection["电性能"];
-            ignition.gn = collection["功能"];
-            ignition.hjcs = collection["环境试验"];
-            if(collection["桥丝数目"] != "")
-                ignition.jssm =int.Parse(collection["桥丝数目"]);
-            if (collection["贮存寿命"] != "")
-                ignition.zcsm = int.Parse(collection["贮存寿命"]);
-            ignition.ccsmbz = collection["贮存寿命备注"];
-            ignition.kkd = collection["可靠度"];
-            ignition.zyxnzb = collection["主要性能指标"];
-            ignition.syhjzsfw = collection["试验环境指标范围"];
-            ignition.jbxn = collection["基本性能"];
-            if (collection["宽度"] != "")
-                ignition.kd =double.Parse( collection["宽度"]);
-            if (collection["脚线"] != "")
-                ignition.jx = double.Parse(collection["脚线"]);
-            if (collection["总长度"] != "")
-                ignition.zcd = double.Parse(collection["总长度"]);
-            if (collection["隔板厚度"] != "")
-                ignition.gbhd = double.Parse(collection["隔板厚度"]);
-            if (collection["索直径上限"] != "")
-                ignition.szjsx = double.Parse(collection["索直径上限"]);
-            if (collection["索直径下限"] != "")
-                ignition.szjxx = double.Parse(collection["索直径下限"]);
-            if (collection["索MDF（银质）直径"] != "")
-                ignition.sMDFyzzj = double.Parse(collection["索MDF（银质）直径"]);
-            ignition.sbz = collection["索备注"];
-            if (collection["对边"] != "")
-                ignition.db = double.Parse(collection["对边"]);
-            if (collection["对角线"] != "")
-                ignition.djx = double.Parse(collection["对角线"]);
-            ignition.lfdjbz = collection["六方对角备注"];
-            if (collection["检测电流"] != "")
-                ignition.jcdl = double.Parse(collection["检测电流"]);
-            if (collection["静电电容"] != "")
-                ignition.jddr = double.Parse(collection["静电电容"]);
-            if (collection["静电电压"] != "")
-                ignition.jddy = double.Parse(collection["静电电压"]);
-            if (collection["串联电阻"] != "")
-                ignition.cldz = double.Parse(collection["串联电阻"]);
-            ignition.jdgdbz = collection["静电感度备注"];
-            if (collection["作用时间单位"] != "请选择")
-            {
-                string unit = collection["作用时间单位"];
-                double value = double.Parse(collection["作用时间"]);
-                ignition.zysj = TimeUnitConversion(unit, value);
-            }
-            if (collection["作用时间上限单位"] != "请选择")
-            {
-                string unit = collection["作用时间上限单位"];
-                double value = double.Parse(collection["作用时间上限"]);
-                ignition.zysjsx = TimeUnitConversion(unit, value);
-            }
-            if (collection["作用时间下限单位"] != "请选择")
-            {
-                string unit = collection["作用时间下限单位"];
-                double value = double.Parse(collection["作用时间下限"]);
-                ignition.zysjxx = TimeUnitConversion(unit, value);
-            }
-            ignition.zysjbz = collection["作用时间备注"];
-            if (collection["安全电流桥个数"] != "")
-                ignition.jgs =int.Parse( collection["安全电流桥个数"]);
-            if (collection["安全电流值单位"] != "请选择")
-            {
-                string unit = collection["安全电流值单位"];
-                double value = double.Parse(collection["安全电流值"]);
-                ignition.aydlz = CurrentUnitConversion(unit, value);
-            }
-            if (collection["安全电流值上限单位"] != "请选择")
-            {
-                string unit = collection["安全电流值上限单位"];
-                double value = double.Parse(collection["安全电流值上限"]);
-                ignition.aydlzxx = CurrentUnitConversion(unit, value);
-            }
-            if (collection["安全电流值下限单位"] != "请选择")
-            {
-                string unit = collection["安全电流值下限单位"];
-                double value = double.Parse(collection["安全电流值下限"]);
-                ignition.aydlzsx = CurrentUnitConversion(unit, value);
-            }
-            if (collection["时间值单位"] != "请选择")
-            {
-                string unit = collection["时间值单位"];
-                double value = double.Parse(collection["时间值"]);
-                ignition.ssj = TimeUnitConversion(unit, value);
-            }
-            if (collection["功率值"] != "")
-                ignition.glz =double.Parse( collection["功率值"]);
-            ignition.aqdlbz = collection["安全电流备注"];
-            if (collection["安全电压电压"] != "")
-                ignition.aqdydy = double.Parse(collection["安全电压电压"]);
-            if (collection["安全电压电容"] != "")
-                ignition.aqdydr = double.Parse(collection["安全电压电容"]);
-            if (collection["燃烧压力上限"] != "")
-                ignition.rsylxx = double.Parse(collection["燃烧压力上限"]);
-            if (collection["燃烧压力下限"] != "")
-                ignition.rsylsx = double.Parse(collection["燃烧压力下限"]);
-            ignition.rsylbz = collection["燃烧压力备注"];
-            AddConventionals(collection, ignition,id);
-            AddCableDiameter(collection, ignition,id);
-            AddSpeedDetonation(collection, ignition,id);
-            AddInterfaceInformation(collection, ignition,id);
-            AddDcResistance(collection, ignition,id);
-            AddIgnitionCondition(collection, ignition,id);
-            AddDelayTime(collection, ignition,id);
+            Information(collection, ignition,id);
             AddImage(collection, ignition);
             dbDrive.Insert(ignition);
             return View();
