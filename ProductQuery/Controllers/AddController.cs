@@ -81,6 +81,13 @@ namespace ProductQuery.Controllers
             return View();
         }
 
+        //更新
+        [HttpPost]
+        public JsonResult Ignition_update(FormCollection collection, Ignition ignition)
+        {
+            return Json;
+        }
+
         //添加点火装置
         [HttpPost]
         public ActionResult AddInformation(FormCollection collection,Ignition ignition)
