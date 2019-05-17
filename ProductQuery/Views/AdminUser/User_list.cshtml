@@ -19,7 +19,7 @@
         var title = "<a><span class='glyphicon glyphicon-plus'></span>新增管理员</a>";
         var url = "User_add";
         var width = "100%";
-        var height = "500px";
+        var height = "660px";
         //调用位于index页面的openWin()函数
         parent.openWin(title, url, width, height);
     }
@@ -29,7 +29,7 @@
         var title = "<span class='glyphicon glyphicon-edit'> </span>查看管理员信息";
         var url = "User_details?userId=" + userid;
         var width = "100%";
-        var height = "500px";
+        var height = "350px";
         parent.openWin(title, url, width, height);
     }
 
@@ -115,9 +115,6 @@
                         <span class="glyphicon glyphicon-plus">添加用户</span>
                     </a>
                     <input type="text" class="form-control validate" id="username" name="username" placeholder="输入用户名" />
-                    @*<a class="btn btn-primary btn-sm" href="../AdminUser/User_query?username = " $("#username").val();"">
-                        <span class="glyphicon glyphicon-plus">查询</span>
-                    </a>*@
                     <a class="btn btn-primary btn-sm" href="javascript:queryByName();">
                         <span class="glyphicon glyphicon-plus">查询</span>
                     </a>
@@ -142,30 +139,30 @@
                     <tbody>
                         @foreach (var user in Model)
                         {
-                            <tr>
-                                <th scope="row"><b>@user.id</b></th>
-                                <td><b>@user.name</b></td>
-                                <td><b>@user.Phone</b></td>
-                                <td><b>@user.permissions</b></td>
-                                <td>
-                                    <a href="javascript:openDetailsWin(@user.id)" class="tm-product-delete-link" id="look">
-                                        <i class="far fa-eye tm-product-delete-icon"></i>
+                        <tr>
+                            <th scope="row"><b>@user.id</b></th>
+                            <td><b>@user.name</b></td>
+                            <td><b>@user.Phone</b></td>
+                            <td><b>@user.permissions</b></td>
+                            <td>
+                                <a href="javascript:openDetailsWin(@user.id)" class="tm-product-delete-link" id="look">
+                                    <i class="far fa-eye tm-product-delete-icon"></i>
+                                </a>
+                                <a href="javascript:openUpdateWin(@user.id)" class="tm-product-delete-link">
+                                    <i class="fa fa-cogs tm-product-delete-icon"></i>
+                                </a>
+                                <a href="javascript:resetPassword('@user.id' ,'@user.name')" class="tm-product-delete-link">
+                                    <i class="fa fa-recycle tm-product-delete-icon"></i>
+                                </a>
+                                @if (user.id != 1)
+                                {
+                                    <a href="javascript:deleteUser(@user.id)" class="tm-product-delete-link">
+                                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                     </a>
-                                    <a href="javascript:openUpdateWin(@user.id)" class="tm-product-delete-link">
-                                        <i class="fa fa-cogs tm-product-delete-icon"></i>
-                                    </a>
-                                    <a href="javascript:resetPassword('@user.id' ,'@user.name')" class="tm-product-delete-link">
-                                        <i class="fa fa-recycle tm-product-delete-icon"></i>
-                                    </a>
-                                    @if (user.id != 1)
-                                    {
-                                        <a href="javascript:deleteUser(@user.id)" class="tm-product-delete-link">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    }
+                                }
 
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                          }
                     </tbody>
                 </table>

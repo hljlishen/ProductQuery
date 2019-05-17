@@ -40,6 +40,7 @@ namespace ProductQuery.Controllers
             User loginuser = dbDrive.AdminLogin(user);
             if (loginuser != null)
             {
+                Session["permissions"] = loginuser.permissions;
                 Session["User"] = loginuser;
                 return RedirectToAction("Instrument", "Admin");
             }

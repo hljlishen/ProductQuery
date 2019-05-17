@@ -19,12 +19,14 @@ namespace ProductQuery.Controllers
     public class QueryController : Controller
     {
         IDbDrive dbDrive = new LingImp();
-        public ActionResult Query_list()
+
+        public ActionResult Query_index()
         {
             WebClickNumber webClickNumber = new WebClickNumber();
             webClickNumber.SaveQueryNumber();
             List<Ignition> ignitions = dbDrive.GetAllIgnitions();
-            return View(ignitions);
+            ViewData["ignitions"] = ignitions;
+            return View();
         }
 
         //打开查看页面
@@ -52,7 +54,6 @@ namespace ProductQuery.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult Query()
         {
             WebClickNumber webClickNumber = new WebClickNumber();
@@ -80,9 +81,11 @@ namespace ProductQuery.Controllers
             }
             Query query = new Query(selectLists);
             List<Ignition> ignitions = query.Process();
-            return View(ignitions);
+            ViewData["ignitions"] = ignitions;
+            return PartialView("Query_list", ViewData["ignitions"]);
         }
 
+        //[HttpPost]
         //public ActionResult Query(string jsonstr)
         //{
         //    string jsonText = jsonstr;

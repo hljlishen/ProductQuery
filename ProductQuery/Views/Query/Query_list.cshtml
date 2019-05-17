@@ -1,6 +1,5 @@
-﻿@model List<ProductQuery.Models.Ignition>
-@{
-    Layout = "~/Views/Query/Query_index.cshtml";
+﻿@{
+    List<ProductQuery.Models.Ignition> Ignitions = (List<ProductQuery.Models.Ignition>)ViewData["Ignitions"];
 }
 <script type="text/javascript">
         //查看
@@ -12,8 +11,7 @@
         openWin(title, url, width, height);
     }
 </script>
-<div class="col-12 tm-block-col">
-    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll" id="ignition">
         <table class="table">
             <thead>
                 <tr>
@@ -50,4 +48,3 @@
             </tbody>
         </table>
     </div>
-</div>

@@ -16,7 +16,7 @@ namespace ProductQuery
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Query", action = "Query_list", id = UrlParameter.Optional }
+                defaults: new { controller = "Query", action = "Query_index", id = UrlParameter.Optional }
             );
         }
     }
