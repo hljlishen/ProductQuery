@@ -83,11 +83,13 @@ namespace ProductQuery.Controllers.Querys
 
             if (ChildTableName.Equals("o"))
             {
+                if (!val.Equals("")) min = max = val;
                 filter = GetFilter(FieldName, val, min, max, QueryType);
                 filter.MeasurementConverter = GetMeasurementConverter(UnitType, unit);
             }
             else if (!ChildTableName.Equals("o"))
             {
+                if (!val.Equals("")) min = max = val;
                 _Filter filter1 = GetFilter(FieldName, val, min, max, QueryType);
                 filter1.MeasurementConverter = GetMeasurementConverter(UnitType, unit);
                 filter = new ListPropertyDecorator(ChildTableName, filter1);

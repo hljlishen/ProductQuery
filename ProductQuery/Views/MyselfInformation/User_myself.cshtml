@@ -1,11 +1,12 @@
-﻿@model ProductQuery.Models.User
+﻿
+@model ProductQuery.Models.User
 @{
     Layout = "~/Views/Admin/AdminIndex.cshtml";
 }
 
 <script type="text/javascript">
 
-    //授权
+    //修改密码
     function openUpdatePasswordWin(userid) {
         var title = "<a><span class='glyphicon glyphicon-wrench'></span>修改密码</a>";
         var url = "User_updatepassword?userId=" + userid;
@@ -19,28 +20,7 @@
         var name = $("#myname").val();
         var phone = $("#myphone").val();
 
-        $.ajax({
-                url: "@Url.Action("User_hasusername","AdminUser")",  
-                type: "post",
-                data: {
-                    "oldusername": "@Model.name",
-                    "newusername": name
-                },
-                dataType: "json",
-                success: function (data) {
-                    data = eval("(" + data + ")");
-                    if (data) {
-                        $("#errormyname").css("color", "green");
-                        $("#errormyname").attr("class", "glyphicon glyphicon-ok");
-                        $("#errormyname").html("");
-                    } else {
-                        $("#errormyname").css("color", "red");
-                        $("#errormyname").attr("class", "glyphicon glyphicon-remove");
-                        $("#errormyname").html("*该用户名已存在");
-                        validate = false;
-                    }
-                }
-        });
+
 
         if (name == "") {
             $("#errormyname").css("color", "red");
@@ -62,7 +42,8 @@
                     $("#errormyname").html("*用户名存在特殊字符");
                     validate = false;
 			    }
-		    }
+            }
+
         } else {
             $("#errormyname").css("color", "green");
             $("#errormyname").attr("class", "glyphicon glyphicon-ok");
@@ -80,14 +61,37 @@
             $("#errormyphone").html("");
         }
 
-        if (validate) {
-            update();
-        }
+        $.ajax({
+                    url: "@Url.Action("User_hasusername","AdminUser")",  
+                    type: "post",
+                    data: {
+                        "oldusername": "@Model.name",
+                        "newusername": name
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        data = eval("(" + data + ")");
+                        if (data) {
+                            $("#errormyname2").css("color", "green");
+                            $("#errormyname2").attr("class", "glyphicon glyphicon-ok");
+                            $("#errormyname2").html("");
+                            if (validate) {
+                                update();
+                            }
+                        } else {
+                            $("#errormyname2").css("color", "red");
+                            $("#errormyname2").attr("class", "glyphicon glyphicon-remove");
+                            $("#errormyname2").html("*该用户名已存在");
+                            validate = false;
+                        }
+                    }
+        });
+       
     }
 
      function update() {
             $.ajax({
-                url: "@Url.Action("User_update")",
+                url: "@Url.Action("User_update","AdminUser")",
                 type: "post",
                 data: $("form").serialize(),
                 dataType: "json",
@@ -146,6 +150,7 @@
                         <label>用户名</label>
                         @Html.TextBoxFor(user => user.name, new { @class = "form-control validate", id = "myname" })
                         <span style="color: red;" id="errormyname"></span>
+                        <span style="color: red;" id="errormyname2"></span>
                     </div>
                     <div class="form-group col-lg-12">
                         <label>联系电话</label>

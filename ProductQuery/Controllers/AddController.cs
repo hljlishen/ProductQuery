@@ -82,11 +82,11 @@ namespace ProductQuery.Controllers
         }
 
         //更新
-        [HttpPost]
-        public JsonResult Ignition_update(FormCollection collection, Ignition ignition)
-        {
-            return Json;
-        }
+        //[HttpPost]
+        //public JsonResult Ignition_update(FormCollection collection, Ignition ignition)
+        //{
+        //    return Json;
+        //}
 
         //添加点火装置
         [HttpPost]

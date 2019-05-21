@@ -21,29 +21,6 @@
             var name = $("#name").val();
             var phone = $("#phone").val();
 
-            $.ajax({
-                    url: "@Url.Action("User_hasusername","AdminUser")",  
-                    type: "post",
-                    data: {
-                        "oldusername": "@Model.name",
-                        "newusername": name
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        data = eval("(" + data + ")");
-                        if (data) {
-                            $("#errorname").css("color", "green");
-                            $("#errorname").attr("class", "glyphicon glyphicon-ok");
-                            $("#errorname").html("");
-                        } else {
-                            $("#errorname").css("color", "red");
-                            $("#errorname").attr("class", "glyphicon glyphicon-remove");
-                            $("#errorname").html("*该用户名已存在");
-                            validate = false;
-                        }
-                    }
-            });
-
             if (name == "") {
                 $("#errorname").css("color", "red");
                 $("#errorname").attr("class", "glyphicon glyphicon-remove");
@@ -82,9 +59,30 @@
                 $("#errorphone").html("");
             }
 
-            if (validate) {
-                update();
-            }
+            $.ajax({
+                    url: "@Url.Action("User_hasusername","AdminUser")",  
+                    type: "post",
+                    data: {
+                        "oldusername": "@Model.name",
+                        "newusername": name
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        data = eval("(" + data + ")");
+                        if (data) {
+                            $("#errorname2").css("color", "green");
+                            $("#errorname2").attr("class", "glyphicon glyphicon-ok");
+                            $("#errorname2").html("");
+                            if (validate) {
+                                update();
+                            }
+                        } else {
+                            $("#errorname2").css("color", "red");
+                            $("#errorname2").attr("class", "glyphicon glyphicon-remove");
+                            $("#errorname2").html("*该用户名已存在");
+                        }
+                    }
+            });
         }
 
         function update() {
@@ -120,6 +118,7 @@
                         @Html.LabelFor(user => user.name)
                         @Html.TextBoxFor(user => user.name, new { @class = "form-control validate", id = "name" })
                         <span style="color: red;" id="errorname"></span>
+                        <span style="color: red;" id="errorname2"></span>
                     </div>
 
                     <div class="form-group col-lg-6">

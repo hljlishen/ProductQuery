@@ -61,7 +61,7 @@ namespace ProductQuery.Controllers
         public JsonResult User_hasusername(string oldusername, string newusername)
         {
             if(oldusername.Equals(newusername)) return Json(true);
-            List<User> userList = dbDrive.QueryUsers(newusername);
+            List<User> userList = dbDrive.AccurateQueryUsers(newusername);
             if (userList != null && userList.Count > 0) return Json(false);
             return Json(true);
         }

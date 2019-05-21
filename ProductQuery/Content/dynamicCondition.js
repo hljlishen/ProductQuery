@@ -80,13 +80,15 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		var rowDiv = rs[0];
     		var eleJq = rowDiv.eleJq;
     		var eleLeftJq = rowDiv.eleLeftJq;
-    		var eleRightJq = rowDiv.eleRightJq;
+            var eleRightJq = rowDiv.eleRightJq;
+            var eleUnitJq = rowDiv.eleUnitJq;
+
     		if(eleJq){
     			return rowDiv.curEditor.getRequestValue(eleJq);
     		}
     		//操作符是between时返回2个值
     		else if(eleLeftJq){
-    			return {left:rowDiv.curEditor.getRequestValue(eleLeftJq),right:rowDiv.curEditor.getRequestValue(eleRightJq)};
+                return { left: rowDiv.curEditor.getRequestValue(eleLeftJq), right: rowDiv.curEditor.getRequestValue(eleRightJq), unit: rowDiv.curEditor.getRequestValue(eleUnitJq)};
     		}
     		//当操作符是empty时返回null
     		return null;
@@ -133,9 +135,11 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		}
     		instance.cacheCondition = cacheCondition;
     		instance.setDisplayModel(instance.config.displayModel);
-    	}
+        }
+
     	/**新增条件*/
-    	instance.addRow = function(){
+        //点击页面的添加页面查询条件后首先进入该方法-加载第一条布局样式
+        instance.addRow = function () {
     		  var conditionContainerJq = $("#"+instance.conditionContainerId);
 			  var conditionRowJq = $('<div class="conditionRow"></div>');
 			  if(instance.config.type == "complex"){
@@ -180,10 +184,12 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 			  }
 			  return conditionRowJq;
 //			  form.render();
-		  }
-    	  /**更新conditionValue*/
-    	  instance.updateConditionValue = function(conditionRowJq, conditionObj){
-    		  conditionObj = conditionObj || {conditionValueVal:{},conditionValueLeftVal:{},conditionValueRightVal:{}}
+        }
+
+    	 /**更新conditionValue*/
+        //点击添加进入方法，跟换属性进入方法
+        instance.updateConditionValue = function (conditionRowJq, conditionObj) {
+              conditionObj = conditionObj || { conditionValueVal: {}, conditionValueLeftVal: {}, conditionValueRightVal: {}, conditionValueUnitVal: {}}
 			  var conditionValueJq = conditionRowJq.find(".conditionValue");
 			  var conditionFieldVal = conditionRowJq.find("select[name='conditionField']").val();
 			  var conditionOptionVal = conditionRowJq.find("select[name='conditionOption']").val();
@@ -215,54 +221,54 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 				  return ;
 			  }
 			  if(curEditor){
-                  if (conditionOptionVal == "between") {
-                      //获取单位的字段
-                      var StrArray = conditionFieldVal.split('-');
-                      var str = StrArray[2];
-                      //下拉框html
-                      var selectconditionUnit = $('<select lay-filter="conditionUnit"></select>');
-                      if (str == "cd") {
-                          selectconditionUnit.append("<option value='mm'>mm</option>");
-                          selectconditionUnit.append("<option value='cm'>cm</option>");
-                          selectconditionUnit.append("<option value='m'>m</option>");
-                      }
-                      else if (str == "zl") {
-                          selectconditionUnit.append("<option value='g'>g</option>");
-                          selectconditionUnit.append("<option value='kg'>kg</option>");
-                      }
-                      else if (str == "sj") {
-                          selectconditionUnit.append("<option value='ns'>ns</option>");
-                          selectconditionUnit.append("<option value='μs'>μs</option>");
-                          selectconditionUnit.append("<option value='ms'>ms</option>");
-                          selectconditionUnit.append("<option value='s'>s</option>");
-                          selectconditionUnit.append("<option value='min'>min</option>");
-                      }
-                      else if (str == "dz") {
-                          selectconditionUnit.append("<option value='mΩ'>mΩ</option>");
-                          selectconditionUnit.append("<option value='Ω'>Ω</option>");
-                          selectconditionUnit.append("<option value='kΩ'>kΩ</option>");
-                          selectconditionUnit.append("<option value='MΩ'>MΩ</option>");
-                      }
-                      else if (str == "nl") {
-                          selectconditionUnit.append("<option value='J'>J</option>");
-                          selectconditionUnit.append("<option value='mJ'>mJ</option>");
-                      }
-                      else if (str == "dl") {
-                          selectconditionUnit.append("<option value='mA'>mA</option>");
-                          selectconditionUnit.append("<option value='A'>A</option>");
-                      }
-                      else if (str == "dr") {
-                          selectconditionUnit.append("<option value='pf'>pf</option>");
-                          selectconditionUnit.append("<option value='μf'>μf</option>");
-                      }
-                      else if (str == "dy") {
-                          selectconditionUnit.append("<option value='V'>V</option>");
-                      }
-                      else {
-                          selectconditionUnit.append("<option value=''>无单位</option>");
-                      }
-                     
 
+                  //获取单位的字段
+                  var StrArray = conditionFieldVal.split('-');
+                  var str = StrArray[2];
+                  //下拉框html
+                  var selectconditionUnit = $('<select lay-filter="conditionUnit"></select>');
+                  if (str == "cd") {
+                      selectconditionUnit.append("<option value='mm'>mm</option>");
+                      selectconditionUnit.append("<option value='cm'>cm</option>");
+                      selectconditionUnit.append("<option value='m'>m</option>");
+                  }
+                  else if (str == "zl") {
+                      selectconditionUnit.append("<option value='g'>g</option>");
+                      selectconditionUnit.append("<option value='kg'>kg</option>");
+                  }
+                  else if (str == "sj") {
+                      selectconditionUnit.append("<option value='ns'>ns</option>");
+                      selectconditionUnit.append("<option value='μs'>μs</option>");
+                      selectconditionUnit.append("<option value='ms'>ms</option>");
+                      selectconditionUnit.append("<option value='s'>s</option>");
+                      selectconditionUnit.append("<option value='min'>min</option>");
+                  }
+                  else if (str == "dz") {
+                      selectconditionUnit.append("<option value='mΩ'>mΩ</option>");
+                      selectconditionUnit.append("<option value='Ω'>Ω</option>");
+                      selectconditionUnit.append("<option value='kΩ'>kΩ</option>");
+                      selectconditionUnit.append("<option value='MΩ'>MΩ</option>");
+                  }
+                  else if (str == "nl") {
+                      selectconditionUnit.append("<option value='J'>J</option>");
+                      selectconditionUnit.append("<option value='mJ'>mJ</option>");
+                  }
+                  else if (str == "dl") {
+                      selectconditionUnit.append("<option value='mA'>mA</option>");
+                      selectconditionUnit.append("<option value='A'>A</option>");
+                  }
+                  else if (str == "dr") {
+                      selectconditionUnit.append("<option value='pf'>pf</option>");
+                      selectconditionUnit.append("<option value='μf'>μf</option>");
+                  }
+                  else if (str == "dy") {
+                      selectconditionUnit.append("<option value='V'>V</option>");
+                  }
+                  else {
+                      selectconditionUnit.append("<option value=''>无单位</option>");
+                  }
+
+                  if (conditionOptionVal == "between") {
                       instance.conditionUnitHtml = selectconditionUnit.prop("outerHTML");
 
 					  var eleLeftJq = $(curEditor.createElement(obj));
@@ -300,25 +306,43 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 
 					  curEditor.fillElement(eleLeftJq,conditionObj.conditionValueLeftVal);
                       curEditor.fillElement(eleRightJq, conditionObj.conditionValueRightVal);
-                      //curEditor.fillElement(eleUnitJq, conditionObj.conditionValueUnitVal);
-
+                      curEditor.fillElement(eleUnitJq, conditionObj.conditionValueUnitVal);
+                      
 					  curEditor.render(eleLeftJq);
                       curEditor.render(eleRightJq);
                       curEditor.render(eleUnitJq);
-				  }else{
-					  var eleJq = $(curEditor.createElement(obj));
-					  var divJq = $("<div></div>");
+                  } else {
+                      instance.conditionUnitHtml = selectconditionUnit.prop("outerHTML");
+
+                      var eleJq = $(curEditor.createElement(obj));
+                      var eleUnitJq = $(instance.conditionUnitHtml);
+
+                      var divJq = $("<div style='display:inline-block'></div>");
+                      var divUnit = $('<div class="layui-inline conditionOption"></div>');
+
 					  divJq.append(eleJq);
-					  divJq.attr("name","conditionValue");
+                      divJq.attr("name", "conditionValue");
+                      divJq.width(instance.conditionValueWidth + 80);
+                      divUnit.append(eleUnitJq);
+                      divUnit.attr("name", "conditionValueUnit");
+                      divUnit.width(instance.conditionValueWidth / 2 + 30);
+
 					  conditionValueJq.html("");
-					  conditionValueJq.append(divJq);
+                      conditionValueJq.append(divJq);
+                      conditionValueJq.append(divUnit);
+
 //					  divJq.attr("xpl-dc-val",conditionObj.conditionValueVal);
 					  //必须将jq对象转换为dom对象才能绑定对象属性。
 					  conditionRowJq[0].eleJq = eleJq;
 					  conditionRowJq[0].eleLeftJq = null;
-					  conditionRowJq[0].eleRightJq = null;
-					  curEditor.fillElement(eleJq,conditionObj.conditionValueVal);
-					  curEditor.render(eleJq);
+                      conditionRowJq[0].eleRightJq = null;
+                      conditionRowJq[0].eleUnitJq = eleUnitJq;
+
+                      curEditor.fillElement(eleJq, conditionObj.conditionValueVal);
+                      curEditor.fillElement(eleUnitJq, conditionObj.conditionValueUnitVal);
+
+                      curEditor.render(eleJq);
+                      curEditor.render(eleUnitJq);
 				  }
 				  form.render(null, 'conditionDiv'+instance.conditionContainerId);
 				  return ;
@@ -463,7 +487,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		var cacheCondition = instance.cacheCondition;
     		var conditionHtml = "";
     		var fieldSelectJq = $(instance.conditionFieldHtml);
-    		var optionSelectJq = $(instance.conditionOptionHtml);
+            var optionSelectJq = $(instance.conditionOptionHtml);
     		var blankStr = "&nbsp;&nbsp;";
     		for(var i=0;i<cacheCondition.length;i++){
     			var conditionObj = cacheCondition[i];
@@ -472,12 +496,13 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     			var ValueText = conditionObj.conditionValueVal.text;
     			var ValueLeftText = conditionObj.conditionValueLeftVal.text;
     			var ValueRightText = conditionObj.conditionValueRightVal.text;
+                var ValueUnitText = conditionObj.conditionValueUnitVal.text;
 
     			var rsValueText="";
     			if(conditionObj.conditionOptionVal == "between"){
-    				rsValueText = ValueLeftText + blankStr+"至"+ blankStr + ValueRightText;
+                    rsValueText = ValueLeftText + blankStr + "至" + blankStr + ValueRightText + blankStr + "单位" + blankStr + ValueUnitText;
 				}else{
-					rsValueText = ValueText;
+                    rsValueText = ValueText + blankStr + "单位" + blankStr + ValueUnitText;
 				}
     			rsValueText = rsValueText || "";
     			//简单模式
@@ -590,7 +615,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		  offset: '50px',
     		  title: "查询条件",
     		  //closeBtn: 0,
-    		  shade: 0, //不显示遮罩
+    		  shade: 0.3, //不显示遮罩
     		  area: [instance.width + 'px', instance.height +'px'], //宽高
     		  maxmin:true,
 //    		  content: conditionContainerHtml

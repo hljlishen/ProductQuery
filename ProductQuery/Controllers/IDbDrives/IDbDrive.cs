@@ -24,6 +24,7 @@ namespace ProductQuery.Controllers.IDbDrives
         public abstract User FindUser(int userid);
 
         public abstract List<User> QueryUsers(string username);
+        public abstract List<User> AccurateQueryUsers(string username);
 
         public abstract User AdminLogin(User user);
 

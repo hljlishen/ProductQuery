@@ -138,6 +138,13 @@ namespace ProductQuery.Controllers.IDbDrives
             return users;
         }
 
+        public override List<User> AccurateQueryUsers(string username)
+        {
+            List<User> users = new List<User>();
+            users = db.User.Where(m => m.name == username).ToList();
+            return users;
+        }
+
         public override bool Insert(WebsiteStatistical websiteStatistical)
         {
             try
