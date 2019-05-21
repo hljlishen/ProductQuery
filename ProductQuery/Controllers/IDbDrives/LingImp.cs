@@ -372,5 +372,117 @@ namespace ProductQuery.Controllers.IDbDrives
             }
             return true;
         }
+
+        public override bool Insert(Conventional conventional)
+        {
+            try
+            {
+                db.Conventional.Add(conventional);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(Picture picture)
+        {
+            try
+            {
+                db.Picture.Add(picture);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(CableDiameter cableDiameter)
+        {
+            try
+            {
+                db.CableDiameter.Add(cableDiameter);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(DcResistance dcResistance)
+        {
+            try
+            {
+                db.DcResistance.Add(dcResistance);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(DelayTime delayTime)
+        {
+            try
+            {
+                db.DelayTime.Add(delayTime);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(IgnitionCondition ignitionCondition)
+        {
+            try
+            {
+                db.IgnitionCondition.Add(ignitionCondition);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(InterfaceInformation interfaceInformation)
+        {
+            try
+            {
+                db.InterfaceInformation.Add(interfaceInformation);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(SpeedDetonation speedDetonation)
+        {
+            try
+            {
+                db.SpeedDetonation.Add(speedDetonation);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

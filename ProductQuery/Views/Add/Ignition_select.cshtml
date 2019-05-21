@@ -25,7 +25,7 @@
 </head>
 <body>
     @{
-        List< ProductQuery.Models.Picture> img = (List<ProductQuery.Models.Picture>)ViewData["img"];
+        List<ProductQuery.Models.Picture> img = (List<ProductQuery.Models.Picture>)ViewData["img"];
         List<ProductQuery.Models.Conventional> conv = (List<ProductQuery.Models.Conventional>)ViewData["conv"];
         List<ProductQuery.Models.CableDiameter> cable = (List<ProductQuery.Models.CableDiameter>)ViewData["cab"];
         List<ProductQuery.Models.SpeedDetonation> speed = (List<ProductQuery.Models.SpeedDetonation>)ViewData["speed"];
@@ -234,7 +234,7 @@
                             DateTime now = DateTime.Parse(ig.dxrq.ToString());
                             <div class="form-group col-lg-6">
                                 <label for="设计定型日期">设计定型日期</label>
-                                @Html.TextBox("设计定型日期",now.ToShortDateString(), new { @class = "form-control validate" })
+                                @Html.TextBox("设计定型日期", now.ToShortDateString(), new { @class = "form-control validate" })
                             </div>
                         } }
                     @{ if (ig.gydx.ToString() != "")

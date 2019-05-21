@@ -12,7 +12,7 @@ html {
 }
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
-  background-color: #4e657a;
+  background-color: #FFFFFF	;
   overflow-x: hidden;
 }
 a {
@@ -33,16 +33,17 @@ button:focus {
   color: #656565;
 }
 .tm-site-title {
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #080808;
 }
 .navbar {
-  height: 100px;
-  background-color: #567086;
-  padding: 0;
+    height: 100px;
+    background-color: #FFFFFF;
+    border: 2px solid #C5C1AA;
+    padding: 0;
 }
 .navbar .container {
   position: relative;
@@ -90,19 +91,19 @@ button:focus {
   overflow: hidden;
 }
 .tm-block-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #080808;
+    margin-bottom: 30px;
 }
 .nav-link {
-  color: #fff;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 90%;
+    color: #080808;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 90%;
 }
 .nav-link > i {
   margin-bottom: 10px;
@@ -202,14 +203,14 @@ button:focus {
   font-size: 90%;
 }
 .table {
-  background-color: #50697f;
-  color: #fff;
-  font-size: 85%;
-  margin-bottom: 0;
+    background-color: #FFFFFF;
+    color: #080808;
+    font-size: 100%;
+    margin-bottom: 0;
 }
 thead {
-  background-color: #486177;
-  color: #fff;
+    background-color: #FFFFFF;
+    color: #080808;
 }
 .table thead th {
   border-bottom: 0;
@@ -239,11 +240,12 @@ thead {
   width: 345px;
 }
 .tm-avatar-container {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    position: relative;
+    border: 2px solid #C5C1AA;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 .tm-avatar-delete-link {
   position: absolute;
@@ -278,19 +280,19 @@ thead {
   padding-right: 15px;
 }
 .form-control {
-  background-color: #54657d;
-  color: #fff;
-  border: 0;
+    background-color: #FFFFFF;
+    color: #080808;
+    border: 2px solid #C5C1AA;
 }
-.form-control:focus {
-  background-color: #60738e;
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 0 0 0.1rem rgb(180, 206, 233, 0.5);
-}
+    .form-control:focus {
+        background-color: #FFFFFF;
+        color: #080808;
+        border-color: transparent;
+        box-shadow: 0 0 0 0.1rem rgb(180, 206, 233, 0.5);
+    }
 .form-group label {
-  color: #fff;
-  margin-bottom: 10px;
+    color: #080808;
+    margin-bottom: 10px;
 }
 .tm-hide-sm {
   display: block;
@@ -338,11 +340,11 @@ thead {
   padding: 10px 24px;
 }
 .btn-primary {
-  color: #fff;
-  background-color: #f5a623;
-  border: 2px solid #f5a623;
-  font-size: 90%;
-  font-weight: 600;
+    color: #fff;
+    background-color: #7B68EE;
+    border: 2px solid #f5a623;
+    font-size: 90%;
+    font-weight: 600;
 }
 .btn-primary:active,
 .btn-primary:hover {
@@ -374,7 +376,8 @@ thead {
   color: #a0c0de;
 }
 .tm-bg-primary-dark {
-  background-color: #435c70;
+    background-color: #FFFFFF;
+    border: 2px solid #C5C1AA;
 }
 .tm-bg-gray {
   background-color: rgba(0, 0, 0, 0.05);
@@ -422,9 +425,9 @@ input[type="checkbox"] {
   height: 24px;
   transition: all 0.1s linear;
 }
-input[type="checkbox"]:checked {
-  background: url(../img/check-mark.png) #394e64 center no-repeat;
-}
+    input[type="checkbox"]:checked {
+        background: url(../img/check-mark.png) #FFFFFF center no-repeat;
+    }
 input[type="checkbox"]:focus {
   outline: 0 none;
   box-shadow: none;
@@ -452,34 +455,34 @@ input[type="checkbox"]:focus {
   color: #fff;
 }
 .tm-product-delete-link {
-  padding: 10px;
-  border-radius: 50%;
-  background-color: #394e64;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  text-align: center;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #C5C1AA;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
 }
 .tm-product-delete-link:hover .tm-product-delete-icon {
   color: #6d8ca6;
 }
 .custom-select {
-  width: 100%;
-  border: none;
-  color: #acc6de;
-  height: 50px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
-  border-radius: 0;
-  padding: 15px;
-  background: url(../img/arrow-down.png) 98% no-repeat #50657b;
+    width: 100%;
+    border: 2px solid #C5C1AA;
+    color: #080808;
+    height: 50px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    padding: 15px;
+    background: url(../img/arrow-down.png) 100% no-repeat #FFFFFF;
 }
 .custom-select:focus {
   outline: 0;
@@ -492,12 +495,12 @@ input[type="checkbox"]:focus {
   color: #9f1321;
 }
 .tm-footer {
-  background-color: #567086;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  -webkit-box-shadow: 0 -3px 5px 0 rgba(69, 92, 113, 0.59);
-  -moz-box-shadow: 0 -3px 5px 0 rgba(69, 92, 113, 0.59);
-  box-shadow: 0 -3px 5px 0 rgba(69, 92, 113, 0.59);
+    background-color: #FFFFFF;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    -webkit-box-shadow: 0 -3px 5px 0 rgba(69, 92, 113, 0.59);
+    -moz-box-shadow: 0 -3px 5px 0 rgba(69, 92, 113, 0.59);
+    box-shadow: 0 -3px 5px 0 rgba(69, 92, 113, 0.59);
 }
 .custom-select {
   height: 50px;
@@ -688,7 +691,7 @@ input[type="checkbox"]:focus {
     height: 50px;
   }
   .tm-site-title {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     margin-left: 7px;
   }
   .tm-site-icon {

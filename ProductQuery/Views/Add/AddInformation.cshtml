@@ -835,33 +835,27 @@
                 alert("信息输入有误！");
                 return;
             }
-            document.getElementById("form").submit();
-            alert("添加成功");
-            parent.openFrame("Information");
+            Add();
         }
 
-        $(document).ready(function () {
-            //敲击按键时触发
-            $("#double").bind("keypress", function (event) {
-                var event = event || window.event;
-                var getValue = $(this).val();
-                //控制第一个不能输入小数点"."
-                if (getValue.length == 0 && event.which == 46) {
-                    event.preventDefault();
-                    return;
+        function Add() {
+            $.ajax({
+                url: "@Url.Action("AddInformation")",
+                type: "post",
+                data: $("form").serialize(),
+                dataType: "json",
+                success: function (data) {
+                    data = eval("(" + data + ")");
+                    if (data) {
+                        alert("添加成功");
+                    } else {
+                        alert("存在上限值小于下限值，请重新输入");
+                        return;
+                    }
+                    parent.openFrame("Information");
                 }
-                //控制只能输入一个小数点"."
-                if (getValue.indexOf('.') != -1 && event.which == 46) {
-                    event.preventDefault();
-                    return;
-                }
-                //控制只能输入的值
-                if ((event.which < 48 || event.which > 57) && event.which != 8 && event.which != 46) {
-                    event.preventDefault();
-                    return;
-                }
-            })
-        });
+            });
+        }
     </script>
 </head>
 <body>
