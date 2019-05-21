@@ -77,6 +77,45 @@ namespace ProductQuery.Controllers.IDbDrives
             {
                 db.Ignition.Attach(ignition);
                 db.Entry(ignition).State = EntityState.Modified;
+                foreach (var pic in ignition.Pictures)
+                {
+                    db.Picture.Attach(pic);
+                    db.Entry(pic).State = EntityState.Modified;
+                }
+                foreach (var con in ignition.Conventionals) {
+                    db.Conventional.Attach(con);
+                    db.Entry(con).State = EntityState.Modified;
+                }
+                foreach (var cab in ignition.CableDiameters)
+                {
+                    db.CableDiameter.Attach(cab);
+                    db.Entry(cab).State = EntityState.Modified;
+                }
+                foreach (var speed in ignition.SpeedDetonations)
+                {
+                    db.SpeedDetonation.Attach(speed);
+                    db.Entry(speed).State = EntityState.Modified;
+                }
+                foreach (var inter in ignition.InterfaceInformations)
+                {
+                    db.InterfaceInformation.Attach(inter);
+                    db.Entry(inter).State = EntityState.Modified;
+                }
+                foreach (var dc in ignition.DcResistances)
+                {
+                    db.DcResistance.Attach(dc);
+                    db.Entry(dc).State = EntityState.Modified;
+                }
+                foreach (var ign in ignition.IgnitionConditions)
+                {
+                    db.IgnitionCondition.Attach(ign);
+                    db.Entry(ign).State = EntityState.Modified;
+                }
+                foreach (var delay in ignition.DelayTimes)
+                {
+                    db.DelayTime.Attach(delay);
+                    db.Entry(delay).State = EntityState.Modified;
+                }
                 db.SaveChanges();
             }
             catch (Exception)
@@ -219,6 +258,238 @@ namespace ProductQuery.Controllers.IDbDrives
             List<WebsiteStatistical> websiteStatisticals = new List<WebsiteStatistical>();
             websiteStatisticals = db.WebsiteStatistical.ToList();
             return websiteStatisticals;
+        }
+
+        public override bool Delete(Picture picture)
+        {
+            try
+            {
+                db.Picture.Attach(picture);
+                db.Picture.Remove(picture);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Delete(CableDiameter cableDiameter)
+        {
+            try
+            {
+                db.CableDiameter.Attach(cableDiameter);
+                db.CableDiameter.Remove(cableDiameter);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Delete(DcResistance dcResistance)
+        {
+            try
+            {
+                db.DcResistance.Attach(dcResistance);
+                db.DcResistance.Remove(dcResistance);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Delete(DelayTime delayTime)
+        {
+            try
+            {
+                db.DelayTime.Attach(delayTime);
+                db.DelayTime.Remove(delayTime);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Delete(IgnitionCondition ignitionCondition)
+        {
+            try
+            {
+                db.IgnitionCondition.Attach(ignitionCondition);
+                db.IgnitionCondition.Remove(ignitionCondition);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Delete(InterfaceInformation interfaceInformation)
+        {
+            try
+            {
+                db.InterfaceInformation.Attach(interfaceInformation);
+                db.InterfaceInformation.Remove(interfaceInformation);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Delete(SpeedDetonation speedDetonation)
+        {
+            try
+            {
+                db.SpeedDetonation.Attach(speedDetonation);
+                db.SpeedDetonation.Remove(speedDetonation);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Delete(Conventional conventional)
+        {
+            try
+            {
+                db.Conventional.Attach(conventional);
+                db.Conventional.Remove(conventional);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(Conventional conventional)
+        {
+            try
+            {
+                db.Conventional.Add(conventional);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(Picture picture)
+        {
+            try
+            {
+                db.Picture.Add(picture);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(CableDiameter cableDiameter)
+        {
+            try
+            {
+                db.CableDiameter.Add(cableDiameter);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(DcResistance dcResistance)
+        {
+            try
+            {
+                db.DcResistance.Add(dcResistance);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(DelayTime delayTime)
+        {
+            try
+            {
+                db.DelayTime.Add(delayTime);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(IgnitionCondition ignitionCondition)
+        {
+            try
+            {
+                db.IgnitionCondition.Add(ignitionCondition);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(InterfaceInformation interfaceInformation)
+        {
+            try
+            {
+                db.InterfaceInformation.Add(interfaceInformation);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Insert(SpeedDetonation speedDetonation)
+        {
+            try
+            {
+                db.SpeedDetonation.Add(speedDetonation);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

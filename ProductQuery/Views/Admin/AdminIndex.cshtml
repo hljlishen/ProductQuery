@@ -52,14 +52,14 @@
     @{
         var username = Session["User"] == null ? string.Empty : ((ProductQuery.Models.User)Session["User"]).name;
         var userpermissions = Session["User"] == null ? string.Empty : ((ProductQuery.Models.User)Session["User"]).permissions;
-        var userid   = Session["User"] == null ? 0 : ((ProductQuery.Models.User)Session["User"]).id;
+        var userid = Session["User"] == null ? 0 : ((ProductQuery.Models.User)Session["User"]).id;
 
     }
     <div class="" id="home">
         <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
                 <a class="navbar-brand" href="index.html">
-                    <h1 class="tm-site-title mb-0">点火装置数据管理</h1>
+                    <h1 class="tm-site-title mb-0" style="color:#567086">点火装置数据管理</h1>
                 </a>
                 <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,28 +72,28 @@
 
                         <li class="nav-item" id="Instrument">
                             <a class="nav-link" href="../Admin/Instrument">
-                                <i class="fas fa-tachometer-alt"></i>
+                                <i class="fas fa-tachometer-alt" style="color:#567086"></i>
                                 仪表盘
                             </a>
                         </li>
 
                         <li class="nav-item" id="Information">
                             <a class="nav-link" href="../Add/Information">
-                                <i class="fa fa-fire"></i>
+                                <i class="fa fa-fire" style="color:#567086"></i>
                                 点火装置管理
                             </a>
                         </li>
 
                         <li class="nav-item" id="Users">
                             <a class="nav-link" href="../AdminUser/User_list">
-                                <i class="fa fa-users"></i>
+                                <i class="fa fa-users" style="color:#567086"></i>
                                 账户管理
                             </a>
                         </li>
 
                         <li class="nav-item" id="My">
                             <a class="nav-link" href="../MyselfInformation/User_myself?userid=@userid">
-                                <i class="far fa-user"></i>
+                                <i class="far fa-user" style="color:#567086"></i>
                                 查看我的信息
                             </a>
                         </li>
@@ -150,9 +150,9 @@
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" style="background:#4E657A; color:#FFF">
+            <div class="modal-content" style="background:#FFFFFF; color:#FFF">
                 <div class="modal-header" style="padding: 10px;">
-                    <h5 class="modal-title" id="myModalTitle"></h5>
+                    <h5 class="modal-title" id="myModalTitle" style="color:#080808"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         &times;
                     </button>
@@ -164,9 +164,9 @@
 
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" style="background:#4E657A; color:#FFF; width:300%; height:100%; right:100%">
+            <div class="modal-content" style="background:#FFFFFF; color:#FFF; width:300%; height:100%; right:100%">
                 <div class="modal-header" style="padding: 10px;">
-                    <h5 class="modal-title" id="myModalTitle2"></h5>
+                    <h5 class="modal-title" id="myModalTitle2" style="color:#080808"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         &times;
                     </button>
@@ -175,5 +175,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html >

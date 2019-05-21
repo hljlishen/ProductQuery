@@ -10,8 +10,24 @@ namespace ProductQuery.Controllers.IDbDrives
     {
         public abstract bool Insert(Ignition ignition);
         public abstract bool Insert(User user);
+        public abstract bool Insert(Conventional conventional);
+        public abstract bool Insert(Picture picture);
+        public abstract bool Insert(CableDiameter cableDiameter);
+        public abstract bool Insert(DcResistance dcResistance);
+        public abstract bool Insert(DelayTime delayTime);
+        public abstract bool Insert(IgnitionCondition ignitionCondition);
+        public abstract bool Insert(InterfaceInformation interfaceInformation);
+        public abstract bool Insert(SpeedDetonation speedDetonation);
 
         public abstract bool Delete(Ignition ignition);
+        public abstract bool Delete(Picture picture);
+        public abstract bool Delete(CableDiameter cableDiameter);
+        public abstract bool Delete(DcResistance dcResistance);
+        public abstract bool Delete(DelayTime delayTime);
+        public abstract bool Delete(IgnitionCondition ignitionCondition);
+        public abstract bool Delete(InterfaceInformation interfaceInformation);
+        public abstract bool Delete(SpeedDetonation speedDetonation);
+        public abstract bool Delete(Conventional conventional);
         public abstract bool Delete(User user);
 
         public abstract bool Udpdate(Ignition ignition);

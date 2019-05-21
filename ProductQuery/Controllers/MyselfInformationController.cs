@@ -1,4 +1,4 @@
-using ProductQuery.Controllers.IDbDrives;
+锘縰sing ProductQuery.Controllers.IDbDrives;
 using ProductQuery.Models;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace ProductQuery.Controllers
             return View(user);
         }
 
-        //打开用户更新页面
+        //鎵撳紑鐢ㄦ埛鏇存柊椤甸潰
         [ValidateInput(false)]
         public ActionResult User_UpdatePassword(int userid)
         {
