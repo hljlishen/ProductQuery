@@ -856,12 +856,13 @@
         function delAchieve(id, obj, number) {
             if (obj != "产品示意图") {
                 $("table#test #" + id + "").remove();
-                $("form#form #" + id + "").remove();
+                $("form#form #" + id + "").remove();s
             }
             else {
                 $("table#test #" + id + "").remove();
                 document.getElementById(obj + number).style.display = "none"
                 document.getElementById("file" + number).value = "";
+                document.getElementById("cp" + number).value = "";
             }
         }
 
@@ -987,7 +988,7 @@
                 </div>
             </div>
             <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:13%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
-                <form action="/Add/AddInformation" method="post" class="tm-signup-form" id="form" name="基本信息">
+                <form action="/Add/AddInformation" method="post" class="tm-signup-form" id="form" name="基本信息" >
                     <div class="row" id="主页信息">
                         <div class="form-group col-lg-12">
                             <h1 class="tm-site-title mb-0">基本信息</h1>
