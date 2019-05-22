@@ -149,6 +149,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -170,6 +175,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -191,6 +201,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -212,6 +227,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -233,6 +253,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -254,6 +279,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -275,6 +305,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -296,6 +331,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -317,6 +357,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -338,6 +383,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -364,17 +414,17 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="直径">直径</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="直径' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="直径' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="常规长度">长度</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="常规长度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="常规长度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="高度">高度 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<input name="常规" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</div>';
@@ -391,7 +441,7 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="索普通直径">索普通直径 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="索普通直径' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
+                '<input name="索普通直径' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<input name="索普通直径" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</div>';
@@ -408,12 +458,12 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="爆速上限">爆速上限 </label>' +
                 '<label for="danwei">(m/s)</label>' +
-                '<input name="爆速上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="爆速上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="爆速下限">爆速下限 </label>' +
                 '<label for="danwei">(m/s)</label>' +
-                '<input name="爆速下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="爆速下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="爆速备注">爆速备注</label>' +
@@ -434,12 +484,12 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="螺纹">螺纹 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="螺纹' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="螺纹' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="螺距">螺距 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="螺距' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="螺距' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="公差">公差 </label>' +
@@ -448,7 +498,7 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="接口信息长度">长度 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="接口信息长度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="接口信息长度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="接口信息备注">接口信息备注</label>' +
@@ -471,8 +521,8 @@
                 '<input name="直流电阻桥个数' + ModuleNumber(obj) + '" class="form-control validate" onkeyup="this.value=this.value.replace(' + /\D/g + ',' + "''" + ')" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
-                '<label for="电阻范围值上">电阻范围值上 </label>' +
-                '<input name="电阻范围值上' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<label for="电阻范围值上">电阻范围值上限 </label>' +
+                '<input name="电阻范围值上' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -485,8 +535,8 @@
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
-                '<label for="电阻范围值下">电阻范围值下 </label>' +
-                '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<label for="电阻范围值下">电阻范围值下限 </label>' +
+                '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -499,8 +549,36 @@
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
+                '<label for="电阻值">电阻值 </label>' +
+                '<input name="电阻值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '</div>' +
+                '<div class="form-group col-lg-2">' +
+                '<label for="danwei">单位</label>' +
+                '<select class="custom-select" name="电阻值单位 ' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="mΩ">mΩ</option>' +
+                '<option value="Ω">Ω</option>' +
+                '<option value="kΩ">kΩ</option>' +
+                '<option value="MΩ">MΩ</option>' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group col-lg-4">' +
+                '<label for="电阻公差值">电阻公差值 </label>' +
+                '<input name="电阻公差值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '</div>' +
+                '<div class="form-group col-lg-2">' +
+                '<label for="danwei">单位</label>' +
+                '<select class="custom-select" name="电阻公差值单位 ' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="mΩ">mΩ</option>' +
+                '<option value="Ω">Ω</option>' +
+                '<option value="kΩ">kΩ</option>' +
+                '<option value="MΩ">MΩ</option>' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group col-lg-4">' +
                 '<label for="电阻小于值">电阻小于值 </label>' +
-                '<input name="电阻小于值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="电阻小于值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -541,21 +619,21 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="发火电压">发火电压</label>' +
                 '<label for="danwei">(V)</label>' +
-                '<input name="发火电压' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电压' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="发火电压上限">发火电压上限</label>' +
                 '<label for="danwei">(V)</label>' +
-                '<input name="发火电压上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电压上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="发火电压下限">发火电压下限</label>' +
                 '<label for="danwei">(V)</label>' +
-                '<input name="发火电压下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电压下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电容">发火电容</label>' +
-                '<input name="发火电容' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电容' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -574,7 +652,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流">发火电流</label>' +
-                '<input name="发火电流' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电流' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -586,7 +664,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流上限">发火电流上限</label>' +
-                '<input name="发火电流上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电流上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -598,7 +676,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流下限">发火电流下限</label>' +
-                '<input name="发火电流下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电流下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -610,7 +688,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流时间">发火电流时间</label>' +
-                '<input name="发火电流时间' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电流时间' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -629,7 +707,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="锤重">锤重</label>' +
-                '<input name="锤重' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="锤重' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -641,7 +719,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="落高">落高</label>' +
-                '<input name="落高' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="落高' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -655,37 +733,37 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针刺激量">击针刺激量</label>' +
                 '<label for="danwei">(g•cm)</label>' +
-                '<input name="击针刺激量' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针刺激量' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针力上限">击针力上限</label>' +
                 '<label for="danwei">(N)</label>' +
-                '<input name="击针力上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针力上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针力下限">击针力下限</label>' +
                 '<label for="danwei">(N)</label>' +
-                '<input name="击针力下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针力下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针突出量上限">击针突出量上限</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="击针突出量上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针突出量上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针突出量下限">击针突出量下限</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="击针突出量下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针突出量下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="弹簧高度">弹簧高度</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="弹簧高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="弹簧高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="抗力">抗力</label>' +
                 '<label for="danwei">(N)</label>' +
-                '<input name="抗力' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="抗力' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="机械发火备注">机械发火备注</label>' +
@@ -696,7 +774,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="能量">能量</label>' +
-                '<input name="能量' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="能量' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -721,11 +799,11 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="温度条件">温度条件 </label>' +
                 '<label for="danwei">(摄氏度) </label>' +
-                '<input name="温度条件' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="温度条件' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="延期时间上限">延期时间上限 </label>' +
-                '<input name="延期时间上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="延期时间上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -737,7 +815,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="延期时间下限">延期时间下限 </label>' +
-                '<input name="延期时间下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="延期时间下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -749,7 +827,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="延期时间值">延期时间值 </label>' +
-                '<input name="延期时间值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="延期时间值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -766,6 +844,13 @@
                 '<input name="延期时间" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</div>';
             $(addtr).appendTo(tables);
+        }
+
+        function clearNoNum(obj) {
+            obj.value = obj.value.replace(/[^\d.]/g, ""); //清除"数字"和"."以外的字符  
+            obj.value = obj.value.replace(/^\./g, ""); //验证第一个字符是数字而不是  
+            obj.value = obj.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的  
+            obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
         }
 
         function delAchieve(id, obj, number) {
@@ -835,6 +920,10 @@
                 alert("信息输入有误！");
                 return;
             }
+            document.getElementById('btn1').disabled = true;
+            setTimeout(function () {
+                document.getElementById('btn1').disabled = false;
+            }, 5000);
             Add();
         }
 
@@ -845,12 +934,22 @@
                 data: $("form").serialize(),
                 dataType: "json",
                 success: function (data) {
-                    data = eval("(" + data + ")");
-                    if (data) {
-                        alert("添加成功");
-                    } else {
-                        alert("存在上限值小于下限值，请重新输入");
-                        return;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[0]) {
+                            alert("添加成功");
+                        }
+                        else {
+                            if (data[1]) {
+                                alert("存在上限值小于下限值，请重新输入");
+                                return;
+                            }
+                            else {
+                                alert("未选择单位或者选择单位的值为空");
+                                return;
+                            }
+                            alert("添加失败");
+                            return;
+                        }
                     }
                     parent.openFrame("Information");
                 }
@@ -861,7 +960,7 @@
 <body>
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:10%;height:10%">
+            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:13%;height:10%">
                 <div>
                     <h2 class="tm-block-title">信息模块</h2>
                     <div class="tm-product-table-container">
@@ -887,7 +986,7 @@
                     </button>
                 </div>
             </div>
-            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:10%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
+            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:13%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
                 <form action="/Add/AddInformation" method="post" class="tm-signup-form" id="form" name="基本信息">
                     <div class="row" id="主页信息">
                         <div class="form-group col-lg-12">
@@ -941,12 +1040,12 @@
                             <input name="研制日期" class="form-control validate" type="text" id="expire_date">
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="设计定型日期">设计定型日期</label>
+                            <label for="设计定型日期">定型日期</label>
                             <label for="验证" style="color:orangered;display:none" id="sjdxrq">*日期格式有误</label>
                             <input name="设计定型日期" class="form-control validate" type="text" id="expire_date2">
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="生产定型日期">生产定型日期</label>
+                            <label for="生产定型日期">工艺定型</label>
                             <label for="验证" style="color:orangered;display:none" id="scdxrq">*日期格式有误</label>
                             <input name="生产定型日期" class="form-control validate" type="text" id="expire_date3">
                         </div>
@@ -1013,22 +1112,23 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="宽度">宽度</label>
-                            <input name="宽度" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="宽度" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="脚线">脚线</label>
-                            <input name="脚线" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="脚线" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="总长度">总长度</label>
-                            <input name="总长度" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="总长度" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">隔板厚度</h2>
+                            <label for="danwei">（单位：mm）</label>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="隔板厚度">隔板厚度</label>
-                            <input name="隔板厚度" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="隔板厚度" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">索</h2>
@@ -1036,15 +1136,15 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索直径上限">索直径上限</label>
-                            <input name="索直径上限" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="索直径上限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索直径下限">索直径下限</label>
-                            <input name="索直径下限" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="索直径下限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索MDF（银质）直径">索MDF（银质）直径</label>
-                            <input name="索MDF（银质）直径" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="索MDF（银质）直径" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索备注">索备注</label>
@@ -1056,11 +1156,11 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="对边">对边</label>
-                            <input name="对边" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="对边" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="对角线">对角线</label>
-                            <input name="对角线" class="form-control validate" type="text">
+                            <input name="对角线" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="六方对角备注">六方对角备注</label>
@@ -1072,7 +1172,7 @@
                         <div class="form-group col-lg-6">
                             <label for="检测电流">检测电流</label>
                             <label for="danwei">(mA)</label>
-                            <input name="检测电流" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="检测电流" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">静电感度</h2>
@@ -1080,17 +1180,17 @@
                         <div class="form-group col-lg-6">
                             <label for="静电电容">静电电容</label>
                             <label for="danwei">(pf)</label>
-                            <input name="静电电容" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="静电电容" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="静电电压">静电电压</label>
                             <label for="danwei">(V)</label>
-                            <input name="静电电压" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="静电电压" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="串联电阻">串联电阻</label>
                             <label for="danwei">(Ω)</label>
-                            <input name="串联电阻" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="串联电阻" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="静电感度备注">静电感度备注</label>
@@ -1101,7 +1201,7 @@
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="作用时间">作用时间</label>
-                            <input name="作用时间" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="作用时间" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
@@ -1115,7 +1215,7 @@
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="作用时间上限">作用时间上限</label>
-                            <input name="作用时间上限" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="作用时间上限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
@@ -1129,7 +1229,7 @@
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="作用时间下限">作用时间下限</label>
-                            <input name="作用时间下限" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="作用时间下限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
@@ -1154,7 +1254,7 @@
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="安全电流值">安全电流值</label>
-                            <input name="安全电流值" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="安全电流值" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
@@ -1166,7 +1266,7 @@
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="安全电流值上限">安全电流值上限</label>
-                            <input name="安全电流值上限" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="安全电流值上限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
@@ -1178,7 +1278,7 @@
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="安全电流值下限">安全电流值下限</label>
-                            <input name="安全电流值下限" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="安全电流值下限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
@@ -1190,7 +1290,7 @@
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="时间值">时间值</label>
-                            <input name="时间值" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="时间值" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="danwei">单位</label>
@@ -1203,7 +1303,7 @@
                         <div class="form-group col-lg-6">
                             <label for="功率值">功率值</label>
                             <label for="danwei">(W)</label>
-                            <input name="功率值" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="功率值" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="安全电流备注">安全电流备注</label>
@@ -1215,12 +1315,12 @@
                         <div class="form-group col-lg-6">
                             <label for="安全电压电压">安全电压电压</label>
                             <label for="danwei">(V)</label>
-                            <input name="安全电压电压" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="安全电压电压" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="安全电压电容">安全电压电容</label>
                             <label for="danwei">(pf)</label>
-                            <input name="安全电压电容" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="安全电压电容" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">燃烧压力</h2>
@@ -1228,11 +1328,11 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力上限">燃烧压力上限</label>
-                            <input name="燃烧压力上限" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="燃烧压力上限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力下限">燃烧压力下限</label>
-                            <input name="燃烧压力下限" class="form-control validate" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')">
+                            <input name="燃烧压力下限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力备注">燃烧压力备注</label>
@@ -1420,10 +1520,8 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-7 container" style="margin-right:8%;margin-top:1%">
-            <button type="submit" class="btn btn-primary btn-block text-uppercase" onclick="FormSubmission()">
-                提交
-            </button>
+        <div class="col-md-7 container" style="margin-right:11%;margin-top:1%">
+            <input type="button" class="btn btn-primary btn-block text-uppercase" onclick="FormSubmission()" id="btn1" value="提交">
         </div>
     </div>
 </body>
