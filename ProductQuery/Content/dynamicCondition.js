@@ -192,7 +192,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
               conditionObj = conditionObj || { conditionValueVal: {}, conditionValueLeftVal: {}, conditionValueRightVal: {}, conditionValueUnitVal: {}}
 			  var conditionValueJq = conditionRowJq.find(".conditionValue");
 			  var conditionFieldVal = conditionRowJq.find("select[name='conditionField']").val();
-			  var conditionOptionVal = conditionRowJq.find("select[name='conditionOption']").val();
+              var conditionOptionVal = conditionRowJq.find("select[name='conditionOption']").val();
 			  var obj = instance.getObjByField(conditionFieldVal);
 			  //没有对应的obj，则不用更新conditionValue
 			  if(!obj){
@@ -226,7 +226,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
                   var StrArray = conditionFieldVal.split('-');
                   var str = StrArray[2];
                   //下拉框html
-                  var selectconditionUnit = $('<select lay-filter="conditionUnit"></select>');
+                  var selectconditionUnit = $('<select name = "conditionUnit" lay-filter="conditionUnit"></select>');
                   if (str == "cd") {
                       selectconditionUnit.append("<option value='mm'>mm</option>");
                       selectconditionUnit.append("<option value='cm'>cm</option>");
@@ -306,7 +306,9 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 
 					  curEditor.fillElement(eleLeftJq,conditionObj.conditionValueLeftVal);
                       curEditor.fillElement(eleRightJq, conditionObj.conditionValueRightVal);
-                      curEditor.fillElement(eleUnitJq, conditionObj.conditionValueUnitVal);
+                      if (typeof (conditionObj.conditionValueUnitVal.value) != "undefined") {
+                          curEditor.fillElement(eleUnitJq, conditionObj.conditionValueUnitVal);
+                      }
                       
 					  curEditor.render(eleLeftJq);
                       curEditor.render(eleRightJq);
@@ -339,8 +341,10 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
                       conditionRowJq[0].eleUnitJq = eleUnitJq;
 
                       curEditor.fillElement(eleJq, conditionObj.conditionValueVal);
-                      curEditor.fillElement(eleUnitJq, conditionObj.conditionValueUnitVal);
-
+                      if (typeof (conditionObj.conditionValueUnitVal.value) != "undefined") {
+                          curEditor.fillElement(eleUnitJq, conditionObj.conditionValueUnitVal);
+                      }
+                      
                       curEditor.render(eleJq);
                       curEditor.render(eleUnitJq);
 				  }
@@ -801,7 +805,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
     		 */
     		,fillElement:function(ele, val){
     			$(ele).val(val.value);
-    			$(ele).attr("oldVal",val.value);
+                $(ele).attr("oldVal", val.value);
     		}
     		/***
     		 * 用于ajax请求提交的参数值

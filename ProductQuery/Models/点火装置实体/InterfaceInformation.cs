@@ -26,7 +26,7 @@ namespace ProductQuery.Models
         public string gc { get; set; }
         [DisplayName("长度")]
         public double cd { get; set; }
-        [DisplayName("借口信息备注")]
+        [DisplayName("接口信息备注")]
         public string jkxxbz { get; set; }
     }
 }
