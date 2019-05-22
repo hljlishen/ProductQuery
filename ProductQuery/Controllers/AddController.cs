@@ -24,6 +24,7 @@ namespace ProductQuery.Controllers
         private static List<DelayTime> delay;
         bool IsList = false;
         bool Isscope = false;
+        bool IsUnitvalue = false;
         public ActionResult AddInformation()
         {
             return View();
@@ -114,6 +115,7 @@ namespace ProductQuery.Controllers
 
         private void Information(FormCollection collection, Ignition ignition,int id)
         {
+            Isscope = false;
             if (collection["类别"] != "请选择")
                 ignition.lb = collection["类别"];
             ignition.cpmc = collection["产品名称"];
@@ -160,7 +162,6 @@ namespace ProductQuery.Controllers
                 if (ignition.szjsx < ignition.szjxx)
                     Isscope = true;
             }
-
             if (collection["索MDF（银质）直径"] != "")
                 ignition.sMDFyzzj = double.Parse(collection["索MDF（银质）直径"]);
             ignition.sbz = collection["索备注"];
@@ -178,13 +179,19 @@ namespace ProductQuery.Controllers
             if (collection["串联电阻"] != "")
                 ignition.cldz = double.Parse(collection["串联电阻"]);
             ignition.jdgdbz = collection["静电感度备注"];
-            if (collection["作用时间单位"] != "请选择")
+
+            if (collection["作用时间"] != "" && collection["作用时间单位"] != "请选择")
             {
                 string unit = collection["作用时间单位"];
                 double value = double.Parse(collection["作用时间"]);
                 ignition.zysj = TimeUnitConversion(unit, value);
             }
-            if (collection["作用时间上限单位"] != "请选择" && collection["作用时间下限单位"] != "请选择")
+            else if (collection["作用时间"] == "" && collection["作用时间单位"] != "请选择")
+                IsUnitvalue = true;
+            else if(collection["作用时间"] != "" && collection["作用时间单位"] == "请选择")
+                IsUnitvalue = true;
+
+            if (collection["作用时间上限单位"] != "请选择" && collection["作用时间下限单位"] != "请选择" && collection["作用时间上限"] != "" && collection["作用时间下限"] != "")
             {
                 string unit = collection["作用时间上限单位"];
                 double value = double.Parse(collection["作用时间上限"]);
@@ -195,32 +202,48 @@ namespace ProductQuery.Controllers
                 if (ignition.zysjsx < ignition.zysjxx)
                     Isscope = true;
             }
+            else if (collection["作用时间上限单位"] == "请选择" && collection["作用时间下限单位"] == "请选择" && collection["作用时间上限"] == "" && collection["作用时间下限"] == "")
+            { }
+            else
+                IsUnitvalue = true;
             ignition.zysjbz = collection["作用时间备注"];
             if (collection["安全电流桥个数"] != "")
                 ignition.jgs = int.Parse(collection["安全电流桥个数"]);
-            if (collection["安全电流值单位"] != "请选择")
+            if (collection["安全电流值单位"] != "请选择" && collection["安全电流值"]!="")
             {
                 string unit = collection["安全电流值单位"];
                 double value = double.Parse(collection["安全电流值"]);
                 ignition.aydlz = CurrentUnitConversion(unit, value);
             }
-            if (collection["安全电流值上限单位"] != "请选择" && collection["安全电流值下限单位"] != "请选择")
+            else if (collection["安全电流值"] == "" && collection["安全电流值单位"] != "请选择")
+                IsUnitvalue = true;
+            else if (collection["安全电流值"] != "" && collection["安全电流值单位"] == "请选择")
+                IsUnitvalue = true;
+            if (collection["安全电流值上限单位"] != "请选择" && collection["安全电流值下限单位"] != "请选择" && collection["安全电流值上限"] != "" && collection["安全电流值下限"] != "")
             {
                 string unit = collection["安全电流值上限单位"];
                 double value = double.Parse(collection["安全电流值上限"]);
-                ignition.aydlzxx = CurrentUnitConversion(unit, value);
+                ignition.aydlzsx = CurrentUnitConversion(unit, value);
                 string unit2 = collection["安全电流值下限单位"];
                 double value2 = double.Parse(collection["安全电流值下限"]);
-                ignition.aydlzsx = CurrentUnitConversion(unit2, value2);
-                if (ignition.aydlzxx < ignition.aydlzsx)
+                ignition.aydlzxx = CurrentUnitConversion(unit2, value2);
+                if (ignition.aydlzsx < ignition.aydlzxx)
                     Isscope = true;
             }
-            if (collection["时间值单位"] != "请选择")
+            else if (collection["安全电流值上限单位"] == "请选择" && collection["安全电流值下限单位"] == "请选择" && collection["安全电流值上限"] == "" && collection["安全电流值下限"] == "")
+            { }
+            else
+                IsUnitvalue = true;
+            if (collection["时间值单位"] != "请选择" && collection["时间值"]!= "")
             {
                 string unit = collection["时间值单位"];
                 double value = double.Parse(collection["时间值"]);
                 ignition.ssj = TimeUnitConversion(unit, value);
             }
+            else if (collection["时间值"] == "" && collection["时间值单位"] != "请选择")
+                IsUnitvalue = true;
+            else if (collection["时间值"] != "" && collection["时间值单位"] == "请选择")
+                IsUnitvalue = true;
             if (collection["功率值"] != "")
                 ignition.glz = double.Parse(collection["功率值"]);
             ignition.aqdlbz = collection["安全电流备注"];
@@ -252,18 +275,31 @@ namespace ProductQuery.Controllers
             int id = -1;
             Information(collection, ignition,id);
             AddImage(collection, ignition);
+            List<bool> c = new List<bool>();
             if (Isscope)
-                return Json(false);
-            return Json(dbDrive.Insert(ignition));
+            {
+                c.Add(false);
+                c.Add(true);
+                return Json(c);
+            }
+            if (IsUnitvalue)
+            {
+                c.Add(false);
+                c.Add(false);
+                return Json(c);
+            }
+            if (dbDrive.Insert(ignition))
+                c.Add(true);
+            return Json(c);
         }
 
         //添加图片
         private void AddImage(FormCollection collection, Ignition ignition) {
             for (int i = 1; i <= 10; i++)
             {
-                if (collection["file"+i] != null)
+                if (collection["cp"+i] != null)
                 {
-                    if (collection["file" + i] != "") {
+                    if (collection["cp" + i] != "") {
                         Picture picture = new Picture();
                         string cpy = collection["cp" + i];
                         string[] array = cpy.Split(',');
@@ -282,12 +318,12 @@ namespace ProductQuery.Controllers
             List<int> list2 = new List<int>();
             for (int i = 1; i <= 10; i++)
             {
-                if (collection["cp" +"_"+ i] != null)
+                if (collection["cp" + "-" + i] != null)
                 {
-                    if (collection["cp" + "_" + i] != "")
+                    if (collection["cp" + "-" + i] != "")
                     {
                         Picture picture = new Picture();
-                        string cpy = collection["cp" + "_" + i];
+                        string cpy = collection["cp" + "-" + i];
                         string[] array = cpy.Split(',');
                         byte[] imageBytes = Convert.FromBase64String(array[1]);
                         picture.cpy = imageBytes;
@@ -298,15 +334,27 @@ namespace ProductQuery.Controllers
                             list1.Add(picture.Id);
                             ignition.Pictures.Add(picture);
                         }
-                        else
-                        {
-                            picture.IgnitionID = id;
-                            AddImage(picture);
-                        }
                     }
                 }
             }
-            DelectImage(list1,list2);
+            DelectImage(list1, list2);
+            for (int i = 1; i <= 10; i++)
+            {
+                if (collection["cp" + "_" + i] != null)
+                {
+                    if (collection["cp" + "_" + i] != "")
+                    {
+                        Picture picture = new Picture();
+                        string cpy = collection["cp" + "_" + i];
+                        string[] array = cpy.Split(',');
+                        byte[] imageBytes = Convert.FromBase64String(array[1]);
+                        picture.cpy = imageBytes;
+                        ignition.Pictures.Add(picture);
+                        picture.IgnitionID = id;
+                        AddImage(picture);
+                    }
+                }
+            }
         }
 
         //添加图片
@@ -563,7 +611,7 @@ namespace ProductQuery.Controllers
                     DcResistance dcResistance = new DcResistance();
                     if (collection["直流电阻桥个数" + i] != "")
                         dcResistance.dzqgs = int.Parse(collection["直流电阻桥个数" + i]);
-                    if (collection["电阻范围值上单位" + " " + i] != "请选择" && collection["电阻范围值下单位" + " " + i] != "请选择")
+                    if (collection["电阻范围值上单位" + " " + i] != "请选择" && collection["电阻范围值下单位" + " " + i] != "请选择" && collection["电阻范围值上" + i] != "" && collection["电阻范围值下" + i] != "")
                     {
                         string unit = collection["电阻范围值上单位" + " " + i];
                         double value = double.Parse(collection["电阻范围值上" + i]);
@@ -574,12 +622,20 @@ namespace ProductQuery.Controllers
                         if (dcResistance.dzfwzsx < dcResistance.dzfwzxx)
                             Isscope = true;
                     }
-                    if (collection["电阻小于值单位" + " " + i] != "请选择")
+                    else if (collection["电阻范围值上单位" + " " + i] == "请选择" && collection["电阻范围值下单位" + " " + i] == "请选择" && collection["电阻范围值上" + i] == "" && collection["电阻范围值下" + i] == "")
+                    { }
+                    else
+                        IsUnitvalue = true;
+                    if (collection["电阻小于值单位" + " " + i] != "请选择" && collection["电阻小于值" + i]!="")
                     {
                         string unit = collection["电阻小于值单位" + " " + i];
                         double value = double.Parse(collection["电阻小于值" + i]);
                         dcResistance.dzxyz = ResistanceUnitConversion(unit, value);
                     }
+                    else if (collection["电阻小于值" + i] == "" && collection["电阻小于值单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["电阻小于值" + i] != "" && collection["电阻小于值单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
                     dcResistance.dzbz = collection["电阻备注" + i];
                     if (id != -1 && collection["直流电阻id" + i] != null)
                     {
@@ -641,20 +697,28 @@ namespace ProductQuery.Controllers
                         if (ignitionCondition.fhdysx < ignitionCondition.fhdyxx)
                             Isscope = true;
                     }
-                    if (collection["发火电容单位" + " " + i] != "请选择")
+                    if (collection["发火电容单位" + " " + i] != "请选择" && collection["发火电容" + i]!= "")
                     {
                         string unit = collection["发火电容单位" + " " + i];
                         double value = double.Parse(collection["发火电容" + i]);
                         ignitionCondition.fhdr = CapacitanceUnitConversion(unit, value);
                     }
+                    else if (collection["发火电容" + i] == "" && collection["发火电容单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["发火电容" + i] != "" && collection["发火电容单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
                     ignitionCondition.fhdybz = collection["电压发火备注" + i];
-                    if (collection["发火电流单位" + " " + i] != "请选择")
+                    if (collection["发火电流单位" + " " + i] != "请选择" && collection["发火电流" + i] != "")
                     {
                         string unit = collection["发火电流单位" + " " + i];
                         double value = double.Parse(collection["发火电流" + i]);
                         ignitionCondition.fhdl = CurrentUnitConversion(unit, value);
                     }
-                    if (collection["发火电流上限单位" + " " + i] != "请选择" && collection["发火电流下限单位" + " " + i] != "请选择")
+                    else if (collection["发火电流" + i] == "" && collection["发火电流单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["发火电流" + i] != "" && collection["发火电流单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
+                    if (collection["发火电流上限单位" + " " + i] != "请选择" && collection["发火电流下限单位" + " " + i] != "请选择" && collection["发火电流上限" + i] != "" && collection["发火电流下限" + i] != "")
                     {
                         string unit = collection["发火电流上限单位" + " " + i];
                         double value = double.Parse(collection["发火电流上限" + i]);
@@ -665,25 +729,41 @@ namespace ProductQuery.Controllers
                         if (ignitionCondition.fhdlsx < ignitionCondition.fhdlxx)
                             Isscope = true;
                     }
-                    if (collection["发火电流时间单位" + " " + i] != "请选择")
+                    else if (collection["发火电流上限单位" + " " + i] == "请选择" && collection["发火电流下限单位" + " " + i] == "请选择" && collection["发火电流上限" + i] == "" && collection["发火电流下限" + i] == "")
+                    { }
+                    else
+                        IsUnitvalue = true;
+                    if (collection["发火电流时间单位" + " " + i] != "请选择" && collection["发火电流时间" + i]!= "")
                     {
                         string unit = collection["发火电流时间单位" + " " + i];
                         double value = double.Parse(collection["发火电流时间" + i]);
                         ignitionCondition.fhdlss = TimeUnitConversion(unit, value);
                     }
+                    else if (collection["发火电流时间" + i] == "" && collection["发火电流时间单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["发火电流时间" + i] != "" && collection["发火电流时间单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
                     ignitionCondition.dlfhbz = collection["电流发火备注" + i];
-                    if (collection["锤重单位" + " " + i] != "请选择")
+                    if (collection["锤重单位" + " " + i] != "请选择" && collection["锤重" + i]!="")
                     {
                         string unit = collection["锤重单位" + " " + i];
                         double value = double.Parse(collection["锤重" + i]);
                         ignitionCondition.cz = WeightUnitConversion(unit, value);
                     }
-                    if (collection["落高单位" + " " + i] != "请选择")
+                    else if (collection["锤重" + i] == "" && collection["锤重单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["锤重" + i] != "" && collection["锤重单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
+                    if (collection["落高单位" + " " + i] != "请选择" && collection["落高" + i]!="")
                     {
                         string unit = collection["落高单位" + " " + i];
                         double value = double.Parse(collection["落高" + i]);
                         ignitionCondition.lg = LenghtUnitConversion(unit, value);
                     }
+                    else if (collection["落高" + i] == "" && collection["落高单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["落高" + i] != "" && collection["落高单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
                     if (collection["击针刺激量" + i] != "")
                         ignitionCondition.jzcjl = double.Parse(collection["击针刺激量" + i]);
                     if (collection["击针力上限" + i] != "" && collection["击针力下限" + i] != "")
@@ -705,12 +785,16 @@ namespace ProductQuery.Controllers
                     if (collection["抗力" + i] != "")
                         ignitionCondition.kl = double.Parse(collection["抗力" + i]);
                     ignitionCondition.jxfhbz = collection["机械发火备注" + i];
-                    if (collection["能量单位" + " " + i] != "请选择")
+                    if (collection["能量单位" + " " + i] != "请选择" && collection["能量" + i]!="")
                     {
                         string unit = collection["能量单位" + " " + i];
                         double value = double.Parse(collection["能量" + i]);
                         ignitionCondition.nl = EnergyUnitConversion(unit, value);
                     }
+                    else if (collection["能量" + i] == "" && collection["能量单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["能量" + i] != "" && collection["能量单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
                     if (id != -1 && collection["发火条件id" + i] != null)
                     {
                         ignitionCondition.Id = int.Parse(collection["发火条件id" + i]);
@@ -762,7 +846,7 @@ namespace ProductQuery.Controllers
                     DelayTime delayTime = new DelayTime();
                     if (collection["温度条件" + i] != "")
                         delayTime.wdtj = double.Parse(collection["温度条件" + i]);
-                    if (collection["延期时间上限单位" + " " + i] != "请选择" && collection["延期时间下限单位" + " " + i] != "请选择")
+                    if (collection["延期时间上限单位" + " " + i] != "请选择" && collection["延期时间下限单位" + " " + i] != "请选择" && collection["延期时间上限" + i] != "" && collection["延期时间下限" + i] != "")
                     {
                         string unit = collection["延期时间上限单位" + " " + i];
                         double value = double.Parse(collection["延期时间上限" + i]);
@@ -773,12 +857,20 @@ namespace ProductQuery.Controllers
                         if (delayTime.yqsjsx < delayTime.yqsjxx)
                             Isscope = true;
                     }
-                    if (collection["延期时间值单位" + " " + i] != "请选择")
+                    else if (collection["延期时间上限单位" + " " + i] == "请选择" && collection["延期时间下限单位" + " " + i] == "请选择" && collection["延期时间上限" + i] == "" && collection["延期时间下限" + i] == "")
+                    { }
+                    else
+                        IsUnitvalue = true;
+                    if (collection["延期时间值单位" + " " + i] != "请选择" && collection["延期时间值" + i]!="")
                     {
                         string unit = collection["延期时间值单位" + " " + i];
                         double value = double.Parse(collection["延期时间值" + i]);
                         delayTime.yqsjz = TimeUnitConversion(unit, value);
                     }
+                    else if (collection["延期时间值" + i] == "" && collection["延期时间值单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["延期时间值" + i] != "" && collection["延期时间值单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
                     delayTime.yqsjbz = collection["延期时间备注" + i];
                     if (id != -1 && collection["延期时间id" + i] != null)
                     {

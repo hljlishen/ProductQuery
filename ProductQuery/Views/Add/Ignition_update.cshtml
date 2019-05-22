@@ -34,35 +34,43 @@
         
         var image = 1;
         if (@img.Count != 0) {
-            var image = @img.Count;
+            image = @img.Count;
+            image++;
         }
         var changgui = 1;
         if (@conv.Count != 0) {
-            var changgui = @conv.Count;
+            changgui = @conv.Count;
+            changgui++;
         }
         var suo = 1;
         if (@cable.Count != 0) {
-            var suo = @cable.Count;
+            suo = @cable.Count;
+            suo++;
         }
         var baosu = 1;
         if (@speed.Count != 0) {
-            var baosu = @speed.Count;
+            baosu = @speed.Count;
+            baosu++;
         }
         var jiekoxinxi = 1;
         if (@inter.Count != 0) {
-            var jiekoxinxi = @inter.Count;
+            jiekoxinxi = @inter.Count;
+            jiekoxinxi++;
         }
         var zhiliudianzu = 1;
         if (@dc.Count != 0) {
-            var zhiliudianzu = @dc.Count;
+            zhiliudianzu = @dc.Count;
+            zhiliudianzu++;
         }
         var fahuotiaojian = 1;
         if (@ignc.Count != 0) {
-            var fahuotiaojian = @ignc.Count;
+            fahuotiaojian = @ignc.Count;
+            fahuotiaojian++;
         }
         var yanqishijian = 1;
         if (@delay.Count != 0) {
-            var yanqishijian = @delay.Count;
+            yanqishijian = @delay.Count;
+            yanqishijian++;
         }
         var id = @count;
         
@@ -183,17 +191,17 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="直径">直径</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="直径' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="直径' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="常规长度">长度</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="常规长度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="常规长度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="高度">高度 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<input name="常规" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</div>';
@@ -210,7 +218,7 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="索普通直径">索普通直径 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="索普通直径' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
+                '<input name="索普通直径' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<input name="索普通直径" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</div>';
@@ -227,12 +235,12 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="爆速上限">爆速上限 </label>' +
                 '<label for="danwei">(m/s)</label>' +
-                '<input name="爆速上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="爆速上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="爆速下限">爆速下限 </label>' +
                 '<label for="danwei">(m/s)</label>' +
-                '<input name="爆速下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="爆速下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="爆速备注">爆速备注</label>' +
@@ -253,12 +261,12 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="螺纹">螺纹 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="螺纹' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="螺纹' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="螺距">螺距 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="螺距' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="螺距' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="公差">公差 </label>' +
@@ -267,7 +275,7 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="接口信息长度">长度 </label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="接口信息长度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="接口信息长度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="接口信息备注">接口信息备注</label>' +
@@ -291,7 +299,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻范围值上">电阻范围值上 </label>' +
-                '<input name="电阻范围值上' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="电阻范围值上' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -305,7 +313,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻范围值下">电阻范围值下 </label>' +
-                '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -319,7 +327,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻小于值">电阻小于值 </label>' +
-                '<input name="电阻小于值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="电阻小于值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -360,21 +368,21 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="发火电压">发火电压</label>' +
                 '<label for="danwei">(V)</label>' +
-                '<input name="发火电压' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电压' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="发火电压上限">发火电压上限</label>' +
                 '<label for="danwei">(V)</label>' +
-                '<input name="发火电压上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电压上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="发火电压下限">发火电压下限</label>' +
                 '<label for="danwei">(V)</label>' +
-                '<input name="发火电压下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电压下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电容">发火电容</label>' +
-                '<input name="发火电容' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电容' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -393,7 +401,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流">发火电流</label>' +
-                '<input name="发火电流' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电流' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -405,7 +413,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流上限">发火电流上限</label>' +
-                '<input name="发火电流上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电流上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -417,7 +425,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流下限">发火电流下限</label>' +
-                '<input name="发火电流下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电流下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -429,7 +437,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="发火电流时间">发火电流时间</label>' +
-                '<input name="发火电流时间' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="发火电流时间' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -448,7 +456,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="锤重">锤重</label>' +
-                '<input name="锤重' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="锤重' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -460,7 +468,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="落高">落高</label>' +
-                '<input name="落高' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="落高' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -474,37 +482,37 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针刺激量">击针刺激量</label>' +
                 '<label for="danwei">(g•cm)</label>' +
-                '<input name="击针刺激量' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针刺激量' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针力上限">击针力上限</label>' +
                 '<label for="danwei">(N)</label>' +
-                '<input name="击针力上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针力上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针力下限">击针力下限</label>' +
                 '<label for="danwei">(N)</label>' +
-                '<input name="击针力下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针力下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针突出量上限">击针突出量上限</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="击针突出量上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针突出量上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="击针突出量下限">击针突出量下限</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="击针突出量下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="击针突出量下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="弹簧高度">弹簧高度</label>' +
                 '<label for="danwei">(mm)</label>' +
-                '<input name="弹簧高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="弹簧高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="抗力">抗力</label>' +
                 '<label for="danwei">(N)</label>' +
-                '<input name="抗力' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="抗力' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="机械发火备注">机械发火备注</label>' +
@@ -515,7 +523,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="能量">能量</label>' +
-                '<input name="能量' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="能量' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -540,11 +548,11 @@
                 '<div class="form-group col-lg-6">' +
                 '<label for="温度条件">温度条件 </label>' +
                 '<label for="danwei">(摄氏度) </label>' +
-                '<input name="温度条件' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="温度条件' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="延期时间上限">延期时间上限 </label>' +
-                '<input name="延期时间上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="延期时间上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -556,7 +564,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="延期时间下限">延期时间下限 </label>' +
-                '<input name="延期时间下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="延期时间下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -568,7 +576,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="延期时间值">延期时间值 </label>' +
-                '<input name="延期时间值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="value=value.replace(' + /[^\d\.]/g + ',' + "''" + ')">' +
+                '<input name="延期时间值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
@@ -585,6 +593,13 @@
                 '<input name="延期时间" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</div>';
             $(addtr).appendTo(tables);
+        }
+
+        function clearNoNum(obj) {
+            obj.value = obj.value.replace(/[^\d.]/g, ""); //清除"数字"和"."以外的字符  
+            obj.value = obj.value.replace(/^\./g, ""); //验证第一个字符是数字而不是  
+            obj.value = obj.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的  
+            obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
         }
 
         function OpenFile(obj) {
@@ -792,6 +807,27 @@
             });
         });
 
+        $(function () {
+            $("#file-1").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('上传的不是图片');
+                        return false;
+                    }
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-1').attr('src', e.target.result);
+                        $('#fn-1').text(file.name);
+                        $('#cp-1').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
         function delAchieve(id, obj, number) {
             if (obj != "产品示意图") {
                 $("table#test #" + id + "").remove();
@@ -877,7 +913,10 @@
                 $("#errorsscdxrq").attr("class", "glyphicon glyphicon-ok");
                 $("#errorsscdxrq").html("");
             }
-            
+            document.getElementById('btn1').disabled = true;
+            setTimeout(function () {
+                document.getElementById('btn1').disabled = false;
+            }, 5000);
             if (validate) {
                 update();
             }
@@ -1157,7 +1196,7 @@
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="设计定型日期">设计定型日期</label>
+                            <label for="设计定型日期">定型日期</label>
                             <span style="color: red;" id="errorsjdxrq"></span>
                             @{ if (ig.dxrq.ToString() != "")
                                 {
@@ -1170,7 +1209,7 @@
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="生产定型日期">生产定型日期</label>
+                            <label for="生产定型日期">工艺定型</label>
                             <span style="color: red;" id="errorsscdxrq"></span>
                             @{ if (ig.gydx.ToString() != "")
                                 {
@@ -1263,47 +1302,48 @@
                             <label for="宽度">宽度</label>
                             @{ if (ig.kd.ToString() != "0")
                                 {
-                                    @Html.TextBox("宽度", ig.kd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("宽度", ig.kd.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)" ,autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("宽度", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("宽度", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="脚线">脚线</label>
                             @{ if (ig.jx.ToString() != "0")
                                 {
-                                    @Html.TextBox("脚线", ig.jx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("脚线", ig.jx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("脚线", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("脚线", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="总长度">总长度</label>
                             @{ if (ig.zcd.ToString() != "0")
                                 {
-                                    @Html.TextBox("总长度", ig.zcd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("总长度", ig.zcd.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("总长度", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("总长度", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">隔板厚度</h2>
+                            <label for="danwei">（单位：mm）</label>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="隔板厚度">隔板厚度</label>
                             @{ if (ig.gbhd.ToString() != "0")
                                 {
-                                    @Html.TextBox("隔板厚度", ig.gbhd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("隔板厚度", ig.gbhd.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("隔板厚度", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("隔板厚度", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-12">
@@ -1314,33 +1354,33 @@
                             <label for="索直径上限">索直径上限</label>
                             @{ if (ig.szjsx.ToString() != "0")
                                 {
-                                    @Html.TextBox("索直径上限", ig.szjsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("索直径上限", ig.szjsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("索直径上限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("索直径上限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索直径下限">索直径下限</label>
                             @{ if (ig.szjxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("索直径下限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("索直径下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索MDF（银质）直径">索MDF（银质）直径</label>
                             @{ if (ig.sMDFyzzj.ToString() != "0")
                                 {
-                                    @Html.TextBox("索MDF（银质）直径", ig.sMDFyzzj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("索MDF（银质）直径", ig.sMDFyzzj.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("索MDF（银质）直径", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("索MDF（银质）直径", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 } }
                         </div>
                         <div class="form-group col-lg-6">
@@ -1355,22 +1395,22 @@
                             <label for="对边">对边</label>
                             @{ if (ig.db.ToString() != "0")
                                 {
-                                    @Html.TextBox("对边", ig.db.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("对边", ig.db.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("对边", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("对边", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 } }
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="对角线">对角线</label>
                             @{ if (ig.djx.ToString() != "0")
                                 {
-                                    @Html.TextBox("对角线", ig.djx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("对角线", ig.djx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("对角线", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("对角线", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
 
@@ -1386,11 +1426,11 @@
                             <label for="danwei">(mA)</label>
                             @{ if (ig.jcdl.ToString() != "0")
                                 {
-                                    @Html.TextBox("检测电流", ig.jcdl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("检测电流", ig.jcdl.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("检测电流", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("检测电流", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-12">
@@ -1401,11 +1441,11 @@
                             <label for="danwei">(pf)</label>
                             @{ if (ig.jddr.ToString() != "0")
                                 {
-                                    @Html.TextBox("静电电容", ig.jddr.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("静电电容", ig.jddr.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("静电电容", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("静电电容", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
@@ -1413,11 +1453,11 @@
                             <label for="danwei">(V)</label>
                             @{ if (ig.jddy.ToString() != "0")
                                 {
-                                    @Html.TextBox("静电电压", ig.jddy.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("静电电压", ig.jddy.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("静电电压", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("静电电压", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
@@ -1425,11 +1465,11 @@
                             <label for="danwei">(Ω)</label>
                             @{ if (ig.cldz.ToString() != "0")
                                 {
-                                    @Html.TextBox("串联电阻", ig.cldz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("串联电阻", ig.cldz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("串联电阻", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("串联电阻", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
@@ -1444,7 +1484,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间">作用时间</label>
-                                    @Html.TextBox("作用时间", ig.zysj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("作用时间", ig.zysj.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1461,7 +1501,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间">作用时间</label>
-                                    @Html.TextBox("作用时间", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("作用时间", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1480,7 +1520,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间上限">作用时间上限</label>
-                                    @Html.TextBox("作用时间上限", ig.zysjsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("作用时间上限", ig.zysjsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1497,7 +1537,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间上限">作用时间上限</label>
-                                    @Html.TextBox("作用时间上限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("作用时间上限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1515,7 +1555,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间下限">作用时间下限</label>
-                                    @Html.TextBox("作用时间下限", ig.zysjxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("作用时间下限", ig.zysjxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1532,7 +1572,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间下限">作用时间下限</label>
-                                    @Html.TextBox("作用时间下限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("作用时间下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1569,7 +1609,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值">安全电流值</label>
-                                    @Html.TextBox("安全电流值", ig.aydlz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电流值", ig.aydlz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
 
                                 <div class="form-group col-lg-2">
@@ -1585,7 +1625,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值">安全电流值</label>
-                                    @Html.TextBox("安全电流值", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电流值", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1603,7 +1643,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值上限">安全电流值上限</label>
-                                    @Html.TextBox("安全电流值上限", ig.aydlzsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电流值上限", ig.aydlzsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1618,7 +1658,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值上限">安全电流值上限</label>
-                                    @Html.TextBox("安全电流值上限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电流值上限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1635,7 +1675,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值下限">安全电流值下限</label>
-                                    @Html.TextBox("安全电流值下限", ig.aydlzxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电流值下限", ig.aydlzxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1650,7 +1690,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="安全电流值下限">安全电流值下限</label>
-                                    @Html.TextBox("安全电流值下限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电流值下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1668,7 +1708,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="时间值">时间值</label>
-                                    @Html.TextBox("时间值", ig.ssj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("时间值", ig.ssj.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1684,7 +1724,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="时间值">时间值</label>
-                                    @Html.TextBox("时间值", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("时间值", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1701,11 +1741,11 @@
                             <label for="danwei">(W)</label>
                             @{ if (ig.glz.ToString() != "0")
                                 {
-                                    @Html.TextBox("功率值", ig.glz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("功率值", ig.glz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("功率值", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("功率值", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
 
@@ -1721,11 +1761,11 @@
                             <label for="danwei">(V)</label>
                             @{ if (ig.aqdydy.ToString() != "0")
                                 {
-                                    @Html.TextBox("安全电压电压", ig.aqdydy.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电压电压", ig.aqdydy.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("安全电压电压", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电压电压", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 } }
                         </div>
                         <div class="form-group col-lg-6">
@@ -1733,11 +1773,11 @@
                             <label for="danwei">(pf)</label>
                             @{ if (ig.aqdydr.ToString() != "0")
                                 {
-                                    @Html.TextBox("安全电压电容", ig.aqdydr.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电压电容", ig.aqdydr.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("安全电压电容", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("安全电压电容", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
 
@@ -1749,22 +1789,22 @@
                             <label for="燃烧压力上限">燃烧压力上限</label>
                             @{ if (ig.rsylsx.ToString() != "0")
                                 {
-                                    @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("燃烧压力上限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("燃烧压力上限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力下限">燃烧压力下限</label>
                             @{ if (ig.rsylxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("燃烧压力下限", ig.rsylxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("燃烧压力下限", ig.rsylxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("燃烧压力下限", "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("燃烧压力下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
@@ -1781,14 +1821,13 @@
                                 <h1 class="tm-site-title mb-0">产品示意图 @imgs</h1>
                             </div>
                             <div class="tm-avatar-container">
-                                <img id="img_@imgs" src="data:image/jpeg;base64,@Convert.ToBase64String(im.cpy)" alt="" class="tm-avatar img-fluid mb-4">
-                                <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file_@imgs')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
-                                <span id="fn_@imgs"></span>
+                                <img id="img-@imgs" src="data:image/jpeg;base64,@Convert.ToBase64String(im.cpy)" alt="" class="tm-avatar img-fluid mb-4">
+                                <a href="#" class="tm-avatar-delete-link" onclick="OpenFile('file-@imgs')"><i class="fas fa-cloud-upload-alt tm-upload-icon"></i></a>
+                                <span id="fn-@imgs"></span>
                             </div>
-                            <input id="file_@imgs" name="file_@imgs" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
-                            <input name="cp_@imgs" id="cp_@imgs" type="text" style="display:none" value="">
+                            <input id="file-@imgs" name="file-@imgs" type="file" accept="image/gif, image/jpeg, image/jpg, image/png" style="display:none" />
+                            <input name="cp-@imgs" id="cp-@imgs" type="text" style="display:none" value="data:image/jpeg;base64,@Convert.ToBase64String(im.cpy)">
                             @Html.TextBox("产品示意图id" + imgs, im.Id.ToString(), new { @class = "form-control validate", style = "display:none" })
-                            @Html.TextBox("产品示意图", imgs, new { @class = "form-control validate", style = "display:none" })
                             @{
                                 imgs++;
                                 count2++;
@@ -1812,11 +1851,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (con.zj.ToString() != "0")
                                 {
-                                    @Html.TextBox("直径" + cons, con.zj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("直径" + cons, con.zj.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("直径" + cons, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("直径" + cons, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1824,11 +1863,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (con.cd.ToString() != "0")
                                 {
-                                    @Html.TextBox("常规长度" + cons, con.cd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("常规长度" + cons, con.cd.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("常规长度" + cons, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("常规长度" + cons, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1836,11 +1875,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (con.gd.ToString() != "0")
                                 {
-                                    @Html.TextBox("高度" + cons, con.gd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("高度" + cons, con.gd.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("高度" + cons, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("高度" + cons, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             @Html.TextBox("常规id" + cons, con.Id.ToString(), new { @class = "form-control validate", style = "display:none" })
@@ -1865,11 +1904,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (cab.ptszj.ToString() != "0")
                                 {
-                                    @Html.TextBox("索普通直径" + cabs, cab.ptszj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("索普通直径" + cabs, cab.ptszj.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("索普通直径" + cabs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("索普通直径" + cabs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
 
                             </div>
@@ -1893,11 +1932,11 @@
                                 <label for="danwei">(m/s)</label>
                                 @if (s.bssx.ToString() != "0")
                                 {
-                                    @Html.TextBox("爆速上限" + speeds, s.bssx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("爆速上限" + speeds, s.bssx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("爆速上限" + speeds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("爆速上限" + speeds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1905,11 +1944,11 @@
                                 <label for="danwei">(m/s)</label>
                                 @if (s.bsxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("爆速下限" + speeds, s.bsxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("爆速下限" + speeds, s.bsxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("爆速下限" + speeds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("爆速下限" + speeds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1936,11 +1975,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (inte.lw.ToString() != "0")
                                 {
-                                    @Html.TextBox("螺纹" + inters, inte.lw.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("螺纹" + inters, inte.lw.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("螺纹" + inters, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("螺纹" + inters, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1948,11 +1987,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (inte.lj.ToString() != "0")
                                 {
-                                    @Html.TextBox("螺距" + inters, inte.lj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("螺距" + inters, inte.lj.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("螺距" + inters, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("螺距" + inters, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -1964,11 +2003,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (inte.cd.ToString() != "0")
                                 {
-                                    @Html.TextBox("接口信息长度" + inters, inte.cd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("接口信息长度" + inters, inte.cd.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("接口信息长度" + inters, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("接口信息长度" + inters, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2005,8 +2044,8 @@
                             @if (d.dzfwzsx.ToString() != "0")
                             {
                                 <div class="form-group col-lg-4">
-                                    <label for="电阻范围值上">电阻范围值上</label>
-                                    @Html.TextBox("电阻范围值上" + ds, d.dzfwzsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    <label for="电阻范围值上">电阻范围值上限</label>
+                                    @Html.TextBox("电阻范围值上" + ds, d.dzfwzsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2022,8 +2061,8 @@
                             else
                             {
                                 <div class="form-group col-lg-4">
-                                    <label for="电阻范围值上">电阻范围值上</label>
-                                    @Html.TextBox("电阻范围值上" + ds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    <label for="电阻范围值上">电阻范围值上限</label>
+                                    @Html.TextBox("电阻范围值上" + ds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2039,8 +2078,8 @@
                             @if (d.dzfwzxx.ToString() != "0")
                             {
                                 <div class="form-group col-lg-4">
-                                    <label for="电阻范围值下">电阻范围值下</label>
-                                    @Html.TextBox("电阻范围值下" + ds, d.dzfwzxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    <label for="电阻范围值下">电阻范围值下限</label>
+                                    @Html.TextBox("电阻范围值下" + ds, d.dzfwzxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2056,8 +2095,8 @@
                             else
                             {
                                 <div class="form-group col-lg-4">
-                                    <label for="电阻范围值下">电阻范围值下</label>
-                                    @Html.TextBox("电阻范围值下" + ds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    <label for="电阻范围值下">电阻范围值下限</label>
+                                    @Html.TextBox("电阻范围值下" + ds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2074,7 +2113,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="电阻小于值">电阻小于值</label>
-                                    @Html.TextBox("电阻小于值" + ds, d.dzxyz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("电阻小于值" + ds, d.dzxyz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2091,7 +2130,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="电阻小于值">电阻小于值</label>
-                                    @Html.TextBox("电阻小于值" + ds, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("电阻小于值" + ds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2141,11 +2180,11 @@
                                 <label for="danwei">(V)</label>
                                 @if (ign.fhdy.ToString() != "0")
                                 {
-                                    @Html.TextBox("发火电压" + igncs, ign.fhdy.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电压" + igncs, ign.fhdy.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("发火电压" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电压" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2153,11 +2192,11 @@
                                 <label for="danwei">(V)</label>
                                 @if (ign.fhdysx.ToString() != "0")
                                 {
-                                    @Html.TextBox("发火电压上限" + igncs, ign.fhdysx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电压上限" + igncs, ign.fhdysx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("发火电压上限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电压上限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2165,11 +2204,11 @@
                                 <label for="danwei">(V)</label>
                                 @if (ign.fhdyxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("发火电压下限" + igncs, ign.fhdyxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电压下限" + igncs, ign.fhdyxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("发火电压下限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电压下限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
 
@@ -2177,7 +2216,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电容">发火电容</label>
-                                    @Html.TextBox("发火电容" + igncs, ign.fhdr.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电容" + igncs, ign.fhdr.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2192,7 +2231,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电容">发火电容</label>
-                                    @Html.TextBox("发火电容" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电容" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2212,7 +2251,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流">发火电流</label>
-                                    @Html.TextBox("发火电流" + igncs, ign.fhdl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电流" + igncs, ign.fhdl.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2227,7 +2266,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流">发火电流</label>
-                                    @Html.TextBox("发火电流" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电流" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2244,7 +2283,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流上限">发火电流上限</label>
-                                    @Html.TextBox("发火电流上限" + igncs, ign.fhdlsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电流上限" + igncs, ign.fhdlsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2259,7 +2298,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流上限">发火电流上限</label>
-                                    @Html.TextBox("发火电流上限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电流上限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2277,7 +2316,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流下限">发火电流下限</label>
-                                    @Html.TextBox("发火电流下限" + igncs, ign.fhdlxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电流下限" + igncs, ign.fhdlxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2292,7 +2331,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流下限">发火电流下限</label>
-                                    @Html.TextBox("发火电流下限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电流下限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2310,7 +2349,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流时间">发火电流时间</label>
-                                    @Html.TextBox("发火电流时间" + igncs, ign.fhdlss.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电流时间" + igncs, ign.fhdlss.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2325,7 +2364,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="发火电流时间">发火电流时间</label>
-                                    @Html.TextBox("发火电流时间" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("发火电流时间" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2347,7 +2386,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="锤重">锤重</label>
-                                    @Html.TextBox("锤重" + igncs, ign.cz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("锤重" + igncs, ign.cz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2362,7 +2401,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="锤重">锤重</label>
-                                    @Html.TextBox("锤重" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("锤重" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2380,7 +2419,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="落高">落高</label>
-                                    @Html.TextBox("落高" + igncs, ign.lg.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("落高" + igncs, ign.lg.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2396,7 +2435,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="落高">落高</label>
-                                    @Html.TextBox("落高" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("落高" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2415,11 +2454,11 @@
                                 <label for="danwei">(g•cm)</label>
                                 @if (ign.jzcjl.ToString() != "0")
                                 {
-                                    @Html.TextBox("击针刺激量" + igncs, ign.jzcjl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("击针刺激量" + igncs, ign.jzcjl.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针刺激量" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("击针刺激量" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2427,12 +2466,12 @@
                                 <label for="danwei">(N)</label>
                                 @if (ign.jzlsx.ToString() != "0")
                                 {
-                                    @Html.TextBox("击针力上限" + igncs, ign.jzlsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("击针力上限" + igncs, ign.jzlsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
 
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针力上限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("击针力上限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
 
@@ -2445,7 +2484,7 @@
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针力下限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("击针力下限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2453,11 +2492,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (ign.jztclsx.ToString() != "0")
                                 {
-                                    @Html.TextBox("击针突出量上限" + igncs, ign.jztclsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("击针突出量上限" + igncs, ign.jztclsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针突出量上限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("击针突出量上限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2465,11 +2504,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (ign.jztclxx.ToString() != "0")
                                 {
-                                    @Html.TextBox("击针突出量下限" + igncs, ign.jztclxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("击针突出量下限" + igncs, ign.jztclxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针突出量下限" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("击针突出量下限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2477,11 +2516,11 @@
                                 <label for="danwei">(mm)</label>
                                 @if (ign.thgd.ToString() != "0")
                                 {
-                                    @Html.TextBox("弹簧高度" + igncs, ign.thgd.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("弹簧高度" + igncs, ign.thgd.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("弹簧高度" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("弹簧高度" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2489,11 +2528,11 @@
                                 <label for="danwei">(N)</label>
                                 @if (ign.kl.ToString() != "0")
                                 {
-                                    @Html.TextBox("抗力" + igncs, ign.kl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("抗力" + igncs, ign.kl.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("抗力" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("抗力" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2505,7 +2544,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="能量">能量</label>
-                                    @Html.TextBox("能量" + igncs, ign.nl.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("能量" + igncs, ign.nl.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2520,7 +2559,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="能量">能量</label>
-                                    @Html.TextBox("能量" + igncs, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("能量" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2552,12 +2591,12 @@
                                 <label for="danwei">(摄氏度) </label>
                                 @if (de.wdtj.ToString() != "0")
                                 {
-                                    @Html.TextBox("温度条件" + des, de.wdtj.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("温度条件" + des, de.wdtj.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
 
                                 }
                                 else
                                 {
-                                    @Html.TextBox("温度条件" + des, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("温度条件" + des, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
 
@@ -2565,7 +2604,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间上限">延期时间上限</label>
-                                    @Html.TextBox("延期时间上限" + des, de.yqsjsx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("延期时间上限" + des, de.yqsjsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2580,7 +2619,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间上限">延期时间上限</label>
-                                    @Html.TextBox("延期时间上限" + des, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("延期时间上限" + des, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2595,7 +2634,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间下限">延期时间下限</label>
-                                    @Html.TextBox("延期时间下限" + des, de.yqsjxx.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("延期时间下限" + des, de.yqsjxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2610,7 +2649,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间下限">延期时间下限</label>
-                                    @Html.TextBox("延期时间下限" + des, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("延期时间下限" + des, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2625,7 +2664,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间值">延期时间值</label>
-                                    @Html.TextBox("延期时间值" + des, de.yqsjz.ToString(), new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("延期时间值" + des, de.yqsjz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2640,7 +2679,7 @@
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间值">延期时间值</label>
-                                    @Html.TextBox("延期时间值" + des, "", new { @class = "form-control validate", onkeyup = "value=value.replace(/[^\\d\\.]/g,'')" })
+                                    @Html.TextBox("延期时间值" + des, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2845,9 +2884,7 @@
             </div>
         </div>
         <div class="col-md-7 container" style="margin-right:8%;margin-top:1%">
-            <button type="submit" class="btn btn-primary btn-block text-uppercase" onclick="FormSubmission()">
-                修改
-            </button>
+            <input type="button" class="btn btn-primary btn-block text-uppercase" onclick="FormSubmission()" id="btn1" value="修改">
         </div>
     </div>
 </body>
