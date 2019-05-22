@@ -20,6 +20,7 @@ namespace ProductQuery.Controllers.Filters
 
         public override bool IsPass(object obj)
         {
+            if (GetPropertyValue(obj, fieldName) == null) return false;
             DateTime value = (DateTime)GetPropertyValue(obj, fieldName);
             return value.CompareTo(rangeMin) >= 0 && value.CompareTo(rangeMax) <= 0;
         }

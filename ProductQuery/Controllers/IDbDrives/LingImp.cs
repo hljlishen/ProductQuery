@@ -15,6 +15,11 @@ namespace ProductQuery.Controllers.IDbDrives
 
         public override bool Delete(Ignition ignition)
         {
+            Ignition modle = db.Ignition.FirstOrDefault(m => m.IgnitionId == ignition.IgnitionId);
+            if (modle == null)
+            {
+                return false;
+            }
             try
             {
                 db.Ignition.Attach(ignition);
@@ -30,10 +35,15 @@ namespace ProductQuery.Controllers.IDbDrives
 
         public override bool Delete(User user)
         {
+            User modle = db.User.FirstOrDefault(m => m.id == user.id);
+            if (modle == null)
+            {
+                return false;
+            }
             try
             {
-                db.User.Attach(user);
-                db.User.Remove(user);
+                //db.User.Attach(user);
+                db.User.Remove(modle);
                 db.SaveChanges();
             }
             catch (Exception)
