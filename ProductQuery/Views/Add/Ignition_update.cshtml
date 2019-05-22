@@ -326,6 +326,34 @@
                 '</select>' +
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
+                '<label for="电阻值">电阻值 </label>' +
+                '<input name="电阻值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '</div>' +
+                '<div class="form-group col-lg-2">' +
+                '<label for="danwei">单位</label>' +
+                '<select class="custom-select" name="电阻值单位 ' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="mΩ">mΩ</option>' +
+                '<option value="Ω">Ω</option>' +
+                '<option value="kΩ">kΩ</option>' +
+                '<option value="MΩ">MΩ</option>' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group col-lg-4">' +
+                '<label for="电阻公差值">电阻公差值 </label>' +
+                '<input name="电阻公差值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '</div>' +
+                '<div class="form-group col-lg-2">' +
+                '<label for="danwei">单位</label>' +
+                '<select class="custom-select" name="电阻公差值单位 ' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="mΩ">mΩ</option>' +
+                '<option value="Ω">Ω</option>' +
+                '<option value="kΩ">kΩ</option>' +
+                '<option value="MΩ">MΩ</option>' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group col-lg-4">' +
                 '<label for="电阻小于值">电阻小于值 </label>' +
                 '<input name="电阻小于值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
                 '</div>' +
@@ -611,10 +639,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -631,10 +664,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -651,10 +689,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -671,10 +714,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -691,10 +739,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -711,10 +764,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -731,10 +789,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -751,10 +814,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -771,10 +839,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -791,10 +864,15 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -812,16 +890,252 @@
                 var file = this.files[0];
                 if (file != null) {
                     if (!/image\/\w+/.test(file.type)) {
-                        alert('上传的不是图片');
+                        alert('您选择的不是图片，请上传一个图片');
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         $('#img-1').attr('src', e.target.result);
                         $('#fn-1').text(file.name);
                         $('#cp-1').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file-2").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('您选择的不是图片，请上传一个图片');
+                        return false;
+                    }
+                }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-2').attr('src', e.target.result);
+                        $('#fn-2').text(file.name);
+                        $('#cp-2').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file-3").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('您选择的不是图片，请上传一个图片');
+                        return false;
+                    }
+                }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-3').attr('src', e.target.result);
+                        $('#fn-3').text(file.name);
+                        $('#cp-3').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file-4").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('您选择的不是图片，请上传一个图片');
+                        return false;
+                    }
+                }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-4').attr('src', e.target.result);
+                        $('#fn-4').text(file.name);
+                        $('#cp-4').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file-5").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('您选择的不是图片，请上传一个图片');
+                        return false;
+                    }
+                }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-5').attr('src', e.target.result);
+                        $('#fn-5').text(file.name);
+                        $('#cp-5').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file-6").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('您选择的不是图片，请上传一个图片');
+                        return false;
+                    }
+                }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-6').attr('src', e.target.result);
+                        $('#fn-6').text(file.name);
+                        $('#cp-6').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        $(function () {
+            $("#file-7").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('您选择的不是图片，请上传一个图片');
+                        return false;
+                    }
+                }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-7').attr('src', e.target.result);
+                        $('#fn-7').text(file.name);
+                        $('#cp-7').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+        $(function () {
+            $("#file-8").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('您选择的不是图片，请上传一个图片');
+                        return false;
+                    }
+                }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-8').attr('src', e.target.result);
+                        $('#fn-8').text(file.name);
+                        $('#cp-8').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+        $(function () {
+            $("#file-9").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('您选择的不是图片，请上传一个图片');
+                        return false;
+                    }
+                }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-9').attr('src', e.target.result);
+                        $('#fn-9').text(file.name);
+                        $('#cp-9').attr('value', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+        $(function () {
+            $("#file-10").on("change", function () {
+                var file = this.files[0];
+                if (file != null) {
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert('您选择的不是图片，请上传一个图片');
+                        return false;
+                    }
+                }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }
+                if (this.files && file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#img-10').attr('src', e.target.result);
+                        $('#fn-10').text(file.name);
+                        $('#cp-10').attr('value', e.target.result);
                     }
                     reader.readAsDataURL(file);
                 }
@@ -929,12 +1243,22 @@
                 data: $("form").serialize(),
                 dataType: "json",
                 success: function (data) {
-                    data = eval("(" + data + ")");
-                    if (data) {
-                        alert("修改成功");
-                    } else {
-                        alert("存在上限值小于下限值，请重新输入");
-                        return;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[0]) {
+                            alert("修改成功");
+                        }
+                        else {
+                            if (data[1]) {
+                                alert("存在上限值小于下限值，请重新输入");
+                                return;
+                            }
+                            else {
+                                alert("未选择单位或者选择单位的值为空");
+                                return;
+                            }
+                            alert("修改失败");
+                            return;
+                        }
                     }
                     parent.openFrame("Information");
                 }
@@ -946,7 +1270,7 @@
    
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:10%;height:10%">
+            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:13%;height:10%">
                 <div>
                     <h2 class="tm-block-title">信息模块</h2>
                     <div class="tm-product-table-container">
@@ -1132,7 +1456,7 @@
                     </button>
                 </div>
             </div>
-            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:10%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
+            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:13%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
                 <form action="/Add/AddInformation" method="post" class="tm-signup-form" id="form" name="基本信息">
                     <div class="row" id="主页信息">
                         <div class="form-group col-lg-12">
@@ -2109,6 +2433,74 @@
                                     </select>
                                 </div>
                             }
+                            @if (d.dzz.ToString() != "0")
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="电阻小于值">电阻值</label>
+                                    @Html.TextBox("电阻值" + ds, d.dzz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <select class="custom-select" name="电阻值单位 @ds">
+                                        <option value="Ω">Ω</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="mΩ">mΩ</option>
+                                        <option value="kΩ">kΩ</option>
+                                        <option value="MΩ">MΩ</option>
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="电阻值">电阻值</label>
+                                    @Html.TextBox("电阻值" + ds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <select class="custom-select" name="电阻值单位 @ds">
+                                        <option value="请选择">请选择</option>
+                                        <option value="mΩ">mΩ</option>
+                                        <option value="Ω">Ω</option>
+                                        <option value="kΩ">kΩ</option>
+                                        <option value="MΩ">MΩ</option>
+                                    </select>
+                                </div>
+                            }
+                            @if (d.dzgcz.ToString() != "0")
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="电阻公差值">电阻公差值</label>
+                                    @Html.TextBox("电阻公差值" + ds, d.dzgcz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <select class="custom-select" name="电阻公差值单位 @ds">
+                                        <option value="Ω">Ω</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="mΩ">mΩ</option>
+                                        <option value="kΩ">kΩ</option>
+                                        <option value="MΩ">MΩ</option>
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="电阻公差值">电阻公差值</label>
+                                    @Html.TextBox("电阻公差值" + ds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <select class="custom-select" name="电阻公差值单位 @ds">
+                                        <option value="请选择">请选择</option>
+                                        <option value="mΩ">mΩ</option>
+                                        <option value="Ω">Ω</option>
+                                        <option value="kΩ">kΩ</option>
+                                        <option value="MΩ">MΩ</option>
+                                    </select>
+                                </div>
+                            }
                             @if (d.dzxyz.ToString() != "0")
                             {
                                 <div class="form-group col-lg-4">
@@ -2883,7 +3275,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-7 container" style="margin-right:8%;margin-top:1%">
+        <div class="col-md-7 container" style="margin-right:11%;margin-top:1%">
             <input type="button" class="btn btn-primary btn-block text-uppercase" onclick="FormSubmission()" id="btn1" value="修改">
         </div>
     </div>

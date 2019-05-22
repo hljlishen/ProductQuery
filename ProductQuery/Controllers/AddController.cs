@@ -108,9 +108,22 @@ namespace ProductQuery.Controllers
             ignition.IgnitionId = int.Parse(collection["ingid"]);
             Information(collection, ignition, ignition.IgnitionId);
             AddImages(collection, ignition, ignition.IgnitionId);
+            List<bool> c = new List<bool>();
             if (Isscope)
-                return Json(false);
-            return Json(dbDrive.Udpdate(ignition));
+            {
+                c.Add(false);
+                c.Add(true);
+                return Json(c);
+            }
+            if (IsUnitvalue)
+            {
+                c.Add(false);
+                c.Add(false);
+                return Json(c);
+            }
+            if (dbDrive.Udpdate(ignition))
+                c.Add(true);
+            return Json(c);
         }
 
         private void Information(FormCollection collection, Ignition ignition,int id)
@@ -173,7 +186,12 @@ namespace ProductQuery.Controllers
             if (collection["检测电流"] != "")
                 ignition.jcdl = double.Parse(collection["检测电流"]);
             if (collection["静电电容"] != "")
-                ignition.jddr = double.Parse(collection["静电电容"]);
+            {
+                string unit = "pf";
+                double value = double.Parse(collection["静电电容"]);
+                ignition.jddr = CapacitanceUnitConversion(unit, value);
+            }
+
             if (collection["静电电压"] != "")
                 ignition.jddy = double.Parse(collection["静电电压"]);
             if (collection["串联电阻"] != "")
@@ -626,6 +644,26 @@ namespace ProductQuery.Controllers
                     { }
                     else
                         IsUnitvalue = true;
+                    if (collection["电阻值单位" + " " + i] != "请选择" && collection["电阻值" + i] != "")
+                    {
+                        string unit = collection["电阻值单位" + " " + i];
+                        double value = double.Parse(collection["电阻值" + i]);
+                        dcResistance.dzz = ResistanceUnitConversion(unit, value);
+                    }
+                    else if (collection["电阻值" + i] == "" && collection["电阻值单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["电阻值" + i] != "" && collection["电阻值单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
+                    if (collection["电阻公差值单位" + " " + i] != "请选择" && collection["电阻公差值" + i] != "")
+                    {
+                        string unit = collection["电阻公差值单位" + " " + i];
+                        double value = double.Parse(collection["电阻公差值" + i]);
+                        dcResistance.dzgcz = ResistanceUnitConversion(unit, value);
+                    }
+                    else if (collection["电阻公差值" + i] == "" && collection["电阻公差值单位" + " " + i] != "请选择")
+                        IsUnitvalue = true;
+                    else if (collection["电阻公差值" + i] != "" && collection["电阻公差值单位" + " " + i] == "请选择")
+                        IsUnitvalue = true;
                     if (collection["电阻小于值单位" + " " + i] != "请选择" && collection["电阻小于值" + i]!="")
                     {
                         string unit = collection["电阻小于值单位" + " " + i];
@@ -967,12 +1005,12 @@ namespace ProductQuery.Controllers
         }
 
         //删除火工品
-        public ActionResult DeleteInformation(int IgnitionId)
+        [HttpPost]
+        public JsonResult DeleteInformation(int IgnitionId)
         {
             Ignition ignition = new Ignition();
             ignition.IgnitionId = IgnitionId;
-            dbDrive.Delete(ignition);
-            return RedirectToAction("Information", "Add");
+            return Json(dbDrive.Delete(ignition));
         }
 
         public ActionResult QueryInformation(string jsonstr)

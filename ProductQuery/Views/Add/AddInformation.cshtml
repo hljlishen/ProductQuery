@@ -149,6 +149,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -170,6 +175,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -191,6 +201,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -212,6 +227,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -233,6 +253,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -254,6 +279,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -275,6 +305,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -296,6 +331,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -317,6 +357,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -338,6 +383,11 @@
                         return false;
                     }
                 }
+                var fileSize = file.size / 1024;
+                if (fileSize > 5000) {
+                    alert("您选择的图片太大，请选择小于5M的图片");
+                    return;
+                }  
                 if (this.files && file) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
@@ -491,6 +541,34 @@
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
                 '<select class="custom-select" name="电阻范围值下单位 ' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="mΩ">mΩ</option>' +
+                '<option value="Ω">Ω</option>' +
+                '<option value="kΩ">kΩ</option>' +
+                '<option value="MΩ">MΩ</option>' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group col-lg-4">' +
+                '<label for="电阻值">电阻值 </label>' +
+                '<input name="电阻值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '</div>' +
+                '<div class="form-group col-lg-2">' +
+                '<label for="danwei">单位</label>' +
+                '<select class="custom-select" name="电阻值单位 ' + ModuleNumber(obj) + '">' +
+                '<option value="请选择">请选择</option>' +
+                '<option value="mΩ">mΩ</option>' +
+                '<option value="Ω">Ω</option>' +
+                '<option value="kΩ">kΩ</option>' +
+                '<option value="MΩ">MΩ</option>' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group col-lg-4">' +
+                '<label for="电阻公差值">电阻公差值 </label>' +
+                '<input name="电阻公差值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '</div>' +
+                '<div class="form-group col-lg-2">' +
+                '<label for="danwei">单位</label>' +
+                '<select class="custom-select" name="电阻公差值单位 ' + ModuleNumber(obj) + '">' +
                 '<option value="请选择">请选择</option>' +
                 '<option value="mΩ">mΩ</option>' +
                 '<option value="Ω">Ω</option>' +
@@ -882,7 +960,7 @@
 <body>
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:10%;height:10%">
+            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:13%;height:10%">
                 <div>
                     <h2 class="tm-block-title">信息模块</h2>
                     <div class="tm-product-table-container">
@@ -908,7 +986,7 @@
                     </button>
                 </div>
             </div>
-            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:10%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
+            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:13%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
                 <form action="/Add/AddInformation" method="post" class="tm-signup-form" id="form" name="基本信息">
                     <div class="row" id="主页信息">
                         <div class="form-group col-lg-12">
@@ -1442,7 +1520,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-7 container" style="margin-right:8%;margin-top:1%">
+        <div class="col-md-7 container" style="margin-right:11%;margin-top:1%">
             <input type="button" class="btn btn-primary btn-block text-uppercase" onclick="FormSubmission()" id="btn1" value="提交">
         </div>
     </div>
