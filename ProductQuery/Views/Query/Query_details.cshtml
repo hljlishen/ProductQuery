@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
 
@@ -16,8 +17,10 @@
     <script src="~/Content/js/jquery-3.3.1.min.js"></script>
     <script src="~/Content/jquery-ui-datepicker/jquery-ui.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
-    <script></script>
+    <script>
+    </script>
     <script type="text/javascript">
+
     </script>
 </head>
 <body>
@@ -33,7 +36,7 @@
     }
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:10%;height:10%">
+            <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:13%;height:10%">
                 <div>
                     <h2 class="tm-block-title">信息模块</h2>
                     <div class="tm-product-table-container">
@@ -167,7 +170,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:10%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
+            <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:13%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
                 <form action="/Add/AddInformation" method="get" class="tm-signup-form row" id="form" name="基本信息">
                     <div class="form-group col-lg-12" id="主页信息">
                         <h1 class="tm-site-title mb-0">基本信息</h1>
@@ -238,7 +241,7 @@
                         {
                             DateTime now = DateTime.Parse(ig.gydx.ToString());
                             <div class="form-group col-lg-6">
-                                <label for="生产定型日期">工艺定性</label>
+                                <label for="生产定型日期">工艺定型</label>
                                 @Html.TextBox("生产定型日期", now.ToShortDateString(), new { @class = "form-control validate" })
                             </div>
                         } }
