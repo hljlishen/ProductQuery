@@ -33,6 +33,7 @@
     }
         
         var image = 1;
+        var id = 0;
         if (@img.Count != 0) {
             image = @img.Count;
             image++;
@@ -72,8 +73,8 @@
             yanqishijian = @delay.Count;
             yanqishijian++;
         }
-        var id = @count;
-        
+        id = image + changgui + suo + baosu + jiekoxinxi + zhiliudianzu + fahuotiaojian + yanqishijian + 1;
+
         $(function () {
             $("#expire_date").datepicker({
                 defaultDate: Date.now()
