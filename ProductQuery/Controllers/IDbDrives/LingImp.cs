@@ -22,8 +22,8 @@ namespace ProductQuery.Controllers.IDbDrives
             }
             try
             {
-                db.Ignition.Attach(ignition);
-                db.Ignition.Remove(ignition);
+                //db.Ignition.Attach(ignition);
+                db.Ignition.Remove(modle);
                 db.SaveChanges();
             }
             catch (Exception)
