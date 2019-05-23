@@ -25,6 +25,7 @@ namespace ProductQuery.Controllers.Filters
 
             double max = MeasurementConverter == null ? rangeMax : MeasurementConverter.ToStandardValue(rangeMax);
             double min = MeasurementConverter == null ? rangeMin : MeasurementConverter.ToStandardValue(rangeMin);
+            if (valuemax == max || valuemin == min) return true;
             return !(valuemin >= max || valuemax <= min);
         }
     }
