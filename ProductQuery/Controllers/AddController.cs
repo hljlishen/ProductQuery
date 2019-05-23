@@ -269,7 +269,12 @@ namespace ProductQuery.Controllers
             if (collection["安全电压电压"] != "")
                 ignition.aqdydy = double.Parse(collection["安全电压电压"]);
             if (collection["安全电压电容"] != "")
-                ignition.aqdydr = double.Parse(collection["安全电压电容"]);
+            {
+                string unit = "pf";
+                double value = double.Parse(collection["安全电压电容"]);
+                ignition.aqdydr = CapacitanceUnitConversion(unit, value);
+            }
+
             if (collection["燃烧压力上限"] != "" && collection["燃烧压力下限"] != "")
             {
                 ignition.rsylsx = double.Parse(collection["燃烧压力上限"]);

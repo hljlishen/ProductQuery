@@ -938,6 +938,7 @@
                     for (var i = 0; i < data.length; i++) {
                         if (data[0]) {
                             alert("添加成功");
+                            parent.openFrame("Information");
                         }
                         else {
                             if (data[1]) {
@@ -952,7 +953,6 @@
                             return;
                         }
                     }
-                    parent.openFrame("Information");
                 }
             });
         }
