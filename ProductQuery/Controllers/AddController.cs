@@ -25,6 +25,9 @@ namespace ProductQuery.Controllers
         bool IsList = false;
         bool Isscope = false;
         bool IsUnitvalue = false;
+        bool IsInt = false;
+        Ignition updateIgnition = new Ignition();
+        Ignition delect = new Ignition();
         public ActionResult AddInformation()
         {
             return View();
@@ -122,8 +125,30 @@ namespace ProductQuery.Controllers
                 c.Add(false);
                 return Json(c);
             }
+            if (IsInt)
+            {
+                c.Add(false);
+                c.Add(false);
+                c.Add(true);
+            }
             if (dbDrive.Udpdate(ignition))
                 c.Add(true);
+            AddImage();
+            DelectImage();
+            AddConventional();
+            DelectConventional();
+            AddCableDiameter();
+            DelectCableDiameter();
+            AddSpeedDetonation();
+            DelectSpeedDetonation();
+            AddInterfaceInformation();
+            DelectInterfaceInformation();
+            AddDcResistance();
+            DelectDcResistance();
+            AddIgnitionCondition();
+            DelectIgnitionCondition();
+            AddDelay();
+            DelectDelay();
             return Json(c);
         }
 
@@ -153,9 +178,29 @@ namespace ProductQuery.Controllers
             ignition.gn = collection["功能"];
             ignition.hjcs = collection["环境试验"];
             if (collection["桥丝数目"] != "")
-                ignition.jssm = int.Parse(collection["桥丝数目"]);
+            {
+                try {
+                    ignition.jssm = int.Parse(collection["桥丝数目"]);
+                }
+                catch (Exception)
+                {
+                    IsInt = true;
+                    return;
+                }
+            }
+
             if (collection["贮存寿命"] != "")
-                ignition.zcsm = int.Parse(collection["贮存寿命"]);
+            {
+                try
+                {
+                    ignition.zcsm = int.Parse(collection["贮存寿命"]);
+                }
+                catch (Exception)
+                {
+                    IsInt = true;
+                    return;
+                }
+            }
             ignition.ccsmbz = collection["贮存寿命备注"];
             ignition.kkd = collection["可靠度"];
             ignition.zyxnzb = collection["主要性能指标"];
@@ -227,7 +272,17 @@ namespace ProductQuery.Controllers
                 IsUnitvalue = true;
             ignition.zysjbz = collection["作用时间备注"];
             if (collection["安全电流桥个数"] != "")
-                ignition.jgs = int.Parse(collection["安全电流桥个数"]);
+            {
+                try
+                {
+                    ignition.jgs = int.Parse(collection["安全电流桥个数"]);
+                }
+                catch (Exception)
+                {
+                    IsInt = true;
+                    return;
+                }
+            }
             if (collection["安全电流值单位"] != "请选择" && collection["安全电流值"]!="")
             {
                 string unit = collection["安全电流值单位"];
@@ -283,20 +338,13 @@ namespace ProductQuery.Controllers
                     Isscope = true;
             }
             ignition.rsylbz = collection["燃烧压力备注"];
-            if (!Isscope && !IsUnitvalue)
-                AddConventionals(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddCableDiameters(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddSpeedDetonations(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddInterfaceInformations(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddDcResistances(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddIgnitionConditions(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddDelayTimes(collection, ignition, id);
+            AddConventionals(collection, ignition, id);
+            AddCableDiameters(collection, ignition, id);
+            AddSpeedDetonations(collection, ignition, id);
+            AddInterfaceInformations(collection, ignition, id);
+            AddDcResistances(collection, ignition, id);
+            AddIgnitionConditions(collection, ignition, id);
+            AddDelayTimes(collection, ignition, id);
         }
 
         //添加点火装置
@@ -305,10 +353,7 @@ namespace ProductQuery.Controllers
         {
             int id = -1;
             Information(collection, ignition,id);
-            if (!Isscope && !IsUnitvalue) {
-                AddImage(collection, ignition);
-            }
-
+            AddImage(collection, ignition);
             List<bool> c = new List<bool>();
             if (Isscope)
             {
@@ -321,6 +366,12 @@ namespace ProductQuery.Controllers
                 c.Add(false);
                 c.Add(false);
                 return Json(c);
+            }
+            if (IsInt)
+            {
+                c.Add(false);
+                c.Add(false);
+                c.Add(true);
             }
             if (dbDrive.Insert(ignition))
                 c.Add(true);
@@ -371,7 +422,6 @@ namespace ProductQuery.Controllers
                     }
                 }
             }
-            DelectImage(list1, list2);
             for (int i = 1; i <= 10; i++)
             {
                 if (collection["cp" + "_" + i] != null)
@@ -383,31 +433,33 @@ namespace ProductQuery.Controllers
                         string[] array = cpy.Split(',');
                         byte[] imageBytes = Convert.FromBase64String(array[1]);
                         picture.cpy = imageBytes;
-                        ignition.Pictures.Add(picture);
                         picture.IgnitionID = id;
-                        AddImage(picture);
+                        updateIgnition.Pictures.Add(picture);
                     }
                 }
             }
-        }
-
-        //添加图片
-        private void AddImage(Picture picture)
-        {
-            dbDrive.Insert(picture);
-        }
-
-        //删除图片
-        private void DelectImage(List<int> list1,List<int> list2)
-        {
-            Picture model = new Picture();
             foreach (var dr in pic)
                 list2.Add(dr.Id);
             foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
             {
+                Picture model = new Picture();
                 model.Id = dr;
-                dbDrive.Delete(model);
+                delect.Pictures.Add(model);
             }
+        }
+
+        //添加图片
+        private void AddImage()
+        {
+            foreach (var dr in updateIgnition.Pictures)
+                dbDrive.Insert(dr);
+        }
+
+        //删除图片
+        private void DelectImage()
+        {
+            foreach (var dr in delect.Pictures)
+                dbDrive.Delete(dr);
         }
 
         //常规
@@ -433,37 +485,40 @@ namespace ProductQuery.Controllers
                         conventional.Id = int.Parse(collection["常规id" + i]);
                         conventional.IgnitionID = id;
                         list1.Add(conventional.Id);
+                        ignition.Conventionals.Add(conventional);
                     }
                     else {
                         conventional.IgnitionID = id;
-                        AddConventional(conventional);
+                        updateIgnition.Conventionals.Add(conventional);
                     }
-                    ignition.Conventionals.Add(conventional);
+                    if (id == -1)
+                        ignition.Conventionals.Add(conventional);
                 }
             }
             if (id != -1) {
-                DelectConventional(list1,list2);
+                foreach (var dr in conv)
+                    list2.Add(dr.Id);
+                foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
+                {
+                    Conventional conventional = new Conventional();
+                    conventional.Id = dr;
+                    delect.Conventionals.Add(conventional);
+                }
             }
-            
         }
 
         //添加常规
-        private void AddConventional(Conventional conventional)
+        private void AddConventional()
         {
-            dbDrive.Insert(conventional);
+            foreach (var dr in updateIgnition.Conventionals)
+                dbDrive.Insert(dr);
         }
 
         //删除常规
-        private void DelectConventional(List<int> list1, List<int> list2)
+        private void DelectConventional()
         {
-            Conventional model = new Conventional();
-            foreach (var dr in conv)
-                list2.Add(dr.Id);
-            foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
-            {
-                model.Id =dr;
-                dbDrive.Delete(model);
-            }
+            foreach (var dr in delect.Conventionals)
+                dbDrive.Delete(dr);
         }
 
         //索普通直径
@@ -484,37 +539,42 @@ namespace ProductQuery.Controllers
                         cableDiameter.Id = int.Parse(collection["索普通直径id" + i]);
                         cableDiameter.IgnitionID = id;
                         list1.Add(cableDiameter.Id);
+                        ignition.CableDiameters.Add(cableDiameter);
                     }
                     else
                     {
                         cableDiameter.IgnitionID = id;
-                        AddCableDiameter(cableDiameter);
+                        updateIgnition.CableDiameters.Add(cableDiameter);
                     }
-                    ignition.CableDiameters.Add(cableDiameter);
+                    if (id == -1)
+                        ignition.CableDiameters.Add(cableDiameter);
                 }
             }
-            if (id != -1) {
-                DelectCableDiameter(list1,list2);
+            if (id != -1)
+            {
+                foreach (var dr in cab)
+                    list2.Add(dr.Id);
+                foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
+                {
+                    CableDiameter model = new CableDiameter();
+                    model.Id = dr;
+                    delect.CableDiameters.Add(model);
+                }
             }
         }
 
         //添加索普通直径
-        private void AddCableDiameter(CableDiameter cableDiameter)
+        private void AddCableDiameter()
         {
-            dbDrive.Insert(cableDiameter);
+            foreach (var dr in updateIgnition.CableDiameters)
+                dbDrive.Insert(dr);
         }
 
         //删除索普通直径
-        private void DelectCableDiameter(List<int> list1, List<int> list2)
+        private void DelectCableDiameter()
         {
-            CableDiameter model = new CableDiameter();
-            foreach (var dr in cab)
-                list2.Add(dr.Id);
-            foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
-            {
-                model.Id = dr;
-                dbDrive.Delete(model);
-            }
+            foreach (var dr in delect.CableDiameters)
+                dbDrive.Delete(dr);
         }
 
         //爆速
@@ -544,38 +604,43 @@ namespace ProductQuery.Controllers
                         speedDetonation.Id = int.Parse(collection["爆速id" + i]);
                         speedDetonation.IgnitionID = id;
                         list1.Add(speedDetonation.Id);
+                        ignition.SpeedDetonations.Add(speedDetonation);
                     }
                     else
                     {
                         speedDetonation.IgnitionID = id;
-                        AddSpeedDetonation(speedDetonation);
+                        updateIgnition.SpeedDetonations.Add(speedDetonation);
                     }
-                    ignition.SpeedDetonations.Add(speedDetonation);
+                    if (id == -1)
+                        ignition.SpeedDetonations.Add(speedDetonation);
                 }
             }
-            if (id != -1) {
-                DelectSpeedDetonation(list1,list2);
+            if (id != -1)
+            {
+                foreach (var dr in speed)
+                    list2.Add(dr.Id);
+                foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
+                {
+                    SpeedDetonation speedDetonation = new SpeedDetonation();
+                    speedDetonation.Id = dr;
+                    delect.SpeedDetonations.Add(speedDetonation);
+                }
             }
-            
+
         }
 
         //添加爆速
-        private void AddSpeedDetonation(SpeedDetonation speedDetonation)
+        private void AddSpeedDetonation()
         {
-            dbDrive.Insert(speedDetonation);
+            foreach (var dr in updateIgnition.SpeedDetonations)
+                dbDrive.Insert(dr);
         }
 
         //删除爆速
-        private void DelectSpeedDetonation(List<int> list1, List<int> list2)
+        private void DelectSpeedDetonation()
         {
-            SpeedDetonation model = new SpeedDetonation();
-            foreach (var dr in speed)
-                list2.Add(dr.Id);
-            foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
-            {
-                model.Id = dr;
-                dbDrive.Delete(model);
-            }
+            foreach (var dr in delect.SpeedDetonations)
+                dbDrive.Delete(dr);
         }
 
         //接口信息
@@ -602,37 +667,42 @@ namespace ProductQuery.Controllers
                         interfaceInformation.Id = int.Parse(collection["接口信息id" + i]);
                         interfaceInformation.IgnitionID = id;
                         list1.Add(interfaceInformation.Id);
+                        ignition.InterfaceInformations.Add(interfaceInformation);
                     }
                     else
                     {
                         interfaceInformation.IgnitionID = id;
-                        AddInterfaceInformation(interfaceInformation);
+                        updateIgnition.InterfaceInformations.Add(interfaceInformation);
                     }
-                    ignition.InterfaceInformations.Add(interfaceInformation);
+                    if(id == -1)
+                        ignition.InterfaceInformations.Add(interfaceInformation);
                 }
             }
-            if (id != -1) {
-                DelectInterfaceInformation(list1,list2);
+            if (id != -1)
+            {
+                foreach (var dr in inter)
+                    list2.Add(dr.Id);
+                foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
+                {
+                    InterfaceInformation model = new InterfaceInformation();
+                    model.Id = dr;
+                    delect.InterfaceInformations.Add(model);
+                }
             }
         }
 
         //添加接口信息
-        private void AddInterfaceInformation(InterfaceInformation interfaceInformation)
+        private void AddInterfaceInformation()
         {
-            dbDrive.Insert(interfaceInformation);
+            foreach (var dr in updateIgnition.InterfaceInformations)
+                dbDrive.Insert(dr);
         }
 
         //删除接口信息
-        private void DelectInterfaceInformation(List<int> list1, List<int> list2)
+        private void DelectInterfaceInformation()
         {
-            InterfaceInformation model = new InterfaceInformation();
-            foreach (var dr in inter)
-                list2.Add(dr.Id);
-            foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
-            {
-                model.Id = dr;
-                dbDrive.Delete(model);
-            }
+            foreach (var dr in delect.InterfaceInformations)
+                dbDrive.Delete(dr);
         }
 
         //直流电阻
@@ -647,7 +717,17 @@ namespace ProductQuery.Controllers
                 {
                     DcResistance dcResistance = new DcResistance();
                     if (collection["直流电阻桥个数" + i] != "")
-                        dcResistance.dzqgs = int.Parse(collection["直流电阻桥个数" + i]);
+                    {
+                        try
+                        {
+                            dcResistance.dzqgs = int.Parse(collection["直流电阻桥个数" + i]);
+                        }
+                        catch (Exception)
+                        {
+                            IsInt = true;
+                            return;
+                        }
+                    }
                     if (collection["电阻范围值上单位" + " " + i] != "请选择" && collection["电阻范围值下单位" + " " + i] != "请选择" && collection["电阻范围值上" + i] != "" && collection["电阻范围值下" + i] != "")
                     {
                         string unit = collection["电阻范围值上单位" + " " + i];
@@ -723,37 +803,42 @@ namespace ProductQuery.Controllers
                         dcResistance.Id = int.Parse(collection["直流电阻id" + i]);
                         dcResistance.IgnitionID = id;
                         list1.Add(dcResistance.Id);
+                        ignition.DcResistances.Add(dcResistance);
                     }
                     else
                     {
                         dcResistance.IgnitionID = id;
-                        AddDcResistance(dcResistance);
+                        updateIgnition.DcResistances.Add(dcResistance);
                     }
-                    ignition.DcResistances.Add(dcResistance);
+                    if (id == -1)
+                        ignition.DcResistances.Add(dcResistance);
                 }
             }
-            if (id != -1) {
-                DelectDcResistance(list1,list2);
+            if (id != -1)
+            {
+                foreach (var dr in dc)
+                    list2.Add(dr.Id);
+                foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
+                {
+                    DcResistance model = new DcResistance();
+                    model.Id = dr;
+                    delect.DcResistances.Add(model);
+                }
             }
         }
 
         //添加直流电阻
-        private void AddDcResistance(DcResistance dcResistance)
+        private void AddDcResistance()
         {
-            dbDrive.Insert(dcResistance);
+            foreach (var dr in updateIgnition.DcResistances)
+                dbDrive.Insert(dr);
         }
 
         //删除直流电阻
-        private void DelectDcResistance(List<int> list1, List<int> list2)
+        private void DelectDcResistance()
         {
-            DcResistance model = new DcResistance();
-            foreach (var dr in dc)
-                list2.Add(dr.Id);
-            foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
-            {
-                model.Id = dr;
-                dbDrive.Delete(model);
-            }
+            foreach (var dr in delect.DcResistances)
+                dbDrive.Delete(dr);
         }
 
         //发火条件
@@ -768,7 +853,17 @@ namespace ProductQuery.Controllers
                 {
                     IgnitionCondition ignitionCondition = new IgnitionCondition();
                     if (collection["桥个数" + i] != "")
-                        ignitionCondition.qgs = int.Parse(collection["桥个数" + i]);
+                    {
+                        try
+                        {
+                            ignitionCondition.qgs = int.Parse(collection["桥个数" + i]);
+                        }
+                        catch (Exception)
+                        {
+                            IsInt = true;
+                            return;
+                        }
+                    }
                     if (collection["发火电压" + i] != "")
                         ignitionCondition.fhdy = double.Parse(collection["发火电压" + i]);
                     if (collection["发火电压上限" + i] != "" && collection["发火电压下限" + i] != "")
@@ -929,37 +1024,42 @@ namespace ProductQuery.Controllers
                         ignitionCondition.Id = int.Parse(collection["发火条件id" + i]);
                         ignitionCondition.IgnitionID = id;
                         list1.Add(ignitionCondition.Id);
+                        ignition.IgnitionConditions.Add(ignitionCondition);
                     }
                     else
                     {
                         ignitionCondition.IgnitionID = id;
-                        AddIgnitionCondition(ignitionCondition);
+                        updateIgnition.IgnitionConditions.Add(ignitionCondition);
                     }
-                    ignition.IgnitionConditions.Add(ignitionCondition);
+                    if (id == -1)
+                        ignition.IgnitionConditions.Add(ignitionCondition);
                 }
             }
-            if (id != -1) {
-                DelectIgnitionCondition(list1,list2);
+            if (id != -1)
+            {
+                foreach (var dr in ign)
+                    list2.Add(dr.Id);
+                foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
+                {
+                    IgnitionCondition model = new IgnitionCondition();
+                    model.Id = dr;
+                    delect.IgnitionConditions.Add(model);
+                }
             }
         }
 
         //添加直流电阻
-        private void AddIgnitionCondition(IgnitionCondition ignitionCondition)
+        private void AddIgnitionCondition()
         {
-            dbDrive.Insert(ignitionCondition);
+            foreach (var dr in updateIgnition.IgnitionConditions)
+                dbDrive.Insert(dr);
         }
 
         //删除直流电阻
-        private void DelectIgnitionCondition(List<int> list1, List<int> list2)
+        private void DelectIgnitionCondition()
         {
-            IgnitionCondition model = new IgnitionCondition();
-            foreach (var dr in ign)
-                list2.Add(dr.Id);
-            foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
-            {
-                model.Id = dr;
-                dbDrive.Delete(model);
-            }
+            foreach (var dr in delect.IgnitionConditions)
+                dbDrive.Delete(dr);
         }
 
         //延期时间
@@ -1018,37 +1118,42 @@ namespace ProductQuery.Controllers
                         delayTime.Id = int.Parse(collection["延期时间id" + i]);
                         delayTime.IgnitionID = id;
                         list1.Add(delayTime.Id);
+                        ignition.DelayTimes.Add(delayTime);
                     }
                     else
                     {
                         delayTime.IgnitionID = id;
-                        AddDelay(delayTime);
+                        updateIgnition.DelayTimes.Add(delayTime);
                     }
-                    ignition.DelayTimes.Add(delayTime);
+                    if (id == -1)
+                        ignition.DelayTimes.Add(delayTime);
                 }
             }
-            if (id != -1) {
-                DelectDelay(list1,list2);
+            if (id != -1)
+            {
+                foreach (var dr in delay)
+                    list2.Add(dr.Id);
+                foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
+                {
+                    DelayTime model = new DelayTime();
+                    model.Id = dr;
+                    delect.DelayTimes.Add(model);
+                }
             }
         }
 
         //添加延期时间
-        private void AddDelay(DelayTime delayTime)
+        private void AddDelay()
         {
-            dbDrive.Insert(delayTime);
+            foreach (var dr in updateIgnition.DelayTimes)
+                dbDrive.Insert(dr);
         }
 
         //删除延期时间
-        private void DelectDelay(List<int> list1, List<int> list2)
+        private void DelectDelay()
         {
-            DelayTime model = new DelayTime();
-            foreach (var dr in delay)
-                list2.Add(dr.Id);
-            foreach (var dr in list1.Union(list2).Except(list1.Intersect(list2)))
-            {
-                model.Id = dr;
-                dbDrive.Delete(model);
-            }
+            foreach (var dr in delect.DelayTimes)
+                dbDrive.Delete(dr);
         }
 
         //时间单位转化

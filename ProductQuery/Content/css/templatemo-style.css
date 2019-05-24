@@ -481,7 +481,7 @@ input[type="checkbox"]:focus {
     -ms-border-radius: 0;
     -o-border-radius: 0;
     border-radius: 0;
-    padding: 15px;
+    padding: 5px;
     background: url(../img/arrow-down.png) 100% no-repeat #FFFFFF;
 }
 .custom-select:focus {

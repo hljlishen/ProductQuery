@@ -469,7 +469,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="静电电容">静电电容</label>
                                 <label for="danwei">(pf)</label>
-                                @Html.TextBox("静电电容", int.Parse(ig.jddr.ToString())* 1000000, new { @class = "form-control validate" })
+                                @Html.TextBox("静电电容", ((ig.jddr)* 1000000).ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
                     @{ if (ig.jddy.ToString() != "0")
@@ -552,7 +552,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="安全电压电容">安全电压电容</label>
                                 <label for="danwei">(pf)</label>
-                                @Html.TextBox("安全电压电容", int.Parse(ig.aqdydr.ToString())* 1000000, new { @class = "form-control validate" })
+                                @Html.TextBox("安全电压电容", ((ig.aqdydr)* 1000000).ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
                     @{ if (ig.rsylsx.ToString() != "0" || ig.rsylxx.ToString() != "0" || ig.rsylbz.ToString() != "")
