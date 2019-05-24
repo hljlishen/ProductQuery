@@ -25,6 +25,7 @@ namespace ProductQuery.Controllers
         bool IsList = false;
         bool Isscope = false;
         bool IsUnitvalue = false;
+        bool IsInt = false;
         Ignition updateIgnition = new Ignition();
         Ignition delect = new Ignition();
         public ActionResult AddInformation()
@@ -124,6 +125,12 @@ namespace ProductQuery.Controllers
                 c.Add(false);
                 return Json(c);
             }
+            if (IsInt)
+            {
+                c.Add(false);
+                c.Add(false);
+                c.Add(true);
+            }
             if (dbDrive.Udpdate(ignition))
                 c.Add(true);
             AddImage();
@@ -171,9 +178,29 @@ namespace ProductQuery.Controllers
             ignition.gn = collection["功能"];
             ignition.hjcs = collection["环境试验"];
             if (collection["桥丝数目"] != "")
-                ignition.jssm = int.Parse(collection["桥丝数目"]);
+            {
+                try {
+                    ignition.jssm = int.Parse(collection["桥丝数目"]);
+                }
+                catch (Exception)
+                {
+                    IsInt = true;
+                    return;
+                }
+            }
+
             if (collection["贮存寿命"] != "")
-                ignition.zcsm = int.Parse(collection["贮存寿命"]);
+            {
+                try
+                {
+                    ignition.zcsm = int.Parse(collection["贮存寿命"]);
+                }
+                catch (Exception)
+                {
+                    IsInt = true;
+                    return;
+                }
+            }
             ignition.ccsmbz = collection["贮存寿命备注"];
             ignition.kkd = collection["可靠度"];
             ignition.zyxnzb = collection["主要性能指标"];
@@ -245,7 +272,17 @@ namespace ProductQuery.Controllers
                 IsUnitvalue = true;
             ignition.zysjbz = collection["作用时间备注"];
             if (collection["安全电流桥个数"] != "")
-                ignition.jgs = int.Parse(collection["安全电流桥个数"]);
+            {
+                try
+                {
+                    ignition.jgs = int.Parse(collection["安全电流桥个数"]);
+                }
+                catch (Exception)
+                {
+                    IsInt = true;
+                    return;
+                }
+            }
             if (collection["安全电流值单位"] != "请选择" && collection["安全电流值"]!="")
             {
                 string unit = collection["安全电流值单位"];
@@ -301,20 +338,13 @@ namespace ProductQuery.Controllers
                     Isscope = true;
             }
             ignition.rsylbz = collection["燃烧压力备注"];
-            if (!Isscope && !IsUnitvalue)
-                AddConventionals(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddCableDiameters(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddSpeedDetonations(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddInterfaceInformations(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddDcResistances(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddIgnitionConditions(collection, ignition, id);
-            if (!Isscope && !IsUnitvalue)
-                AddDelayTimes(collection, ignition, id);
+            AddConventionals(collection, ignition, id);
+            AddCableDiameters(collection, ignition, id);
+            AddSpeedDetonations(collection, ignition, id);
+            AddInterfaceInformations(collection, ignition, id);
+            AddDcResistances(collection, ignition, id);
+            AddIgnitionConditions(collection, ignition, id);
+            AddDelayTimes(collection, ignition, id);
         }
 
         //添加点火装置
@@ -336,6 +366,12 @@ namespace ProductQuery.Controllers
                 c.Add(false);
                 c.Add(false);
                 return Json(c);
+            }
+            if (IsInt)
+            {
+                c.Add(false);
+                c.Add(false);
+                c.Add(true);
             }
             if (dbDrive.Insert(ignition))
                 c.Add(true);
@@ -673,7 +709,17 @@ namespace ProductQuery.Controllers
                 {
                     DcResistance dcResistance = new DcResistance();
                     if (collection["直流电阻桥个数" + i] != "")
-                        dcResistance.dzqgs = int.Parse(collection["直流电阻桥个数" + i]);
+                    {
+                        try
+                        {
+                            dcResistance.dzqgs = int.Parse(collection["直流电阻桥个数" + i]);
+                        }
+                        catch (Exception)
+                        {
+                            IsInt = true;
+                            return;
+                        }
+                    }
                     if (collection["电阻范围值上单位" + " " + i] != "请选择" && collection["电阻范围值下单位" + " " + i] != "请选择" && collection["电阻范围值上" + i] != "" && collection["电阻范围值下" + i] != "")
                     {
                         string unit = collection["电阻范围值上单位" + " " + i];
@@ -797,7 +843,17 @@ namespace ProductQuery.Controllers
                 {
                     IgnitionCondition ignitionCondition = new IgnitionCondition();
                     if (collection["桥个数" + i] != "")
-                        ignitionCondition.qgs = int.Parse(collection["桥个数" + i]);
+                    {
+                        try
+                        {
+                            ignitionCondition.qgs = int.Parse(collection["桥个数" + i]);
+                        }
+                        catch (Exception)
+                        {
+                            IsInt = true;
+                            return;
+                        }
+                    }
                     if (collection["发火电压" + i] != "")
                         ignitionCondition.fhdy = double.Parse(collection["发火电压" + i]);
                     if (collection["发火电压上限" + i] != "" && collection["发火电压下限" + i] != "")

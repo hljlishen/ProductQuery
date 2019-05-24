@@ -946,6 +946,10 @@
                                 return;
                             }
                             else {
+                                if (data[2]) {
+                                    alert("存在输入值过大，请重新输入");
+                                    return;
+                                }
                                 alert("未选择单位或者选择单位的值为空");
                                 return;
                             }
