@@ -491,6 +491,8 @@ namespace ProductQuery.Controllers
                         conventional.IgnitionID = id;
                         updateIgnition.Conventionals.Add(conventional);
                     }
+                    if (id == -1)
+                        ignition.Conventionals.Add(conventional);
                 }
             }
             if (id != -1) {
@@ -544,6 +546,8 @@ namespace ProductQuery.Controllers
                         cableDiameter.IgnitionID = id;
                         updateIgnition.CableDiameters.Add(cableDiameter);
                     }
+                    if (id == -1)
+                        ignition.CableDiameters.Add(cableDiameter);
                 }
             }
             if (id != -1)
@@ -607,6 +611,8 @@ namespace ProductQuery.Controllers
                         speedDetonation.IgnitionID = id;
                         updateIgnition.SpeedDetonations.Add(speedDetonation);
                     }
+                    if (id == -1)
+                        ignition.SpeedDetonations.Add(speedDetonation);
                 }
             }
             if (id != -1)
@@ -668,6 +674,8 @@ namespace ProductQuery.Controllers
                         interfaceInformation.IgnitionID = id;
                         updateIgnition.InterfaceInformations.Add(interfaceInformation);
                     }
+                    if(id == -1)
+                        ignition.InterfaceInformations.Add(interfaceInformation);
                 }
             }
             if (id != -1)
@@ -802,6 +810,8 @@ namespace ProductQuery.Controllers
                         dcResistance.IgnitionID = id;
                         updateIgnition.DcResistances.Add(dcResistance);
                     }
+                    if (id == -1)
+                        ignition.DcResistances.Add(dcResistance);
                 }
             }
             if (id != -1)
@@ -1021,6 +1031,8 @@ namespace ProductQuery.Controllers
                         ignitionCondition.IgnitionID = id;
                         updateIgnition.IgnitionConditions.Add(ignitionCondition);
                     }
+                    if (id == -1)
+                        ignition.IgnitionConditions.Add(ignitionCondition);
                 }
             }
             if (id != -1)
@@ -1113,6 +1125,8 @@ namespace ProductQuery.Controllers
                         delayTime.IgnitionID = id;
                         updateIgnition.DelayTimes.Add(delayTime);
                     }
+                    if (id == -1)
+                        ignition.DelayTimes.Add(delayTime);
                 }
             }
             if (id != -1)
