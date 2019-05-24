@@ -370,7 +370,7 @@ layui.define(['jquery','table', 'form','laydate'], function (exports) {
 		    	othis.removeClass(DANGER);
 		    	var errorText;
 		    	//是否允许空值
-		    	var allowBlank = true;
+		    	var allowBlank = false;
 		    	layui.each(vers, function(_, thisVer){
 			    	if(thisVer.indexOf("required") >= 0){
 			    		//不允许为空值

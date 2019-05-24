@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-block" href="#">
+                    <a class="nav-link d-block"  style="color:#FFFFFF" href="#">
                         版本信息
                     </a>
                 </li>
@@ -68,10 +68,22 @@
                     <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
 
                         <div id="complex-query">
-                            <a id="complexBtn-json" class="layui-btn">添加查询条件</a><br />
+                            <a id="complexBtn-json" class="layui-btn" style="color:#FFFFFF">添加查询条件</a><br />
                             <br />
                             <div id="msg-json">查询条件：</div>
                             <br />
+                        </div>
+
+                        <div id="complex-query">
+                            <div class="form-inline">
+                                <a class="btn btn-success btn-sm" href="javascript:openAddWin();">
+                                    <span class="glyphicon glyphicon-plus">添加用户</span>
+                                </a>
+                                <input type="text" class="form-control validate" id="username" name="username" placeholder="输入用户名" />
+                                <a class="btn btn-primary btn-sm" href="javascript:queryByName();" style="background-color:#5CB85C;color:#FFFFFF">
+                                    <span class="glyphicon glyphicon-plus">查询</span>
+                                </a>
+                            </div>
                         </div>
 
                         <ul id="dcDemo" style="display:none;">
