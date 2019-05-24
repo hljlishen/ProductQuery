@@ -21,10 +21,10 @@ namespace ProductQuery.Models
         [DisplayName("尺寸名称")]
         public string ccmc { get; set; }
         [DisplayName("直径")]
-        public double zj { get; set; }
+        public double? zj { get; set; }
         [DisplayName("长度")]
-        public double cd { get; set; }
+        public double? cd { get; set; }
         [DisplayName("高度")]
-        public double gd { get; set; }
+        public double? gd { get; set; }
     }
 }

@@ -19,6 +19,6 @@ namespace ProductQuery.Models
         [DisplayName("Id")]
         public int Id { get; set; }
         [DisplayName("普通索直径")]
-        public double ptszj { get; set; }
+        public double? ptszj { get; set; }
     }
 }
