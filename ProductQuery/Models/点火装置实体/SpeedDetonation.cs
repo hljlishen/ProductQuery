@@ -19,9 +19,9 @@ namespace ProductQuery.Models
         [DisplayName("Id")]
         public int Id { get; set; }
         [DisplayName("爆速上限")]
-        public double bssx { get; set; }
+        public double? bssx { get; set; }
         [DisplayName("爆速下限")]
-        public double bsxx { get; set; }
+        public double? bsxx { get; set; }
         [DisplayName("爆速备注")]
         public string bsbz { get; set; }
     }

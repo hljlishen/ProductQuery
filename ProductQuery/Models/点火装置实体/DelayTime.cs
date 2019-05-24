@@ -19,15 +19,15 @@ namespace ProductQuery.Models
         [DisplayName("Id")]
         public int Id { get; set; }
         [DisplayName("温度条件")]
-        public double wdtj { get; set; }
+        public double? wdtj { get; set; }
         [DisplayName("延期时间下限")]
-        public double yqsjxx { get; set; }
+        public double? yqsjxx { get; set; }
         [DisplayName("延期时间上限")]
-        public double yqsjsx { get; set; }
+        public double? yqsjsx { get; set; }
         [DisplayName("延期时间值")]
-        public double yqsjz { get; set; }
+        public double? yqsjz { get; set; }
         [DisplayName("延期时间值误差")]
-        public double yqsjzwc { get; set; }
+        public double? yqsjzwc { get; set; }
         [DisplayName("延期时间备注")]
         public string yqsjbz { get; set; }
     }
