@@ -37,7 +37,37 @@
             //关闭模态框
             $("#myModal").modal("hide");
         }
+
+        //点火装置查询
+        function query() {
+            var querystring = $("#querystring").val();
+            $.ajax({
+                url: "@Url.Action("SimpleQuery")",
+                type: "post",
+                dataType: "html",
+                data: {
+                    "querystring": querystring
+                },
+                success: function (data) {
+                    if (data) {
+                        $('#content').html(data);
+                    } else {
+                        alert("数据获取失败！");
+                    }
+                }       
+            })
+        }
     </script>
+    <style>
+        #tab li {
+            float: left;
+            color: #000;
+            height: 30px;
+            cursor: pointer;
+            line-height: 30px;
+            padding: 0 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,11 +83,6 @@
                         管理员登陆
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link d-block"  style="color:#FFFFFF" href="#">
-                        版本信息
-                    </a>
-                </li>
             </ul>
         </nav>
 
@@ -67,20 +92,39 @@
                 <div class="col-12 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
 
-                        <div id="complex-query">
-                            <a id="complexBtn-json" class="layui-btn" style="color:#FFFFFF">添加查询条件</a><br />
-                            <br />
-                            <div id="msg-json">查询条件：</div>
-                            <br />
-                        </div>
+                        <div class="span12">
+                            <div class="tabbable" id="tabs-400466">
+                                <ul class="nav nav-tabs" id="tab">
+                                    <li class="active">
+                                        <a href="#simple-query" data-toggle="tab">简单查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#complex-queries" data-toggle="tab">高级查询</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
 
-                        <div id="complex-query" class="tm-content-row">
-                            <div class="form-inline">
-                                <input type="text" class="form-control validate" id="querystring"/>
-                                <a class="btn btn-primary btn-sm" href="javascript:queryByName();" style="background-color:#5CB85C;color:#FFFFFF">
-                                    <span class="glyphicon glyphicon-plus">查询</span>
-                                </a>
+                                    <div class="tab-pane active" id="simple-query" style="margin-top:2%;margin-left:30%">
+                                        <div class="form-inline">
+                                            <input type="text" class="form-control validate" id="querystring" style="height:30px;width:40%" />
+                                            <a class="layui-btn" href="javascript:query();" style="height:42px;width:10%">
+                                                <span class="glyphicon glyphicon-plus">查询</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" id="complex-queries" style="margin-top:2%">
+                                        <div id="complex-query">
+                                            <a id="complexBtn-json" class="layui-btn" style="color:#FFFFFF">添加查询条件</a><br />
+                                            <br />
+                                            <div id="msg-json">查询条件：</div>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
+
                         </div>
 
                         <ul id="dcDemo" style="display:none;">
@@ -206,7 +250,7 @@
             <footer>
                 <div class="col-12 font-weight-light">
                     <p class="text-center text-black mb-0 px-10">
-                        版权 &copy; <b>2019</b> 西安红叶通讯科技有限公司
+                         中国兵器二一三所
                     </p>
                 </div>
             </footer>

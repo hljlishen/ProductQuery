@@ -20,6 +20,7 @@ namespace ProductQuery.Controllers.Filters
 
         public override bool IsPass(object obj)
         {
+            if (GetPropertyValue(obj, fieldName + "sx") == null || GetPropertyValue(obj, fieldName + "xx") == null) return false;
             double valuemax = (double)GetPropertyValue(obj, fieldName + "sx");
             double valuemin = (double)GetPropertyValue(obj, fieldName + "xx");
 

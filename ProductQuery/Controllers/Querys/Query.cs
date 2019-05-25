@@ -39,6 +39,19 @@ namespace ProductQuery.Controllers.Querys
             }
         }
 
+        public Query(string querystring)
+        {
+            _Filter filter = new GlobalStringLike(querystring);
+            filters.Add(filter);
+        }
+
+        public Query(string querystring,string tablename)
+        {
+            _Filter filter1 = new GlobalStringLike(querystring);
+            _Filter filter2 = new ListPropertyDecorator(tablename, filter1);
+            filters.Add(filter2);
+        }
+
 
         private IMeasurementConverter GetMeasurementConverter(string UnitType, string unit)
         {
@@ -138,6 +151,7 @@ namespace ProductQuery.Controllers.Querys
             }
             if (QueryType.Equals("StringLike"))
             {
+                val = min;
                 filter = new StringLike(FieldName, val);
                 return filter;
             }

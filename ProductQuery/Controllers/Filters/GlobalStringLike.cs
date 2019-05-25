@@ -21,7 +21,7 @@ namespace ProductQuery.Controllers.Filters
         {
             PropertyInfo[] properties = obj.GetType().GetProperties();
 
-            foreach(var pro in properties)
+            foreach (var pro in properties)
             {
                 if (pro.PropertyType != typeof(string)) continue;
 
@@ -34,5 +34,7 @@ namespace ProductQuery.Controllers.Filters
             }
             return false;
         }
+
+
     }
 }
