@@ -814,6 +814,11 @@
                     for (var i = 0; i < data.length; i++) {
                         if (data[0]) {
                             alert("修改成功");
+                            var title = "<span class='glyphicon glyphicon-edit'>修改点火装置信息";
+                            var url = "Ignition_update?ignitionid=" + @id;
+                            var width = "100%";
+                            var height = "800px";
+                            parent.AddopenWin(title, url, width, height);
                         }
                         else {
                             if (data[1]) {
