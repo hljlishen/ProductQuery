@@ -150,7 +150,7 @@ namespace ProductQuery.Models
         [DisplayName("安全电流备注")]
         public string aqdlbz { get; set; }
         [DisplayName("安全电压电压")]
-        public double aqdydy { get; set; }
+        public double? aqdydy { get; set; }
         [DisplayName("安全电压电容")]
         public double? aqdydr { get; set; }
         [DisplayName("燃烧压力下限")]
