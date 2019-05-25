@@ -222,12 +222,14 @@
     <Content Include="Content\jquery-ui-datepicker\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui-datepicker\jquery-ui.theme.min.css" />
     <Content Include="Content\jquery-ui-datepicker\LICENSE.txt" />
+    <Content Include="Content\js\add.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\Chart.min.js" />
     <Content Include="Content\js\jquery-1.11.2.min.js" />
     <Content Include="Content\js\jquery-3.3.1.min.js" />
     <Content Include="Content\js\moment.min.js" />
     <Content Include="Content\js\tooplate-scripts.js" />
+    <Content Include="Content\js\update.js" />
     <Content Include="Content\layui\css\layui.css" />
     <Content Include="Content\layui\css\layui.mobile.css" />
     <Content Include="Content\layui\css\modules\code.css" />
