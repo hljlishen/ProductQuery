@@ -17,6 +17,7 @@ namespace ProductQuery.Controllers.Filters
 
         public override bool IsPass(object obj)
         {
+            if (GetPropertyValue(obj, fieldName) == null) return false;
             int value = (int)GetPropertyValue(obj, fieldName);
 
             int max = (int)(MeasurementConverter == null ? rangeMax : MeasurementConverter.ToStandardValue(rangeMax));

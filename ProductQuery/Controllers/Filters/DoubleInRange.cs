@@ -20,6 +20,7 @@ namespace ProductQuery.Controllers.Filters
 
         public override bool IsPass(object obj)
         {
+            if (GetPropertyValue(obj, fieldName) == null) return false;
             double value = (double)GetPropertyValue(obj, fieldName);
 
             double max = MeasurementConverter == null ? rangeMax : MeasurementConverter.ToStandardValue(rangeMax);
