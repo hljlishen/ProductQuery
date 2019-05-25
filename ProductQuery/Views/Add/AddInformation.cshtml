@@ -28,6 +28,7 @@
         var zhiliudianzu = 1;
         var fahuotiaojian = 1;
         var yanqishijian = 1;
+        var Isreturn = false;
 
         $(function () {
             $("#expire_date").datepicker({
@@ -409,7 +410,7 @@
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="尺寸名称">尺寸名称</label>' +
-                '<input name="尺寸名称' + ModuleNumber(obj) + '" class="form-control validate" type="text" >' +
+                '<input name="尺寸名称' + ModuleNumber(obj) + '" class="form-control validate" type="text">' +
                 '</div>' +
                 '<div class="form-group col-lg-6">' +
                 '<label for="直径">直径</label>' +
@@ -522,11 +523,13 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻范围值上">电阻范围值上限 </label>' +
-                '<input name="电阻范围值上' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '<label for="验证" style="color:red;display:none" id="dzfwzsx' + ModuleNumber(obj) + '">*值不能为空</label>' +
+                '<input name="电阻范围值上' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="电阻范围值上限' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate1(' + ModuleNumber(obj) + ')">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="电阻范围值上单位 ' + ModuleNumber(obj) + '">' +
+                '<label for="验证" style="color:red;display:none" id="dzfwzsxdw' + ModuleNumber(obj) + '">*请选择单位</label>' +
+                '<select class="custom-select" name="电阻范围值上单位 ' + ModuleNumber(obj) + '" id="电阻范围值上单位' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate1(' + ModuleNumber(obj) + ')">' +
                 '<option value="请选择">请选择</option>' +
                 '<option value="mΩ">mΩ</option>' +
                 '<option value="Ω">Ω</option>' +
@@ -536,11 +539,13 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻范围值下">电阻范围值下限 </label>' +
-                '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '<label for="验证" style="color:red;display:none" id="dzfwzxx' + ModuleNumber(obj) + '">*值不能为空</label>' +
+                '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="电阻范围值下限' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate1(' + ModuleNumber(obj) + ')">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="电阻范围值下单位 ' + ModuleNumber(obj) + '">' +
+                '<label for="验证" style="color:red;display:none" id="dzfwzxxdw' + ModuleNumber(obj) + '">*请选择单位</label>' +
+                '<select class="custom-select" name="电阻范围值下单位 ' + ModuleNumber(obj) + '" id="电阻范围值下单位' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate1(' + ModuleNumber(obj) + ')">' +
                 '<option value="请选择">请选择</option>' +
                 '<option value="mΩ">mΩ</option>' +
                 '<option value="Ω">Ω</option>' +
@@ -550,11 +555,13 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻值">电阻值 </label>' +
-                '<input name="电阻值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '<label for="验证" style="color:red;display:none" id="dzz' + ModuleNumber(obj) + '">*值不能为空</label>' +
+                '<input name="电阻值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="电阻值' + ModuleNumber(obj) + '" onblur="Unitvalidate1(' + ModuleNumber(obj) + ')">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="电阻值单位 ' + ModuleNumber(obj) + '">' +
+                '<label for="验证" style="color:red;display:none" id="dzzdw' + ModuleNumber(obj) + '">*请选择单位</label>' +
+                '<select class="custom-select" name="电阻值单位 ' + ModuleNumber(obj) + '" id="电阻值单位' + ModuleNumber(obj) + '" onblur="Unitvalidate1(' + ModuleNumber(obj) + ')">' +
                 '<option value="请选择">请选择</option>' +
                 '<option value="mΩ">mΩ</option>' +
                 '<option value="Ω">Ω</option>' +
@@ -564,11 +571,13 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻公差值">电阻公差值 </label>' +
-                '<input name="电阻公差值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '<label for="验证" style="color:red;display:none" id="dzgcz' + ModuleNumber(obj) + '">*值不能为空</label>' +
+                '<input name="电阻公差值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="电阻公差值' + ModuleNumber(obj) + '" onblur="Unitvalidate2(' + ModuleNumber(obj) + ')">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="电阻公差值单位 ' + ModuleNumber(obj) + '">' +
+                '<label for="验证" style="color:red;display:none" id="dzgczdw' + ModuleNumber(obj) + '">*请选择单位</label>' +
+                '<select class="custom-select" name="电阻公差值单位 ' + ModuleNumber(obj) + '" id="电阻公差值单位' + ModuleNumber(obj) + '" onblur="Unitvalidate2(' + ModuleNumber(obj) + ')">' +
                 '<option value="请选择">请选择</option>' +
                 '<option value="mΩ">mΩ</option>' +
                 '<option value="Ω">Ω</option>' +
@@ -578,11 +587,13 @@
                 '</div>' +
                 '<div class="form-group col-lg-4">' +
                 '<label for="电阻小于值">电阻小于值 </label>' +
-                '<input name="电阻小于值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
+                '<label for="验证" style="color:red;display:none" id="dzxyz' + ModuleNumber(obj) + '">*值不能为空</label>' +
+                '<input name="电阻小于值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="电阻小于值' + ModuleNumber(obj) + '" onblur="Unitvalidate3(' + ModuleNumber(obj) + ')">' +
                 '</div>' +
                 '<div class="form-group col-lg-2">' +
                 '<label for="danwei">单位</label>' +
-                '<select class="custom-select" name="电阻小于值单位 ' + ModuleNumber(obj) + '">' +
+                '<label for="验证" style="color:red;display:none" id="dzxyzdw' + ModuleNumber(obj) + '">*请选择单位</label>' +
+                '<select class="custom-select" name="电阻小于值单位 ' + ModuleNumber(obj) + '" id="电阻小于值单位' + ModuleNumber(obj) + '" onblur="Unitvalidate3(' + ModuleNumber(obj) + ')">' +
                 '<option value="请选择">请选择</option>' +
                 '<option value="mΩ">mΩ</option>' +
                 '<option value="Ω">Ω</option>' +
@@ -597,6 +608,44 @@
                 '<input name="直流电阻" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
                 '</div>';
             $(addtr).appendTo(tables);
+        }
+
+        function UnitAndValuevalidate1(number) {
+            var name1 = document.getElementById("电阻范围值上限" + number);
+            var name2 = document.getElementById("电阻范围值上单位" + number);
+            var name3 = document.getElementById("电阻范围值下限" + number);
+            var name4 = document.getElementById("电阻范围值下单位" + number);
+            if (name1.value == "" || name2.value == "请选择" || name3 == "" || name4 == "请选择") {
+                document.getElementById("dzfwzsx" + number).style.display = "none";
+                document.getElementById("dzfwzsxdw" + number).style.display = "none";
+                document.getElementById("dzfwzxx" + number).style.display = "none";
+                document.getElementById("dzfwzxxdw" + number).style.display = "none";
+                Isreturn = false;
+            }
+            else {
+                document.getElementById("dzfwzsx" + number).style.display = "";
+                document.getElementById("dzfwzsxdw" + number).style.display = "";
+                document.getElementById("dzfwzxx" + number).style.display = "";
+                document.getElementById("dzfwzxxdw" + number).style.display = "";
+                name.focus();
+                Isreturn = true;
+            }
+        }
+
+        function Unitvalidate1(number) {
+            var name1 = document.getElementById("电阻值" + number);
+            var name2 = document.getElementById("电阻值单位" + number);
+            if (name1.value == "" || name2.value == "请选择") {
+                document.getElementById("dzz" + number).style.display = "none";
+                document.getElementById("dzzdw" + number).style.display = "none";
+                Isreturn = false;
+            }
+            else {
+                document.getElementById("dzz" + number).style.display = "";
+                document.getElementById("dzzdw" + number).style.display = "";
+                name.focus();
+                Isreturn = true;
+            }
         }
 
         function 发火条件(obj) {
@@ -897,7 +946,7 @@
                         scdxrq = false;
                 }
             }
-            if (document.getElementById("类别").value == "请选择" || document.getElementById("产品名称").value == "" || yzrq == false || sjdxrq == false || scdxrq == false) {
+            if (document.getElementById("类别").value == "请选择" || document.getElementById("产品名称").value == "" || yzrq == false || sjdxrq == false || scdxrq == false || Isreturn) {
                 if (document.getElementById("类别").value == "请选择")
                     document.getElementById("lb").style.display = "";
                 else
