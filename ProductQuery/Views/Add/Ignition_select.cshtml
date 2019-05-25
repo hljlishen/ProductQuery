@@ -294,14 +294,14 @@
                                 @Html.TextBox("环境试验", ig.hjcs.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.jssm.ToString() != "0")
+                    @{ if (ig.jssm.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="桥丝数目">桥丝数目</label>
                                 @Html.TextBox("桥丝数目", ig.jssm.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.zcsm.ToString() != "0")
+                    @{ if (ig.zcsm.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="贮存寿命">贮存寿命</label>
@@ -344,35 +344,35 @@
                                 @Html.TextBox("基本性能", ig.jbxn.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.kd.ToString() != "0" || ig.jx.ToString() != "0" || ig.zcd.ToString() != "0")
+                    @{ if (ig.kd.ToString() != "" || ig.jx.ToString() != "" || ig.zcd.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
                                 <h2 class="tm-site-title mb-0">常规</h2>
                                 <label for="danwei">（单位：mm）</label>
                             </div>
                         } }
-                    @{ if (ig.kd.ToString() != "0")
+                    @{ if (ig.kd.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="宽度">宽度</label>
                                 @Html.TextBox("宽度", ig.kd.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.jx.ToString() != "0")
+                    @{ if (ig.jx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="脚线">脚线</label>
                                 @Html.TextBox("脚线", ig.jx.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.zcd.ToString() != "0")
+                    @{ if (ig.zcd.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="总长度">总长度</label>
                                 @Html.TextBox("总长度", ig.zcd.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.gbhd.ToString() != "0")
+                    @{ if (ig.gbhd.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
                                 <h2 class="tm-site-title mb-0">隔板厚度</h2>
@@ -383,28 +383,28 @@
                                 @Html.TextBox("隔板厚度", ig.gbhd.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.szjsx.ToString() != "0" || ig.szjxx.ToString() != "0" || ig.sMDFyzzj.ToString() != "0" || ig.sbz.ToString() != "")
+                    @{ if (ig.szjsx.ToString() != "" || ig.szjxx.ToString() != "" || ig.sMDFyzzj.ToString() != "" || ig.sbz.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
                                 <h2 class="tm-site-title mb-0">索</h2>
                                 <label for="danwei">（单位：mm）</label>
                             </div>
                         } }
-                    @{ if (ig.szjsx.ToString() != "0")
+                    @{ if (ig.szjsx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="索直径上限">索直径上限</label>
                                 @Html.TextBox("索直径上限", ig.szjsx.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.szjxx.ToString() != "0")
+                    @{ if (ig.szjxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="索直径下限">索直径下限</label>
                                 @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.sMDFyzzj.ToString() != "0")
+                    @{ if (ig.sMDFyzzj.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="索MDF（银质）直径">索MDF（银质）直径</label>
@@ -418,21 +418,21 @@
                                 @Html.TextArea("索备注", ig.sbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
                             </div>
                         } }
-                    @{ if (ig.db.ToString() != "0" || ig.djx.ToString() != "0" || ig.lfdjbz.ToString() != "")
+                    @{ if (ig.db.ToString() != "" || ig.djx.ToString() != "" || ig.lfdjbz.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
                                 <h2 class="tm-site-title mb-0">六方对角</h2>
                                 <label for="六方对角">（单位：mm）</label>
                             </div>
                         } }
-                    @{ if (ig.db.ToString() != "0")
+                    @{ if (ig.db.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="对边">对边</label>
                                 @Html.TextBox("对边", ig.db.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.djx.ToString() != "0")
+                    @{ if (ig.djx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="对角线">对角线</label>
@@ -446,7 +446,7 @@
                                 @Html.TextArea("六方对角备注", ig.lfdjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
                             </div>
                         } }
-                    @{ if (ig.jcdl.ToString() != "0")
+                    @{ if (ig.jcdl.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
                                 <h2 class="tm-site-title mb-0">检测电流</h2>
@@ -458,13 +458,13 @@
                             </div>
                         } }
 
-                    @{ if (ig.jddr.ToString() != "0" || ig.jddy.ToString() != "0" || ig.cldz.ToString() != "0" || ig.jdgdbz.ToString() != "")
+                    @{ if (ig.jddr.ToString() != "" || ig.jddy.ToString() != "" || ig.cldz.ToString() != "" || ig.jdgdbz.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
                                 <h2 class="tm-site-title mb-0">静电感度</h2>
                             </div>
                         } }
-                    @{ if (ig.jddr.ToString() != "0")
+                    @{ if (ig.jddr.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="静电电容">静电电容</label>
@@ -472,7 +472,7 @@
                                 @Html.TextBox("静电电容", ((ig.jddr)* 1000000).ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.jddy.ToString() != "0")
+                    @{ if (ig.jddy.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="静电电压">静电电压</label>
@@ -480,7 +480,7 @@
                                 @Html.TextBox("静电电压", ig.jddy.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.cldz.ToString() != "0")
+                    @{ if (ig.cldz.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="串联电阻">串联电阻</label>
@@ -505,20 +505,20 @@
                                 @Html.TextArea("作用时间备注", ig.zysjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
                             </div>
                         } }
-                    @{ if (ig.jgs.ToString() != "0" || ig.glz.ToString() != "0" || ig.aqdlbz.ToString() != "")
+                    @{ if (ig.jgs.ToString() != "" || ig.glz.ToString() != "" || ig.aqdlbz.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
                                 <h2 class="tm-site-title mb-0">安全电流</h2>
                             </div>
                         } }
-                    @{ if (ig.jgs.ToString() != "0")
+                    @{ if (ig.jgs.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="桥个数">桥个数</label>
                                 @Html.TextBox("桥个数", ig.jgs.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.glz.ToString() != "0")
+                    @{ if (ig.glz.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="功率值">功率值</label>
@@ -533,13 +533,13 @@
                                 @Html.TextArea("安全电流备注", ig.aqdlbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
                             </div>
                         } }
-                    @{ if (ig.aqdydy.ToString() != "0" || ig.aqdydr.ToString() != "0")
+                    @{ if (ig.aqdydy.ToString() != "" || ig.aqdydr.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
                                 <h2 class="tm-site-title mb-0">安全电压</h2>
                             </div>
                         } }
-                    @{ if (ig.aqdydy.ToString() != "0")
+                    @{ if (ig.aqdydy.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="安全电压电压">安全电压电压</label>
@@ -547,7 +547,7 @@
                                 @Html.TextBox("安全电压电压", ig.aqdydy.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.aqdydr.ToString() != "0")
+                    @{ if (ig.aqdydr.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="安全电压电容">安全电压电容</label>
@@ -555,21 +555,21 @@
                                 @Html.TextBox("安全电压电容", ((ig.aqdydr)* 1000000).ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.rsylsx.ToString() != "0" || ig.rsylxx.ToString() != "0" || ig.rsylbz.ToString() != "")
+                    @{ if (ig.rsylsx.ToString() != "" || ig.rsylxx.ToString() != "" || ig.rsylbz.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
                                 <h2 class="tm-site-title mb-0">燃烧压力</h2>
                                 <label for="danwei">单位：(MPa)</label>
                             </div>
                         } }
-                    @{ if (ig.rsylsx.ToString() != "0")
+                    @{ if (ig.rsylsx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="燃烧压力上限">燃烧压力上限</label>
                                 @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.rsylxx.ToString() != "0")
+                    @{ if (ig.rsylxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="燃烧压力下限">燃烧压力下限</label>
@@ -608,7 +608,7 @@
                                 @Html.TextBox("尺寸名称", con.ccmc.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (con.zj.ToString() != "0")
+                        if (con.zj.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="直径">直径</label>
@@ -616,7 +616,7 @@
                                 @Html.TextBox("直径", con.zj.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (con.cd.ToString() != "0")
+                        if (con.cd.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="长度">长度</label>
@@ -624,7 +624,7 @@
                                 @Html.TextBox("长度", con.cd.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (con.gd.ToString() != "0")
+                        if (con.gd.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="高度">高度</label>
@@ -640,7 +640,7 @@
                             <h1 class="tm-site-title mb-0">索普通直径 @cabs</h1>
                         </div>
                         cabs++;
-                        if (cab.ptszj.ToString() != "0")
+                        if (cab.ptszj.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="索普通直径">索普通直径</label>
@@ -656,7 +656,7 @@
                             <h1 class="tm-site-title mb-0">爆速 @speeds</h1>
                         </div>
                         speeds++;
-                        if (s.bssx.ToString() != "0")
+                        if (s.bssx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="爆速上限">爆速上限</label>
@@ -664,7 +664,7 @@
                                 @Html.TextBox("爆速上限", s.bssx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (s.bsxx.ToString() != "0")
+                        if (s.bsxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="爆速下限">爆速下限</label>
@@ -687,7 +687,7 @@
                             <h1 class="tm-site-title mb-0">接口信息 @inters</h1>
                         </div>
                         inters++;
-                        if (inte.lw.ToString() != "0")
+                        if (inte.lw.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="螺纹">螺纹</label>
@@ -695,7 +695,7 @@
                                 @Html.TextBox("螺纹", inte.lw.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (inte.lj.ToString() != "0")
+                        if (inte.lj.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="螺距">螺距</label>
@@ -710,7 +710,7 @@
                                 @Html.TextBox("公差", inte.gc.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (inte.cd.ToString() != "0")
+                        if (inte.cd.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="长度">长度</label>
@@ -733,7 +733,7 @@
                             <h1 class="tm-site-title mb-0">直流电阻 @ds</h1>
                         </div>
                         ds++;
-                        if (d.dzqgs.ToString() != "0")
+                        if (d.dzqgs.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="桥个数">桥个数</label>
@@ -755,14 +755,14 @@
                             <h1 class="tm-site-title mb-0">发火条件 @igncs</h1>
                         </div>
                         igncs++;
-                        if (ign.qgs.ToString() != "0")
+                        if (ign.qgs.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="桥个数">桥个数</label>
                                 @Html.TextBox("桥个数", ign.qgs.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.fhdy.ToString() != "0")
+                        if (ign.fhdy.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="发火电压">发火电压</label>
@@ -770,7 +770,7 @@
                                 @Html.TextBox("发火电压", ign.fhdy.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.fhdysx.ToString() != "0")
+                        if (ign.fhdysx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="发火电压上限">发火电压上限</label>
@@ -778,7 +778,7 @@
                                 @Html.TextBox("发火电压上限", ign.fhdysx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.fhdyxx.ToString() != "0")
+                        if (ign.fhdyxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="发火电压下限">发火电压下限</label>
@@ -800,7 +800,7 @@
                                 @Html.TextArea("电流发火备注", ign.dlfhbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
                             </div>
                         }
-                        if (ign.jzcjl.ToString() != "0")
+                        if (ign.jzcjl.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="击针刺激量">击针刺激量</label>
@@ -808,7 +808,7 @@
                                 @Html.TextBox("击针刺激量", ign.jzcjl.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.jzlsx.ToString() != "0")
+                        if (ign.jzlsx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="击针力上限">击针力上限</label>
@@ -816,7 +816,7 @@
                                 @Html.TextBox("击针力上限", ign.jzlsx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.jzlxx.ToString() != "0")
+                        if (ign.jzlxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="击针力下限">击针力下限</label>
@@ -824,7 +824,7 @@
                                 @Html.TextBox("击针力下限", ign.jzlxx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.jztclsx.ToString() != "0")
+                        if (ign.jztclsx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="击针突出量上限">击针突出量上限</label>
@@ -832,7 +832,7 @@
                                 @Html.TextBox("击针突出量上限", ign.jztclsx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.jztclxx.ToString() != "0")
+                        if (ign.jztclxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="击针突出量下限">击针突出量下限</label>
@@ -840,7 +840,7 @@
                                 @Html.TextBox("击针突出量下限", ign.jztclxx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.thgd.ToString() != "0")
+                        if (ign.thgd.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="弹簧高度">弹簧高度</label>
@@ -848,7 +848,7 @@
                                 @Html.TextBox("弹簧高度", ign.thgd.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.kl.ToString() != "0")
+                        if (ign.kl.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="抗力">抗力</label>
@@ -871,7 +871,7 @@
                             <h1 class="tm-site-title mb-0">延期时间 @des</h1>
                         </div>
                         des++;
-                        if (de.wdtj.ToString() != "0")
+                        if (de.wdtj.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="温度条件">温度条件</label>
