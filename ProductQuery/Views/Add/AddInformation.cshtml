@@ -19,6 +19,19 @@
     <script src="~/Content/jquery-ui-datepicker/jquery-ui.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script src="~/Content/js/add.js"></script>
+    <style>
+
+        textarea {
+            padding: 10px;
+            vertical-align: top;
+            width: 200px;
+        }
+
+            textarea:focus {
+                outline-style: solid;
+                outline-width: 2px;
+            }
+    </style>
     <script type="text/javascript">
         var id = 0;
         var image = 1;
@@ -402,7 +415,22 @@
             });
         });
 
-        
+        $(function(){
+        $.fn.autoHeight = function(){
+        function autoHeight(elem){
+            elem.style.height = 'auto';
+            elem.scrollTop = 0; //防抖动
+            elem.style.height = elem.scrollHeight + 'px';
+        }
+        this.each(function(){
+            autoHeight(this);
+            $(this).on('keyup', function(){
+                autoHeight(this);
+            });
+        });
+    }
+    $('textarea[autoHeight]').autoHeight();
+})
 
         function clearNoNum(obj) {
             obj.value = obj.value.replace(/[^\d.]/g, ""); //清除"数字"和"."以外的字符
@@ -482,12 +510,14 @@
             document.getElementById('btn1').disabled = true;
             setTimeout(function () {
                 document.getElementById('btn1').disabled = false;
-            }, 5000);
+            }, 2000);
             Add();
         }
 
         function Add() {
-            $.ajax({
+            var flag = confirm("是否要添加信息？");
+            if (flag) {
+                 $.ajax({
                 url: "@Url.Action("AddInformation")",
                 type: "post",
                 data: $("form").serialize(),
@@ -517,6 +547,7 @@
                     }
                 }
             });
+            }
         }
     </script>
 </head>
@@ -550,7 +581,7 @@
                 </div>
             </div>
             <div class=" form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-right:13%;overflow-y:scroll;overflow-x:hidden;height:640px;width:55%">
-                <form action="/Add/AddInformation" method="post" class="tm-signup-form" id="form" name="基本信息" >
+                <form action="/Add/AddInformation" method="post" class="tm-signup-form" id="form" name="基本信息">
                     <div class="row" id="主页信息">
                         <div class="form-group col-lg-12">
                             <h1 class="tm-site-title mb-0">基本信息</h1>
@@ -614,7 +645,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="用途">用途</label>
-                            <input name="用途" class="form-control validate" type="text">
+                            <textarea class="form-control validate tm-small" name="用途"></textarea>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="系统组成">系统组成</label>
@@ -647,27 +678,27 @@
                         <div class="form-group col-lg-6">
                             <label for="贮存寿命">贮存寿命</label>
                             <label for="单位">(年)</label>
-                            <input name="贮存寿命" class="form-control validate" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')">
+                            <input name="贮存寿命" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="贮存寿命备注">贮存寿命备注</label>
-                            <textarea class="form-control validate tm-small" rows="1" name="贮存寿命备注"></textarea>
+                            <textarea class="form-control validate tm-small" name="贮存寿命备注" ></textarea>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="可靠度">可靠度</label>
                             <input name="可靠度" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="主要性能指标">主要性能指标</label>
-                            <input name="主要性能指标" class="form-control validate" type="text">
+                            <label for="基本性能">基本性能</label>
+                            <input name="基本性能" class="form-control validate" type="text">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="试验环境指标范围">试验环境指标范围</label>
-                            <input name="试验环境指标范围" class="form-control validate" type="text">
+                            <textarea class="form-control validate tm-small" name="试验环境指标范围"></textarea>
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="基本性能">基本性能</label>
-                            <input name="基本性能" class="form-control validate" type="text">
+                            <label for="主要性能指标">主要性能指标</label>
+                            <textarea class="form-control validate tm-small" name="主要性能指标"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">常规</h2>
@@ -698,23 +729,24 @@
                             <label for="danwei">（单位：mm）</label>
                         </div>
                         <div class="form-group col-lg-6">
+                            <label for="索直径下限">索直径下限</label>
+                            <label for="验证" style="color:red;display:none" id="szjxx">*不能为空</label>
+                            <input name="索直径下限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="索直径下限" onblur="Valuevalidate11()">
+                        </div>
+                        <div class="form-group col-lg-6">
                             <label for="索直径上限">索直径上限</label>
                             <label for="验证" style="color:red;display:none" id="szjsx">*不能为空</label>
                             <label for="验证" style="color:red;display:none" id="szjsxx">*上限小于下限</label>
                             <input name="索直径上限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="索直径上限" onblur="Valuevalidate11()">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="索直径下限">索直径下限</label>
-                            <label for="验证" style="color:red;display:none" id="szjxx">*不能为空</label>
-                            <input name="索直径下限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="索直径下限" onblur="Valuevalidate11()">
-                        </div>
+
                         <div class="form-group col-lg-6">
                             <label for="索MDF（银质）直径">索MDF（银质）直径</label>
                             <input name="索MDF（银质）直径" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索备注">索备注</label>
-                            <textarea class="form-control validate tm-small" rows="1" name="索备注"></textarea>
+                            <textarea class="form-control validate tm-small" name="索备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">六方对角</h2>
@@ -730,7 +762,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="六方对角备注">六方对角备注</label>
-                            <textarea class="form-control validate tm-small" rows="1" name="六方对角备注"></textarea>
+                            <textarea class="form-control validate tm-small" name="六方对角备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">检测电流</h2>
@@ -760,7 +792,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="静电感度备注">静电感度备注</label>
-                            <textarea class="form-control validate tm-small" rows="1" name="静电感度备注"></textarea>
+                            <textarea class="form-control validate tm-small" name="静电感度备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">作用时间瞬发度</h2>
@@ -774,6 +806,22 @@
                             <label for="danwei">单位</label>
                             <label for="验证" style="color:red;display:none" id="zysjdw">*选择</label>
                             <select class="custom-select" name="作用时间单位" id="作用时间单位" onblur="Unitvalidate11()">
+                                <option value="请选择">请选择</option>
+                                <option value="ns">ns</option>
+                                <option value="μs">μs</option>
+                                <option value="ms">ms</option>
+                                <option value="s">s</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label for="作用时间下限">作用时间下限</label>
+                            <label for="验证" style="color:red;display:none" id="zysjxx">*不能为空</label>
+                            <input name="作用时间下限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="作用时间下限" onblur="UnitAndValuevalidate4()">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <label for="danwei">单位</label>
+                            <label for="验证" style="color:red;display:none" id="zysjxxdw">*选择</label>
+                            <select class="custom-select select2" name="作用时间下限单位" id="作用时间下限单位" onblur="UnitAndValuevalidate4()" onchange="Tb1(this,'select2')">
                                 <option value="请选择">请选择</option>
                                 <option value="ns">ns</option>
                                 <option value="μs">μs</option>
@@ -798,25 +846,10 @@
                                 <option value="s">s</option>
                             </select>
                         </div>
-                        <div class="form-group col-lg-4">
-                            <label for="作用时间下限">作用时间下限</label>
-                            <label for="验证" style="color:red;display:none" id="zysjxx">*不能为空</label>
-                            <input name="作用时间下限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="作用时间下限" onblur="UnitAndValuevalidate4()">
-                        </div>
-                        <div class="form-group col-lg-2">
-                            <label for="danwei">单位</label>
-                            <label for="验证" style="color:red;display:none" id="zysjxxdw">*选择</label>
-                            <select class="custom-select select2" name="作用时间下限单位" id="作用时间下限单位" onblur="UnitAndValuevalidate4()" onchange="Tb1(this,'select2')">
-                                <option value="请选择">请选择</option>
-                                <option value="ns">ns</option>
-                                <option value="μs">μs</option>
-                                <option value="ms">ms</option>
-                                <option value="s">s</option>
-                            </select>
-                        </div>
+
                         <div class="form-group col-lg-6">
                             <label for="作用时间备注">作用时间备注</label>
-                            <textarea class="form-control validate tm-small" rows="1" name="作用时间备注"></textarea>
+                            <textarea class="form-control validate tm-small" name="作用时间备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">安全电流</h2>
@@ -834,21 +867,6 @@
                             <label for="danwei">单位</label>
                             <label for="验证" style="color:red;display:none" id="aqdlzdw">*选择</label>
                             <select class="custom-select" name="安全电流值单位" id="安全电流值单位" onblur="Unitvalidate12()">
-                                <option value="请选择">请选择</option>
-                                <option>mA</option>
-                                <option>A</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-lg-4">
-                            <label for="安全电流值上限">安全电流值上限</label>
-                            <label for="验证" style="color:red;display:none" id="aqdlzsx">*不能为空</label>
-                            <label for="验证" style="color:red;display:none" id="aqdlzsxx">*上限小于下限</label>
-                            <input name="安全电流值上限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="安全电流值上限" onblur="UnitAndValuevalidate5()">
-                        </div>
-                        <div class="form-group col-lg-2">
-                            <label for="danwei">单位</label>
-                            <label for="验证" style="color:red;display:none" id="aqdlzsxdw">*选择</label>
-                            <select class="custom-select select1" name="安全电流值上限单位" id="安全电流值上限单位" onblur="UnitAndValuevalidate5()" onchange="Tb1(this,'select1')">
                                 <option value="请选择">请选择</option>
                                 <option value="mA">mA</option>
                                 <option value="A">A</option>
@@ -868,6 +886,22 @@
                                 <option value="A">A</option>
                             </select>
                         </div>
+                        <div class="form-group col-lg-4">
+                            <label for="安全电流值上限">安全电流值上限</label>
+                            <label for="验证" style="color:red;display:none" id="aqdlzsx">*不能为空</label>
+                            <label for="验证" style="color:red;display:none" id="aqdlzsxx">*上限小于下限</label>
+                            <input name="安全电流值上限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="安全电流值上限" onblur="UnitAndValuevalidate5()">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <label for="danwei">单位</label>
+                            <label for="验证" style="color:red;display:none" id="aqdlzsxdw">*选择</label>
+                            <select class="custom-select select1" name="安全电流值上限单位" id="安全电流值上限单位" onblur="UnitAndValuevalidate5()" onchange="Tb1(this,'select1')">
+                                <option value="请选择">请选择</option>
+                                <option value="mA">mA</option>
+                                <option value="A">A</option>
+                            </select>
+                        </div>
+
                         <div class="form-group col-lg-4">
                             <label for="时间值">时间值</label>
                             <label for="验证" style="color:red;display:none" id="sjz">*不能为空</label>
@@ -889,7 +923,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="安全电流备注">安全电流备注</label>
-                            <textarea class="form-control validate tm-small" rows="1" name="安全电流备注"></textarea>
+                            <textarea class="form-control validate tm-small" name="安全电流备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">安全电压</h2>
@@ -899,20 +933,27 @@
                             <label for="danwei">(V)</label>
                             <input name="安全电压电压" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
                         </div>
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-4">
                             <label for="安全电压电容">安全电压电容</label>
-                            <label for="danwei">(pf)</label>
-                            <input name="安全电压电容" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">
+                            <label for="验证" style="color:red;display:none" id="aqdydr2">*不能为空</label>
+                            <input name="安全电压电容" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="安全电压电容" onblur="Unitvalidate14()">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <label for="danwei">单位</label>
+                            <label for="验证" style="color:red;display:none" id="aqdydrdw2">*选择</label>
+                            <select class="custom-select" name="安全电压电容单位" id="安全电压电容单位" onblur="Unitvalidate14()">
+                                <option value="请选择">请选择</option>
+                                <option value="μf">μf</option>
+                                <option value="pf">pf</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="安全电压电容备注">安全电压电容备注</label>
+                            <textarea class="form-control validate tm-small" name="安全电压电容备注"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">燃烧压力</h2>
                             <label for="danwei">单位：(MPa)</label>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="燃烧压力上限">燃烧压力上限</label>
-                            <label for="验证" style="color:red;display:none" id="rsylsx">*不能为空</label>
-                            <label for="验证" style="color:red;display:none" id="rsylsxx">*上限小于下限</label>
-                            <input name="燃烧压力上限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="燃烧压力上限" onblur="Valuevalidate12()">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力下限">燃烧压力下限</label>
@@ -920,8 +961,15 @@
                             <input name="燃烧压力下限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="燃烧压力下限" onblur="Valuevalidate12()">
                         </div>
                         <div class="form-group col-lg-6">
+                            <label for="燃烧压力上限">燃烧压力上限</label>
+                            <label for="验证" style="color:red;display:none" id="rsylsx">*不能为空</label>
+                            <label for="验证" style="color:red;display:none" id="rsylsxx">*上限小于下限</label>
+                            <input name="燃烧压力上限" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="燃烧压力上限" onblur="Valuevalidate12()">
+                        </div>
+
+                        <div class="form-group col-lg-6">
                             <label for="燃烧压力备注">燃烧压力备注</label>
-                            <textarea class="form-control validate tm-small" rows="1" name="燃烧压力备注"></textarea>
+                            <textarea class="form-control validate tm-small" name="燃烧压力备注"></textarea>
                         </div>
                     </div>
                     <div id="产品示意图1" style="display:none">
@@ -1110,6 +1158,11 @@
         </div>
     </div>
 </body>
+<script src="~/Content/js/autosize.js"></script>
+
+<script>
+    autosize(document.querySelectorAll('textarea'));
+</script>
 </html>
 
 

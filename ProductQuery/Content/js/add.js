@@ -24,6 +24,10 @@
         '<label for="danwei">(mm)</label>' +
         '<input name="高度' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
         '</div>' +
+        '<div class="form-group col-lg-6">' +
+        '<label for="尺寸备注">尺寸备注</label>' +
+        '<textarea class = "form-control validate tm-small" name="尺寸备注' + ModuleNumber(obj) + '"></textarea>' +
+        '</div>' +
         '<input name="常规" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
         '</div>';
     $(addtr).appendTo(tables);
@@ -54,6 +58,12 @@ function 爆速(obj) {
         '<h1 class="tm-site-title mb-0">' + obj + ModuleNumber(obj) + '</h1>' +
         '</div>' +
         '<div class="form-group col-lg-6">' +
+        '<label for="爆速下限">爆速下限 </label>' +
+        '<label for="danwei">(m/s)</label>' +
+        '<label for="验证" style="color:red;display:none" id="bsxx' + ModuleNumber(obj) + '">*不能为空</label>' +
+        '<input name="爆速下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="爆速下限' + ModuleNumber(obj) + '" onblur="Valuevalidate4(' + ModuleNumber(obj) + ')">' +
+        '</div>' +
+        '<div class="form-group col-lg-6">' +
         '<label for="爆速上限">爆速上限 </label>' +
         '<label for="danwei">(m/s)</label>' +
         '<label for="验证" style="color:red;display:none" id="bssx' + ModuleNumber(obj) + '">*不能为空</label>' +
@@ -61,14 +71,8 @@ function 爆速(obj) {
         '<input name="爆速上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="爆速上限' + ModuleNumber(obj) + '" onblur="Valuevalidate4(' + ModuleNumber(obj) + ')">' +
         '</div>' +
         '<div class="form-group col-lg-6">' +
-        '<label for="爆速下限">爆速下限 </label>' +
-        '<label for="danwei">(m/s)</label>' +
-        '<label for="验证" style="color:red;display:none" id="bsxx' + ModuleNumber(obj) + '">*不能为空</label>' +
-        '<input name="爆速下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="爆速下限' + ModuleNumber(obj) + '" onblur="Valuevalidate4(' + ModuleNumber(obj) + ')">' +
-        '</div>' +
-        '<div class="form-group col-lg-6">' +
         '<label for="爆速备注">爆速备注</label>' +
-        '<textarea class = "form-control validate tm-small" rows = "1" name="爆速备注' + ModuleNumber(obj) + '"></textarea>' +
+        '<textarea class = "form-control validate tm-small"  name="爆速备注' + ModuleNumber(obj) + '" ></textarea>' +
         '</div>' +
         '<input name="爆速" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
         '</div>';
@@ -78,7 +82,7 @@ function 爆速(obj) {
 function Valuevalidate4(number) {
     var name1 = document.getElementById("爆速上限" + number);
     var name2 = document.getElementById("爆速下限" + number);
-    if (name1.value < name2.value) {
+    if (parseInt(name1.value) < parseInt(name2.value)) {
         document.getElementById("bssxx" + number).style.display = "";
         Isreturn = true;
     }
@@ -132,7 +136,7 @@ function 接口信息(obj) {
         '</div>' +
         '<div class="form-group col-lg-6">' +
         '<label for="接口信息备注">接口信息备注</label>' +
-        '<textarea class = "form-control validate tm-small" rows = "1" name="接口信息备注' + ModuleNumber(obj) + '"></textarea>' +
+        '<textarea class = "form-control validate tm-small" name="接口信息备注' + ModuleNumber(obj) + '" ></textarea>' +
         '</div>' +
         '<input name="接口信息" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
         '</div>';
@@ -151,6 +155,22 @@ function 直流电阻(obj) {
         '<input name="直流电阻桥个数' + ModuleNumber(obj) + '" class="form-control validate" onkeyup="this.value=this.value.replace(' + /\D/g + ',' + "''" + ')" type="text">' +
         '</div>' +
         '<div class="form-group col-lg-4">' +
+        '<label for="电阻范围值下">电阻范围值下限 </label>' +
+        '<label for="验证" style="color:red;display:none" id="dzfwzxx' + ModuleNumber(obj) + '">*不能为空</label>' +
+        '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="电阻范围值下限' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate1(' + ModuleNumber(obj) + ')">' +
+        '</div>' +
+        '<div class="form-group col-lg-2">' +
+        '<label for="danwei">单位</label>' +
+        '<label for="验证" style="color:red;display:none" id="dzfwzxxdw' + ModuleNumber(obj) + '">*选择</label>' +
+        '<select class="custom-select zldz' + ModuleNumber(obj) + '" name="电阻范围值下单位 ' + ModuleNumber(obj) + '" id="电阻范围值下单位' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate1(' + ModuleNumber(obj) + ')" onchange="Tb1(this,' + "'zldz" + ModuleNumber(obj) + "'" + ')">' +
+        '<option value="请选择">请选择</option>' +
+        '<option value="mΩ">mΩ</option>' +
+        '<option value="Ω">Ω</option>' +
+        '<option value="kΩ">kΩ</option>' +
+        '<option value="MΩ">MΩ</option>' +
+        '</select>' +
+        '</div>' +
+        '<div class="form-group col-lg-4">' +
         '<label for="电阻范围值上">电阻范围值上限 </label>' +
         '<label for="验证" style="color:red;display:none" id="dzfwzsx' + ModuleNumber(obj) + '">*不能为空</label>' +
         '<label for="验证" style="color:red;display:none" id="dzfwzsxx' + ModuleNumber(obj) + '">*上限小于下限</label>' +
@@ -167,22 +187,7 @@ function 直流电阻(obj) {
         '<option value="MΩ">MΩ</option>' +
         '</select>' +
         '</div>' +
-        '<div class="form-group col-lg-4">' +
-        '<label for="电阻范围值下">电阻范围值下限 </label>' +
-        '<label for="验证" style="color:red;display:none" id="dzfwzxx' + ModuleNumber(obj) + '">*不能为空</label>' +
-        '<input name="电阻范围值下' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="电阻范围值下限' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate1(' + ModuleNumber(obj) + ')">' +
-        '</div>' +
-        '<div class="form-group col-lg-2">' +
-        '<label for="danwei">单位</label>' +
-        '<label for="验证" style="color:red;display:none" id="dzfwzxxdw' + ModuleNumber(obj) + '">*选择</label>' +
-        '<select class="custom-select zldz' + ModuleNumber(obj) + '" name="电阻范围值下单位 ' + ModuleNumber(obj) + '" id="电阻范围值下单位' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate1(' + ModuleNumber(obj) + ')" onchange="Tb1(this,' + "'zldz" + ModuleNumber(obj) + "'" + ')">' +
-        '<option value="请选择">请选择</option>' +
-        '<option value="mΩ">mΩ</option>' +
-        '<option value="Ω">Ω</option>' +
-        '<option value="kΩ">kΩ</option>' +
-        '<option value="MΩ">MΩ</option>' +
-        '</select>' +
-        '</div>' +
+       
         '<div class="form-group col-lg-4">' +
         '<label for="电阻值">电阻值 </label>' +
         '<label for="验证" style="color:red;display:none" id="dzz' + ModuleNumber(obj) + '">*不能为空</label>' +
@@ -233,7 +238,7 @@ function 直流电阻(obj) {
         '</div>' +
         '<div class="form-group col-lg-6">' +
         '<label for="电阻备注">电阻备注</label>' +
-        '<textarea class = "form-control validate tm-small" rows = "1" name="电阻备注' + ModuleNumber(obj) + '"></textarea>' +
+        '<textarea class = "form-control validate tm-small" name="电阻备注' + ModuleNumber(obj) + '" ></textarea>' +
         '</div>' +
         '<input name="直流电阻" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
         '</div>';
@@ -245,7 +250,7 @@ function UnitAndValuevalidate1(number) {
     var name2 = document.getElementById("电阻范围值上单位" + number);
     var name3 = document.getElementById("电阻范围值下限" + number);
     var name4 = document.getElementById("电阻范围值下单位" + number);
-    if (name1.value < name3.value) {
+    if (parseInt(name1.value) < parseInt(name3.value)) {
         document.getElementById("dzfwzsxx" + number).style.display = "";
         Isreturn = true;
     }
@@ -360,18 +365,19 @@ function 发火条件(obj) {
         '<input name="发火电压' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
         '</div>' +
         '<div class="form-group col-lg-6">' +
+        '<label for="发火电压下限">发火电压下限</label>' +
+        '<label for="danwei">(V)</label>' +
+        '<label for="验证" style="color:red;display:none" id="fhdyxx' + ModuleNumber(obj) + '">*不能为空</label>' +
+        '<input name="发火电压下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="发火电压下限' + ModuleNumber(obj) + '" onblur="Valuevalidate1(' + ModuleNumber(obj) + ')">' +
+        '</div>' +
+        '<div class="form-group col-lg-6">' +
         '<label for="发火电压上限">发火电压上限</label>' +
         '<label for="danwei">(V)</label>' +
         '<label for="验证" style="color:red;display:none" id="fhdysx' + ModuleNumber(obj) + '">*不能为空</label>' +
         '<label for="验证" style="color:red;display:none" id="fhdysxx' + ModuleNumber(obj) + '">*上限小于下限</label>' +
         '<input name="发火电压上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="发火电压上限' + ModuleNumber(obj) + '" onblur="Valuevalidate1(' + ModuleNumber(obj) + ')">' +
         '</div>' +
-        '<div class="form-group col-lg-6">' +
-        '<label for="发火电压下限">发火电压下限</label>' +
-        '<label for="danwei">(V)</label>' +
-        '<label for="验证" style="color:red;display:none" id="fhdyxx' + ModuleNumber(obj) + '">*不能为空</label>' +
-        '<input name="发火电压下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="发火电压下限' + ModuleNumber(obj) + '" onblur="Valuevalidate1(' + ModuleNumber(obj) + ')">' +
-        '</div>' +
+       
         '<div class="form-group col-lg-4">' +
         '<label for="发火电容">发火电容</label>' +
         '<label for="验证" style="color:red;display:none" id="fhdr' + ModuleNumber(obj) + '">*不能为空</label>' +
@@ -388,7 +394,7 @@ function 发火条件(obj) {
         '</div>' +
         '<div class="form-group col-lg-6">' +
         '<label for="电压发火备注">电压发火备注</label>' +
-        '<textarea class = "form-control validate tm-small" rows = "1" name="电压发火备注' + ModuleNumber(obj) + '"></textarea>' +
+        '<textarea class = "form-control validate tm-small" name="电压发火备注' + ModuleNumber(obj) + '" ></textarea>' +
         '</div>' +
         '<div class="form-group col-lg-12">' +
         '<h2 class="tm-site-title mb-0">电流发火</h2>' +
@@ -402,21 +408,6 @@ function 发火条件(obj) {
         '<label for="danwei">单位</label>' +
         '<label for="验证" style="color:red;display:none" id="fhdldw' + ModuleNumber(obj) + '">*选择</label>' +
         '<select class="custom-select" name="发火电流单位 ' + ModuleNumber(obj) + '" id="发火电流单位' + ModuleNumber(obj) + '" onblur="Unitvalidate5(' + ModuleNumber(obj) + ')">' +
-        '<option value="请选择">请选择</option>' +
-        '<option value="A">A</option>' +
-        '<option value="mA">mA</option>' +
-        '</select>' +
-        '</div>' +
-        '<div class="form-group col-lg-4">' +
-        '<label for="发火电流上限">发火电流上限</label>' +
-        '<label for="验证" style="color:red;display:none" id="fhdlsx' + ModuleNumber(obj) + '">*不能为空</label>' +
-        '<label for="验证" style="color:red;display:none" id="fhdlsxx' + ModuleNumber(obj) + '">*上限小于下限</label>' +
-        '<input name="发火电流上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="发火电流上限' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate2(' + ModuleNumber(obj) + ')">' +
-        '</div>' +
-        '<div class="form-group col-lg-2">' +
-        '<label for="danwei">单位</label>' +
-        '<label for="验证" style="color:red;display:none" id="fhdlsxdw' + ModuleNumber(obj) + '">*选择</label>' +
-        '<select class="custom-select fhdl' + ModuleNumber(obj) + '" name="发火电流上限单位 ' + ModuleNumber(obj) + '" id="发火电流上限单位' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate2(' + ModuleNumber(obj) + ')" onchange="Tb1(this,' + "'fhdl" + ModuleNumber(obj) + "'" + ')">' +
         '<option value="请选择">请选择</option>' +
         '<option value="A">A</option>' +
         '<option value="mA">mA</option>' +
@@ -437,6 +428,22 @@ function 发火条件(obj) {
         '</select>' +
         '</div>' +
         '<div class="form-group col-lg-4">' +
+        '<label for="发火电流上限">发火电流上限</label>' +
+        '<label for="验证" style="color:red;display:none" id="fhdlsx' + ModuleNumber(obj) + '">*不能为空</label>' +
+        '<label for="验证" style="color:red;display:none" id="fhdlsxx' + ModuleNumber(obj) + '">*上限小于下限</label>' +
+        '<input name="发火电流上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="发火电流上限' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate2(' + ModuleNumber(obj) + ')">' +
+        '</div>' +
+        '<div class="form-group col-lg-2">' +
+        '<label for="danwei">单位</label>' +
+        '<label for="验证" style="color:red;display:none" id="fhdlsxdw' + ModuleNumber(obj) + '">*选择</label>' +
+        '<select class="custom-select fhdl' + ModuleNumber(obj) + '" name="发火电流上限单位 ' + ModuleNumber(obj) + '" id="发火电流上限单位' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate2(' + ModuleNumber(obj) + ')" onchange="Tb1(this,' + "'fhdl" + ModuleNumber(obj) + "'" + ')">' +
+        '<option value="请选择">请选择</option>' +
+        '<option value="A">A</option>' +
+        '<option value="mA">mA</option>' +
+        '</select>' +
+        '</div>' +
+       
+        '<div class="form-group col-lg-4">' +
         '<label for="发火电流时间">发火电流时间</label>' +
         '<label for="验证" style="color:red;display:none" id="fhdlsj' + ModuleNumber(obj) + '">*不能为空</label>' +
         '<input name="发火电流时间' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="发火电流时间' + ModuleNumber(obj) + '" onblur="Unitvalidate6(' + ModuleNumber(obj) + ')">' +
@@ -452,7 +459,7 @@ function 发火条件(obj) {
         '</div>' +
         '<div class="form-group col-lg-6">' +
         '<label for="电流发火备注">电流发火备注</label>' +
-        '<textarea class = "form-control validate tm-small" rows = "1" name="电流发火备注' + ModuleNumber(obj) + '"></textarea>' +
+        '<textarea class = "form-control validate tm-small" name="电流发火备注' + ModuleNumber(obj) + '" ></textarea>' +
         '</div>' +
         '<div class="form-group col-lg-12">' +
         '<h2 class="tm-site-title mb-0">机械发火</h2>' +
@@ -492,6 +499,12 @@ function 发火条件(obj) {
         '<input name="击针刺激量' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
         '</div>' +
         '<div class="form-group col-lg-6">' +
+        '<label for="击针力下限">击针力下限</label>' +
+        '<label for="danwei">(N)</label>' +
+        '<label for="验证" style="color:red;display:none" id="jzlxx' + ModuleNumber(obj) + '">*不能为空</label>' +
+        '<input name="击针力下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off"  id="击针力下限' + ModuleNumber(obj) + '" onblur="Valuevalidate2(' + ModuleNumber(obj) + ')">' +
+        '</div>' +
+        '<div class="form-group col-lg-6">' +
         '<label for="击针力上限">击针力上限</label>' +
         '<label for="danwei">(N)</label>' +
         '<label for="验证" style="color:red;display:none" id="jzlsx' + ModuleNumber(obj) + '">*不能为空</label>' +
@@ -499,10 +512,10 @@ function 发火条件(obj) {
         '<input name="击针力上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off"  id="击针力上限' + ModuleNumber(obj) + '" onblur="Valuevalidate2(' + ModuleNumber(obj) + ')">' +
         '</div>' +
         '<div class="form-group col-lg-6">' +
-        '<label for="击针力下限">击针力下限</label>' +
-        '<label for="danwei">(N)</label>' +
-        '<label for="验证" style="color:red;display:none" id="jzlxx' + ModuleNumber(obj) + '">*不能为空</label>' +
-        '<input name="击针力下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off"  id="击针力下限' + ModuleNumber(obj) + '" onblur="Valuevalidate2(' + ModuleNumber(obj) + ')">' +
+        '<label for="击针突出量下限">击针突出量下限</label>' +
+        '<label for="danwei">(mm)</label>' +
+        '<label for="验证" style="color:red;display:none" id="jztclxx' + ModuleNumber(obj) + '">*不能为空</label>' +
+        '<input name="击针突出量下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off"  id="击针突出量下限' + ModuleNumber(obj) + '" onblur="Valuevalidate3(' + ModuleNumber(obj) + ')">' +
         '</div>' +
         '<div class="form-group col-lg-6">' +
         '<label for="击针突出量上限">击针突出量上限</label>' +
@@ -511,12 +524,7 @@ function 发火条件(obj) {
         '<label for="验证" style="color:red;display:none" id="jztclsxx' + ModuleNumber(obj) + '">*上限小于下限</label>' +
         '<input name="击针突出量上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off"  id="击针突出量上限' + ModuleNumber(obj) + '" onblur="Valuevalidate3(' + ModuleNumber(obj) + ')">' +
         '</div>' +
-        '<div class="form-group col-lg-6">' +
-        '<label for="击针突出量下限">击针突出量下限</label>' +
-        '<label for="danwei">(mm)</label>' +
-        '<label for="验证" style="color:red;display:none" id="jztclxx' + ModuleNumber(obj) + '">*不能为空</label>' +
-        '<input name="击针突出量下限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off"  id="击针突出量下限' + ModuleNumber(obj) + '" onblur="Valuevalidate3(' + ModuleNumber(obj) + ')">' +
-        '</div>' +
+       
         '<div class="form-group col-lg-6">' +
         '<label for="弹簧高度">弹簧高度</label>' +
         '<label for="danwei">(mm)</label>' +
@@ -529,7 +537,7 @@ function 发火条件(obj) {
         '</div>' +
         '<div class="form-group col-lg-6">' +
         '<label for="机械发火备注">机械发火备注</label>' +
-        '<textarea class = "form-control validate tm-small" rows = "1" name="机械发火备注' + ModuleNumber(obj) + '"></textarea>' +
+        '<textarea class = "form-control validate tm-small" name="机械发火备注' + ModuleNumber(obj) + '" ></textarea>' +
         '</div>' +
         '<div class="form-group col-lg-12">' +
         '<h2 class="tm-site-title mb-0">发火能量</h2>' +
@@ -558,7 +566,7 @@ function UnitAndValuevalidate2(number) {
     var name2 = document.getElementById("发火电流上限单位" + number);
     var name3 = document.getElementById("发火电流下限" + number);
     var name4 = document.getElementById("发火电流下限单位" + number);
-    if (name1.value < name3.value) {
+    if (parseInt(name1.value) < parseInt(name3.value)) {
         document.getElementById("fhdlsxx" + number).style.display = "";
         Isreturn = true;
     }
@@ -593,7 +601,7 @@ function UnitAndValuevalidate2(number) {
 function Valuevalidate1(number) {
     var name1 = document.getElementById("发火电压上限" + number);
     var name2 = document.getElementById("发火电压下限" + number);
-    if (name1.value < name2.value) {
+    if (parseInt(name1.value) < parseInt(name2.value)) {
         document.getElementById("fhdysxx" + number).style.display = "";
         Isreturn = true;
     }
@@ -622,7 +630,7 @@ function Valuevalidate1(number) {
 function Valuevalidate2(number) {
     var name1 = document.getElementById("击针力上限" + number);
     var name2 = document.getElementById("击针力下限" + number);
-    if (name1.value < name2.value) {
+    if (parseInt(name1.value) < parseInt(name2.value)) {
         document.getElementById("jzlsxx" + number).style.display = "";
         Isreturn = true;
     }
@@ -651,7 +659,7 @@ function Valuevalidate2(number) {
 function Valuevalidate3(number) {
     var name1 = document.getElementById("击针突出量上限" + number);
     var name2 = document.getElementById("击针突出量下限" + number);
-    if (name1.value < name2.value) {
+    if (parseInt(name1.value) < parseInt(name2.value)) {
         document.getElementById("jztclsxx" + number).style.display = "";
         Isreturn = true;
     }
@@ -807,22 +815,8 @@ function 延期时间(obj) {
         '<div class="form-group col-lg-6">' +
         '<label for="温度条件">温度条件 </label>' +
         '<label for="danwei">(摄氏度) </label>' +
-        '<input name="温度条件' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off">' +
-        '</div>' +
-        '<div class="form-group col-lg-4">' +
-        '<label for="延期时间上限">延期时间上限 </label>' +
-        '<label for="验证" style="color:red;display:none" id="yqsjsx' + ModuleNumber(obj) + '">*不能为空</label>' +
-        '<label for="验证" style="color:red;display:none" id="yqsjsxx' + ModuleNumber(obj) + '">*上限小于下限</label>' +
-        '<input name="延期时间上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="延期时间上限' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate3(' + ModuleNumber(obj) + ')">' +
-        '</div>' +
-        '<div class="form-group col-lg-2">' +
-        '<label for="danwei">单位</label>' +
-        '<label for="验证" style="color:red;display:none" id="yqsjsxdw' + ModuleNumber(obj) + '">*选择</label>' +
-        '<select class="custom-select yqsj' + ModuleNumber(obj) + '" name="延期时间上限单位 ' + ModuleNumber(obj) + '" id="延期时间上限单位' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate3(' + ModuleNumber(obj) + ')" onchange="Tb1(this,' + "'yqsj" + ModuleNumber(obj) + "'" + ')">' +
-        '<option value="请选择">请选择</option>' +
-        '<option value="ms">ms</option>' +
-        '<option value="s">s</option>' +
-        '</select>' +
+        '<label for="验证" style="color:red;display:none" id="wdtj' + ModuleNumber(obj) + '">*格式错误</label>' +
+        '<input name="温度条件' + ModuleNumber(obj) + '" class="form-control validate" type="text" id="温度条件' + ModuleNumber(obj) + '" onblur="RegularExpression(' + ModuleNumber(obj) + ')">' +
         '</div>' +
         '<div class="form-group col-lg-4">' +
         '<label for="延期时间下限">延期时间下限 </label>' +
@@ -839,6 +833,22 @@ function 延期时间(obj) {
         '</select>' +
         '</div>' +
         '<div class="form-group col-lg-4">' +
+        '<label for="延期时间上限">延期时间上限 </label>' +
+        '<label for="验证" style="color:red;display:none" id="yqsjsx' + ModuleNumber(obj) + '">*不能为空</label>' +
+        '<label for="验证" style="color:red;display:none" id="yqsjsxx' + ModuleNumber(obj) + '">*上限小于下限</label>' +
+        '<input name="延期时间上限' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="延期时间上限' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate3(' + ModuleNumber(obj) + ')">' +
+        '</div>' +
+        '<div class="form-group col-lg-2">' +
+        '<label for="danwei">单位</label>' +
+        '<label for="验证" style="color:red;display:none" id="yqsjsxdw' + ModuleNumber(obj) + '">*选择</label>' +
+        '<select class="custom-select yqsj' + ModuleNumber(obj) + '" name="延期时间上限单位 ' + ModuleNumber(obj) + '" id="延期时间上限单位' + ModuleNumber(obj) + '" onblur="UnitAndValuevalidate3(' + ModuleNumber(obj) + ')" onchange="Tb1(this,' + "'yqsj" + ModuleNumber(obj) + "'" + ')">' +
+        '<option value="请选择">请选择</option>' +
+        '<option value="ms">ms</option>' +
+        '<option value="s">s</option>' +
+        '</select>' +
+        '</div>' +
+        
+        '<div class="form-group col-lg-4">' +
         '<label for="延期时间值">延期时间值 </label>' +
         '<label for="验证" style="color:red;display:none" id="yqsjz' + ModuleNumber(obj) + '">*不能为空</label>' +
         '<input name="延期时间值' + ModuleNumber(obj) + '" class="form-control validate" type="text" onkeyup="clearNoNum(this)" autocomplete="off" id="延期时间值' + ModuleNumber(obj) + '" onblur="Unitvalidate10(' + ModuleNumber(obj) + ')">' +
@@ -854,7 +864,7 @@ function 延期时间(obj) {
         '</div>' +
         '<div class="form-group col-lg-6">' +
         '<label for="延期时间备注">延期时间备注</label>' +
-        '<textarea class = "form-control validate tm-small" rows = "1" name="延期时间备注' + ModuleNumber(obj) + '"></textarea>' +
+        '<textarea class = "form-control validate tm-small" name="延期时间备注' + ModuleNumber(obj) + '"</textarea>' +
         '</div>' +
         '<input name="延期时间" style="display:none" value="' + ModuleNumber(obj) + '" type="text">' +
         '</div>';
@@ -866,7 +876,7 @@ function UnitAndValuevalidate3(number) {
     var name2 = document.getElementById("延期时间上限单位" + number);
     var name3 = document.getElementById("延期时间下限" + number);
     var name4 = document.getElementById("延期时间下限单位" + number);
-    if (name1.value < name3.value) {
+    if (parseInt(name1.value) < parseInt(name3.value)) {
         document.getElementById("yqsjsxx" + number).style.display = "";
         Isreturn = true;
     }
@@ -898,6 +908,25 @@ function UnitAndValuevalidate3(number) {
 
 }
 
+function RegularExpression(number) {
+    var name1 = document.getElementById("温度条件" + number);
+    if (name1.value != "") {
+        if (!name1.value.match(/^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$/) && !name1.value.match(/^-?[1-9]\d*$/)) {
+            document.getElementById("wdtj" + number).style.display = "";
+            Isreturn = true;
+        }
+        else {
+            document.getElementById("wdtj" + number).style.display = "none";
+            Isreturn = false;
+        }
+    }
+    else {
+        document.getElementById("wdtj" + number).style.display = "none";
+        Isreturn = false;
+    }
+    
+}
+
 function Unitvalidate10(number) {
     var name1 = document.getElementById("延期时间值" + number);
     var name2 = document.getElementById("延期时间值单位" + number);
@@ -921,7 +950,7 @@ function Unitvalidate10(number) {
 function Valuevalidate11() {
     var name1 = document.getElementById("索直径上限");
     var name2 = document.getElementById("索直径下限");
-    if (name1.value < name2.value) {
+    if (parseInt(name1.value) < parseInt(name2.value)) {
         document.getElementById("szjsxx").style.display = "";
         Isreturn = true;
     }
@@ -950,7 +979,7 @@ function Valuevalidate11() {
 function Valuevalidate12() {
     var name1 = document.getElementById("燃烧压力上限");
     var name2 = document.getElementById("燃烧压力下限");
-    if (name1.value < name2.value) {
+    if (parseInt(name1.value) < parseInt(name2.value)) {
         document.getElementById("rsylsxx").style.display = "";
         Isreturn = true;
     }
@@ -1036,12 +1065,32 @@ function Unitvalidate13() {
     }
 }
 
+function Unitvalidate14() {
+    var name1 = document.getElementById("安全电压电容");
+    var name2 = document.getElementById("安全电压电容单位");
+    if (name1.value == "" && name2.value == "请选择") {
+        document.getElementById("aqdydr2").style.display = "none";
+        document.getElementById("aqdydrdw2").style.display = "none";
+        Isreturn = false;
+    }
+    else if (name1.value != "" && name2.value != "请选择") {
+        document.getElementById("aqdydr2").style.display = "none";
+        document.getElementById("aqdydrdw2").style.display = "none";
+        Isreturn = false;
+    }
+    else {
+        document.getElementById("aqdydr2").style.display = "";
+        document.getElementById("aqdydrdw2").style.display = "";
+        Isreturn = true;
+    }
+}
+
 function UnitAndValuevalidate4() {
     var name1 = document.getElementById("作用时间上限");
     var name2 = document.getElementById("作用时间上限单位");
     var name3 = document.getElementById("作用时间下限");
     var name4 = document.getElementById("作用时间下限单位");
-    if (name1.value < name3.value) {
+    if (parseInt(name1.value) < parseInt(name3.value)) {
         document.getElementById("zysjsxx").style.display = "";
         Isreturn = true;
     }
@@ -1078,7 +1127,7 @@ function UnitAndValuevalidate5() {
     var name2 = document.getElementById("安全电流值上限单位");
     var name3 = document.getElementById("安全电流值下限");
     var name4 = document.getElementById("安全电流值下限单位");
-    if (name1.value < name3.value) {
+    if (parseInt(name1.value) < parseInt(name3.value)) {
         document.getElementById("aqdlzsxx").style.display = "";
         Isreturn = true;
     }

@@ -84,7 +84,7 @@ namespace ProductQuery.Models
         [DisplayName("桥丝数目")]
         public int? jssm { get; set; }
         [DisplayName("贮存寿命")]
-        public int? zcsm { get; set; }
+        public double? zcsm { get; set; }
         [DisplayName("贮存寿命备注")]
         public string ccsmbz { get; set; }
         [DisplayName("可靠度")]
@@ -159,6 +159,8 @@ namespace ProductQuery.Models
         public double? rsylsx { get; set; }
         [DisplayName("燃烧压力备注")]
         public string rsylbz { get; set; }
+        [DisplayName("安全电压电容备注")]
+        public string aqdydrbz { get; set; }
 
         [NotMapped]
         [DisplayName("单位")]

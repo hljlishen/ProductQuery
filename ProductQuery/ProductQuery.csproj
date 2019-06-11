@@ -179,7 +179,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\fontawesome.min.css" />
+    <Content Include="Content\css\img.css" />
     <Content Include="Content\css\templatemo-style.css" />
+    <Content Include="Content\css\textarea.css" />
     <Content Include="Content\dynamicCondition.js" />
     <Content Include="Content\E-Charts3\bmap.min.js" />
     <Content Include="Content\E-Charts3\china.js" />
@@ -223,10 +225,14 @@
     <Content Include="Content\jquery-ui-datepicker\jquery-ui.theme.min.css" />
     <Content Include="Content\jquery-ui-datepicker\LICENSE.txt" />
     <Content Include="Content\js\add.js" />
+    <Content Include="Content\js\autosize.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\Chart.min.js" />
+    <Content Include="Content\js\JavaScript.js" />
     <Content Include="Content\js\jquery-1.11.2.min.js" />
     <Content Include="Content\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\message.js" />
     <Content Include="Content\js\moment.min.js" />
     <Content Include="Content\js\tooplate-scripts.js" />
     <Content Include="Content\js\update.js" />
@@ -347,6 +353,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="image\6890dce2603483196b55643d610bd9c.png" />
     <Content Include="image\db9af6d6813de0e4ca1847e63ecddc8.png" />
+    <Content Include="image\imgIcons.png" />
     <Content Include="image\管理员.jpg" />
     <Content Include="Content\jquery-ui-datepicker\package.json" />
     <Content Include="Content\webfonts\fa-brands-400.eot" />

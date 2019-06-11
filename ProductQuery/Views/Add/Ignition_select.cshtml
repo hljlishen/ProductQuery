@@ -17,11 +17,24 @@
     <script src="~/Content/js/jquery-3.3.1.min.js"></script>
     <script src="~/Content/jquery-ui-datepicker/jquery-ui.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
-    <script>
-    </script>
-    <script type="text/javascript">
-       
-    </script>
+    <link href="~/Content/css/img.css" rel="stylesheet" />
+    <script src="~/Content/js/JavaScript.js"></script>
+    <link href="~/Content/css/textarea.css" rel="stylesheet" />
+
+    <style>
+
+        textarea {
+            padding: 10px;
+            vertical-align: top;
+            width: 200px;
+        }
+
+            textarea:focus {
+                outline-style: solid;
+                outline-width: 2px;
+            }
+    </style>
+
 </head>
 <body>
     @{
@@ -53,14 +66,14 @@
                                         </ul>
                                     </td>
                                 </tr>
-                                @for (int i = 1; i <= img.Count; i++)
+                                @if (img.Count != 0)
                                 {
                                     <tr>
                                         <td class="tm-product-name">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link d-block" href="#产品示意图 @i" name="产品示意图">
-                                                        产品示意图 @i
+                                                    <a class="nav-link d-block" href="#imgDefault" name="产品示意图">
+                                                        产品示意图
                                                     </a>
                                                 </li>
                                             </ul>
@@ -249,7 +262,7 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="用途">用途</label>
-                                @Html.TextBox("用途", ig.yt.ToString(), new { @class = "form-control validate" })
+                                @Html.TextArea("用途", ig.yt.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
                         } }
                     @{ if (ig.xtzc.ToString() != "")
@@ -313,28 +326,15 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="贮存寿命备注">贮存寿命备注</label>
-                                @Html.TextArea("贮存寿命备注", ig.ccsmbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("贮存寿命备注", ig.ccsmbz.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
+
                         } }
                     @{ if (ig.kkd.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="可靠度">可靠度</label>
                                 @Html.TextBox("可靠度", ig.kkd.ToString(), new { @class = "form-control validate" })
-                            </div>
-                        } }
-                    @{ if (ig.zyxnzb.ToString() != "")
-                        {
-                            <div class="form-group col-lg-6">
-                                <label for="主要性能指标">主要性能指标</label>
-                                @Html.TextBox("主要性能指标", ig.zyxnzb.ToString(), new { @class = "form-control validate" })
-                            </div>
-                        } }
-                    @{ if (ig.syhjzsfw.ToString() != "")
-                        {
-                            <div class="form-group col-lg-6">
-                                <label for="试验环境指标范围">试验环境指标范围</label>
-                                @Html.TextBox("试验环境指标范围", ig.syhjzsfw.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
                     @{ if (ig.jbxn.ToString() != "")
@@ -344,6 +344,21 @@
                                 @Html.TextBox("基本性能", ig.jbxn.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
+                    @{ if (ig.zyxnzb.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="主要性能指标">主要性能指标</label>
+                                @Html.TextArea("主要性能指标", ig.zyxnzb.ToString(), new { @class = "form-control validate tm-small txtaMain", autoHeight = "true" })
+                            </div>
+                        } }
+                    @{ if (ig.syhjzsfw.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="试验环境指标范围">试验环境指标范围</label>
+                                @Html.TextArea("试验环境指标范围", ig.syhjzsfw.ToString(), new { @class = "form-control validate tm-small txtaMain", autoHeight = "true" })
+                            </div>
+                        } }
+
                     @{ if (ig.kd.ToString() != "" || ig.jx.ToString() != "" || ig.zcd.ToString() != "")
                         {
                             <div class="form-group col-lg-12">
@@ -390,13 +405,6 @@
                                 <label for="danwei">（单位：mm）</label>
                             </div>
                         } }
-                    @{ if (ig.szjsx.ToString() != "")
-                        {
-                            <div class="form-group col-lg-6">
-                                <label for="索直径上限">索直径上限</label>
-                                @Html.TextBox("索直径上限", ig.szjsx.ToString(), new { @class = "form-control validate" })
-                            </div>
-                        } }
                     @{ if (ig.szjxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
@@ -404,6 +412,14 @@
                                 @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
+                    @{ if (ig.szjsx.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="索直径上限">索直径上限</label>
+                                @Html.TextBox("索直径上限", ig.szjsx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+
                     @{ if (ig.sMDFyzzj.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
@@ -415,7 +431,7 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="索备注">索备注</label>
-                                @Html.TextArea("索备注", ig.sbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("索备注", ig.sbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         } }
                     @{ if (ig.db.ToString() != "" || ig.djx.ToString() != "" || ig.lfdjbz.ToString() != "")
@@ -443,7 +459,7 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="六方对角备注">六方对角备注</label>
-                                @Html.TextArea("六方对角备注", ig.lfdjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("六方对角备注", ig.lfdjbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         } }
                     @{ if (ig.jcdl.ToString() != "")
@@ -469,7 +485,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="静电电容">静电电容</label>
                                 <label for="danwei">(pf)</label>
-                                @Html.TextBox("静电电容", ((ig.jddr)* 1000000).ToString(), new { @class = "form-control validate" })
+                                @Html.TextBox("静电电容", ((ig.jddr) * 1000000).ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
                     @{ if (ig.jddy.ToString() != "")
@@ -492,7 +508,7 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="静电感度备注">静电感度备注</label>
-                                @Html.TextArea("静电感度备注", ig.jdgdbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("静电感度备注", ig.jdgdbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         } }
                     @{ if (ig.zysjbz.ToString() != "")
@@ -502,7 +518,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="作用时间备注">作用时间备注</label>
-                                @Html.TextArea("作用时间备注", ig.zysjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("作用时间备注", ig.zysjbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         } }
                     @{ if (ig.jgs.ToString() != "" || ig.glz.ToString() != "" || ig.aqdlbz.ToString() != "")
@@ -530,7 +546,7 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="安全电流备注">安全电流备注</label>
-                                @Html.TextArea("安全电流备注", ig.aqdlbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("安全电流备注", ig.aqdlbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         } }
                     @{ if (ig.aqdydy.ToString() != "" || ig.aqdydr.ToString() != "")
@@ -547,12 +563,11 @@
                                 @Html.TextBox("安全电压电压", ig.aqdydy.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
-                    @{ if (ig.aqdydr.ToString() != "")
+                    @{ if (ig.aqdydrbz.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
-                                <label for="安全电压电容">安全电压电容</label>
-                                <label for="danwei">(pf)</label>
-                                @Html.TextBox("安全电压电容", ((ig.aqdydr)* 1000000).ToString(), new { @class = "form-control validate" })
+                                <label for="安全电压电容备注">安全电压电容备注</label>
+                                @Html.TextArea("安全电压电容备注", ig.aqdydrbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         } }
                     @{ if (ig.rsylsx.ToString() != "" || ig.rsylxx.ToString() != "" || ig.rsylbz.ToString() != "")
@@ -562,13 +577,6 @@
                                 <label for="danwei">单位：(MPa)</label>
                             </div>
                         } }
-                    @{ if (ig.rsylsx.ToString() != "")
-                        {
-                            <div class="form-group col-lg-6">
-                                <label for="燃烧压力上限">燃烧压力上限</label>
-                                @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate" })
-                            </div>
-                        } }
                     @{ if (ig.rsylxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
@@ -576,24 +584,32 @@
                                 @Html.TextBox("燃烧压力下限", ig.rsylxx.ToString(), new { @class = "form-control validate" })
                             </div>
                         } }
+                    @{ if (ig.rsylsx.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="燃烧压力上限">燃烧压力上限</label>
+                                @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        } }
+
                     @{ if (ig.rsylbz.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="燃烧压力备注">燃烧压力备注</label>
-                                @Html.TextArea("燃烧压力备注", ig.rsylbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("燃烧压力备注", ig.rsylbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         } }
-                    @{int imgs = 1; }
-                    @foreach (var im in img)
-                    {
-                        <div class="form-group col-lg-12" id="产品示意图 @imgs">
-                            <h1 class="tm-site-title mb-0">产品示意图 @imgs</h1>
-                        </div>
-                        imgs++;
-                        <div class="tm-avatar-container">
-                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(im.cpy)" alt="" class="tm-avatar img-fluid mb-4">
-                        </div>
-                    }
+                    <div id="imgDefault" class="form-group col-lg-12">
+                        @if (img.Count != 0)
+                        {
+                            <h1 class="tm-site-title mb-0">产品示意图</h1><br>
+                        }
+
+                        @foreach (var im in img)
+                        {
+                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(im.cpy)" class="imgItem" data-src="data:image/jpeg;base64,@Convert.ToBase64String(im.cpy)">
+                        }
+                    </div>
                     @{int cons = 1; }
                     @foreach (var con in conv)
                     {
@@ -632,6 +648,13 @@
                                 @Html.TextBox("高度", con.gd.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
+                        if (con.ccbz.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="尺寸备注">尺寸备注</label>
+                                @Html.TextArea("尺寸备注", con.ccbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
+                            </div>
+                        }
                     }
                     @{int cabs = 1; }
                     @foreach (var cab in cable)
@@ -656,14 +679,6 @@
                             <h1 class="tm-site-title mb-0">爆速 @speeds</h1>
                         </div>
                         speeds++;
-                        if (s.bssx.ToString() != "")
-                        {
-                            <div class="form-group col-lg-6">
-                                <label for="爆速上限">爆速上限</label>
-                                <label for="danwei">(m/s)</label>
-                                @Html.TextBox("爆速上限", s.bssx.ToString(), new { @class = "form-control validate" })
-                            </div>
-                        }
                         if (s.bsxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
@@ -672,11 +687,20 @@
                                 @Html.TextBox("爆速下限", s.bsxx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
+                        if (s.bssx.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="爆速上限">爆速上限</label>
+                                <label for="danwei">(m/s)</label>
+                                @Html.TextBox("爆速上限", s.bssx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+
                         if (s.bsbz.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="爆速备注">爆速备注</label>
-                                @Html.TextArea("爆速备注", s.bsbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("爆速备注", s.bsbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         }
                     }
@@ -722,7 +746,7 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="接口信息备注">接口信息备注</label>
-                                @Html.TextArea("接口信息备注", inte.jkxxbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("接口信息备注", inte.jkxxbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         }
                     }
@@ -744,7 +768,7 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="电阻备注">电阻备注</label>
-                                @Html.TextArea("电阻备注", d.dzbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("电阻备注", d.dzbz.ToString(), new { @class = "form-control validate tm-small", autoHeight = "true" })
                             </div>
                         }
                     }
@@ -770,14 +794,6 @@
                                 @Html.TextBox("发火电压", ign.fhdy.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.fhdysx.ToString() != "")
-                        {
-                            <div class="form-group col-lg-6">
-                                <label for="发火电压上限">发火电压上限</label>
-                                <label for="danwei">(V)</label>
-                                @Html.TextBox("发火电压上限", ign.fhdysx.ToString(), new { @class = "form-control validate" })
-                            </div>
-                        }
                         if (ign.fhdyxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
@@ -786,18 +802,27 @@
                                 @Html.TextBox("发火电压下限", ign.fhdyxx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
+                        if (ign.fhdysx.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="发火电压上限">发火电压上限</label>
+                                <label for="danwei">(V)</label>
+                                @Html.TextBox("发火电压上限", ign.fhdysx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
+
                         if (ign.fhdybz.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="电压发火备注">电压发火备注</label>
-                                @Html.TextArea("电压发火备注", ign.fhdybz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("电压发火备注", ign.fhdybz.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
                         }
                         if (ign.dlfhbz.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
                                 <label for="电流发火备注">电流发火备注</label>
-                                @Html.TextArea("电流发火备注", ign.dlfhbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("电流发火备注", ign.dlfhbz.ToString(), new { @class = "form-control validate tm-small"})
                             </div>
                         }
                         if (ign.jzcjl.ToString() != "")
@@ -808,6 +833,14 @@
                                 @Html.TextBox("击针刺激量", ign.jzcjl.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
+                        if (ign.jzlxx.ToString() != "")
+                        {
+                            <div class="form-group col-lg-6">
+                                <label for="击针力下限">击针力下限</label>
+                                <label for="danwei">(N)</label>
+                                @Html.TextBox("击针力下限", ign.jzlxx.ToString(), new { @class = "form-control validate" })
+                            </div>
+                        }
                         if (ign.jzlsx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
@@ -816,12 +849,13 @@
                                 @Html.TextBox("击针力上限", ign.jzlsx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.jzlxx.ToString() != "")
+
+                        if (ign.jztclxx.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
-                                <label for="击针力下限">击针力下限</label>
-                                <label for="danwei">(N)</label>
-                                @Html.TextBox("击针力下限", ign.jzlxx.ToString(), new { @class = "form-control validate" })
+                                <label for="击针突出量下限">击针突出量下限</label>
+                                <label for="danwei">(mm)</label>
+                                @Html.TextBox("击针突出量下限", ign.jztclxx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
                         if (ign.jztclsx.ToString() != "")
@@ -832,14 +866,7 @@
                                 @Html.TextBox("击针突出量上限", ign.jztclsx.ToString(), new { @class = "form-control validate" })
                             </div>
                         }
-                        if (ign.jztclxx.ToString() != "")
-                        {
-                            <div class="form-group col-lg-6">
-                                <label for="击针突出量下限">击针突出量下限</label>
-                                <label for="danwei">(mm)</label>
-                                @Html.TextBox("击针突出量下限", ign.jztclxx.ToString(), new { @class = "form-control validate" })
-                            </div>
-                        }
+
                         if (ign.thgd.ToString() != "")
                         {
                             <div class="form-group col-lg-6">
@@ -860,7 +887,7 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="机械发火备注">机械发火备注</label>
-                                @Html.TextArea("机械发火备注", ign.jxfhbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("机械发火备注", ign.jxfhbz.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
                         }
                     }
@@ -883,7 +910,7 @@
                         {
                             <div class="form-group col-lg-6">
                                 <label for="延期时间备注">延期时间备注</label>
-                                @Html.TextArea("延期时间备注", de.yqsjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("延期时间备注", de.yqsjbz.ToString(), new { @class = "form-control validate tm-small"})
                             </div>
                         }
                     }
@@ -891,7 +918,170 @@
             </div>
         </div>
     </div>
+    <script>
+        (function () {
+            var LightBox = function (options) {
+                this.imgListParent = document.getElementById(options.imgListParent);   //图片列表的父元素
+                this.imgItemClass = options.imgItemClass;   //图片的className
+                this.idx = 0;  //图片的索引，初始值为0
+                this.isShowPage = options.isShowPage || false;    //是否显示分页，默认不显示
+                this.init();
+            };
+            //初始化
+            LightBox.prototype.init = function () {
+                this.renderDOM();
+                this.imgListClick();
+                this.nextBtnClick();
+                this.prevBtnClick();
+                this.closeBtnClick();
+            };
+            //渲染弹窗
+            LightBox.prototype.renderDOM = function () {
+
+                var imgModule = document.createElement("div");
+                imgModule.id = "imgModule";
+
+                var oHtml = "";
+                oHtml += '<div class="mask"></div>';
+                oHtml += '<div class="lightBox">';
+                oHtml += '<div class="lightBoxContent">';
+                oHtml += '<img src="images/loading.gif" alt="" id="imgLoader"/>';
+                oHtml += '<img alt="" id="imgLight"/>';
+                oHtml += '</div>';
+                oHtml += '<span class="btn lightBoxSprite" id="lightBoxPrev"></span>';
+                oHtml += '<span class="btn lightBoxSprite" id="lightBoxNext"></span>';
+                oHtml += '<span class="closeBtn lightBoxSprite" id="closeBtn"></span>';
+                oHtml += '<div class="lightBoxPagination" id="lightBoxPagination"></div>';
+                oHtml += '</div>';
+
+                imgModule.innerHTML = oHtml;
+                document.body.appendChild(imgModule);
+            };
+            //分页
+            LightBox.prototype.pagination = function (idx) {
+                var imgList = this.getByClass(this.imgListParent, this.imgItemClass);
+                var pagination = document.getElementById("lightBoxPagination");
+                var page = "";
+
+                for (var i = 0; i < imgList.length; i++) {
+                    if (idx == i) {
+                        page += '<span class="current"></span>';
+                    } else {
+                        page += '<span></span>';
+                    }
+                }
+                if (this.isShowPage) {
+                    pagination.innerHTML = page;
+                }
+            };
+            //点击图片弹出弹窗
+            LightBox.prototype.imgListClick = function () {
+                var imgList = this.getByClass(this.imgListParent, this.imgItemClass);
+                var imgModule = document.getElementById("imgModule");
+                var self = this;
+
+                for (var i = 0; i < imgList.length; i++) {
+                    imgList[i].index = i;
+
+                    imgList[i].onclick = function () {
+                        imgModule.style.display = "block";
+                        var src = this.getAttribute("data-src");
+                        self.idx = this.index;
+
+                        self.imgLoad(src);
+                        self.pagination(self.idx);
+                    }
+                }
+
+            };
+            //上一张
+            LightBox.prototype.prevBtnClick = function () {
+                var prevBtn = document.getElementById("lightBoxPrev");
+                var self = this;
+
+                prevBtn.onclick = function () {
+                    var imgList = self.getByClass(self.imgListParent, self.imgItemClass);
+
+                    self.idx--;
+
+                    if (self.idx < 0) {
+                        self.idx = imgList.length - 1;
+                    }
+
+                    var src = imgList[self.idx].getAttribute("data-src");
+                    self.imgLoad(src);
+                    self.pagination(self.idx);
+                }
+            };
+            //下一张
+            LightBox.prototype.nextBtnClick = function () {
+                var nextBtn = document.getElementById("lightBoxNext");
+                var self = this;
+
+                nextBtn.onclick = function () {
+                    var imgList = self.getByClass(self.imgListParent, self.imgItemClass);
+
+                    self.idx++;
+
+                    if (self.idx >= imgList.length) {
+                        self.idx = 0;
+                    }
+
+                    var src = imgList[self.idx].getAttribute("data-src");
+                    self.imgLoad(src);
+                    self.pagination(self.idx);
+                }
+            };
+            //图片预加载
+            LightBox.prototype.imgLoad = function (src, callback) {
+                var imgLight = document.getElementById("imgLight");
+                var loader = document.getElementById("imgLoader");
+                loader.style.display = "block";
+                // imgLight.src = "";
+
+                var img = new Image();
+                img.onload = function () {
+                    loader.style.display = "none";
+                    imgLight.src = src;
+                };
+                img.src = src;
+            };
+            //关闭弹窗
+            LightBox.prototype.closeBtnClick = function () {
+                var closeBtn = document.getElementById("closeBtn");
+                var imgModule = document.getElementById("imgModule");
+
+                closeBtn.onclick = function () {
+                    imgModule.style.display = "none";
+                }
+            };
+            //封装获取元素函数
+            LightBox.prototype.getByClass = function (oParent, oClass) {
+                var oEle = oParent.getElementsByTagName("*");
+                var oResult = [];
+
+                for (var i = 0; i < oEle.length; i++) {
+                    if (oEle[i].className == oClass) {
+                        oResult.push(oEle[i]);
+                    }
+                }
+                return oResult;
+            };
+            window.LightBox = LightBox;
+        })();
+
+        new LightBox({
+            imgListParent: "imgDefault",
+            imgItemClass: "imgItem",
+            isShowPage: true
+        });
+    </script>
 </body>
+<script src="~/Content/js/autosize.js"></script>
+
+<script>
+    autosize(document.querySelectorAll('textarea'));
+</script>
 </html>
 
 

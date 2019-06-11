@@ -26,5 +26,7 @@ namespace ProductQuery.Models
         public double? cd { get; set; }
         [DisplayName("高度")]
         public double? gd { get; set; }
+        [DisplayName("尺寸备注")]
+        public string ccbz { get; set; }
     }
 }

@@ -32,7 +32,6 @@ namespace ProductQuery.Controllers
         {
             return View();
         }
-
         public ActionResult Information(List<Ignition> ignitions)
         {
             if (ignitions == null)
@@ -193,7 +192,7 @@ namespace ProductQuery.Controllers
             {
                 try
                 {
-                    ignition.zcsm = int.Parse(collection["贮存寿命"]);
+                    ignition.zcsm = double.Parse(collection["贮存寿命"]);
                 }
                 catch (Exception)
                 {
@@ -323,13 +322,17 @@ namespace ProductQuery.Controllers
             ignition.aqdlbz = collection["安全电流备注"];
             if (collection["安全电压电压"] != "")
                 ignition.aqdydy = double.Parse(collection["安全电压电压"]);
-            if (collection["安全电压电容"] != "")
+            if (collection["安全电压电容单位"] != "请选择" && collection["安全电压电容"] != "")
             {
-                string unit = "pf";
+                string unit = collection["安全电压电容单位"];
                 double value = double.Parse(collection["安全电压电容"]);
                 ignition.aqdydr = CapacitanceUnitConversion(unit, value);
             }
-
+            else if (collection["安全电压电容"] == "" && collection["安全电压电容单位"] != "请选择")
+                IsUnitvalue = true;
+            else if (collection["安全电压电容"] != "" && collection["安全电压电容单位"] == "请选择")
+                IsUnitvalue = true;
+            ignition.aqdydrbz = collection["安全电压电容备注"];
             if (collection["燃烧压力上限"] != "" && collection["燃烧压力下限"] != "")
             {
                 ignition.rsylsx = double.Parse(collection["燃烧压力上限"]);
@@ -480,6 +483,7 @@ namespace ProductQuery.Controllers
                         conventional.cd = double.Parse(collection["常规长度" + i]);
                     if (collection["高度" + i] != "")
                         conventional.gd = double.Parse(collection["高度" + i]);
+                    conventional.ccbz = collection["尺寸备注" + i];
                     if (id != -1 && collection["常规id" + i] != null)
                     {
                         conventional.Id = int.Parse(collection["常规id" + i]);

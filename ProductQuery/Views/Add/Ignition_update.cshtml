@@ -19,6 +19,19 @@
     <script src="~/Content/jquery-ui-datepicker/jquery-ui.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script src="~/Content/js/update.js"></script>
+    <style>
+
+        textarea {
+            padding: 10px;
+            vertical-align: top;
+            width: 200px;
+        }
+
+            textarea:focus {
+                outline-style: solid;
+                outline-width: 2px;
+            }
+    </style>
     <script type="text/javascript">
          @{
         List<ProductQuery.Models.Picture> img = (List<ProductQuery.Models.Picture>)ViewData["img"];
@@ -838,7 +851,7 @@
         }
     </script>
 </head>
-<body >
+<body>
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-2 form-control container tm-mt-big tm-bg-primary-dark tm-block tm-block-h-auto" style="margin-left:13%;height:10%">
@@ -860,162 +873,162 @@
                                 </tr>
                                 @for (int i = 1; i <= img.Count; i++)
                                 {
-                                <tr id="@count">
-                                    <td class="tm-product-name" >
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#产品示意图 @i" name="产品示意图">
-                                                    产品示意图 @i
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#"class="tm-product-delete-link" onclick="delAchieve(@count)">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr id="@count">
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#产品示意图 @i" name="产品示意图">
+                                                        产品示意图 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     count++;
                                 }
                                 @for (int i = 1; i <= conv.Count; i++)
                                 {
-                                <tr id="@count">
-                                    <td class="tm-product-name" >
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#常规 @i" name="常规">
-                                                    常规 @i
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr id="@count">
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#常规 @i" name="常规">
+                                                        常规 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     count++;
                                 }
                                 @for (int i = 1; i <= cable.Count; i++)
                                 {
-                                <tr id="@count">
-                                    <td class="tm-product-name" >
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#索普通直径 @i" name="索普通直径">
-                                                    索普通直径 @i
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr id="@count">
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#索普通直径 @i" name="索普通直径">
+                                                        索普通直径 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     count++;
                                 }
                                 @for (int i = 1; i <= speed.Count; i++)
                                 {
-                                <tr id="@count">
-                                    <td class="tm-product-name" >
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#爆速 @i" name="爆速">
-                                                    爆速 @i
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr id="@count">
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#爆速 @i" name="爆速">
+                                                        爆速 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     count++;
                                 }
                                 @for (int i = 1; i <= inter.Count; i++)
                                 {
-                                <tr id="@count">
-                                    <td class="tm-product-name" >
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#接口信息 @i" name="接口信息">
-                                                    接口信息 @i
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr id="@count">
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#接口信息 @i" name="接口信息">
+                                                        接口信息 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     count++;
                                 }
                                 @for (int i = 1; i <= dc.Count; i++)
                                 {
-                                <tr id="@count">
-                                    <td class="tm-product-name" >
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#直流电阻 @i" name="直流电阻">
-                                                    直流电阻 @i
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr id="@count">
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#直流电阻 @i" name="直流电阻">
+                                                        直流电阻 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     count++;
                                 }
                                 @for (int i = 1; i <= ignc.Count; i++)
                                 {
-                                <tr id="@count">
-                                    <td class="tm-product-name">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#发火条件 @i" name="发火条件">
-                                                    发火条件 @i
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr id="@count">
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#发火条件 @i" name="发火条件">
+                                                        发火条件 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     count++;
                                 }
                                 @for (int i = 1; i <= delay.Count; i++)
                                 {
-                                <tr id="@count">
-                                    <td class="tm-product-name">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link d-block" href="#延期时间 @i" name="延期时间">
-                                                    延期时间 @i
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr id="@count">
+                                        <td class="tm-product-name">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link d-block" href="#延期时间 @i" name="延期时间">
+                                                        延期时间 @i
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="tm-product-delete-link" onclick="delAchieve(@count)">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     count++;
                                 }
                             </tbody>
@@ -1119,7 +1132,7 @@
 
                         <div class="form-group col-lg-6">
                             <label for="用途">用途</label>
-                            @Html.TextBox("用途", ig.yt.ToString(), new { @class = "form-control validate" })
+                            @Html.TextArea("用途", ig.yt.ToString(), new { @class = "form-control validate tm-small" })
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="系统组成">系统组成</label>
@@ -1161,34 +1174,35 @@
                             <label for="单位">(年)</label>
                             @{ if (ig.zcsm.ToString() != null)
                                 {
-                                    @Html.TextBox("贮存寿命", ig.zcsm.ToString(), new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
+                                    @Html.TextBox("贮存寿命", ig.zcsm.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("贮存寿命", "", new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
+                                    @Html.TextBox("贮存寿命", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 } }
                         </div>
 
                         <div class="form-group col-lg-6">
                             <label for="贮存寿命备注">贮存寿命备注</label>
-                            @Html.TextArea("贮存寿命备注", ig.ccsmbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            @Html.TextArea("贮存寿命备注", ig.ccsmbz.ToString(), new { @class = "form-control validate tm-small"})
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="可靠度">可靠度</label>
                             @Html.TextBox("可靠度", ig.kkd.ToString(), new { @class = "form-control validate" })
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="主要性能指标">主要性能指标</label>
-                            @Html.TextBox("主要性能指标", ig.zyxnzb.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="试验环境指标范围">试验环境指标范围</label>
-                            @Html.TextBox("试验环境指标范围", ig.syhjzsfw.ToString(), new { @class = "form-control validate" })
-                        </div>
-                        <div class="form-group col-lg-6">
                             <label for="基本性能">基本性能</label>
                             @Html.TextBox("基本性能", ig.jbxn.ToString(), new { @class = "form-control validate" })
                         </div>
+                        <div class="form-group col-lg-6">
+                            <label for="主要性能指标">主要性能指标</label>
+                            @Html.TextArea("主要性能指标", ig.zyxnzb.ToString(), new { @class = "form-control validate tm-small" })
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="试验环境指标范围">试验环境指标范围</label>
+                            @Html.TextArea("试验环境指标范围", ig.syhjzsfw.ToString(), new { @class = "form-control validate tm-small" })
+                        </div>
+
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">常规</h2>
                             <label for="danwei">（单位：mm）</label>
@@ -1246,6 +1260,18 @@
                             <label for="danwei">（单位：mm）</label>
                         </div>
                         <div class="form-group col-lg-6">
+                            <label for="索直径下限">索直径下限</label>
+                            <label for="验证" style="color:red;display:none" id="szjxx">*不能为空</label>
+                            @{ if (ig.szjxx.ToString() != null)
+                                {
+                                    @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "索直径下限", onblur = "Valuevalidate11()" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("索直径下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "索直径下限", onblur = "Valuevalidate11()" })
+                                }}
+                        </div>
+                        <div class="form-group col-lg-6">
                             <label for="索直径上限">索直径上限</label>
                             <label for="验证" style="color:red;display:none" id="szjsx">*不能为空</label>
                             <label for="验证" style="color:red;display:none" id="szjsxx">*上限小于下限</label>
@@ -1256,18 +1282,6 @@
                                 else
                                 {
                                     @Html.TextBox("索直径上限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "索直径上限", onblur = "Valuevalidate11()" })
-                                }}
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="索直径下限">索直径下限</label>
-                            <label for="验证" style="color:red;display:none" id="szjxx">*不能为空</label>
-                            @{ if (ig.szjxx.ToString() != null)
-                                {
-                                    @Html.TextBox("索直径下限", ig.szjxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "索直径下限", onblur = "Valuevalidate11()" })
-                                }
-                                else
-                                {
-                                    @Html.TextBox("索直径下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "索直径下限", onblur = "Valuevalidate11()" })
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
@@ -1283,7 +1297,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="索备注">索备注</label>
-                            @Html.TextArea("索备注", ig.sbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            @Html.TextArea("索备注", ig.sbz.ToString(), new { @class = "form-control validate tm-small" })
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">六方对角</h2>
@@ -1314,7 +1328,7 @@
 
                         <div class="form-group col-lg-6">
                             <label for="六方对角备注">六方对角备注</label>
-                            @Html.TextArea("六方对角备注", ig.lfdjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            @Html.TextArea("六方对角备注", ig.lfdjbz.ToString(), new { @class = "form-control validate tm-small" })
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">检测电流</h2>
@@ -1372,7 +1386,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="静电感度备注">静电感度备注</label>
-                            @Html.TextArea("静电感度备注", ig.jdgdbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            @Html.TextArea("静电感度备注", ig.jdgdbz.ToString(), new { @class = "form-control validate tm-small" })
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">作用时间瞬发度</h2>
@@ -1383,7 +1397,7 @@
                                 <div class="form-group col-lg-4">
                                     <label for="作用时间">作用时间</label>
                                     <label for="验证" style="color:red;display:none" id="zysj">*不能为空</label>
-                                    @Html.TextBox("作用时间","", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "作用时间", onblur = "Unitvalidate11()" })
+                                    @Html.TextBox("作用时间", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "作用时间", onblur = "Unitvalidate11()" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -1418,7 +1432,44 @@
 
                             }}
 
-
+                        @{ if (ig.zysjxx.ToString() != "")
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="作用时间下限">作用时间下限</label>
+                                    <label for="验证" style="color:red;display:none" id="zysjxx">*不能为空</label>
+                                    @Html.TextBox("作用时间下限", ig.zysjxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "作用时间下限", onblur = "UnitAndValuevalidate4()" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="zysjxxdw">*选择</label>
+                                    <select class="custom-select select2" name="作用时间下限单位" id="作用时间下限单位" onblur="UnitAndValuevalidate4()" onchange="Tb1(this,'select2')">
+                                        <option value="ms">ms</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="ns">ns</option>
+                                        <option value="μs">μs</option>
+                                        <option value="s">s</option>
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="作用时间下限">作用时间下限</label>
+                                    <label for="验证" style="color:red;display:none" id="zysjxx">*不能为空</label>
+                                    @Html.TextBox("作用时间下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "作用时间下限", onblur = "UnitAndValuevalidate4()" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="zysjxxdw">*选择</label>
+                                    <select class="custom-select select2" name="作用时间下限单位" id="作用时间下限单位" onblur="UnitAndValuevalidate4()" onchange="Tb1(this,'select2')">
+                                        <option value="请选择">请选择</option>
+                                        <option value="ns">ns</option>
+                                        <option value="μs">μs</option>
+                                        <option value="ms">ms</option>
+                                        <option value="s">s</option>
+                                    </select>
+                                </div>
+                            }}
                         @{ if (ig.zysjsx.ToString() != "")
                             {
                                 <div class="form-group col-lg-4">
@@ -1460,48 +1511,11 @@
                                 </div>
                             }}
 
-                        @{ if (ig.zysjxx.ToString() != "")
-                            {
-                                <div class="form-group col-lg-4">
-                                    <label for="作用时间下限">作用时间下限</label>
-                                    <label for="验证" style="color:red;display:none" id="zysjxx">*不能为空</label>
-                                    @Html.TextBox("作用时间下限", ig.zysjxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "作用时间下限", onblur = "UnitAndValuevalidate4()" })
-                                </div>
-                                <div class="form-group col-lg-2">
-                                    <label for="danwei">单位</label>
-                                    <label for="验证" style="color:red;display:none" id="zysjxxdw">*选择</label>
-                                    <select class="custom-select select2" name="作用时间下限单位" id="作用时间下限单位" onblur="UnitAndValuevalidate4()" onchange="Tb1(this,'select2')">
-                                        <option value="ms">ms</option>
-                                        <option value="请选择">请选择</option>
-                                        <option value="ns">ns</option>
-                                        <option value="μs">μs</option>
-                                        <option value="s">s</option>
-                                    </select>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="form-group col-lg-4">
-                                    <label for="作用时间下限">作用时间下限</label>
-                                    <label for="验证" style="color:red;display:none" id="zysjxx">*不能为空</label>
-                                    @Html.TextBox("作用时间下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "作用时间下限", onblur = "UnitAndValuevalidate4()" })
-                                </div>
-                                <div class="form-group col-lg-2">
-                                    <label for="danwei">单位</label>
-                                    <label for="验证" style="color:red;display:none" id="zysjxxdw">*选择</label>
-                                    <select class="custom-select select2" name="作用时间下限单位" id="作用时间下限单位" onblur="UnitAndValuevalidate4()" onchange="Tb1(this,'select2')">
-                                        <option value="请选择">请选择</option>
-                                        <option value="ns">ns</option>
-                                        <option value="μs">μs</option>
-                                        <option value="ms">ms</option>
-                                        <option value="s">s</option>
-                                    </select>
-                                </div>
-                            }}
+
 
                         <div class="form-group col-lg-6">
                             <label for="作用时间备注">作用时间备注</label>
-                            @Html.TextArea("作用时间备注", ig.zysjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            @Html.TextArea("作用时间备注", ig.zysjbz.ToString(), new { @class = "form-control validate tm-small" })
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">安全电流</h2>
@@ -1555,7 +1569,41 @@
 
                             }}
 
+                        @{ if (ig.aydlzxx.ToString() != "")
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="安全电流值下限">安全电流值下限</label>
+                                    <label for="验证" style="color:red;display:none" id="aqdlzxx">*不能为空</label>
+                                    @Html.TextBox("安全电流值下限", ig.aydlzxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "安全电流值下限", onblur = "UnitAndValuevalidate5()" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="aqdlzxxdw">*选择</label>
+                                    <select class="custom-select select1" name="安全电流值下限单位" id="安全电流值下限单位" onblur="UnitAndValuevalidate5()" onchange="Tb1(this,'select1')">
+                                        <option>mA</option>
+                                        <option value="请选择">请选择</option>
+                                        <option>A</option>
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="安全电流值下限">安全电流值下限</label>
+                                    <label for="验证" style="color:red;display:none" id="aqdlzxx">*不能为空</label>
+                                    @Html.TextBox("安全电流值下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "安全电流值下限", onblur = "UnitAndValuevalidate5()" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="aqdlzxxdw">*选择</label>
+                                    <select class="custom-select select1" name="安全电流值下限单位" id="安全电流值下限单位" onblur="UnitAndValuevalidate5()" onchange="Tb1(this,'select1')">
+                                        <option value="请选择">请选择</option>
+                                        <option>mA</option>
+                                        <option>A</option>
+                                    </select>
+                                </div>
 
+                            }}
                         @{ if (ig.aydlzsx.ToString() != "")
                             {
                                 <div class="form-group col-lg-4">
@@ -1592,44 +1640,6 @@
                                     </select>
                                 </div>
                             }}
-
-
-                        @{ if (ig.aydlzxx.ToString() != "")
-                            {
-                                <div class="form-group col-lg-4">
-                                    <label for="安全电流值下限">安全电流值下限</label>
-                                    <label for="验证" style="color:red;display:none" id="aqdlzxx">*不能为空</label>
-                                    @Html.TextBox("安全电流值下限", ig.aydlzxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "安全电流值下限", onblur = "UnitAndValuevalidate5()" })
-                                </div>
-                                <div class="form-group col-lg-2">
-                                    <label for="danwei">单位</label>
-                                    <label for="验证" style="color:red;display:none" id="aqdlzxxdw">*选择</label>
-                                    <select class="custom-select select1" name="安全电流值下限单位" id="安全电流值下限单位" onblur="UnitAndValuevalidate5()" onchange="Tb1(this,'select1')">
-                                        <option>mA</option>
-                                        <option value="请选择">请选择</option>
-                                        <option>A</option>
-                                    </select>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="form-group col-lg-4">
-                                    <label for="安全电流值下限">安全电流值下限</label>
-                                    <label for="验证" style="color:red;display:none" id="aqdlzxx">*不能为空</label>
-                                    @Html.TextBox("安全电流值下限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "安全电流值下限", onblur = "UnitAndValuevalidate5()" })
-                                </div>
-                                <div class="form-group col-lg-2">
-                                    <label for="danwei">单位</label>
-                                    <label for="验证" style="color:red;display:none" id="aqdlzxxdw">*选择</label>
-                                    <select class="custom-select select1" name="安全电流值下限单位" id="安全电流值下限单位" onblur="UnitAndValuevalidate5()" onchange="Tb1(this,'select1')">
-                                        <option value="请选择">请选择</option>
-                                        <option>mA</option>
-                                        <option>A</option>
-                                    </select>
-                                </div>
-
-                            }}
-
 
                         @{ if (ig.ssj.ToString() != "")
                             {
@@ -1682,7 +1692,7 @@
 
                         <div class="form-group col-lg-6">
                             <label for="安全电流备注">安全电流备注</label>
-                            @Html.TextArea("安全电流备注", ig.aqdlbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            @Html.TextArea("安全电流备注", ig.aqdlbz.ToString(), new { @class = "form-control validate tm-small" })
                         </div>
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">安全电压</h2>
@@ -1699,35 +1709,48 @@
                                     @Html.TextBox("安全电压电压", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 } }
                         </div>
+                        @{ if (ig.aqdydr.ToString() != "")
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="安全电压电容">安全电压电容</label>
+                                    <label for="验证" style="color:red;display:none" id="aqdydr2">*不能为空</label>
+                                    @Html.TextBox("安全电压电容", ig.aqdydr.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "安全电压电容", onblur = "Unitvalidate14()" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="aqdydrdw2">*选择</label>
+                                    <select class="custom-select" name="安全电压电容单位" id="安全电压电容单位" onblur="Unitvalidate14()">
+                                        <option value="μf">μf</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="pf">pf</option>
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="安全电压电容">安全电压电容</label>
+                                    <label for="验证" style="color:red;display:none" id="aqdydr2">*不能为空</label>
+                                    @Html.TextBox("安全电压电容", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "安全电压电容", onblur = "Unitvalidate14()" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="aqdydrdw2">*选择</label>
+                                    <select class="custom-select" name="安全电压电容单位" id="安全电压电容单位" onblur="Unitvalidate14()">
+                                        <option value="请选择">请选择</option>
+                                        <option value="μf">μf</option>
+                                        <option value="pf">pf</option>
+                                    </select>
+                                </div>
+                            }}
                         <div class="form-group col-lg-6">
-                            <label for="安全电压电容">安全电压电容</label>
-                            <label for="danwei">(pf)</label>
-                            @{ if (ig.aqdydr.ToString() != null)
-                                {
-                                    @Html.TextBox("安全电压电容", ((ig.aqdydr) * 1000000).ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
-                                }
-                                else
-                                {
-                                    @Html.TextBox("安全电压电容", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
-                                }}
+                            <label for="安全电压电容备注">安全电压电容备注</label>
+                            @Html.TextArea("安全电压电容备注", ig.aqdydrbz.ToString(), new { @class = "form-control validate tm-small" })
                         </div>
 
                         <div class="form-group col-lg-12">
                             <h2 class="tm-site-title mb-0">燃烧压力</h2>
                             <label for="danwei">单位：(MPa)</label>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="燃烧压力上限">燃烧压力上限</label>
-                            <label for="验证" style="color:red;display:none" id="rsylsx">*不能为空</label>
-                            <label for="验证" style="color:red;display:none" id="rsylsxx">*上限小于下限</label>
-                            @{ if (ig.rsylsx.ToString() != null)
-                                {
-                                    @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "燃烧压力上限", onblur = "Valuevalidate12()" })
-                                }
-                                else
-                                {
-                                    @Html.TextBox("燃烧压力上限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "燃烧压力上限", onblur = "Valuevalidate12()" })
-                                }}
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="燃烧压力下限">燃烧压力下限</label>
@@ -1742,8 +1765,22 @@
                                 }}
                         </div>
                         <div class="form-group col-lg-6">
+                            <label for="燃烧压力上限">燃烧压力上限</label>
+                            <label for="验证" style="color:red;display:none" id="rsylsx">*不能为空</label>
+                            <label for="验证" style="color:red;display:none" id="rsylsxx">*上限小于下限</label>
+                            @{ if (ig.rsylsx.ToString() != null)
+                                {
+                                    @Html.TextBox("燃烧压力上限", ig.rsylsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "燃烧压力上限", onblur = "Valuevalidate12()" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("燃烧压力上限", "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "燃烧压力上限", onblur = "Valuevalidate12()" })
+                                }}
+                        </div>
+
+                        <div class="form-group col-lg-6">
                             <label for="燃烧压力备注">燃烧压力备注</label>
-                            @Html.TextArea("燃烧压力备注", ig.rsylbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                            @Html.TextArea("燃烧压力备注", ig.rsylbz.ToString(), new { @class = "form-control validate tm-small" })
                         </div>
                     </div>
                     @{ int count2 = 0;}
@@ -1816,6 +1853,10 @@
                                     @Html.TextBox("高度" + cons, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
                                 }
                             </div>
+                            <div class="form-group col-lg-6">
+                                <label for="尺寸备注">尺寸备注</label>
+                                @Html.TextArea("尺寸备注" + cons, con.ccbz.ToString(), new { @class = "form-control validate tm-small" })
+                            </div>
                             @Html.TextBox("常规id" + cons, con.Id.ToString(), new { @class = "form-control validate", style = "display:none" })
                             @Html.TextBox("常规", cons, new { @class = "form-control validate", style = "display:none" })
                             @{
@@ -1862,26 +1903,12 @@
                                 <h1 class="tm-site-title mb-0">爆速 @speeds</h1>
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="爆速上限">爆速上限</label>
-                                <label for="danwei">(m/s)</label>
-                                <label for="验证" style="color:red;display:none" id="bssx @speeds">*不能为空</label>
-                                <label for="验证" style="color:red;display:none" id="bssxx @speeds">*上限小于下限</label>
-                                @if (s.bssx.ToString() != null)
-                                {
-                                    @Html.TextBox("爆速上限" + speeds, s.bssx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "爆速上限"+speeds, onblur = "Valuevalidate4("+speeds+")" })
-                                }
-                                else
-                                {
-                                    @Html.TextBox("爆速上限" + speeds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "爆速上限" + speeds, onblur = "Valuevalidate4(" + speeds + ")" })
-                                }
-                            </div>
-                            <div class="form-group col-lg-6">
                                 <label for="爆速下限">爆速下限</label>
                                 <label for="danwei">(m/s)</label>
                                 <label for="验证" style="color:red;display:none" id="bsxx @speeds">*不能为空</label>
                                 @if (s.bsxx.ToString() != null)
                                 {
-                                    @Html.TextBox("爆速下限" + speeds, s.bsxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "爆速下限"+speeds, onblur = "Valuevalidate4("+speeds+")" })
+                                    @Html.TextBox("爆速下限" + speeds, s.bsxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "爆速下限" + speeds, onblur = "Valuevalidate4(" + speeds + ")" })
                                 }
                                 else
                                 {
@@ -1889,8 +1916,23 @@
                                 }
                             </div>
                             <div class="form-group col-lg-6">
+                                <label for="爆速上限">爆速上限</label>
+                                <label for="danwei">(m/s)</label>
+                                <label for="验证" style="color:red;display:none" id="bssx @speeds">*不能为空</label>
+                                <label for="验证" style="color:red;display:none" id="bssxx @speeds">*上限小于下限</label>
+                                @if (s.bssx.ToString() != null)
+                                {
+                                    @Html.TextBox("爆速上限" + speeds, s.bssx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "爆速上限" + speeds, onblur = "Valuevalidate4(" + speeds + ")" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("爆速上限" + speeds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "爆速上限" + speeds, onblur = "Valuevalidate4(" + speeds + ")" })
+                                }
+                            </div>
+
+                            <div class="form-group col-lg-6">
                                 <label for="爆速备注">爆速备注</label>
-                                @Html.TextArea("爆速备注" + speeds, s.bsbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("爆速备注" + speeds, s.bsbz.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
                             @Html.TextBox("爆速id" + speeds, s.Id.ToString(), new { @class = "form-control validate", style = "display:none" })
                             @Html.TextBox("爆速", speeds, new { @class = "form-control validate", style = "display:none" })
@@ -1949,7 +1991,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="接口信息备注">接口信息备注</label>
-                                @Html.TextArea("接口信息备注" + inters, inte.jkxxbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("接口信息备注" + inters, inte.jkxxbz.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
                             @Html.TextBox("接口信息id" + inters, inte.Id.ToString(), new { @class = "form-control validate", style = "display:none" })
                             @Html.TextBox("接口信息", inters, new { @class = "form-control validate", style = "display:none" })
@@ -1978,46 +2020,6 @@
                                     @Html.TextBox("直流电阻桥个数" + ds, "", new { @class = "form-control validate", onkeyup = "this.value=this.value.replace(/\\D/g,'')" })
                                 }
                             </div>
-                            @if (d.dzfwzsx.ToString() != "")
-                            {
-                            <div class="form-group col-lg-4">
-                                <label for="电阻范围值上">电阻范围值上限</label>
-                                <label for="验证" style="color:red;display:none" id="dzfwzsx @ds">*不能为空</label>
-                                <label for="验证" style="color:red;display:none" id="dzfwzsxx @ds">*上限小于下限</label>
-                                @Html.TextBox("电阻范围值上" + ds, d.dzfwzsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "电阻范围值上限"+ds ,onblur = "UnitAndValuevalidate1("+ds+")" })
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="danwei">单位</label>
-                                <label for="验证" style="color:red;display:none" id="dzfwzsxdw @ds">*选择</label>
-                                <select class="custom-select zldz-@ds" name="电阻范围值上单位 @ds" id="电阻范围值上单位 @ds" onblur="UnitAndValuevalidate1(@ds)" onchange="Tb1(this,'zldz-@ds')">
-                                    <option value="Ω">Ω</option>
-                                    <option value="请选择">请选择</option>
-                                    <option value="mΩ">mΩ</option>
-                                    <option value="kΩ">kΩ</option>
-                                    <option value="MΩ">MΩ</option>
-                                </select>
-                            </div>
-                            }
-                            else
-                            {
-                            <div class="form-group col-lg-4">
-                                <label for="电阻范围值上">电阻范围值上限</label>
-                                <label for="验证" style="color:red;display:none" id="dzfwzsx @ds">*不能为空</label>
-                                <label for="验证" style="color:red;display:none" id="dzfwzsxx @ds">*上限小于下限</label>
-                                @Html.TextBox("电阻范围值上" + ds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "电阻范围值上限" + ds, onblur = "UnitAndValuevalidate1(" + ds + ")" })
-                            </div>
-                                <div class="form-group col-lg-2">
-                                    <label for="danwei">单位</label>
-                                    <label for="验证" style="color:red;display:none" id="dzfwzsxdw @ds">*选择</label>
-                                    <select class="custom-select zldz-@ds" name="电阻范围值上单位 @ds" id="电阻范围值上单位 @ds" onblur="UnitAndValuevalidate1(@ds)" onchange="Tb1(this,'zldz-@ds')">
-                                        <option value="请选择">请选择</option>
-                                        <option value="mΩ">mΩ</option>
-                                        <option value="Ω">Ω</option>
-                                        <option value="kΩ">kΩ</option>
-                                        <option value="MΩ">MΩ</option>
-                                    </select>
-                                </div>
-                            }
                             @if (d.dzfwzxx.ToString() != "")
                             {
                                 <div class="form-group col-lg-4">
@@ -2056,6 +2058,47 @@
                                     </select>
                                 </div>
                             }
+                            @if (d.dzfwzsx.ToString() != "")
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="电阻范围值上">电阻范围值上限</label>
+                                    <label for="验证" style="color:red;display:none" id="dzfwzsx @ds">*不能为空</label>
+                                    <label for="验证" style="color:red;display:none" id="dzfwzsxx @ds">*上限小于下限</label>
+                                    @Html.TextBox("电阻范围值上" + ds, d.dzfwzsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "电阻范围值上限" + ds, onblur = "UnitAndValuevalidate1(" + ds + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="dzfwzsxdw @ds">*选择</label>
+                                    <select class="custom-select zldz-@ds" name="电阻范围值上单位 @ds" id="电阻范围值上单位 @ds" onblur="UnitAndValuevalidate1(@ds)" onchange="Tb1(this,'zldz-@ds')">
+                                        <option value="Ω">Ω</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="mΩ">mΩ</option>
+                                        <option value="kΩ">kΩ</option>
+                                        <option value="MΩ">MΩ</option>
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="电阻范围值上">电阻范围值上限</label>
+                                    <label for="验证" style="color:red;display:none" id="dzfwzsx @ds">*不能为空</label>
+                                    <label for="验证" style="color:red;display:none" id="dzfwzsxx @ds">*上限小于下限</label>
+                                    @Html.TextBox("电阻范围值上" + ds, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "电阻范围值上限" + ds, onblur = "UnitAndValuevalidate1(" + ds + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="dzfwzsxdw @ds">*选择</label>
+                                    <select class="custom-select zldz-@ds" name="电阻范围值上单位 @ds" id="电阻范围值上单位 @ds" onblur="UnitAndValuevalidate1(@ds)" onchange="Tb1(this,'zldz-@ds')">
+                                        <option value="请选择">请选择</option>
+                                        <option value="mΩ">mΩ</option>
+                                        <option value="Ω">Ω</option>
+                                        <option value="kΩ">kΩ</option>
+                                        <option value="MΩ">MΩ</option>
+                                    </select>
+                                </div>
+                            }
+
                             @if (d.dzz.ToString() != "")
                             {
                                 <div class="form-group col-lg-4">
@@ -2173,7 +2216,7 @@
 
                             <div class="form-group col-lg-6">
                                 <label for="电阻备注">电阻备注</label>
-                                @Html.TextArea("电阻备注" + ds, d.dzbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("电阻备注" + ds, d.dzbz.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
                             @Html.TextBox("直流电阻id" + ds, d.Id.ToString(), new { @class = "form-control validate", style = "display:none" })
                             @Html.TextBox("直流电阻", ds, new { @class = "form-control validate", style = "display:none" })
@@ -2215,49 +2258,50 @@
                                 }
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="发火电压上限">发火电压上限</label>
-                                <label for="danwei">(V)</label>
-                                <label for="验证" style="color:red;display:none" id="fhdysx @igncs">*不能为空</label>
-                                <label for="验证" style="color:red;display:none" id="fhdysxx @igncs">*上限小于下限</label>
-                                @if (ign.fhdysx.ToString() != null)
-                                {
-                                    @Html.TextBox("发火电压上限" + igncs, ign.fhdysx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "发火电压上限"+igncs ,onblur = "Valuevalidate1("+igncs+")" })
-                                }
-                                else
-                                {
-                                    @Html.TextBox("发火电压上限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电压上限" + igncs, onblur = "Valuevalidate1(" + igncs + ")" })
-                                }
-                            </div>
-                            <div class="form-group col-lg-6">
                                 <label for="发火电压下限">发火电压下限</label>
                                 <label for="danwei">(V)</label>
                                 <label for="验证" style="color:red;display:none" id="fhdyxx @igncs">*不能为空</label>
                                 @if (ign.fhdyxx.ToString() != null)
                                 {
-                                    @Html.TextBox("发火电压下限" + igncs, ign.fhdyxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "发火电压下限"+igncs ,onblur = "Valuevalidate1("+igncs+")" })
+                                    @Html.TextBox("发火电压下限" + igncs, ign.fhdyxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电压下限" + igncs, onblur = "Valuevalidate1(" + igncs + ")" })
                                 }
                                 else
                                 {
                                     @Html.TextBox("发火电压下限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电压下限" + igncs, onblur = "Valuevalidate1(" + igncs + ")" })
                                 }
                             </div>
+                            <div class="form-group col-lg-6">
+                                <label for="发火电压上限">发火电压上限</label>
+                                <label for="danwei">(V)</label>
+                                <label for="验证" style="color:red;display:none" id="fhdysx @igncs">*不能为空</label>
+                                <label for="验证" style="color:red;display:none" id="fhdysxx @igncs">*上限小于下限</label>
+                                @if (ign.fhdysx.ToString() != null)
+                                {
+                                    @Html.TextBox("发火电压上限" + igncs, ign.fhdysx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电压上限" + igncs, onblur = "Valuevalidate1(" + igncs + ")" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("发火电压上限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电压上限" + igncs, onblur = "Valuevalidate1(" + igncs + ")" })
+                                }
+                            </div>
+
 
                             @if (ign.fhdr.ToString() != "")
                             {
-                            <div class="form-group col-lg-4">
-                                <label for="发火电容">发火电容</label>
-                                <label for="验证" style="color:red;display:none" id="fhdr @igncs">*不能为空</label>
-                                @Html.TextBox("发火电容" + igncs, ign.fhdr.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "发火电容"+igncs, onblur = "Unitvalidate4(" + igncs+")" })
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="danwei">单位</label>
-                                <label for="验证" style="color:red;display:none" id="fhdrdw @igncs">*选择</label>
-                                <select class="custom-select" name="发火电容单位 @igncs" id="发火电容单位 @igncs" onblur="Unitvalidate4(@igncs)">
-                                    <option value="μf">μf</option>
-                                    <option value="请选择">请选择</option>
-                                    <option value="pf">pf</option>
-                                </select>
-                            </div>
+                                <div class="form-group col-lg-4">
+                                    <label for="发火电容">发火电容</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdr @igncs">*不能为空</label>
+                                    @Html.TextBox("发火电容" + igncs, ign.fhdr.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电容" + igncs, onblur = "Unitvalidate4(" + igncs + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdrdw @igncs">*选择</label>
+                                    <select class="custom-select" name="发火电容单位 @igncs" id="发火电容单位 @igncs" onblur="Unitvalidate4(@igncs)">
+                                        <option value="μf">μf</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="pf">pf</option>
+                                    </select>
+                                </div>
                             }
                             else
                             {
@@ -2278,25 +2322,25 @@
                             }
                             <div class="form-group col-lg-6">
                                 <label for="电压发火备注">电压发火备注</label>
-                                @Html.TextArea("电压发火备注" + igncs, ign.fhdybz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("电压发火备注" + igncs, ign.fhdybz.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
 
                             @if (ign.fhdl.ToString() != "")
                             {
-                            <div class="form-group col-lg-4">
-                                <label for="发火电流">发火电流</label>
-                                <label for="验证" style="color:red;display:none" id="fhdl @igncs">*不能为空</label>
-                                @Html.TextBox("发火电流" + igncs, ign.fhdl.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电流" + igncs, onblur = "Unitvalidate5(" + igncs + ")" })
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="danwei">单位</label>
-                                <label for="验证" style="color:red;display:none" id="fhdldw @igncs">*选择</label>
-                                <select class="custom-select" name="发火电流单位 @igncs" id="发火电流单位 @igncs" onblur="Unitvalidate5(@igncs)">
-                                    <option value="mA">mA</option>
-                                    <option value="请选择">请选择</option>
-                                    <option value="A">A</option>
-                                </select>
-                            </div>
+                                <div class="form-group col-lg-4">
+                                    <label for="发火电流">发火电流</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdl @igncs">*不能为空</label>
+                                    @Html.TextBox("发火电流" + igncs, ign.fhdl.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电流" + igncs, onblur = "Unitvalidate5(" + igncs + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdldw @igncs">*选择</label>
+                                    <select class="custom-select" name="发火电流单位 @igncs" id="发火电流单位 @igncs" onblur="Unitvalidate5(@igncs)">
+                                        <option value="mA">mA</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="A">A</option>
+                                    </select>
+                                </div>
                             }
                             else
                             {
@@ -2315,47 +2359,6 @@
                                     </select>
                                 </div>
                             }
-
-
-                            @if (ign.fhdlsx.ToString() != "")
-                            {
-                                <div class="form-group col-lg-4">
-                                    <label for="发火电流上限">发火电流上限</label>
-                                    <label for="验证" style="color:red;display:none" id="fhdlsx @igncs">*不能为空</label>
-                                    <label for="验证" style="color:red;display:none" id="fhdlsxx @igncs">*上限小于下限</label>
-                                    @Html.TextBox("发火电流上限" + igncs, ign.fhdlsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "发火电流上限"+igncs, onblur = "UnitAndValuevalidate2("+igncs+")" })
-                                </div>
-                                <div class="form-group col-lg-2">
-                                    <label for="danwei">单位</label>
-                                    <label for="验证" style="color:red;display:none" id="fhdlsxdw @igncs">*选择</label>
-                                    <select class="custom-select fhdl-@igncs" name="发火电流上限单位 @igncs" id="发火电流上限单位 @igncs" onblur="UnitAndValuevalidate2(@igncs)" onchange="Tb1(this,'fhdl-@igncs')">
-                                        <option value="mA">mA</option>
-                                        <option value="请选择">请选择</option>
-                                        <option value="A">A</option>
-                                    </select>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="form-group col-lg-4">
-                                    <label for="发火电流上限">发火电流上限</label>
-                                    <label for="验证" style="color:red;display:none" id="fhdlsx @igncs">*不能为空</label>
-                                    <label for="验证" style="color:red;display:none" id="fhdlsxx @igncs">*上限小于下限</label>
-                                    @Html.TextBox("发火电流上限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电流上限" + igncs, onblur = "UnitAndValuevalidate2(" + igncs + ")" })
-                                </div>
-                                <div class="form-group col-lg-2">
-                                    <label for="danwei">单位</label>
-                                    <label for="验证" style="color:red;display:none" id="fhdlsxdw @igncs">*选择</label>
-                                    <select class="custom-select fhdl-@igncs" name="发火电流上限单位 @igncs" id="发火电流上限单位 @igncs" onblur="UnitAndValuevalidate2(@igncs)" onchange="Tb1(this,'fhdl-@igncs')">
-                                        <option value="请选择">请选择</option>
-                                        <option value="A">A</option>
-                                        <option value="mA">mA</option>
-                                    </select>
-                                </div>
-
-                            }
-
-
                             @if (ign.fhdlxx.ToString() != "")
                             {
                                 <div class="form-group col-lg-4">
@@ -2392,6 +2395,43 @@
 
                             }
 
+                            @if (ign.fhdlsx.ToString() != "")
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="发火电流上限">发火电流上限</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdlsx @igncs">*不能为空</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdlsxx @igncs">*上限小于下限</label>
+                                    @Html.TextBox("发火电流上限" + igncs, ign.fhdlsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电流上限" + igncs, onblur = "UnitAndValuevalidate2(" + igncs + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdlsxdw @igncs">*选择</label>
+                                    <select class="custom-select fhdl-@igncs" name="发火电流上限单位 @igncs" id="发火电流上限单位 @igncs" onblur="UnitAndValuevalidate2(@igncs)" onchange="Tb1(this,'fhdl-@igncs')">
+                                        <option value="mA">mA</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="A">A</option>
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="发火电流上限">发火电流上限</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdlsx @igncs">*不能为空</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdlsxx @igncs">*上限小于下限</label>
+                                    @Html.TextBox("发火电流上限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "发火电流上限" + igncs, onblur = "UnitAndValuevalidate2(" + igncs + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="fhdlsxdw @igncs">*选择</label>
+                                    <select class="custom-select fhdl-@igncs" name="发火电流上限单位 @igncs" id="发火电流上限单位 @igncs" onblur="UnitAndValuevalidate2(@igncs)" onchange="Tb1(this,'fhdl-@igncs')">
+                                        <option value="请选择">请选择</option>
+                                        <option value="A">A</option>
+                                        <option value="mA">mA</option>
+                                    </select>
+                                </div>
+
+                            }
 
                             @if (ign.fhdlss.ToString() != "")
                             {
@@ -2431,25 +2471,25 @@
 
                             <div class="form-group col-lg-6">
                                 <label for="电流发火备注">电流发火备注</label>
-                                @Html.TextArea("电流发火备注" + igncs, ign.dlfhbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("电流发火备注" + igncs, ign.dlfhbz.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
 
                             @if (ign.cz.ToString() != "")
                             {
-                            <div class="form-group col-lg-4">
-                                <label for="锤重">锤重</label>
-                                <label for="验证" style="color:red;display:none" id="cz @igncs">*不能为空</label>
-                                @Html.TextBox("锤重" + igncs, ign.cz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "锤重" + igncs, onblur = "Unitvalidate7(" + igncs + ")" })
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="danwei">单位</label>
-                                <label for="验证" style="color:red;display:none" id="czdw @igncs">*选择</label>
-                                <select class="custom-select" name="锤重单位 @igncs" id="锤重单位 @igncs" onblur="Unitvalidate7(@igncs)">
-                                    <option value="g">g</option>
-                                    <option value="请选择">请选择</option>
-                                    <option value="kg">kg</option>
-                                </select>
-                            </div>
+                                <div class="form-group col-lg-4">
+                                    <label for="锤重">锤重</label>
+                                    <label for="验证" style="color:red;display:none" id="cz @igncs">*不能为空</label>
+                                    @Html.TextBox("锤重" + igncs, ign.cz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "锤重" + igncs, onblur = "Unitvalidate7(" + igncs + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="czdw @igncs">*选择</label>
+                                    <select class="custom-select" name="锤重单位 @igncs" id="锤重单位 @igncs" onblur="Unitvalidate7(@igncs)">
+                                        <option value="g">g</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="kg">kg</option>
+                                    </select>
+                                </div>
                             }
                             else
                             {
@@ -2522,13 +2562,26 @@
                                 }
                             </div>
                             <div class="form-group col-lg-6">
+                                <label for="击针力下限">击针力下限</label>
+                                <label for="danwei">(N)</label>
+                                <label for="验证" style="color:red;display:none" id="jzlxx @igncs">*不能为空</label>
+                                @if (ign.jzlxx.ToString() != null)
+                                {
+                                    @Html.TextBox("击针力下限" + igncs, ign.jzlxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针力下限" + igncs, onblur = "Valuevalidate2(" + igncs + ")" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("击针力下限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针力下限" + igncs, onblur = "Valuevalidate2(" + igncs + ")" })
+                                }
+                            </div>
+                            <div class="form-group col-lg-6">
                                 <label for="击针力上限">击针力上限</label>
                                 <label for="danwei">(N)</label>
                                 <label for="验证" style="color:red;display:none" id="jzlsx @igncs">*不能为空</label>
                                 <label for="验证" style="color:red;display:none" id="jzlsxx @igncs">*上限小于下限</label>
                                 @if (ign.jzlsx.ToString() != null)
                                 {
-                                    @Html.TextBox("击针力上限" + igncs, ign.jzlsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off"  ,id = "击针力上限"+igncs, onblur = "Valuevalidate2("+igncs+")" })
+                                    @Html.TextBox("击针力上限" + igncs, ign.jzlsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针力上限" + igncs, onblur = "Valuevalidate2(" + igncs + ")" })
 
                                 }
                                 else
@@ -2538,16 +2591,16 @@
                             </div>
 
                             <div class="form-group col-lg-6">
-                                <label for="击针力下限">击针力下限</label>
-                                <label for="danwei">(N)</label>
-                                <label for="验证" style="color:red;display:none" id="jzlxx @igncs">*不能为空</label>
-                                @if (ign.jzlxx.ToString() != null)
+                                <label for="击针突出量下限">击针突出量下限</label>
+                                <label for="danwei">(mm)</label>
+                                <label for="验证" style="color:red;display:none" id="jztclxx @igncs">*不能为空</label>
+                                @if (ign.jztclxx.ToString() != null)
                                 {
-                                    @Html.TextBox("击针力下限" + igncs, ign.jzlxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off",id = "击针力下限"+igncs ,onblur = "Valuevalidate2("+igncs+")" })
+                                    @Html.TextBox("击针突出量下限" + igncs, ign.jztclxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针突出量下限" + igncs, onblur = "Valuevalidate3(" + igncs + ")" })
                                 }
                                 else
                                 {
-                                    @Html.TextBox("击针力下限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针力下限" + igncs, onblur = "Valuevalidate2(" + igncs + ")" })
+                                    @Html.TextBox("击针突出量下限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针突出量下限" + igncs, onblur = "Valuevalidate3(" + igncs + ")" })
                                 }
                             </div>
                             <div class="form-group col-lg-6">
@@ -2557,26 +2610,14 @@
                                 <label for="验证" style="color:red;display:none" id="jztclsxx @igncs">*上限小于下限</label>
                                 @if (ign.jztclsx.ToString() != null)
                                 {
-                                    @Html.TextBox("击针突出量上限" + igncs, ign.jztclsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "击针突出量上限"+igncs ,onblur = "Valuevalidate3("+igncs+")" })
+                                    @Html.TextBox("击针突出量上限" + igncs, ign.jztclsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针突出量上限" + igncs, onblur = "Valuevalidate3(" + igncs + ")" })
                                 }
                                 else
                                 {
                                     @Html.TextBox("击针突出量上限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针突出量上限" + igncs, onblur = "Valuevalidate3(" + igncs + ")" })
                                 }
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="击针突出量下限">击针突出量下限</label>
-                                <label for="danwei">(mm)</label>
-                                <label for="验证" style="color:red;display:none" id="jztclxx @igncs">*不能为空</label>
-                                @if (ign.jztclxx.ToString() != null)
-                                {
-                                    @Html.TextBox("击针突出量下限" + igncs, ign.jztclxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针突出量下限"+igncs ,onblur = "Valuevalidate3("+igncs+")" })
-                                }
-                                else
-                                {
-                                    @Html.TextBox("击针突出量下限" + igncs, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "击针突出量下限" + igncs, onblur = "Valuevalidate3(" + igncs + ")" })
-                                }
-                            </div>
+
                             <div class="form-group col-lg-6">
                                 <label for="弹簧高度">弹簧高度</label>
                                 <label for="danwei">(mm)</label>
@@ -2603,25 +2644,25 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="机械发火备注">机械发火备注</label>
-                                @Html.TextArea("机械发火备注" + igncs, ign.jxfhbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("机械发火备注" + igncs, ign.jxfhbz.ToString(), new { @class = "form-control validate tm-small"})
                             </div>
 
                             @if (ign.nl.ToString() != "")
                             {
-                            <div class="form-group col-lg-4">
-                                <label for="能量">能量</label>
-                                <label for="验证" style="color:red;display:none" id="nl @igncs">*不能为空</label>
-                                @Html.TextBox("能量" + igncs, ign.nl.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "能量" + igncs, onblur = "Unitvalidate9(" + igncs + ")" })
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="danwei">单位</label>
-                                <label for="验证" style="color:red;display:none" id="nldw @igncs">*选择</label>
-                                <select class="custom-select" name="能量单位 @igncs" id="能量单位 @igncs" onblur="Unitvalidate9(@igncs)">
-                                    <option value="J">J</option>
-                                    <option value="请选择">请选择</option>
-                                    <option value="mJ">mJ</option>
-                                </select>
-                            </div>
+                                <div class="form-group col-lg-4">
+                                    <label for="能量">能量</label>
+                                    <label for="验证" style="color:red;display:none" id="nl @igncs">*不能为空</label>
+                                    @Html.TextBox("能量" + igncs, ign.nl.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "能量" + igncs, onblur = "Unitvalidate9(" + igncs + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="nldw @igncs">*选择</label>
+                                    <select class="custom-select" name="能量单位 @igncs" id="能量单位 @igncs" onblur="Unitvalidate9(@igncs)">
+                                        <option value="J">J</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="mJ">mJ</option>
+                                    </select>
+                                </div>
                             }
                             else
                             {
@@ -2659,34 +2700,68 @@
                             <div class="form-group col-lg-6">
                                 <label for="温度条件">温度条件</label>
                                 <label for="danwei">(摄氏度) </label>
+                                <label for="验证" style="color:red;display:none" id="wdtj @des">*格式错误</label>
                                 @if (de.wdtj.ToString() != null)
                                 {
-                                    @Html.TextBox("温度条件" + des, de.wdtj.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
+                                    @Html.TextBox("温度条件" + des, de.wdtj.ToString(), new { @class = "form-control validate", id = "温度条件" + des, onblur = "RegularExpression(" + des + ")" })
 
                                 }
                                 else
                                 {
-                                    @Html.TextBox("温度条件" + des, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" })
+                                    @Html.TextBox("温度条件" + des, "", new { @class = "form-control validate", id = "温度条件" + des, onblur = "RegularExpression(" + des + ")" })
                                 }
                             </div>
-
+                            @if (de.yqsjxx.ToString() != "")
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="延期时间下限">延期时间下限</label>
+                                    <label for="验证" style="color:red;display:none" id="yqsjxx @des">*不能为空</label>
+                                    @Html.TextBox("延期时间下限" + des, de.yqsjxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "延期时间下限" + des, onblur = "UnitAndValuevalidate3(" + des + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="yqsjxxdw @des">*选择</label>
+                                    <select class="custom-select yqsj-@des" name="延期时间下限单位 @des" id="延期时间下限单位 @des" onblur="UnitAndValuevalidate3(@des)" onchange="Tb1(this,'yqsj-@des')">
+                                        <option value="ms">ms</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="s">s</option>
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group col-lg-4">
+                                    <label for="延期时间下限">延期时间下限</label>
+                                    <label for="验证" style="color:red;display:none" id="yqsjxx @des">*不能为空</label>
+                                    @Html.TextBox("延期时间下限" + des, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "延期时间下限" + des, onblur = "UnitAndValuevalidate3(" + des + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="yqsjxxdw @des">*选择</label>
+                                    <select class="custom-select yqsj-@des" name="延期时间下限单位 @des" id="延期时间下限单位 @des" onblur="UnitAndValuevalidate3(@des)" onchange="Tb1(this,'yqsj-@des')">
+                                        <option value="请选择">请选择</option>
+                                        <option value="ms">ms</option>
+                                        <option value="s">s</option>
+                                    </select>
+                                </div>
+                            }
                             @if (de.yqsjsx.ToString() != "")
                             {
-                            <div class="form-group col-lg-4">
-                                <label for="延期时间上限">延期时间上限</label>
-                                <label for="验证" style="color:red;display:none" id="yqsjsx @des">*不能为空</label>
-                                <label for="验证" style="color:red;display:none" id="yqsjsxx @des">*上限小于下限</label>
-                                @Html.TextBox("延期时间上限" + des, de.yqsjsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "延期时间上限"+ des, onblur = "UnitAndValuevalidate3("+des+")" })
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="danwei">单位</label>
-                                <label for="验证" style="color:red;display:none" id="yqsjsxdw @des">*选择</label>
-                                <select class="custom-select yqsj-@des" name="延期时间上限单位 @des" id="延期时间上限单位 @des" onblur="UnitAndValuevalidate3(@des)" onchange="Tb1(this,'yqsj-@des')">
-                                    <option value="ms">ms</option>
-                                    <option value="请选择">请选择</option>
-                                    <option value="s">s</option>
-                                </select>
-                            </div>
+                                <div class="form-group col-lg-4">
+                                    <label for="延期时间上限">延期时间上限</label>
+                                    <label for="验证" style="color:red;display:none" id="yqsjsx @des">*不能为空</label>
+                                    <label for="验证" style="color:red;display:none" id="yqsjsxx @des">*上限小于下限</label>
+                                    @Html.TextBox("延期时间上限" + des, de.yqsjsx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "延期时间上限" + des, onblur = "UnitAndValuevalidate3(" + des + ")" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="danwei">单位</label>
+                                    <label for="验证" style="color:red;display:none" id="yqsjsxdw @des">*选择</label>
+                                    <select class="custom-select yqsj-@des" name="延期时间上限单位 @des" id="延期时间上限单位 @des" onblur="UnitAndValuevalidate3(@des)" onchange="Tb1(this,'yqsj-@des')">
+                                        <option value="ms">ms</option>
+                                        <option value="请选择">请选择</option>
+                                        <option value="s">s</option>
+                                    </select>
+                                </div>
                             }
                             else
                             {
@@ -2694,7 +2769,7 @@
                                     <label for="延期时间上限">延期时间上限</label>
                                     <label for="验证" style="color:red;display:none" id="yqsjsx @des">*不能为空</label>
                                     <label for="验证" style="color:red;display:none" id="yqsjsxx @des">*上限小于下限</label>
-                                    @Html.TextBox("延期时间上限" + des, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "延期时间上限"+ des, onblur = "UnitAndValuevalidate3(" + des + ")" })
+                                    @Html.TextBox("延期时间上限" + des, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "延期时间上限" + des, onblur = "UnitAndValuevalidate3(" + des + ")" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2706,46 +2781,13 @@
                                     </select>
                                 </div>
                             }
-                            @if (de.yqsjxx.ToString() != "")
-                            {
-                                <div class="form-group col-lg-4">
-                                    <label for="延期时间下限">延期时间下限</label>
-                                    <label for="验证" style="color:red;display:none" id="yqsjxx @des">*不能为空</label>
-                                    @Html.TextBox("延期时间下限" + des, de.yqsjxx.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "延期时间下限"+ des, onblur = "UnitAndValuevalidate3(" + des + ")" })
-                                </div>
-                                <div class="form-group col-lg-2">
-                                    <label for="danwei">单位</label>
-                                    <label for="验证" style="color:red;display:none" id="yqsjxxdw @des">*选择</label>
-                                    <select class="custom-select yqsj-@des" name="延期时间下限单位 @des" id="延期时间下限单位 @des" onblur="UnitAndValuevalidate3(@des)" onchange="Tb1(this,'yqsj-@des')">
-                                        <option value="ms">ms</option>
-                                        <option value="请选择">请选择</option>
-                                        <option value="s">s</option>
-                                    </select>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="form-group col-lg-4">
-                                    <label for="延期时间下限">延期时间下限</label>
-                                    <label for="验证" style="color:red;display:none" id="yqsjxx @des">*不能为空</label>
-                                    @Html.TextBox("延期时间下限" + des, "", new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "延期时间下限"+ des, onblur = "UnitAndValuevalidate3(" + des + ")" })
-                                </div>
-                                <div class="form-group col-lg-2">
-                                    <label for="danwei">单位</label>
-                                    <label for="验证" style="color:red;display:none" id="yqsjxxdw @des">*选择</label>
-                                    <select class="custom-select yqsj-@des" name="延期时间下限单位 @des" id="延期时间下限单位 @des" onblur="UnitAndValuevalidate3(@des)" onchange="Tb1(this,'yqsj-@des')">
-                                        <option value="请选择">请选择</option>
-                                        <option value="ms">ms</option>
-                                        <option value="s">s</option>
-                                    </select>
-                                </div>
-                            }
+
                             @if (de.yqsjz.ToString() != "")
                             {
                                 <div class="form-group col-lg-4">
                                     <label for="延期时间值">延期时间值</label>
                                     <label for="验证" style="color:red;display:none" id="yqsjz @des">*不能为空</label>
-                                    @Html.TextBox("延期时间值" + des, de.yqsjz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off" ,id = "延期时间值"+des ,onblur = "Unitvalidate10("+des+")" })
+                                    @Html.TextBox("延期时间值" + des, de.yqsjz.ToString(), new { @class = "form-control validate", onkeyup = "clearNoNum(this)", autocomplete = "off", id = "延期时间值" + des, onblur = "Unitvalidate10(" + des + ")" })
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="danwei">单位</label>
@@ -2776,7 +2818,7 @@
                             }
                             <div class="form-group col-lg-6">
                                 <label for="延期时间备注">延期时间备注</label>
-                                @Html.TextArea("延期时间备注" + des, de.yqsjbz.ToString(), new { @class = "form-control validate tm-small", rows = "1" })
+                                @Html.TextArea("延期时间备注" + des, de.yqsjbz.ToString(), new { @class = "form-control validate tm-small" })
                             </div>
                             @Html.TextBox("延期时间", des, new { @class = "form-control validate", style = "display:none" })
                             @Html.TextBox("延期时间id" + des, de.Id.ToString(), new { @class = "form-control validate", style = "display:none" })
@@ -2972,6 +3014,11 @@
         </div>
     </div>
 </body>
+<script src="~/Content/js/autosize.js"></script>
+
+<script>
+    autosize(document.querySelectorAll('textarea'));
+</script>
 </html>
 
 
